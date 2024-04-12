@@ -1,0 +1,202 @@
+body {
+    background-image: url('../images/background.png'); /* Set your default background image */
+    background-size: 100% 1080px; /* Cover the entire viewport */
+    background-position: initial; 
+    background-repeat: no-repeat; /* No repeat */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.border-st {
+    border-radius: 39px;  
+    border-top: 5px solid #e8ebec;
+    border-right: 5px solid #c9eaf1;
+    border-bottom: 5px solid #c9eaf1;
+    border-left: 5px solid #c9eaf1;
+    width: 90%;
+    /* height: 89%;
+    margin-top: 9%; */
+    height: 80%;
+    margin-top: 35%;
+    /* margin-bottom: 40px; */
+}
+.header{
+    /* top: -73px; */
+    top: 0px;
+}
+.first-img{
+    left: -24px;
+    top: 8px;
+}
+.sec-img{
+    top: 36px;
+    left: -6px;
+}
+.third-img{
+    /* left: 14px; */
+	left: 0px;
+}
+
+.fs-rem-22{
+    font-size: 1rem;
+}
+.an-btn{
+    border: none; /* Remove the default button border */
+    width: 250px; /* Set the width of the button */
+    height: 65px; /* Set the height of the button */
+    color: white; /* Set the text color */
+    font-size: 18px; /* Set the font size */
+    cursor: pointer; /* Show pointer cursor on hover */
+    border-radius: 40px;
+}
+.green-btn {
+    background-image: url('../images/Green_Button.png'); /* Replace 'your-image.jpg' with the URL or path to your image */
+    background-size: cover; /* Scale the background image to cover the entire button */
+    background-position: center; /* Center the background image within the button */
+    background-repeat: no-repeat; /* Do not repeat the background image */  
+}
+
+.red-btn {
+    background-image: url('../images/Purple_Button.png'); /* Replace 'your-image.jpg' with the URL or path to your image */
+    background-size: cover; /* Scale the background image to cover the entire button */
+    background-position: center; /* Center the background image within the button */
+    background-repeat: no-repeat; /* Do not repeat the background image */  
+}
+.blue-btn {
+    background-image: url('../images/Blue_Button.png'); /* Replace 'your-image.jpg' with the URL or path to your image */
+    background-size: cover; /* Scale the background image to cover the entire button */
+    background-position: center; /* Center the background image within the button */
+    background-repeat: no-repeat; /* Do not repeat the background image */  
+}
+.table > :not(caption) > * > * {
+    background-image:none;
+}
+.display-7{
+ font-size: 1.1rem;
+ color: #ffffff;
+}
+
+.err_cls{
+    border: 1px solid red;
+}
+
+.selectbtn{
+    border: 2px solid #d79a25;
+}
+
+/*
+Anil 10042024
+
+*/
+
+
+.congratulation-bg{
+	background-image: url('../images/bg-2.png'); /* Set your default background image */
+    background-size: 100% 930px; /* Cover the entire viewport */
+    background-position: initial; 
+    background-repeat: no-repeat; /* No repeat */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.border-st-2 {
+    /* border-radius: 39px;   */
+    /* border-top: 5px solid #e8ebec;
+    border-right: 8px solid #c9eaf1;
+    border-bottom: 5px solid #c9eaf1;
+    border-left: 8px solid #c9eaf1; */
+    width: 100%;
+    height: 89%;
+    margin-top: 9%;
+    /* margin-bottom: 40px; */
+}
+.cong-first-img{
+	left: -17px;
+	top: 40px;
+}
+.cong-sec-img{
+	top: 61px;
+	left: -6px;
+}
+.cong-third-img{
+    left: 14px;
+}
+.cong-header{
+	top: 0px;
+}
+.cong-text-with{
+	top: 146px;
+}
+.bodh-logo{
+	position: relative;
+	top: 65px;
+	text-align: center;
+}
+.social_media{
+	top: 94px;
+	position: relative;
+}
+.point {
+	position: absolute;
+	top: 32px;
+	right: 4%;
+	width: 80px;
+	font-weight: 600;
+  }  
+ 
+  .overlay-text {
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+  }
+  
+  .points-text {
+	font-size: 43px;
+	font-weight: bold; 
+	color: #fff;
+	position: absolute;
+	top: -4%;
+	right: 18%;
+  }
+  .share-text{
+	font-size: 1.6vh;
+	font-family: Arial;
+	text-align: center;
+  }
+  .app-chakra{
+	top: 115px;
+    position: relative;
+  }
+  .download-btn{
+	top: 110px;
+    position: relative;
+  }
+
+  .play-again-bg{
+	background-image: url('../images/background.png'); /* Set your default background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: initial; 
+    background-repeat: no-repeat; /* No repeat */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.well-play{
+position: relative;
+  top: 95px;
+  text-align: center;
+  padding: 15px;
+}
+.fs-25{
+	font-size: 25px;
+}

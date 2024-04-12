@@ -14,7 +14,8 @@ class Home extends CI_Controller
     {
         
         $page="web/home.php";
-        $this->load->view($page,$result);
+        $result=[];
+        webbody_helper($result, $page);
     }
 
 

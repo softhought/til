@@ -1,0 +1,78 @@
+<?php (defined('BASEPATH')) or exit('No direct script access allowed');
+
+class About extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+        $this->load->model('commondatamodel', 'commondatamodel', TRUE);
+
+    }
+
+    public function index()
+    {       
+        $page="web_view/about/about_us.php";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+
+    public function corporate_profile()
+    {       
+        $page="web_view/about/corporate_profile.php";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+    public function board_of_directors()
+    {      
+        $page="web_view/about/board_of_directors";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+    public function milestones()
+    {      
+        $page="web_view/about/milestones";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+    public function vision_and_values()
+    {      
+        $page="web_view/about/vision_and_values";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+
+    public function corporate_social_responsibility()
+    {      
+        $page="web_view/about/corporate_social_responsibility";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+    public function code_of_conduct()
+    {      
+        $page="web_view/about/code_of_conduct";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+    public function facilities()
+    {      
+        $page="web_view/about/facilities";
+        $result=[];
+        webbody_helper($result, $page);
+    }
+
+
+
+
+
+
+
+
+}/* end of class  */

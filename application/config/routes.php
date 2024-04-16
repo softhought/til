@@ -54,3 +54,19 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* -------------- About---------------------- */
+$route['about-us'] = "about";
+$route['about-us/corporate-profile'] = "about/corporate_profile";
+$route['about-us/board_of_directors'] = "about/board_of_directors";
+$route['about-us/milestones'] = "about/milestones";
+$route['about-us/vision-and-values'] = "about/vision_and_values";
+$route['about-us/corporate-social-responsibility'] = "about/corporate_social_responsibility";
+$route['about-us/code-of-conduct'] = "about/code_of_conduct";
+$route['about-us/facilities'] = "about/facilities";
+
+/* -------------- Products---------------------- */
+
+//$route['products'] = "products";
+
+
+

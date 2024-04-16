@@ -13,7 +13,7 @@ class Home extends CI_Controller
     public function index()
     {
         
-        $page="web/home.php";
+        $page="web_view/home.php";
         $result=[];
         webbody_helper($result, $page);
     }

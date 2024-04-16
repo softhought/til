@@ -487,7 +487,7 @@ if(!empty($check)){
 
         ?>
 
-                    <input type="hidden" value="<?php echo base_url();?>" id="basepath" readonly />
+         <input type="hidden" value="<?php echo base_url();?>" id="basepath" readonly />
 
                 </div><!-- /.container-fluid -->
             </section>

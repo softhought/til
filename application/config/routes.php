@@ -55,18 +55,58 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /* -------------- About---------------------- */
-$route['about-us'] = "about";
-$route['about-us/corporate-profile'] = "about/corporate_profile";
-$route['about-us/board_of_directors'] = "about/board_of_directors";
-$route['about-us/milestones'] = "about/milestones";
-$route['about-us/vision-and-values'] = "about/vision_and_values";
-$route['about-us/corporate-social-responsibility'] = "about/corporate_social_responsibility";
-$route['about-us/code-of-conduct'] = "about/code_of_conduct";
-$route['about-us/facilities'] = "about/facilities";
+$route['about-us'] = "frontend/about";
+$route['about-us/corporate-profile'] = "frontend/about/corporate_profile";
+$route['about-us/board_of_directors'] = "frontend/about/board_of_directors";
+$route['about-us/milestones'] = "frontend/about/milestones";
+$route['about-us/vision-and-values'] = "frontend/about/vision_and_values";
+$route['about-us/corporate-social-responsibility'] = "frontend/about/corporate_social_responsibility";
+$route['about-us/code-of-conduct'] = "frontend/about/code_of_conduct";
+$route['about-us/facilities'] = "frontend/about/facilities";
 
 /* -------------- Products---------------------- */
 
-//$route['products'] = "products";
+$route['products'] = "frontend/products";
+$route['products/material-handling-solutions'] = "frontend/products/material_handling_solutions";
+
+$route['products/material-handling-solutions/til-range'] = "frontend/products/solutions_til_range";
+$route['products/material-handling-solutions/til-range/rough-terrain-cranes'] = "frontend/products/til_range_rough_terrain_ranes";
+$route['products/material-handling-solutions/til-range/truck-cranes'] = "frontend/products/til_range_truck_cranes";
+$route['products/material-handling-solutions/til-range/pick-n-carry-cranes'] = "frontend/products/til_range_pick_n_carry_cranes";
+
+$route['products/material-handling-solutions/manitowoc-range'] = "frontend/products/solutions_manitowoc_range";
+$route['products/material-handling-solutions/manitowoc-range/crawler-cranes'] = "frontend/products/manitowoc_range_crawler_cranes";
+$route['products/material-handling-solutions/manitowoc-range/grove-range'] = "frontend/products/manitowoc_range_grove_range";
+
+$route['products/material-handling-solutions/hyster-til-range'] = "frontend/products/solutions_hyster_til_range";
+$route['products/material-handling-solutions/hyster-til-range/reachstackers'] = "frontend/products/hyster_til_range_reachstackers";
+$route['products/material-handling-solutions/hyster-til-range/forklift-trucks'] = "frontend/products/hyster_til_range_forklift_trucks";
 
 
+/* -------------- Customer Support ---------------------- */
+$route['customer-support'] = "frontend/customersupport";
+$route['customer-support/maintenance-contract'] = "frontend/customersupport/maintenance_contract";
+$route['customer-support/parts-warehouse'] = "frontend/customersupport/parts_warehouse";
+$route['customer-support/training'] = "frontend/customersupport/training";
+$route['contact-us/locations'] = "frontend/contactus/locations";
 
+/* -------------- Contact Us ---------------------- */
+$route["media"] = "frontend/media";
+$route["media/videos"] = "frontend/media/videos";
+$route["media/news"] = "frontend/media/news";
+$route["media/events-happenings"] = "frontend/media/events_happenings";
+$route["media/newsletter"] = "frontend/media/newsletter";
+$route["media/newsletter/til-talk"] = "frontend/media/newsletter_til_talk";
+$route["media/newsletter/til-touch"] = "frontend/media/newsletter_til_touch";
+
+/* -------------- Carrers ---------------------- */
+$route['careers'] = "frontend/careers";
+$route['careers/life-til'] = "frontend/careers/life_til";
+$route['careers/meet-our-team'] = "frontend/careers/meet_our_team";
+$route['careers/vacancies'] = "frontend/careers/vacancies";
+$route['careers/equal-opportunity-employer'] = "frontend/careers/equal_opportunity_employer";
+$route['careers/submit_cv'] = "frontend/careers/submit_cv";
+
+
+/* -------------- Contact Us ---------------------- */
+$route['contact-us/inquiry'] = "frontend/contactus/inquiry";

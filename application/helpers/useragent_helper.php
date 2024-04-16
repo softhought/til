@@ -7,7 +7,7 @@ if(!function_exists('getUserIPAddress'))
 	function getUserIPAddress(){
 		$CI =& get_instance();
 		$ip_add="";
-		$ip_add = $CI->input->ip_address();
+		//$ip_add = $CI->input->ip_address();
 		return $ip_add ;
 	}
 }

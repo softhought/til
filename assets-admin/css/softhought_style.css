@@ -1,5 +1,6 @@
 .form_error {
 	border: 1px solid red !important;
+	border-radius: 5px;
 }
 
 .select2-selection {
@@ -323,7 +324,7 @@ body {
 
     #35155b; */
 
-	color: #fff;
+	color: #323232;
 
 	text-indent: 7px;
 
@@ -464,11 +465,9 @@ body {
 }
 
 .select2-results {
-	font-size: 11px !important;
-
+	font-size: 0.75rem !important;
 	font-family: Sans-serif;
-
-	letter-spacing: 0.5px;
+	letter-spacing: 1px;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
@@ -480,7 +479,7 @@ body {
 .layout-box-content-format1 .action-button {
 	/* background-color: #7e0c26; */
 
-	color: #fff;
+	color: #323232;
 
 	letter-spacing: 1px;
 
@@ -584,18 +583,11 @@ border: 1px solid
 }
 
 .layout-box-content-format1 .table.customTbl .tbl-action-btn {
-	background: linear-gradient(90deg, #cc232d 0%, #e10f85 100%);
-
-	padding: 2px 3px;
-
+	padding: 2px 6px 0px 3px;
 	text-align: center;
-
 	box-shadow: 0px 2px 6px 0px #646363;
-
 	border: 0;
-
-	font-size: 14px;
-
+	font-size: 12px;
 	color: #fff;
 }
 
@@ -1009,7 +1001,7 @@ border: 1px solid
 .orderedlist .selected-item .qty-input {
 	font-size: 11px;
 
-	#letter-spacing: 2px;
+	/* #letter-spacing: 2px; */
 
 	background: transparent;
 
@@ -1017,11 +1009,11 @@ border: 1px solid
 }
 
 .orderedlist .selected-item .qty-btn {
-	#font-size: 10px;
+	/* #font-size: 10px; */
 
 	font-size: 8px;
 
-	#border-radius: 50px;
+	/* #border-radius: 50px; */
 
 	border-radius: 25px;
 
@@ -1115,7 +1107,7 @@ border: 1px solid
 
 	font-weight: 700; */
 
-	#padding: 0.4rem 0.6rem !important;
+	/* #padding: 0.4rem 0.6rem !important; */
 
 	padding: 0.4rem 0.55rem !important;
 
@@ -1262,7 +1254,7 @@ border: 1px solid
 			rgb(188, 5, 5) 50%,
 			rgb(80, 17, 62) 100%);
 
-	-webkit-background-clip: text;
+	/* -webkit-background-clip: text; */
 
 	-webkit-text-fill-color: transparent;
 
@@ -1362,7 +1354,7 @@ border: 1px solid
 
 	color: #fff;
 
-	#border-radius: -2px 34px 30px 5px;
+	/* #border-radius: -2px 34px 30px 5px; */
 
 	width: 13px;
 

@@ -1,5 +1,7 @@
-<script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script>
+<script src="<?php echo base_url();?>assets-admin/js/customJs/investor_relations.js"></script>
+<style>
 
+</style>
 <div class="card card-primary card-outline card-tabs">
    <div class="card-header p-0 pt-1 border-bottom-0">
       <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">

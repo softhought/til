@@ -21,7 +21,7 @@ class Login extends CI_Controller {
         $this->session->unset_userdata('quote_captcha_session');
 	    //$this->session->unset_userdata('redirect'); 
         $num1 = rand (1,10);
-        $num2 = rand (1,50);
+        $num2 = rand (1,10);
         
         $captcha_data = array(
             'number1' => $num1,

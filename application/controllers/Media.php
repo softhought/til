@@ -12,7 +12,7 @@ class Media extends CI_Controller {
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $page = "admin/media/add_edit_media";
+            $page = "dashboard/media/add_edit_media";
             $header="";    
             $result = "";   
           
@@ -41,12 +41,124 @@ class Media extends CI_Controller {
     
            }
             $result['videolist'] = $this->mediamodel->getVideoAllList();
-            $page="admin/media/video_partial_view";
+            $page="dashboard/media/video_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');
 		}
     }/** end  */
+    public function setStatus(){
+        $session = $this->session->userdata('user_detail');
+        if($this->session->userdata('user_detail')){
+            $updID = trim($this->input->post('uid'));
+            $setstatus = trim($this->input->post('setstatus'));
+        
+            $update_array  = array(
+                "is_disabled" => $setstatus
+                );
+            
+            $where = array(
+                "id" => $updID
+                );
+            $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+            if($update)
+            {
+                $json_response = array(
+                    "msg_status" => 1,
+                    "msg_data" => "Status updated"
+                );
+            }
+            else
+            {
+                $json_response = array(
+                    "msg_status" => 0,
+                    "msg_data" => "Failed to update"
+                );
+            }
+
+
+            header('Content-Type: application/json');
+            echo json_encode( $json_response );
+            exit;
+
+        }
+        else {
+            redirect('login','refresh');
+        }
+    }/** end */
+    public function videoserialchange() {
+        $session = $this->session->userdata('user_detail');
+       if($this->session->userdata('user_detail'))
+       {
+            $id = trim($this->input->post('id'));
+            $slno = trim($this->input->post('slno'));
+            $action = trim($this->input->post('action'));
+            $slectedvalue = trim($this->input->post('slectedvalue'));
+            if ($action=='U') {
+                $pre_sl=$slno-1;
+                if ($pre_sl!='0') {
+                    
+                    $where = array('precedence'=>$pre_sl);
+                    $preEventData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+                    if(!empty( $preEventData)){
+                        $pre_eventid = $preEventData->id;
+                        if(isset($pre_eventid)){
+                            $update_array  = array("precedence" => $pre_sl);                            
+                            $where = array("id" => $id);
+                            $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+                            $update_array2  = array("precedence" => $slno);                            
+                            $where2 = array("id" => $pre_eventid);
+                            $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+    
+                        }
+                    }
+                }
+            }elseif($action=='P'){
+                $where = array('precedence'=>$slectedvalue);
+                $preEventData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+                if(!empty( $preEventData)){
+                    $pre_eventid = $preEventData->id;
+                    $update_array  = array("precedence" => $slectedvalue);                            
+                    $where = array("id" => $id);
+                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+                    $update_array2  = array("precedence" => $slno);                            
+                    $where2 = array("id" => $pre_eventid);
+                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+    
+                }
+    
+            }else{
+                $next_sl=$slno+1;
+                $where = array('precedence'=>$next_sl);
+                $preEventData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+                //pre($preEventData);exit;
+                if(!empty($preEventData)){
+                    $next_eventid = $preEventData->id;
+                    $update_array  = array("precedence" => $next_sl);                            
+                    $where = array("id" => $id);
+                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+                    $update_array2  = array("precedence" => $slno);                            
+                    $where2 = array("id" => $next_eventid);
+                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+                }
+    
+            }
+    
+            // $data['eventslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('event',[],'sl_no');
+            // $this->load->view('dashboard/get-ready/website/events/event_partial_list',$data);
+            // $result['videolist'] = $this->mediamodel->getVideoAllList();
+            // $page="dashboard/media/video_partial_view";
+            // $this->load->view($page,$result);
+    
+    
+           
+        }else{
+    
+            redirect('login','refresh');
+    
+        }
+    
+    }/** end */
     public function video_add_edit_action(){
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail')){
@@ -124,7 +236,7 @@ class Media extends CI_Controller {
 		if($this->session->userdata('user_detail'))
 		{ 
             $result = '';
-            $page="admin/media/news_partial_view";
+            $page="dashboard/media/news_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');
@@ -135,7 +247,7 @@ class Media extends CI_Controller {
 		if($this->session->userdata('user_detail'))
 		{ 
             $result = '';
-            $page="admin/media/events_happining_partial_view";
+            $page="dashboard/media/events_happining_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');
@@ -146,7 +258,7 @@ class Media extends CI_Controller {
 		if($this->session->userdata('user_detail'))
 		{ 
             $result = '';
-            $page="admin/media/newslater_partial_view";
+            $page="dashboard/media/newslater_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');

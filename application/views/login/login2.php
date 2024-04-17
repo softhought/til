@@ -131,8 +131,7 @@
          </div>
       </section>
       <!-- jQuery 3 -->
-      <script src="<?php echo base_url();?>/assets-admin/cini_theme/bower_components/jquery/dist/jquery.min.js"></script>
-      <!-- <script src="<?php echo base_url(); ?>assets/js_scripts/adm_scripts/login.js"></script> -->
-      <script src="<?php echo base_url();?>/assets-admin/js_scripts/admin_login/login.js"></script>
+      <script src="<?php echo base_url();?>/assets-admin/plugins/jquery/jquery.min.js"></script>
+      <script src="<?php echo base_url();?>/assets-admin/js/customJs/login.js"></script>
    </body>
 </html>

@@ -2,23 +2,27 @@
 $(document).ready(function () {
     var basepath = $("#basepath").val();
     //loadPartialView("#tab_one", basepath + "media/video_partial_view");
-    $("#tab_one-tab").on("click", function(event) {
+    $(document).on("click", "#tab_one-tab", function (event){
         event.preventDefault();
+        event.stopImmediatePropagation();
         loadPartialView("#tab_one", basepath + "media/video_partial_view");
     });
-    $("#tab_two-tab").on("click", function(event) {
+    $(document).on("click", "#tab_two-tab", function (event){
         event.preventDefault();
+        event.stopImmediatePropagation();
         loadPartialView("#tab_two", basepath + "media/news_partial_view");
     });
-    $("#tab_three-tab").on("click", function(event) {
+    $(document).on("click", "#tab_three-tab", function (event){
         event.preventDefault();
+        event.stopImmediatePropagation();
         loadPartialView("#tab_three", basepath + "media/events_happining_partial_view");
     });
-    $("#tab_four-tab").on("click", function(event) {
+    $(document).on("click", "#tab_four-tab", function (event){
         event.preventDefault();
+        event.stopImmediatePropagation();
         loadPartialView("#tab_four", basepath + "media/newslater_partal_view");
     });
-    $(".update_btn").on("click", function(event) {
+    $(document).on("click", ".update_btn", function (event){
         event.preventDefault();
         var id = $(this).data('id');
         var title = $(this).data('title');
@@ -30,10 +34,12 @@ $(document).ready(function () {
         $("#save_btn").html("Update");
     });
 
-    $(document).on("submit", "#videoForm", function (event) {
-		event.preventDefault();
+    $(document).on("submit", "#videoForm", function (e) {
+		e.preventDefault();
 		var formData = new FormData($(this)[0]);
-        $("#save_btn").css("display", "none");
+        
+        if(validation()){
+            $("#save_btn").css("display", "none");
         //$("#loaderbtn").css("display", "block");
         $.ajax({
             type: "POST",
@@ -44,7 +50,6 @@ $(document).ready(function () {
             data: formData,
             success: function (result) {
                 if (result.msg_status == 1) {
-                  
                     loadPartialView("#tab_one", basepath + "media/video_partial_view");
                 } else {
                 }
@@ -72,9 +77,14 @@ $(document).ready(function () {
                 // alert(msg);
             },
         }); /*end ajax call*/
-			
-		
+        }/** end if */
 	});
+    $(document).on("click", ".status", function () {
+        var uid = $(this).attr("id");
+        var status = $(this).data("setstatus");
+        var url = basepath + "media/setStatus";
+        setActiveStatus(uid, status, url);
+      });
     
 }); // end of document ready
 function loadPartialView(tabId, partialViewUrl) {
@@ -86,6 +96,38 @@ function loadPartialView(tabId, partialViewUrl) {
         },
         error: function(xhr, status, error) {
             console.error("Error loading partial view:", error);
+        }
+    });
+}
+function validation(){
+    var title = $('#title').val();
+    var link = $('#link').val();
+    $("#error_title").text('');
+    $("#error_link").text('');
+    if(title == ""){
+        $("#error_title").text('Error : Enter title');
+        $("#title").focus();
+        return false;
+   }else if(link == ""){
+     $("#error_link").text('Error : Enter link');
+     $("#link").focus();
+     return false;
+   }
+   return true;
+}/**end  */
+function changeSerial(id,slno,action){
+	var slectedvalue = $("#otherslno_"+ slno).val();
+    var basepath = $("#basepath").val()
+    $.ajax({
+    url: basepath+'media/videoserialchange',
+    dataType: 'html',
+    type: 'post',
+    data: {id:id,slno:slno,action:action,slectedvalue:slectedvalue},
+    success: function(data) {		
+        loadPartialView("#tab_one", basepath + "media/video_partial_view");
+            //$("#event_list").html(data);
+          //  $('.dataTable').DataTable();	
+           // $(".select2").select2();
         }
     });
 }

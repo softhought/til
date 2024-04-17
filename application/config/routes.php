@@ -90,7 +90,7 @@ $route['customer-support/parts-warehouse'] = "frontend/customersupport/parts_war
 $route['customer-support/training'] = "frontend/customersupport/training";
 $route['contact-us/locations'] = "frontend/contactus/locations";
 
-/* -------------- Contact Us ---------------------- */
+/* -------------- Media ---------------------- */
 $route["media"] = "frontend/media";
 $route["media/videos"] = "frontend/media/videos";
 $route["media/news"] = "frontend/media/news";

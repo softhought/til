@@ -5,7 +5,7 @@ if (!function_exists('getAllMenuUrl')) {
     function getAllMenuUrl($table)
     {
         $db =& DB();
-        $result = $db->select('id, name, slug, parent_id')->where('is_disabled', '0')->get($table)->result_array();
+        $result = $db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get($table)->result_array();
         $menu = buildNestedMenu($result, 0);
         return menuUrls($menu[0]["children"]);
     }
@@ -20,7 +20,7 @@ function buildNestedMenu($menuItems, $parentId, $depth = 0)
         if ($menuItem['parent_id'] == $parentId) {
 
             $menuItem['level'] = $depth;
-            $children = buildNestedMenu($menuItems, $menuItem['id'], $depth + 1);
+            $children = buildNestedMenu($menuItems, $menuItem['product_master_id'], $depth + 1);
 
             if ($children) {
                 $menuItem['children'] = $children;
@@ -46,7 +46,7 @@ function menuUrls($menuItems, $parentSlugs = [])
             'slug' => $menuItem['slug'],
             'url' => $url,
             'level' => $menuItem['level'],
-            'id' => $menuItem['id'],
+            'product_master_id' => $menuItem['product_master_id'],
         ];
         if (isset($menuItem['children']) && !empty($menuItem['children'])) {
             $childSlugs = array_merge($parentSlugs, [$menuItem['slug']]);

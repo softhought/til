@@ -7,10 +7,12 @@ class ProductsMenu extends CI_Model
 
     public function getProductsMenu()
     {
-        $result = $this->db->select('id, name, slug, parent_id')->where('is_disabled', '0')->get("fuel_catagory")->result_array();
+        $result = $this->db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get("product_master")->result_array();
         $menu = $this->buildNestedMenu($result, 0);
         return $this->generateMenuHTML($menu[0]["children"]);
     }
+
+
 
     private function buildNestedMenu($menuItems, $parentId)
     {
@@ -18,7 +20,7 @@ class ProductsMenu extends CI_Model
 
         foreach ($menuItems as $menuItem) {
             if ($menuItem['parent_id'] == $parentId) {
-                $children = $this->buildNestedMenu($menuItems, $menuItem['id']);
+                $children = $this->buildNestedMenu($menuItems, $menuItem['product_master_id']);
 
                 if ($children) {
                     $menuItem['children'] = $children;

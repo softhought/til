@@ -133,12 +133,14 @@ $(document).ready(function () {
             success: function (result) {
                 if (result.msg_status == 1) {
                     //loadPartialView("#tab_one", basepath + "media/video_partial_view");
-                    if(result.msg_status == 'NEWS'){
-                        loadPartialView("#tab_two", basepath + "media/news_partial_view");
-                    }else if(result.msg_status == 'TIL_TALK'){
-                        loadPartialView("#tab_four", basepath + "media/till_talk_partal_view");
-                    }else if(result.msg_status == 'TIL_TOUCH'){
-                        loadPartialView("#tab_five", basepath + "media/till_touch_partal_view");
+                    var media_tag = result.media_tag;
+                    if(result.media_tag == 'NEWS'){
+                        loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                    }else if(result.media_tag == 'TIL_TALK'){
+                        loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
+                    }else if(result.media_tag == 'TIL_TOUCH'){
+                        loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
                     }
                 } else {
                 }
@@ -189,11 +191,42 @@ $(document).ready(function () {
         });
 
     });/**end */
+    $(document).on("click", ".news_newslater_status", function (event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var uid = $(this).attr("id");
+        var status = $(this).data("setstatus");
+        var media_tag = $(this).data("mediatag");
+        //var url = basepath + "media/setStatus";
+        $.ajax({
+            url: basepath + 'media/news_newslater_status',
+            dataType: 'json',
+            type: 'post',
+            data: { uid: uid, status: status,media_tag:media_tag},
+            success: function (result) {
+                if (result.msg_status == 1) {
+                    var media_tag=result.media_tag;
+                    if(result.media_tag == 'NEWS'){
+                        loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                    }else if(result.media_tag == 'TIL_TALK'){
+
+                    }else if(result.media_tag == 'TIL_TOUCH'){
+
+                    }
+                    
+                    //location.reload();
+                }
+            }
+        });
+
+    });/**end */
 
 
 }); // end of document ready
 
 function loadPartialView(tabId, partialViewUrl,media_tag) {
+    $('#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data,#tab_five_data').html('');
     $.ajax({
         url: partialViewUrl,
         //type: 'GET',
@@ -225,17 +258,22 @@ function validation() {
     }
     return true;
 }/**end  */
-function changeSerial(id, slno, action) {
+function changeSerial(id, slno, action,media_tag,table_name) {
     var slectedvalue = $("#otherslno_" + slno).val();
     var basepath = $("#basepath").val()
+   
     $.ajax({
         url: basepath + 'media/videoserialchange',
         dataType: 'json',
         type: 'post',
-        data: { id: id, slno: slno, action: action, slectedvalue: slectedvalue },
+        data: { id: id, slno: slno, action: action, slectedvalue: slectedvalue,media_tag:media_tag },
         success: function (result) {
             if (result.msg_status == 1) {
-
+                var media_tag = result.media_tag;
+                if(result.media_tag == 'NEWS'){
+                    loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                }
                 loadPartialView("#tab_one", basepath + "media/video_partial_view");   //location.reload();
             }
         }

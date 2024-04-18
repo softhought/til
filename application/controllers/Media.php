@@ -66,6 +66,7 @@ class Media extends CI_Controller {
             redirect('login','refresh');
         }
     }/** end */
+   
     public function videoserialchange() {
         $session = $this->session->userdata('user_detail');
        if($this->session->userdata('user_detail'))
@@ -74,81 +75,186 @@ class Media extends CI_Controller {
             $slno = trim($this->input->post('slno'));
             $action = trim($this->input->post('action'));
             $slectedvalue = trim($this->input->post('slectedvalue'));
-           
+            $media_tag = trim($this->input->post('media_tag'));
 
             if ($action=='U') {
                 $pre_sl=$slno-1;
                 if ($pre_sl!='0') {
+
+                    if($media_tag == 'NEWS' || $media_tag == 'TIL_TALK' || $media_tag == 'TIL_TOUCH'){
+                        $where = array('precedence'=>$pre_sl);
+                        $preNewsNewslaterData=$this->commondatamodel->getSingleRowByWhereCls('document_details',$where);
+                        $table_name = $preNewsNewslaterData->table_name;
+                        $ref_id = $preNewsNewslaterData->ref_id;
+                        if(!empty( $preNewsNewslaterData)){
+                            $pre_docid = $preNewsNewslaterData->doc_id;
+                            if(isset($pre_docid)){
+                                $update_array1  = array("precedence" => $pre_sl); 
+    
+                                $where1 = array("doc_id" => $id,'table_name'=>$table_name,'ref_id'=>$ref_id);
+                                $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array1,$where1);
+    
+                                $update_array2  = array("precedence" => $slno);                            
+                                $where2 = array("doc_id" => $pre_docid,'table_name'=>$table_name,'ref_id'=>$ref_id);
+                                $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array2,$where2);
+    
+                                if($update){
+                                    $json_response = array(
+                                        "msg_status" => 1,
+                                        "msg_data" => "News and Newslater Precedence updated",
+                                        "media_tag" => $media_tag
+                                    );
+                                }
+                            }
+                        }
+
+                    }/** end media_tag */
+                    else{
+                        $where = array('precedence'=>$pre_sl);
+                        $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+                        if(!empty( $preVideoData)){
+                            $pre_videoid = $preVideoData->id;
+                            if(isset($pre_videoid)){
+                                $update_array  = array("precedence" => $pre_sl); 
+    
+                                $where = array("id" => $id);
+                                $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+    
+                                $update_array2  = array("precedence" => $slno);                            
+                                $where2 = array("id" => $pre_videoid);
+                                $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+    
+                                if($update){
+                                    $json_response = array(
+                                        "msg_status" => 1,
+                                        "msg_data" => "Precedence updated"
+                                    );
+                                }
+                            }
+                        }
+
+                    }
                     
-                    $where = array('precedence'=>$pre_sl);
+                    
+                }
+            }elseif($action=='P'){
+                if($media_tag == 'NEWS' || $media_tag == 'TIL_TALK' || $media_tag == 'TIL_TOUCH'){
+                    $where_tag= array('menu_tag'=>$media_tag);
+                    $media_master_id = $this->commondatamodel->getSingleRowByWhereCls('document_details',$where);
+
+
+                    $where = array('precedence'=>$slectedvalue);
+                    $preNewsNewslaterData=$this->commondatamodel->getSingleRowByWhereCls('document_details',$where);
+                    pre($preNewsNewslaterData);exit;
+                    $table_name = $preNewsNewslaterData->table_name;
+                    $ref_id = $preNewsNewslaterData->ref_id;
+
+                    $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+
+                    if(!empty( $preVideoData)){
+                        $pre_videoid = $preVideoData->id;
+
+                        $update_array  = array("precedence" => $slectedvalue);                       
+                        $where = array("id" => $id);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+
+                        $update_array2  = array("precedence" => $slno);                            
+                        $where2 = array("id" => $pre_videoid);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+
+                        if($update){
+                            $json_response = array(
+                                "msg_status" => 1,
+                                "msg_data" => "Precedence updated"
+                            );
+                        }
+                    }
+
+                }/**endif */
+                else{
+
+                    $where = array('precedence'=>$slectedvalue);
                     $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
                     if(!empty( $preVideoData)){
                         $pre_videoid = $preVideoData->id;
-                        if(isset($pre_videoid)){
-                            $update_array  = array("precedence" => $pre_sl); 
 
-                            $where = array("id" => $id);
-                            $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+                        $update_array  = array("precedence" => $slectedvalue);                       
+                        $where = array("id" => $id);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
 
-                            $update_array2  = array("precedence" => $slno);                            
-                            $where2 = array("id" => $pre_videoid);
-                            $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+                        $update_array2  = array("precedence" => $slno);                            
+                        $where2 = array("id" => $pre_videoid);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
 
-                            if($update){
-                                $json_response = array(
-                                    "msg_status" => 1,
-                                    "msg_data" => "Precedence updated"
-                                );
-                            }
+                        if($update){
+                            $json_response = array(
+                                "msg_status" => 1,
+                                "msg_data" => "Precedence updated"
+                            );
                         }
                     }
-                }
-            }elseif($action=='P'){
-                $where = array('precedence'=>$slectedvalue);
-                $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
-                if(!empty( $preVideoData)){
-                    $pre_videoid = $preVideoData->id;
-
-                    $update_array  = array("precedence" => $slectedvalue);                       
-                    $where = array("id" => $id);
-                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
-
-                    $update_array2  = array("precedence" => $slno);                            
-                    $where2 = array("id" => $pre_videoid);
-                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
-
-                    if($update){
-                        $json_response = array(
-                            "msg_status" => 1,
-                            "msg_data" => "Precedence updated"
-                        );
-                    }
-                }
+                }/**end else */
+                
     
             }else{
-                $next_sl=$slno+1;
+                if($media_tag == 'NEWS' || $media_tag == 'TIL_TALK' || $media_tag == 'TIL_TOUCH'){
+                    $next_sl=$slno+1;
 
-                $where = array('precedence'=>$next_sl);
-                $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
-               
-                if(!empty($preVideoData)){
-                    $next_videoid = $preVideoData->id;
-                       
-                    $update_array  = array("precedence" => $next_sl);                            
-                    $where = array("id" => $id);
-                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+                    $where = array('precedence'=>$next_sl);
+                    $preNewsNewslaterData=$this->commondatamodel->getSingleRowByWhereCls('document_details',$where);    
+                    $table_name = $preNewsNewslaterData->table_name;
+                    $ref_id = $preNewsNewslaterData->ref_id;
 
-                    $update_array2  = array("precedence" => $slno);                            
-                    $where2 = array("id" => $next_videoid);
-                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
-                    if($update){
-                        $json_response = array(
-                            "msg_status" => 1,
-                            "msg_data" => "Precedence updated"
-                        );
+                    if(!empty($preNewsNewslaterData)){
+                        // $next_videoid = $preVideoData->id;
+                        $next_doc_id = $preNewsNewslaterData->doc_id;
+                        
+                        $update_array  = array("precedence" => $next_sl);                            
+                        $where = array("doc_id" => $id,'table_name'=>$table_name,'ref_id'=>$ref_id);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array,$where);
+
+                        $update_array2  = array("precedence" => $slno);                            
+                        $where2 = array("doc_id" => $next_doc_id,'table_name'=>$table_name,'ref_id'=>$ref_id);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array2,$where2);
+                        if($update){
+                            $json_response = array(
+                                "msg_status" => 1,
+                                "msg_data" => "News and Newslater Precedence updated",
+                                "media_tag" => $media_tag
+                            );
+                        }
+                        
                     }
-                    
-                }
+
+
+
+                }/** end if */
+                else{
+                    $next_sl=$slno+1;
+
+                    $where = array('precedence'=>$next_sl);
+                    $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+               
+                    if(!empty($preVideoData)){
+                        $next_videoid = $preVideoData->id;
+                        
+                        $update_array  = array("precedence" => $next_sl);                            
+                        $where = array("id" => $id);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
+
+                        $update_array2  = array("precedence" => $slno);                            
+                        $where2 = array("id" => $next_videoid);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+                        if($update){
+                            $json_response = array(
+                                "msg_status" => 1,
+                                "msg_data" => "Precedence updated"
+                            );
+                        }
+                        
+                    }
+                }/**end else */
+                
     
             }
             header('Content-Type: application/json');
@@ -251,10 +357,11 @@ class Media extends CI_Controller {
 		if($this->session->userdata('user_detail'))
 		{ 
             $media_tag = $this->input->post('media_tag');
+            $result['media_tag_name'] = $media_tag;
             $where_tag = array('media_master.menu_tag');
             $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
             $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
-            $result['srl_no'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
+            $result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
             $page="dashboard/media/news_partial_view";
             $this->load->view($page,$result);
         }else{
@@ -307,6 +414,7 @@ class Media extends CI_Controller {
                         "msg_status" => 1,
                         "msg_data" => "Updated successfully",
                         "mode" => "EDIT",
+                        "media_tag"=>$media_tag
                     );
 
                 }
@@ -381,6 +489,40 @@ class Media extends CI_Controller {
         }
 
     }/**end action */
+    public function news_newslater_status(){
+        $session = $this->session->userdata('user_detail');
+        if($this->session->userdata('user_detail')){
+            $updID = trim($this->input->post('uid'));
+            $status = trim($this->input->post('status'));
+            $media_tag = trim($this->input->post('media_tag'));
+            $update_array  = array("is_disabled" => $status);   
+            $where = array("doc_id" => $updID);
+            $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array,$where);
+            if($update)
+            {
+                $json_response = array(
+                    "msg_status" => 1,
+                    "msg_data" => "Status updated",
+                    "media_tag" =>$media_tag
+                );
+            }
+            else
+            {
+                $json_response = array(
+                    "msg_status" => 0,
+                    "msg_data" => "Failed to update"
+                );
+            }
+            header('Content-Type: application/json');
+            echo json_encode( $json_response );
+            exit;
+
+        }
+        else {
+            redirect('login','refresh');
+        }
+
+    }/**end */
     public function events_happining_partial_view(){
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))

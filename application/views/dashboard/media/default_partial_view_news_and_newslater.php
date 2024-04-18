@@ -1,9 +1,9 @@
 <!-- <script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script> -->
 <form id="newsandnewslaterForm" class="newsandnewslaterForm" method="post" enctype="multipart/form-data">
-    <input type="text" name="media_tag" id="media_tag" value="<?php echo $list->menu_tag; ?>"><br>
-    <input type="text" name="mediaMasterId" id="mediaMasterId" value="<?php echo $list->media_master_id; ?>"><br>
-    <input type="text" name="mode" id="mode" class="mode" value="ADD"><br>
-    <input type="text" name="docID" id="docID" value="<?php echo $doc_id; ?>"><br>
+    <input type="hidden" name="media_tag" id="media_tag" value="<?php echo $list->menu_tag; ?>"><br>
+    <input type="hidden" name="mediaMasterId" id="mediaMasterId" value="<?php echo $list->media_master_id; ?>"><br>
+    <input type="hidden" name="mode" id="mode" class="mode" value="ADD"><br>
+    <input type="hidden" name="docID" id="docID" value="<?php echo $doc_id; ?>"><br>
       <div class="row">
          <div class="col-md-3">
             <label for="title_desc">Title Description <span style="color:red;font-size:15px;">*</span></label>

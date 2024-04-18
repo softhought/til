@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en-US">
 
 
@@ -74,6 +75,7 @@
 <body>
 
 
+
   <!--<div class="page">
     <div class="wrapper">
       <header class="page_header">
@@ -93,7 +95,8 @@
         <div class="row">
           <div class="logo">
             <a href="index.html" title="">
-              <img src="<?php echo base_url(); ?>/assets/images/logo.png" alt="TIL Limited" class="img-responsive" /></a>
+              <img src="<?php echo base_url(); ?>/assets/images/logo.png" alt="TIL Limited"
+                class="img-responsive" /></a>
           </div>
           <samp class="mobl_button">
             <span></span>
@@ -128,7 +131,6 @@
         </form>
       </div>
     </div>
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse nav-topBorder" role="navigation">
       <div class="container">
@@ -148,52 +150,9 @@
               <li class="last"><a href="<?php echo base_url(); ?>about-us/facilities">Facilities</a></li>
             </ul>
           </li>
-          <li><a href="<?php echo base_url(); ?>products" class="dropdown-toggle">Products <span
-                class="caret"></span></a>
-            <ul class="dropdown-menu dropdownhover-bottom">
-              <li class="first last"><a href="<?php echo base_url(); ?>products/material-handling-solutions"
-                  class="sub_nav">Material Handling Solutions <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdownhover-bottom">
-                  <li class="first"><a href="<?php echo base_url(); ?>products/material-handling-solutions/til-range"
-                      class="sub_nav">TIL Range <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdownhover-bottom">
-                      <li class="first"><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/til-range/rough-terrain-cranes">Rough
-                          Terrain Cranes</a></li>
-                      <li><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/til-range/truck-cranes">Truck
-                          Cranes</a></li>
-                      <li class="last"><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/til-range/pick-n-carry-cranes">Pick
-                          n Carry Cranes</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="<?php echo base_url(); ?>products/material-handling-solutions/manitowoc-range"
-                      class="sub_nav">Manitowoc Range <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdownhover-bottom">
-                      <li class="first"><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/manitowoc-range/crawler-cranes">Crawler
-                          Cranes</a></li>
-                      <li class="last"><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/manitowoc-range/grove-range">Grove
-                          Range</a></li>
-                    </ul>
-                  </li>
-                  <li class="last"><a
-                      href="<?php echo base_url(); ?>products/material-handling-solutions/hyster-til-range"
-                      class="sub_nav">Hyster-TIL Range <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdownhover-bottom">
-                      <li class="first"><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/hyster-til-range/reachstackers">ReachStackers</a>
-                      </li>
-                      <li class="last"><a
-                          href="<?php echo base_url(); ?>products/material-handling-solutions/hyster-til-range/forklift-trucks">Forklift
-                          Trucks</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <li>
+            <a href="<?php echo base_url(); ?>products" class="dropdown-toggle">Products <span class="caret"></span></a>
+            <?php echo $menu["product_menu"]; ?>
           </li>
           <li><a href="<?php echo base_url(); ?>customer-support">Customer Support <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
@@ -223,7 +182,8 @@
               <li class="first"><a href="<?php echo base_url(); ?>careers/life-til">Life @TIL</a></li>
               <li><a href="<?php echo base_url(); ?>careers/meet-our-team">Meet Our Team</a></li>
               <li><a href="<?php echo base_url(); ?>careers/vacancies">Vacancies</a></li>
-              <li class="last"><a href="<?php echo base_url(); ?>careers/equal-opportunity-employer">Equal Opportunity Employer</a></li>
+              <li class="last"><a href="<?php echo base_url(); ?>careers/equal-opportunity-employer">Equal Opportunity
+                  Employer</a></li>
             </ul>
           </li>
           <li class="last"><a href="#">Contact Us <span class="caret"></span></a>

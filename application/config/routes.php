@@ -128,3 +128,5 @@ $route['careers/submit_cv'] = "frontend/careers/submit_cv";
 
 /* -------------- Contact Us ---------------------- */
 $route['contact-us/inquiry'] = "frontend/contactus/inquiry";
+
+$route["mediaadmin"] = "media";

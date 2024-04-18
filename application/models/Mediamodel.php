@@ -27,7 +27,7 @@ class Mediamodel extends CI_Model{
 		$data = array();
 		$this->db->select("*")
 				->from('fuel_videos')
-                ->order_by('id','DESC');
+                ->order_by('precedence','ASC');
 		$query = $this->db->get();
 		//echo "<br>".$this->db->last_query();
 

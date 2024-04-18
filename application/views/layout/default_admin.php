@@ -179,9 +179,6 @@ if(!empty($check)){
     <script src="<?php echo base_url(); ?>assets-admin/js/customJs/datecheck.js"></script>
 
 
-
-    <!-- comman js by anil on 24-02-2020 -->
-
     <script src="<?php echo base_url(); ?>assets-admin/js/customJs/comman.js"></script>
 
 

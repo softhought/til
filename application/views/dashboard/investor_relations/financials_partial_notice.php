@@ -1,1 +1,0 @@
-financials_partial_notice

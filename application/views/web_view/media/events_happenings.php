@@ -19,8 +19,8 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5e05cb91bd986_1577438097.jpg"
                                 data-gall="gall1_0" class="venobox" title="Excon 2019" data-alt="Excon 2019">
-                                <img src="<?php echo base_url();?>timthumbd116.jpg?src=/assets/images/image_gallery/gallery_image_5e05cb91bd986_1577438097.jpg&amp;w=350&amp;h=250"
-                                    alt="Excon 2019" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5e05cb91bd986_1577438097.jpg"
+                                    alt="Excon 2019" width="350" height="250"/>
                             </a>
                             <h4 style="font-weight:600">Excon 2019</h4>
                             <div style="display: none">
@@ -58,8 +58,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5dbfba91e58eb_1572846225.jpg"
                                 data-gall="gall1_1" class="venobox" title="CMD Wins Lifetime Achievement Award 2019"
                                 data-alt="CMD Wins Lifetime Achievement Award 2019">
-                                <img src="<?php echo base_url();?>timthumb1fde.jpg?src=/assets/images/image_gallery/gallery_image_5dbfba91e58eb_1572846225.jpg&amp;w=350&amp;h=250"
-                                    alt="CMD Wins Lifetime Achievement Award 2019" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5dbfba91e58eb_1572846225.jpg"
+                                    alt="CMD Wins Lifetime Achievement Award 2019" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">CMD Wins Lifetime Achievement Award 2019</h4>
                             <div style="display: none">
@@ -70,8 +70,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5d4bfe752d5fd_15652614292.jpg"
                                 data-gall="gall1_2" class="venobox" title="75th Foundation Day 2019"
                                 data-alt="75th Foundation Day 2019">
-                                <img src="<?php echo base_url();?>timthumbe234.jpg?src=/assets/images/image_gallery/gallery_image_5d4bfe752d5fd_15652614292.jpg&amp;w=350&amp;h=250"
-                                    alt="75th Foundation Day 2019" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5d4bfe752d5fd_15652614292.jpg"
+                                    alt="75th Foundation Day 2019" width="350" height="250"/>
                             </a>
                             <h4 style="font-weight:600">75th Foundation Day 2019</h4>
                             <div style="display: none">
@@ -106,8 +106,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5d4c04537dbe3_15652629311.jpg"
                                 data-gall="gall1_3" class="venobox" title="TIL Caring Day 2019 - A CSR Initiative"
                                 data-alt="TIL Caring Day 2019 - A CSR Initiative">
-                                <img src="<?php echo base_url();?>timthumb7804.jpg?src=/assets/images/image_gallery/gallery_image_5d4c04537dbe3_15652629311.jpg&amp;w=350&amp;h=250"
-                                    alt="TIL Caring Day 2019 - A CSR Initiative" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5d4c04537dbe3_15652629311.jpg"
+                                    alt="TIL Caring Day 2019 - A CSR Initiative" width="350" height="250"/>
                             </a>
                             <h4 style="font-weight:600">TIL Caring Day 2019 - A CSR Initiative</h4>
                             <div style="display: none">
@@ -128,8 +128,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c46f96d22475_1548155245.jpg"
                                 data-gall="gall1_4" class="venobox" title="Operator Meet at Nagpur"
                                 data-alt="Operator Meet at Nagpur">
-                                <img src="<?php echo base_url();?>timthumb4c16.jpg?src=/assets/images/image_gallery/gallery_image_5c46f96d22475_1548155245.jpg&amp;w=350&amp;h=250"
-                                    alt="Operator Meet at Nagpur" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c46f96d22475_1548155245.jpg"
+                                    alt="Operator Meet at Nagpur" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">Operator Meet at Nagpur</h4>
                             <div style="display: none">
@@ -144,8 +144,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c08dce8ee0f5_1544084712.jpg"
                                 data-gall="gall1_5" class="venobox" title="TIL wins Indywood CSR Excellence Awards"
                                 data-alt="TIL wins Indywood CSR Excellence Awards">
-                                <img src="<?php echo base_url();?>timthumbd503.jpg?src=/assets/images/image_gallery/gallery_image_5c08dce8ee0f5_1544084712.jpg&amp;w=350&amp;h=250"
-                                    alt="TIL wins Indywood CSR Excellence Awards" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c08dce8ee0f5_1544084712.jpg"
+                                    alt="TIL wins Indywood CSR Excellence Awards" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">TIL wins Indywood CSR Excellence Awards</h4>
                             <div style="display: none">
@@ -157,8 +157,8 @@
                                 data-gall="gall1_6" class="venobox"
                                 title="Training on Prevention of Sexual Harrassment at Workplace"
                                 data-alt="Training on Prevention of Sexual Harrassment at Workplace">
-                                <img src="<?php echo base_url();?>timthumb9e21.jpg?src=/assets/images/image_gallery/gallery_image_5c00e6ec2b3e1_1543562988.jpg&amp;w=350&amp;h=250"
-                                    alt="Training on Prevention of Sexual Harrassment at Workplace" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c00e6ec2b3e1_1543562988.jpg"
+                                    alt="Training on Prevention of Sexual Harrassment at Workplace" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">Training on Prevention of Sexual Harrassment at Workplace</h4>
                             <div style="display: none">
@@ -184,8 +184,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c00e7b78e181_15435631912.jpg"
                                 data-gall="gall1_7" class="venobox" title="Customer Meet at Dhanbad"
                                 data-alt="Customer Meet at Dhanbad">
-                                <img src="<?php echo base_url();?>timthumba59f.jpg?src=/assets/images/image_gallery/gallery_image_5c00e7b78e181_15435631912.jpg&amp;w=350&amp;h=250"
-                                    alt="Customer Meet at Dhanbad" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5c00e7b78e181_15435631912.jpg"
+                                    alt="Customer Meet at Dhanbad" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">Customer Meet at Dhanbad</h4>
                             <div style="display: none">
@@ -212,8 +212,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5beaaed4f1600_1542106836.jpg"
                                 data-gall="gall1_8" class="venobox" title="TIL wins the Brand Leadership Award 2018"
                                 data-alt="TIL wins the Brand Leadership Award 2018">
-                                <img src="<?php echo base_url();?>timthumb043f.jpg?src=/assets/images/image_gallery/gallery_image_5beaaed4f1600_1542106836.jpg&amp;w=350&amp;h=250"
-                                    alt="TIL wins the Brand Leadership Award 2018" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5beaaed4f1600_1542106836.jpg"
+                                    alt="TIL wins the Brand Leadership Award 2018" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">TIL wins the Brand Leadership Award 2018</h4>
                             <div style="display: none">
@@ -224,8 +224,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bd2eab07d891_1540549296.jpg"
                                 data-gall="gall1_9" class="venobox" title="Puja Parikrama 2018"
                                 data-alt="Puja Parikrama 2018">
-                                <img src="<?php echo base_url();?>timthumb23f7.jpg?src=/assets/images/image_gallery/gallery_image_5bd2eab07d891_1540549296.jpg&amp;w=350&amp;h=250"
-                                    alt="Puja Parikrama 2018" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bd2eab07d891_1540549296.jpg"
+                                    alt="Puja Parikrama 2018" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">Puja Parikrama 2018</h4>
                             <div style="display: none">
@@ -279,8 +279,8 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bd2ecbab9c75_1540549818.jpg"
                                 data-gall="gall1_10" class="venobox" title="TILOTSAV 2018" data-alt="TILOTSAV 2018">
-                                <img src="<?php echo base_url();?>timthumb099e.jpg?src=/assets/images/image_gallery/gallery_image_5bd2ecbab9c75_1540549818.jpg&amp;w=350&amp;h=250"
-                                    alt="TILOTSAV 2018" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bd2ecbab9c75_1540549818.jpg"
+                                    alt="TILOTSAV 2018" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">TILOTSAV 2018</h4>
                             <div style="display: none">
@@ -363,8 +363,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bc45cc303042_1539595459.jpg"
                                 data-gall="gall1_11" class="venobox" title="Hyster-TIL Customer Meet 2018"
                                 data-alt="Hyster-TIL Customer Meet 2018">
-                                <img src="<?php echo base_url();?>timthumb4a67.jpg?src=/assets/images/image_gallery/gallery_image_5bc45cc303042_1539595459.jpg&amp;w=350&amp;h=250"
-                                    alt="Hyster-TIL Customer Meet 2018" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bc45cc303042_1539595459.jpg"
+                                    alt="Hyster-TIL Customer Meet 2018" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">Hyster-TIL Customer Meet 2018</h4>
                             <div style="display: none">
@@ -403,8 +403,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bc46c2b340ad_15395994034.jpg"
                                 data-gall="gall1_12" class="venobox" title="TIL Caring Day 2018"
                                 data-alt="TIL Caring Day 2018">
-                                <img src="<?php echo base_url();?>timthumbc7bf.jpg?src=/assets/images/image_gallery/gallery_image_5bc46c2b340ad_15395994034.jpg&amp;w=350&amp;h=250"
-                                    alt="TIL Caring Day 2018" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bc46c2b340ad_15395994034.jpg"
+                                    alt="TIL Caring Day 2018" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">TIL Caring Day 2018</h4>
                             <div style="display: none">
@@ -439,8 +439,8 @@
                             <a href="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bc46ea4e3012_1539600036.jpg"
                                 data-gall="gall1_13" class="venobox" title="TIL Foundation Day 2018"
                                 data-alt="TIL Foundation Day 2018">
-                                <img src="<?php echo base_url();?>timthumbe025.jpg?src=/assets/images/image_gallery/gallery_image_5bc46ea4e3012_1539600036.jpg&amp;w=350&amp;h=250"
-                                    alt="TIL Foundation Day 2018" />
+                                <img src="<?php echo base_url();?>assets/images/image_gallery/gallery_image_5bc46ea4e3012_1539600036.jpg"
+                                    alt="TIL Foundation Day 2018" width="350" height="250" />
                             </a>
                             <h4 style="font-weight:600">TIL Foundation Day 2018</h4>
                             <div style="display: none">

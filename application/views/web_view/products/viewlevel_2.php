@@ -1,5 +1,5 @@
 <section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/products.jpg)">
+    style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->banner_image; ?>">
     <div class="container">
         <h1 class="m-0">
         </h1>
@@ -13,10 +13,10 @@
             <div class="container">
                 <h3 class="m-0 fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h3>
 
-                <h5><?php echo $bodycontent["main-section"][0]->short_description; ?></h5>
+                <h5><?php echo $bodycontent["main-section"][0]->about; ?></h5>
                 <div class="icon-container">
                     <hr>
-                    <img src="tilindia/assets/images/<?php echo $bodycontent["main-section"][0]->banner_image; ?>" alt="rectangle" srcset="">
+                    <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="rectangle" />
                     <hr>
                 </div>
             </div>
@@ -35,7 +35,8 @@
                         <div class="row product-showcase pb-070">
                             <?php foreach ($bodycontent['products'] as $product): ?>
                                 <div class="col-lg-3 col-md-3 col-12">
-                                    <a href="<?php echo base_url() . "products/" . $product->slug; ?>">
+                                    <a
+                                        href="<?php echo base_url() . "products/" . $bodycontent['slug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $product->slug; ?>">
                                         <div class="product-item material-card">
                                             <img src="<?php echo base_url('assets/images/' . $product->catagory_image); ?>"
                                                 alt="<?php echo $product->banner_alt; ?>">

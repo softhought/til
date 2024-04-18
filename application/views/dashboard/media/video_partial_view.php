@@ -1,4 +1,4 @@
-<script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script>
+<!-- <script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script> -->
 <style>
    .select2-container--default .select2-selection--multiple .select2-selection__choice {
    background-color: #7a2386;
@@ -18,7 +18,7 @@
       <input type="hidden" name="videoId" id="videoId" value="<?php echo $videoId; ?>">
       <div class="row">
          <div class="col-md-3">
-            <label for="title">Video Title *</label>
+            <label for="title">Video Title <span style="color:red;font-size:15px;">*</span></label>
             <div class="form-group">
                <div class="input-group input-group-sm">
                   <input type="text" class="form-control forminputs typeahead" id="title" name="title"
@@ -29,11 +29,11 @@
             </div>
          </div>
          <div class="col-md-3">
-            <label for="link">Video Key *</label>
+            <label for="link">Video ID <span style="color:red;font-size:15px;">*</span></label>
             <div class="form-group">
                <div class="input-group input-group-sm">
                   <input type="text" class="form-control forminputs typeahead" id="link" name="link"
-                     placeholder="Enter Link" autocomplete="off"
+                     placeholder="Enter Id" autocomplete="off"
                      value="">
                </div>
                <p id="error_link" class="error-msg"></p>
@@ -56,10 +56,10 @@
          <tr>
             <th>Sl</th>
             <th style="width:150px;">Video Title</th>
-            <th>Video Key</th>
+            <th>Video ID</th>
             <th>Thumbnail Image</th>
             <th>Up/Down</th>
-            <th>Test</th>
+            <th>Set Precedence</th>
             <th>Status</th>
             <th>Action</th>
          </tr>
@@ -103,22 +103,21 @@
                      </div>
                   
                      <div class="col-md-4">
-                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" ></i>    </button>   
+                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
                      </div> 
                   </div>                  
 					</td>
                <td align="center"> <?php if($list->is_disabled == 0){ ?>
-                  <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/active-icon.png" alt="Active" title="Active" id="<?php echo($list->id); ?>"  class="status" data-setstatus="1"></a>
+                  <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/active-icon.png" alt="Active" title="Active" id="<?php echo($list->id); ?>"  class="status" data-setstatus=1></a>
                   <?php } else{ ?>
-                     <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/inactive2.png" alt="Inactive" title="Inactive" id="<?php echo($list->id); ?>" class="status" data-setstatus="0"/> </a>   
+                     <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/inactive2.png" alt="Inactive" title="Inactive" id="<?php echo($list->id); ?>" class="status" data-setstatus=0> </a>   
                <?php } ?>
                </td>
-               
                <td style="text-align:center;">
-                  <a href="javascript:void(0)" class="btn tbl-action-btn padbtn update_btn" 
-                  data-id=<?php echo $list->id;?>
-                  data-title=<?php echo $list->title;?>
-                  data-videoid=<?php echo $list->video_id;?>
+                  <a href="javascript:void(0);" class="btn tbl-action-btn padbtn update_btn" 
+                  data-id="<?php echo $list->id;?>"
+                  data-title="<?php echo $list->title;?>"
+                  data-videoid="<?php echo $list->video_id;?>"
                   >
                   <i class="fas fa-edit"></i>
                   </a>

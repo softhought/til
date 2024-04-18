@@ -68,7 +68,7 @@ class Commondatamodel extends CI_Model{
 
 			$this->db->update($table, $data,$where);
 
-			// echo $this->db->last_query();exit;
+			 //echo $this->db->last_query();
 
 			 $this->db->last_query(); 
 

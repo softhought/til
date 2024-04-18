@@ -26,7 +26,8 @@ class Investor extends CI_Controller {
 		{ 
             
             $orderby='relations_dtl_id';
-            $result['relationsDetailsList'] = $this->commondatamodel->getAllRecordWhereOrderBy('investor_relations_details',[],$orderby);   
+            $where = array("relations_master_id" =>1);
+            $result['relationsDetailsList'] = $this->commondatamodel->getAllRecordWhereOrderBy('investor_relations_details',$where,$orderby);   
           // pre($result['relationsDetailsList']);
             $page = "dashboard/investor_relations/corporate_governance_partial_view";
             $this->load->view($page,$result);
@@ -39,7 +40,10 @@ class Investor extends CI_Controller {
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $result = [];  
+           
+            $orderby='relations_dtl_id';
+            $where = array("relations_master_id" =>2);
+            $result['relationsDetailsList'] = $this->commondatamodel->getAllRecordWhereOrderBy('investor_relations_details',$where,$orderby);  
             $page = "dashboard/investor_relations/shareholders_information_partial_view";
             $this->load->view($page,$result);
         }else{
@@ -51,7 +55,9 @@ class Investor extends CI_Controller {
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $result = [];  
+            $orderby='relations_dtl_id';
+            $where = array("relations_master_id" =>3);
+            $result['relationsDetailsList'] = $this->commondatamodel->getAllRecordWhereOrderBy('investor_relations_details',$where,$orderby);  
             $page = "dashboard/investor_relations/financials_partial_view";
             $this->load->view($page,$result);
         }else{
@@ -59,12 +65,29 @@ class Investor extends CI_Controller {
 		}
     }
 
-    public function financials_partial_notice(){
+    public function notice_partial_view(){
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $result = [];  
-            $page = "dashboard/investor_relations/financials_partial_notice";
+            $orderby='relations_dtl_id';
+            $where = array("relations_master_id" =>4);
+            $result['relationsDetailsList'] = $this->commondatamodel->getAllRecordWhereOrderBy('investor_relations_details',$where,$orderby);  
+            $page = "dashboard/investor_relations/notice_partial_view";
+            $this->load->view($page,$result);
+        }else{
+			redirect('login','refresh');
+		}
+    }
+
+
+    public function add_edit_investor_relations_partial_view(){
+        $session = $this->session->userdata('user_detail');
+		if($this->session->userdata('user_detail'))
+		{ 
+            $orderby='relations_dtl_id';
+            $where = array("relations_master_id" =>4);
+            $result['relationsDetailsList'] = $this->commondatamodel->getAllRecordWhereOrderBy('investor_relations_details',$where,$orderby);  
+            $page = "dashboard/investor_relations/add_edit_investor_relations_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');

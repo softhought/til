@@ -1,4 +1,4 @@
-<section class="about_header about-banner-section" style="background-image:url(<?php echo base_url();?>assets/images/Mobiload.jpg)">
+<section class="about_header about-banner-section" style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->banner_image; ?>">
     <div class="container">
         <h1 class="m-0">
         </h1>
@@ -19,7 +19,7 @@
                     <div class="col-lg-8 col-12 p-responsive">
 
                         <div class="aboutText">
-                            <h1 class="fc-black">Pick n Carry Cranes</h1>
+                            <h1 class="fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h1>
                             <h2>Backed by a pan-India network of offices and over seven decades of domain expertise
                                 in material handling and port equipment solutions, TIL sets the standard in quality,
                                 performance, durability and value.</h2>

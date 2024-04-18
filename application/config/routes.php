@@ -1,6 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+defined('BASEPATH') or exit('No direct script access allowed');
+require_once APPPATH . 'helpers/route_helper.php';
+$menuUrls = getAllMenuUrl("fuel_catagory");
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -67,20 +68,37 @@ $route['about-us/facilities'] = "frontend/about/facilities";
 /* -------------- Products---------------------- */
 
 $route['products'] = "frontend/products";
-$route['products/material-handling-solutions'] = "frontend/products/material_handling_solutions";
+// $route['products/material-handling-solutions'] = "frontend/products/material_handling_solutions";
 
-$route['products/material-handling-solutions/til-range'] = "frontend/products/solutions_til_range";
-$route['products/material-handling-solutions/til-range/rough-terrain-cranes'] = "frontend/products/til_range_rough_terrain_ranes";
-$route['products/material-handling-solutions/til-range/truck-cranes'] = "frontend/products/til_range_truck_cranes";
-$route['products/material-handling-solutions/til-range/pick-n-carry-cranes'] = "frontend/products/til_range_pick_n_carry_cranes";
+// $route['products/material-handling-solutions/til-range'] = "frontend/products/solutions_til_range";
+// $route['products/material-handling-solutions/til-range/rough-terrain-cranes'] = "frontend/products/til_range_rough_terrain_ranes";
+// $route['products/material-handling-solutions/til-range/truck-cranes'] = "frontend/products/til_range_truck_cranes";
+// $route['products/material-handling-solutions/til-range/pick-n-carry-cranes'] = "frontend/products/til_range_pick_n_carry_cranes";
 
-$route['products/material-handling-solutions/manitowoc-range'] = "frontend/products/solutions_manitowoc_range";
-$route['products/material-handling-solutions/manitowoc-range/crawler-cranes'] = "frontend/products/manitowoc_range_crawler_cranes";
-$route['products/material-handling-solutions/manitowoc-range/grove-range'] = "frontend/products/manitowoc_range_grove_range";
+// $route['products/material-handling-solutions/manitowoc-range'] = "frontend/products/solutions_manitowoc_range";
+// $route['products/material-handling-solutions/manitowoc-range/crawler-cranes'] = "frontend/products/manitowoc_range_crawler_cranes";
+// $route['products/material-handling-solutions/manitowoc-range/grove-range'] = "frontend/products/manitowoc_range_grove_range";
 
-$route['products/material-handling-solutions/hyster-til-range'] = "frontend/products/solutions_hyster_til_range";
-$route['products/material-handling-solutions/hyster-til-range/reachstackers'] = "frontend/products/hyster_til_range_reachstackers";
-$route['products/material-handling-solutions/hyster-til-range/forklift-trucks'] = "frontend/products/hyster_til_range_forklift_trucks";
+// $route['products/material-handling-solutions/hyster-til-range'] = "frontend/products/solutions_hyster_til_range";
+// $route['products/material-handling-solutions/hyster-til-range/reachstackers'] = "frontend/products/hyster_til_range_reachstackers";
+// $route['products/material-handling-solutions/hyster-til-range/forklift-trucks'] = "frontend/products/hyster_til_range_forklift_trucks";
+foreach ($menuUrls as $url) {
+    $routeKey = $url['url'];
+    
+    switch ($url['level']) {
+        case 1:
+            $routeValue = 'frontend/products/viewLevel_1/' . explode("/",$routeKey)[1] . '/' . $url['id'];
+            break;
+        case 2:
+            $routeValue = 'frontend/products/viewLevel_2/' . explode("/",$routeKey)[1] . '/' . $url['id'];
+            break;
+        case 3:
+            $routeValue = 'frontend/products/viewLevel_3/' . explode("/",$routeKey)[1] . '/' . $url['id'];
+            break;
+    }
+
+    $route[$routeKey] = $routeValue;
+}
 
 
 /* -------------- Customer Support ---------------------- */
@@ -90,7 +108,7 @@ $route['customer-support/parts-warehouse'] = "frontend/customersupport/parts_war
 $route['customer-support/training'] = "frontend/customersupport/training";
 $route['contact-us/locations'] = "frontend/contactus/locations";
 
-/* -------------- Contact Us ---------------------- */
+/* -------------- Media ---------------------- */
 $route["media"] = "frontend/media";
 $route["media/videos"] = "frontend/media/videos";
 $route["media/news"] = "frontend/media/news";

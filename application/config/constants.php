@@ -245,6 +245,8 @@ define("UNIT", json_encode(array('BTLS')));
 
 defined('URLFOR') OR define('URLFOR', 'STAGING');
 
+define("FILE_UPLOAD_BASE_PATH", $_SERVER['DOCUMENT_ROOT']."/til");
+
 
 
 

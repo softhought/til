@@ -519,7 +519,7 @@ body {
     box-shadow: 0px 0px 0px 0px #b7b7b7;
 }
 .layout-box-content-format1 .table.customTbl .tbl-action-btn {
-    background: linear-gradient(90deg, #ffcd11 0%, #685e4c 100%);
+    background: linear-gradient(90deg, #282724 0%, #685e4c 100%);
 }
 .layout-box-content-format1 .pagination .page-link {
     background: linear-gradient(90deg, #fff 0%, #fff 100%);
@@ -599,7 +599,7 @@ body {
 }
 
 .layout-box-content-format1 form label {
-    color: #1c1d57 !important;
+    color: #0f0e0e !important;
     font-weight: 500 !important;
     letter-spacing: 0.4px;
 }

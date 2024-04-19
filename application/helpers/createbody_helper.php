@@ -25,9 +25,9 @@ if ( ! function_exists('createbody_method'))
 		"year_id"=>$year_id,
 	);
 
-	 $data['yearList'] = $CI->commondatamodel->getSingleRowByWhereCls('financialyear',$where_year);
+	// $data['yearList'] = $CI->commondatamodel->getSingleRowByWhereCls('financialyear',$where_year);
 
-	 $data['year'] =$data['yearList']->year;
+	 //$data['year'] =$data['yearList']->year;
 
 	
 

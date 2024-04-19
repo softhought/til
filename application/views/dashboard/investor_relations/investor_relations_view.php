@@ -26,7 +26,7 @@
    <div class="card-body">
    <a href="javascript:;" class="btn btn-warning btnpos showaddbtn" 
    data-toggle="modal" data-target="#investorRelationsDetails"
-   style="margin-right:10px;"><i class="fas fa-eye"></i> Add </a>
+   style="margin-right:10px;"><i class="fas fa-plus"></i> Add </a>
    <!-- <a href="javascript:;" class="btn btn-warning btnpos hideaddbtn" style="margin-right:10px;"><i class="fas fa-eye-slash"></i> Add </a> -->
       <div class="tab-content" id="custom-tabs-three-tabContent">
      
@@ -68,3 +68,23 @@
           </div>
       </div>
   </div>
+
+
+  <div id="investorRelationsDocs" class="modal fade customModal format1 right" data-keyboard="false"
+      data-backdrop="false">
+      <div class="modal-dialog modal-xl" >
+          <div class="modal-content">
+              <div class="modal-header" style="background:#323232;; color:#ffffff;padding: 5px;color: #fff;">
+                  <h4 class="frm_header"></h4>
+                  <button type="button" class="close" style="color: white; opacity: 1;"
+                      data-dismiss="modal">&times;<span class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body" style="min-height: 350px;height: 650px overflow-y: auto;">
+
+              <div id="document_view_data" style="display:none1;"></div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+

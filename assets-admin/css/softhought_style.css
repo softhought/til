@@ -667,8 +667,8 @@ border: 1px solid
 	font-weight: 700;
 
 	/* background: linear-gradient(90deg, #d21dc7 0%, #ea1515 100%); */
-	background: #2e3094;
-	color: #fff;
+	background: #ffcd11;
+    color: #000;
 
 	border: 0;
 }
@@ -677,7 +677,7 @@ border: 1px solid
 	font-size: 11px;
 
 	/* color: #561a4c !important; */
-	color: #2e3094 !important;
+	color: #0f0e0e !important; !important;
 
 	letter-spacing: 1px;
 

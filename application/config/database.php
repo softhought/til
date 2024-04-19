@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => '192.168.1.3',
+	'username' => 'suman',
+	'password' => 'suman',
 	//'database' => 'votepal',
 	'database' => 'til_india',
 	'dbdriver' => 'mysqli',

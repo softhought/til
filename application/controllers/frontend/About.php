@@ -7,6 +7,7 @@ class About extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->model('commondatamodel', 'commondatamodel', TRUE);
+        $this->load->model('ProductsMenu', 'productsmenu', TRUE);
 
     }
 
@@ -21,7 +22,7 @@ class About extends CI_Controller
     public function corporate_profile()
     {       
         $page="web_view/about/corporate_profile.php";
-        $result=[];
+        $result["product"] = $this->productsmenu->getNonParentRecords("product_master", "product_master_id", "ASC");
         webbody_helper($result, $page);
     }
 

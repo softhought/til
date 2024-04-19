@@ -1,4 +1,5 @@
-<section class="about-banner-section" style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/bod-banner.png)">
+<section class="about-banner-section"
+    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/bod-banner.png)">
     <div class="container">
         <h1 class="m-0">Board of <span> Directors</span></h1>
     </div>
@@ -24,7 +25,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/SarojPunhani.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/SarojPunhani.png"
                                                     alt="SarojPunhani" />
                                             </figure>
                                             <div class="text-content">
@@ -37,7 +38,8 @@
                                                     <span style="padding-left:8px; font-size:17px">Non-Executive
                                                         Independent Director</span>
                                                 </p>
-                                                <p id="elipse6" class="text-elipse" style="padding:12px 0">Saroj Punhani
+                                                <p id="elipse10" class="text-elipse" style="padding:12px 0">Saroj
+                                                    Punhani
                                                     is a distinguished member of the Indian Audit and Accounts Service
                                                     in the Provincial & Federal government. With an experience spanning
                                                     over almost four decade, she has successfully navigated complex
@@ -66,7 +68,7 @@
                                                     <b>DIN No:</b> &nbsp; 08922018
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn6"
-                                                        onclick="toggleReadMore('elipse6','readMoreBtn6')">Read
+                                                        data-target="elipse10">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -75,7 +77,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/GeneralSingh.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/GeneralSingh.png"
                                                     alt="GeneralSingh" />
                                             </figure>
                                             <div class="text-content">
@@ -88,7 +90,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Non Executive
                                                         Independent Director</span>
                                                 </p>
-                                                <p id="elipse5" class="text-elipse" style="padding:12px 0">
+                                                <p id="elipse11" class="text-elipse" style="padding:12px 0">
                                                     Lt Gen N B Singh, a distinguished veteran, served in the Indian Army
                                                     for 41 years, reaching the pinnacle as Director General, Electronics
                                                     and Mechanical Engineering (EME) Corps. He also led the Information
@@ -128,7 +130,7 @@
 
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn5"
-                                                        onclick="toggleReadMore('elipse5','readMoreBtn5')">Read
+                                                        data-target="elipse11">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -137,7 +139,8 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/AmitMukherjee.jpg" alt="director" />
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/AmitMukherjee.jpg"
+                                                    alt="director" />
                                             </figure>
                                             <div class="text-content">
                                                 <h3>Amit Mukherjee</h3>
@@ -149,7 +152,7 @@
                                                     <span style="padding-left:8px; font-size:17px"> Non-Executive
                                                         Independent Director </span>
                                                 </p>
-                                                <p id="elipse4" class="text-elipse" style="padding:12px 0">Amit is one
+                                                <p id="elipse12" class="text-elipse" style="padding:12px 0">Amit is one
                                                     of the co-founders of Unigrow Solutions, a business consulting firm.
                                                     He brings in a rich and varied corporate experience as a business
                                                     and functional leader in the field of technology and supply chain.
@@ -177,7 +180,7 @@
 
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read " id="readMoreBtn4"
-                                                        onclick="toggleReadMore('elipse4','readMoreBtn4')">Read
+                                                        data-target="elipse12">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -186,7 +189,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/AlokTripathi.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/AlokTripathi.png"
                                                     alt="AlokTripathi" />
                                             </figure>
                                             <div class="text-content">
@@ -199,7 +202,7 @@
                                                     <span style="padding-left:8px; font-size:17px"> Whole Time Director
                                                         & President </span>
                                                 </p>
-                                                <p id="elipse3" class="text-elipse" style="padding:12px 0">Alok is an
+                                                <p id="elipse13" class="text-elipse" style="padding:12px 0">Alok is an
                                                     engineering graduate from BMS College of Engineering, Bengaluru, and
                                                     completed his PGDBM from IMT, Ghaziabad. With over three decades of
                                                     extensive industry experience, Alok embarked on his professional
@@ -226,7 +229,7 @@
 
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read " id="readMoreBtn3"
-                                                        onclick="toggleReadMore('elipse3','readMoreBtn3')">Read
+                                                        data-target="elipse13">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -235,7 +238,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/AyanBanerjee.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/AyanBanerjee.png"
                                                     alt="AyanBanerjee" />
                                             </figure>
                                             <div class="text-content">
@@ -248,7 +251,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Whole Time
                                                         Director</span>
                                                 </p>
-                                                <p id="elipse2" class="text-elipse" style="padding:12px 0">
+                                                <p id="elipse14" class="text-elipse" style="padding:12px 0">
                                                     Ayan Banerjee boasts an illustrious career spanning nearly three
                                                     decades, showcasing extensive expertise in heavy engineering,
                                                     refractory, electronics, and media across global business
@@ -273,7 +276,7 @@
                                                     <b>DIN No:</b> &nbsp; 07563764
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read " id="readMoreBtn2"
-                                                        onclick="toggleReadMore('elipse2','readMoreBtn2')">Read
+                                                        data-target="elipse14">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -282,7 +285,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/SunilChaturvedi.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/SunilChaturvedi.png"
                                                     alt="SunilChaturvedi" />
                                             </figure>
                                             <div class="text-content">
@@ -295,7 +298,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Chairman and Managing
                                                         Director</span>
                                                 </p>
-                                                <p id="elipse1" class="text-elipse" style="padding:12px 0">Sunil
+                                                <p id="elipse15" class="text-elipse" style="padding:12px 0">Sunil
                                                     Chaturvedi, a Fellow Chartered Accountant by training has worked for
                                                     two decades as a member of the Civil Services in Indian
                                                     Administrative Service (IAS). During these years, he has held
@@ -329,7 +332,7 @@
                                                     <b>DIN No:</b> &nbsp; 02183147
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn1"
-                                                        onclick="toggleReadMore('elipse1','readMoreBtn1')">Read
+                                                        data-target="elipse15">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -342,7 +345,8 @@
                                     <h3 class="m-0">Management<span> Team</span></h3>
                                     <div class="icon-container">
                                         <hr />
-                                        <img src="<?php echo base_url();?>tilindia/assets/images/Rectangle.png" alt="rectangle" />
+                                        <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png"
+                                            alt="rectangle" />
                                         <hr />
                                     </div>
                                 </div>
@@ -350,7 +354,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/pinaki_niyogy.jpg"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/pinaki_niyogy.jpg"
                                                     alt="pinaki_niyogy" />
                                             </figure>
                                             <div class="text-content">
@@ -363,7 +367,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Chief Operating
                                                         Officer & Chief Technology Officer</span>
                                                 </p>
-                                                <p id="elipse7" class="text-elipse" style="padding:12px 0">Pinaki
+                                                <p id="elipse16" class="text-elipse" style="padding:12px 0">Pinaki
                                                     Niyogy, has been a senior executive in the manufacturing industry
                                                     with over 31 years of dedicated service at TIL Limited, where he
                                                     began as a Management Trainee in 1992. With a profound journey
@@ -389,7 +393,7 @@
                                                     from IIM Kolkata and IIM Bangalore.
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn7"
-                                                        onclick="toggleReadMore('elipse7','readMoreBtn7')">Read
+                                                        data-target="elipse16">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -398,7 +402,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/KanhaiyaGupta.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/KanhaiyaGupta.png"
                                                     alt="KanhaiyaGupta" />
                                             </figure>
                                             <div class="text-content">
@@ -411,7 +415,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Chief Financial
                                                         Officer </span>
                                                 </p>
-                                                <p id="elipse10" class="text-elipse" style="padding:12px 0">
+                                                <p id="elipse17" class="text-elipse" style="padding:12px 0">
                                                     Kanhaiya Gupta is a seasoned CFO with a diverse skill set, extensive
                                                     experience in blue-chip companies, and a history of driving
                                                     financial excellence, business growth, and operational efficiency
@@ -443,7 +447,7 @@
                                                     ability to identify potential risks and develop mitigation plans.
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn10"
-                                                        onclick="toggleReadMore('elipse10','readMoreBtn10')">Read
+                                                        data-target="elipse17">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -452,7 +456,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/SumitBiswas.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/SumitBiswas.png"
                                                     alt="SumitBiswas" />
                                             </figure>
                                             <div class="text-content">
@@ -465,7 +469,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Associate Vice
                                                         President - Sales</span>
                                                 </p>
-                                                <p id="elipse9" class="text-elipse" style="padding:12px 0">
+                                                <p id="elipse18" class="text-elipse" style="padding:12px 0">
                                                     Sumit Biswas, currently the Associate Vice President – Sales at TIL
                                                     Limited, brings decades of expertise to the forefront of the
                                                     organization. In his dynamic role, Sumit has spearheaded strategic
@@ -492,7 +496,7 @@
                                                     Limited.
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn9"
-                                                        onclick="toggleReadMore('elipse9','readMoreBtn9')">Read
+                                                        data-target="elipse18">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -501,7 +505,7 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/ShamitaNandi.png"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/ShamitaNandi.png"
                                                     alt="ShamitaNandi" />
                                             </figure>
                                             <div class="text-content">
@@ -514,7 +518,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Chief Human Resource
                                                         Officer</span>
                                                 </p>
-                                                <p id="elipse11" class="text-elipse" style="padding:12px 0">
+                                                <p id="elipse19" class="text-elipse" style="padding:12px 0">
                                                     Shamita Nandi is a seasoned Chief HR Officer known for translating
                                                     business visions into strategic HR initiatives. Shamita comes with
                                                     more than two decades of experience in building and translating the
@@ -549,7 +553,7 @@
                                                     innovative HR strategies and transformative leadership.
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn11"
-                                                        onclick="toggleReadMore('elipse11','readMoreBtn11')">Read
+                                                        data-target="elipse19">Read
                                                         more</a></span>
                                             </div>
                                         </div>
@@ -558,7 +562,8 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="product-item board-showcase">
                                             <figure>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/RisabhNair.png" alt="RisabhNair" />
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/RisabhNair.png"
+                                                    alt="RisabhNair" />
                                             </figure>
                                             <div class="text-content">
                                                 <h3>Rishabh P Nair</h3>
@@ -570,7 +575,7 @@
                                                     <span style="padding-left:8px; font-size:17px">Head Of Brand,
                                                         Content & PR </span>
                                                 </p>
-                                                <p id="elipse8" class="text-elipse" style="padding:12px 0">
+                                                <p id="elipse20" class="text-elipse" style="padding:12px 0">
                                                     Rishabh P Nair, is a seasoned brand and marketing professional, with
                                                     a diverse career spanning creative roles across marketing, branding,
                                                     and content management functions for brands like Citrus Pay (Now
@@ -597,26 +602,17 @@
                                                     terms of branding and marketing strategies.
                                                 </p>
                                                 <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn8"
-                                                        onclick="toggleReadMore('elipse8','readMoreBtn8')">Read
+                                                        data-target="elipse20">Read
                                                         more</a></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </section>
                     </div>
+                </article>
             </div>
-</section>
-
-
-
-
-</div>
-</article>
-</div>
-
-
-</div>
-</div>
-</div>
+        </div>
+    </div>
 </section>

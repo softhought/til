@@ -761,6 +761,44 @@
                   }
                 });
               });
+
+              $("#contact_us_form").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/submitcontactform`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}thank-you`);
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+            });
+          </script>
+          <script>
+            $(document).ready(function () {
+              $(".more-read").click(function () {
+                var elipseId = $(this).attr("data-target");
+                var buttonText = $(this).text();
+
+                if (buttonText === "Read more") {
+                  $("#" + elipseId).addClass("expands");
+                  $(this).text("Read less");
+                } else {
+                  $(this).text("Read more");
+                  $("#" + elipseId).removeClass("expands");
+                }
+              });
             });
           </script>
 

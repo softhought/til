@@ -73,17 +73,6 @@
 </head>
 
 <body>
-
-
-
-  <!--<div class="page">
-    <div class="wrapper">
-      <header class="page_header">
-        <div class="logo">
-          <svg width="160px" height="145px" viewBox="0 0 126.962 115.395" preserveAspectRatio="xMidYMid"><use xlink:href="#fuel"></use></svg>
-        </div>
-        <h1></h1>
-      </header>-->
   <link href="<?php echo base_url(); ?>/assets/css/ticker5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>/assets/css/slick5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>/assets/css/slick-theme5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
@@ -366,8 +355,7 @@
     <script src='../www.google.com/recaptcha/api.js'></script>
     <div class="enquiry-form-overflow">
 
-      <form action="https://tilindia.in/" enctype="multipart/form-data" class="contact_form" id="contact_from"
-        method="POST" onsubmit="return contact_us(this);" accept-charset="utf-8">
+      <form enctype="multipart/form-data" class="contact_form" id="contact_form" method="POST" accept-charset="utf-8">
         <div class="form-group">
           <label for="organization">Organization<span>*</span></label>
           <div class="input-container">
@@ -427,252 +415,9 @@
                 </svg>
                 <select name="country_id" id="country_id" required="required" class="form-control">
                   <option value="">Select Country</option>
-                  <option value="1">Afghanistan</option>
-                  <option value="2">Albania</option>
-                  <option value="3">Algeria</option>
-                  <option value="4">American Samoa</option>
-                  <option value="5">Andorra</option>
-                  <option value="6">Angola</option>
-                  <option value="7">Anguilla</option>
-                  <option value="8">Antarctica</option>
-                  <option value="9">Antigua And Barbuda</option>
-                  <option value="10">Argentina</option>
-                  <option value="11">Armenia</option>
-                  <option value="12">Aruba</option>
-                  <option value="13">Australia</option>
-                  <option value="14">Austria</option>
-                  <option value="15">Azerbaijan</option>
-                  <option value="16">Bahamas The</option>
-                  <option value="17">Bahrain</option>
-                  <option value="18">Bangladesh</option>
-                  <option value="19">Barbados</option>
-                  <option value="20">Belarus</option>
-                  <option value="21">Belgium</option>
-                  <option value="22">Belize</option>
-                  <option value="23">Benin</option>
-                  <option value="24">Bermuda</option>
-                  <option value="25">Bhutan</option>
-                  <option value="26">Bolivia</option>
-                  <option value="27">Bosnia And Herzegovina</option>
-                  <option value="28">Botswana</option>
-                  <option value="29">Bouvet Island</option>
-                  <option value="30">Brazil</option>
-                  <option value="31">British Indian Ocean Territory</option>
-                  <option value="32">Brunei</option>
-                  <option value="33">Bulgaria</option>
-                  <option value="34">Burkina Faso</option>
-                  <option value="35">Burundi</option>
-                  <option value="36">Cambodia</option>
-                  <option value="37">Cameroon</option>
-                  <option value="38">Canada</option>
-                  <option value="39">Cape Verde</option>
-                  <option value="40">Cayman Islands</option>
-                  <option value="41">Central African Republic</option>
-                  <option value="42">Chad</option>
-                  <option value="43">Chile</option>
-                  <option value="44">China</option>
-                  <option value="45">Christmas Island</option>
-                  <option value="46">Cocos (Keeling) Islands</option>
-                  <option value="47">Colombia</option>
-                  <option value="48">Comoros</option>
-                  <option value="49">Republic Of The Congo</option>
-                  <option value="50">Democratic Republic Of The Congo</option>
-                  <option value="51">Cook Islands</option>
-                  <option value="52">Costa Rica</option>
-                  <option value="53">Cote D'Ivoire (Ivory Coast)</option>
-                  <option value="54">Croatia (Hrvatska)</option>
-                  <option value="55">Cuba</option>
-                  <option value="56">Cyprus</option>
-                  <option value="57">Czech Republic</option>
-                  <option value="58">Denmark</option>
-                  <option value="59">Djibouti</option>
-                  <option value="60">Dominica</option>
-                  <option value="61">Dominican Republic</option>
-                  <option value="62">East Timor</option>
-                  <option value="63">Ecuador</option>
-                  <option value="64">Egypt</option>
-                  <option value="65">El Salvador</option>
-                  <option value="66">Equatorial Guinea</option>
-                  <option value="67">Eritrea</option>
-                  <option value="68">Estonia</option>
-                  <option value="69">Ethiopia</option>
-                  <option value="70">External Territories Of Australia</option>
-                  <option value="71">Falkland Islands</option>
-                  <option value="72">Faroe Islands</option>
-                  <option value="73">Fiji Islands</option>
-                  <option value="74">Finland</option>
-                  <option value="75">France</option>
-                  <option value="76">French Guiana</option>
-                  <option value="77">French Polynesia</option>
-                  <option value="78">French Southern Territories</option>
-                  <option value="79">Gabon</option>
-                  <option value="80">Gambia The</option>
-                  <option value="81">Georgia</option>
-                  <option value="82">Germany</option>
-                  <option value="83">Ghana</option>
-                  <option value="84">Gibraltar</option>
-                  <option value="85">Greece</option>
-                  <option value="86">Greenland</option>
-                  <option value="87">Grenada</option>
-                  <option value="88">Guadeloupe</option>
-                  <option value="89">Guam</option>
-                  <option value="90">Guatemala</option>
-                  <option value="91">Guernsey And Alderney</option>
-                  <option value="92">Guinea</option>
-                  <option value="93">Guinea-Bissau</option>
-                  <option value="94">Guyana</option>
-                  <option value="95">Haiti</option>
-                  <option value="96">Heard And McDonald Islands</option>
-                  <option value="97">Honduras</option>
-                  <option value="98">Hong Kong S.A.R.</option>
-                  <option value="99">Hungary</option>
-                  <option value="100">Iceland</option>
-                  <option value="101">India</option>
-                  <option value="102">Indonesia</option>
-                  <option value="103">Iran</option>
-                  <option value="104">Iraq</option>
-                  <option value="105">Ireland</option>
-                  <option value="106">Israel</option>
-                  <option value="107">Italy</option>
-                  <option value="108">Jamaica</option>
-                  <option value="109">Japan</option>
-                  <option value="110">Jersey</option>
-                  <option value="111">Jordan</option>
-                  <option value="112">Kazakhstan</option>
-                  <option value="113">Kenya</option>
-                  <option value="114">Kiribati</option>
-                  <option value="115">Korea North</option>
-                  <option value="116">Korea South</option>
-                  <option value="117">Kuwait</option>
-                  <option value="118">Kyrgyzstan</option>
-                  <option value="119">Laos</option>
-                  <option value="120">Latvia</option>
-                  <option value="121">Lebanon</option>
-                  <option value="122">Lesotho</option>
-                  <option value="123">Liberia</option>
-                  <option value="124">Libya</option>
-                  <option value="125">Liechtenstein</option>
-                  <option value="126">Lithuania</option>
-                  <option value="127">Luxembourg</option>
-                  <option value="128">Macau S.A.R.</option>
-                  <option value="129">Macedonia</option>
-                  <option value="130">Madagascar</option>
-                  <option value="131">Malawi</option>
-                  <option value="132">Malaysia</option>
-                  <option value="133">Maldives</option>
-                  <option value="134">Mali</option>
-                  <option value="135">Malta</option>
-                  <option value="136">Man (Isle Of)</option>
-                  <option value="137">Marshall Islands</option>
-                  <option value="138">Martinique</option>
-                  <option value="139">Mauritania</option>
-                  <option value="140">Mauritius</option>
-                  <option value="141">Mayotte</option>
-                  <option value="142">Mexico</option>
-                  <option value="143">Micronesia</option>
-                  <option value="144">Moldova</option>
-                  <option value="145">Monaco</option>
-                  <option value="146">Mongolia</option>
-                  <option value="147">Montserrat</option>
-                  <option value="148">Morocco</option>
-                  <option value="149">Mozambique</option>
-                  <option value="150">Myanmar</option>
-                  <option value="151">Namibia</option>
-                  <option value="152">Nauru</option>
-                  <option value="153">Nepal</option>
-                  <option value="154">Netherlands Antilles</option>
-                  <option value="155">Netherlands The</option>
-                  <option value="156">New Caledonia</option>
-                  <option value="157">New Zealand</option>
-                  <option value="158">Nicaragua</option>
-                  <option value="159">Niger</option>
-                  <option value="160">Nigeria</option>
-                  <option value="161">Niue</option>
-                  <option value="162">Norfolk Island</option>
-                  <option value="163">Northern Mariana Islands</option>
-                  <option value="164">Norway</option>
-                  <option value="165">Oman</option>
-                  <option value="166">Pakistan</option>
-                  <option value="167">Palau</option>
-                  <option value="168">Palestinian Territory Occupied</option>
-                  <option value="169">Panama</option>
-                  <option value="170">Papua New Guinea</option>
-                  <option value="171">Paraguay</option>
-                  <option value="172">Peru</option>
-                  <option value="173">Philippines</option>
-                  <option value="174">Pitcairn Island</option>
-                  <option value="175">Poland</option>
-                  <option value="176">Portugal</option>
-                  <option value="177">Puerto Rico</option>
-                  <option value="178">Qatar</option>
-                  <option value="179">Reunion</option>
-                  <option value="180">Romania</option>
-                  <option value="181">Russia</option>
-                  <option value="182">Rwanda</option>
-                  <option value="183">Saint Helena</option>
-                  <option value="184">Saint Kitts And Nevis</option>
-                  <option value="185">Saint Lucia</option>
-                  <option value="186">Saint Pierre And Miquelon</option>
-                  <option value="187">Saint Vincent And The Grenadines</option>
-                  <option value="188">Samoa</option>
-                  <option value="189">San Marino</option>
-                  <option value="190">Sao Tome And Principe</option>
-                  <option value="191">Saudi Arabia</option>
-                  <option value="192">Senegal</option>
-                  <option value="193">Serbia</option>
-                  <option value="194">Seychelles</option>
-                  <option value="195">Sierra Leone</option>
-                  <option value="196">Singapore</option>
-                  <option value="197">Slovakia</option>
-                  <option value="198">Slovenia</option>
-                  <option value="199">Smaller Territories Of The UK</option>
-                  <option value="200">Solomon Islands</option>
-                  <option value="201">Somalia</option>
-                  <option value="202">South Africa</option>
-                  <option value="203">South Georgia</option>
-                  <option value="204">South Sudan</option>
-                  <option value="205">Spain</option>
-                  <option value="206">Sri Lanka</option>
-                  <option value="207">Sudan</option>
-                  <option value="208">Suriname</option>
-                  <option value="209">Svalbard And Jan Mayen Islands</option>
-                  <option value="210">Swaziland</option>
-                  <option value="211">Sweden</option>
-                  <option value="212">Switzerland</option>
-                  <option value="213">Syria</option>
-                  <option value="214">Taiwan</option>
-                  <option value="215">Tajikistan</option>
-                  <option value="216">Tanzania</option>
-                  <option value="217">Thailand</option>
-                  <option value="218">Togo</option>
-                  <option value="219">Tokelau</option>
-                  <option value="220">Tonga</option>
-                  <option value="221">Trinidad And Tobago</option>
-                  <option value="222">Tunisia</option>
-                  <option value="223">Turkey</option>
-                  <option value="224">Turkmenistan</option>
-                  <option value="225">Turks And Caicos Islands</option>
-                  <option value="226">Tuvalu</option>
-                  <option value="227">Uganda</option>
-                  <option value="228">Ukraine</option>
-                  <option value="229">United Arab Emirates</option>
-                  <option value="230">United Kingdom</option>
-                  <option value="231">United States</option>
-                  <option value="232">United States Minor Outlying Islands</option>
-                  <option value="233">Uruguay</option>
-                  <option value="234">Uzbekistan</option>
-                  <option value="235">Vanuatu</option>
-                  <option value="236">Vatican City State (Holy See)</option>
-                  <option value="237">Venezuela</option>
-                  <option value="238">Vietnam</option>
-                  <option value="239">Virgin Islands (British)</option>
-                  <option value="240">Virgin Islands (US)</option>
-                  <option value="241">Wallis And Futuna Islands</option>
-                  <option value="242">Western Sahara</option>
-                  <option value="243">Yemen</option>
-                  <option value="244">Yugoslavia</option>
-                  <option value="245">Zambia</option>
-                  <option value="246">Zimbabwe</option>
+                  <?php foreach ($menu["country"] as $key => $value) {
+                    echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
+                  } ?>
                 </select>
               </div>
             </div>
@@ -706,16 +451,9 @@
             <select name="nature_of_query_id" autocomplete="off" id="nature_of_query_id" required="required"
               class="form-control">
               <option value="" selected="selected">Please Select</option>
-              <option value="1">Get a Quote</option>
-              <option value="2">Sales Inquiry</option>
-              <option value="3">Looking for Parts</option>
-              <option value="4">Product Support</option>
-              <option value="5">General Inquiry</option>
-              <option value="6">Investor Relations</option>
-              <option value="7">Human Resources</option>
-              <option value="8">Financial Inquiry</option>
-              <option value="9">Customer Feedback</option>
-              <option value="10">Training Request / Nomination Received</option>
+              <?php foreach ($menu["nature_of_query"] as $key => $value) {
+                echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
+              } ?>
             </select>
           </div>
         </div>
@@ -736,461 +474,689 @@
     <!-- end contact box -->
   </div>
 
-  <div class="scroll-top-wrapper "><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span>
-  </div>
+  <div class="bodycont" id="mainCol">
+    <h1 class="m-0">
+      <!-- <a class="btn btn-primary btnblack pull-right" data-toggle="modal" data-target="#myModal">REQUEST FOR A QUOTE</a> -->
+    </h1>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      style="display: none; z-index:10000">
+      <div class="modal-dialog quotation-form-content">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close closebtn" data-dismiss="modal" aria-hidden="true">
+              <!-- <i class="fa fa-times-circle" aria-hidden="true"></i> -->
+              <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+              </svg>
+            </a>
+            <!-- <h4 class="modal-title" id="myModalLabel">Quotation Forms</h4> -->
+            <div class="aboutText" style="padding:0">
+              <h1 class="fc-black">Quotation Form</h1>
+            </div>
 
-  <script src="<?php echo base_url(); ?>/assets/js/jquery.min5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/jquery-ui.min5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/bootstrap-dropdownhover5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/jquery.mCustomScrollbar.concat.min5d4f.js?c=-62170003270"
-    type="text/javascript" charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/til_class5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/notify.min5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/jquery.fancybox.pack5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script>
-    $(document).ready(function () {
-      $("ul#menu-top-menu > li").addClass("dropdown");
-      $("ul#menu-top-menu > li > li").addClass("dropdown");
-      $("ul#menu-top-menu > ul").addClass("dropdown-menu dropdownhover-bottom");
-      $("ul#menu-top-menu > ul").attr("role", "menu");
-      $("ul#menu-top-menu > ul").find("ul").addClass("dropdown-menu ddropdownhover-right");
-      $("ul#menu-top-menu > ul").find("ul").attr("role", "menu");
-      $(".fancybox-effects-d").fancybox({
-        helpers: {
-          overlay: {
-            speedOut: 0
-          }
-        }
-      });
-      //   tilindia.config=__FUEL_INIT_PARAMS__;
-      tilindia.base_url = "index.html";
-    });
-  </script>
-  <script src="<?php echo base_url(); ?>/assets/js/html55d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="<?php echo base_url(); ?>/assets/js/common5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script type="text/javascript">
-    function findAncestor_with_name(el, nam) {
-      this.for_check_str += el.tagName + "->";
-      // console.log(this);
-      if (el.parentElement.name.toLowerCase() == 'html'.toLowerCase()) {
-        return el.parentElement;
-      }
-      if (el.parentElement.name.toLowerCase() == nam.toLowerCase()) {
-        return el.parentElement;
-      }
+          </div>
+          <div class="modal-body">
+            <div>
+              <form action="" enctype="multipart/form-data" class="quotation_form" id="quotation_form" method="POST"
+                accept-charset="utf-8">
+                <div class="form-group">
+                  <label for="organization">Organization <span style="color:#f00">*</span> </label>
+                  <div class="input-container">
+                    <img src="../../../tilindia/assets/images/organization-icon.png" alt="organization" srcset="">
+                    <input type="text" name="organization" value="" placeholder="Organization" autocomplete="off"
+                      id="organization" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name">Full Name <span style="color:#f00">*</span></label>
+                  <div class="input-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                      <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                    </svg>
+                    <input type="text" name="name" value="" placeholder="Name" autocomplete="off" id="name"
+                      required="required" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <label for="phone">Phone Number <span style="color:#f00">*</span></label>
+                      <div class="input-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                          <path
+                            d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                        </svg>
+                        <input type="tel" name="phone" value="" placeholder="Phone no." autocomplete="off" id="phone"
+                          required="required" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="email">Email Address <span style="color:#f00">*</span></label>
+                      <div class="input-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                          <path
+                            d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                        </svg>
+                        <input type="email" name="email" value="" placeholder="E-mail" autocomplete="off" id="email"
+                          required="required" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <label for="phone">Country <span>*</span></label>
+                      <div class="input-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" style="top: 16px;"
+                          viewBox="0 0 576 512">
+                          <path
+                            d="M384 476.1L192 421.2V35.9L384 90.8V476.1zm32-1.2V88.4L543.1 37.5c15.8-6.3 32.9 5.3 32.9 22.3V394.6c0 9.8-6 18.6-15.1 22.3L416 474.8zM15.1 95.1L160 37.2V423.6L32.9 474.5C17.1 480.8 0 469.2 0 452.2V117.4c0-9.8 6-18.6 15.1-22.3z" />
+                        </svg>
+                      </div>
+                      <select name="c_id" id="c_id" required="required" class="form-control">
+                        <option value="">Select Country</option>
+                        <?php foreach ($menu["country"] as $key => $value) {
+                          echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
+                        } ?>
+                      </select>
+                    </div>
+                    <div class="col-sm-6" id="s_div">
+                      <label for="email">State <span>*</span></label>
+                      <div class="input-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
+                          <path
+                            d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                        </svg>
+                        <select name="s_id" id="s_id" required="required" class="form-control">
+                          <option value="">Select State</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Contact Address <span style="color:#f00">*</span></label>
+                  <textarea name="address" cols="40" rows="2" type="textarea" placeholder="Contact Address"
+                    autocomplete="off" id="address" required="required" value=""
+                    class="form-control markitup"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="product_id">Select product <span style="color:#f00">*</span></label>
+                  <div class="input-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512">
+                      <path
+                        d="M384 476.1L192 421.2V35.9L384 90.8V476.1zm32-1.2V88.4L543.1 37.5c15.8-6.3 32.9 5.3 32.9 22.3V394.6c0 9.8-6 18.6-15.1 22.3L416 474.8zM15.1 95.1L160 37.2V423.6L32.9 474.5C17.1 480.8 0 469.2 0 452.2V117.4c0-9.8 6-18.6 15.1-22.3z" />
+                    </svg>
+                    <select type="select" name="product_id" autocomplete="off" id="product_id" required="required"
+                      first_option="" class="form-control">
+                      <option value="">Select one...</option>
+                      <?php if ($bodycontent["sheet_model"]) {
+                        foreach ($bodycontent["sheet_model"] as $key => $value) {
+                          echo "<option value='" . $value->spec_sheet_dt_id . "'>" . $value->model . "</option>";
+                        }
+                      } ?>
+                    </select>
+                  </div>
+                </div>
 
-      return findAncestor_with_name(el.parentElement, nam);
-    }
-    function contact_us(from_c) {
-      $("span").remove(".error");
-      //  $( from_c).children( ".error" ).remove();
-      var msg = {};
-      $.ajax({
-        url: "https://tilindia.in/products/contact_us",
-        type: 'POST',
-        async: false,
-        dataType: "json",
-        data: $(from_c).serialize(),
-        success: function (response) {
-          console.log(response);
-          if (typeof response.success != "undefined") {
-            msg = document.createElement('h1');
-            msg.setAttribute('class', 'success');
-            msg.innerHTML = response.success;
-            window.location.replace("thank-you.html");
-            // from_c.innerHTML="<div class='thanks_msg'><strong>Thank You Contacting Us</strong>We will get back to you shortly</div>";
-            // from_c.appendChild(msg);      
-          } else if (typeof response.error != "undefined") {
-            msg = document.createElement('h1');
-            msg.setAttribute('class', 'error');
-            msg.innerHTML = response.error;
-            window.location.replace("error_occurred.html");
-            //from_c.innerHTML="";
-            //from_c.appendChild(msg);  
-          } else {
-            $.each(response, function (key, value) {
-              console.log(key);
-              var elem = from_c.querySelectorAll('#' + key)[0];
-              var container = elem.parentNode;
-              msg = document.createElement('span');
-              msg.setAttribute('class', 'error');
-              if ("g-recaptcha-response" == key) {
-                container = tilindia.trav.findAncestor_with_cls(container, 'form-group');
+                <div class="form-group">
+                  <label for="query">Enter Your Query<span style="color:#f00">*</span></label>
+                  <textarea name="query" cols="40" rows="2" type="textarea" placeholder="Your Query" autocomplete="off"
+                    id="query" required="required" value="" class="form-control markitup"></textarea>
+                </div>
+                <div class="form-group">
+                  <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                <div class="scroll-top-wrapper "><span class="scroll-top-inner"><i
+                      class="fa fa-2x fa-arrow-circle-up"></i></span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <script src="<?php echo base_url(); ?>/assets/js/jquery.min5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/jquery-ui.min5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/bootstrap-dropdownhover5d4f.js?c=-62170003270"
+            type="text/javascript" charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/jquery.mCustomScrollbar.concat.min5d4f.js?c=-62170003270"
+            type="text/javascript" charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/til_class5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/notify.min5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/jquery.fancybox.pack5d4f.js?c=-62170003270"
+            type="text/javascript" charset="utf-8"></script>
+          <script>
+            $(document).ready(function () {
+              $("ul#menu-top-menu > li").addClass("dropdown");
+              $("ul#menu-top-menu > li > li").addClass("dropdown");
+              $("ul#menu-top-menu > ul").addClass("dropdown-menu dropdownhover-bottom");
+              $("ul#menu-top-menu > ul").attr("role", "menu");
+              $("ul#menu-top-menu > ul").find("ul").addClass("dropdown-menu ddropdownhover-right");
+              $("ul#menu-top-menu > ul").find("ul").attr("role", "menu");
+              $(".fancybox-effects-d").fancybox({
+                helpers: {
+                  overlay: {
+                    speedOut: 0
+                  }
+                }
+              });
+              //   tilindia.config=__FUEL_INIT_PARAMS__;
+              tilindia.base_url = "index.html";
+            });
+          </script>
+
+          <script>
+            $(document).ready(function () {
+              $("#c_id").change(function (event) {
+                var c_id = $("#c_id").val();
+                var base_url = $("#basepath").val();
+                $.ajax({
+                  url: `${base_url}dashboard/fetchstatesnncountrie`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: { c_id: c_id },
+                  success: function (response) {
+                    if (response.status) {
+                      $("#s_id").empty();
+                      $("#s_id").append('<option value="">Select one...</option>');
+                      $.each(response.data, function (index, state) {
+                        $("#s_id").append('<option value="' + state.id + '">' + state.name + '</option>');
+                      });
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+            });
+          </script>
+
+          <script>
+            $(document).ready(function () {
+              $("#country_id").change(function (event) {
+                var c_id = $("#country_id").val();
+                var base_url = $("#basepath").val();
+                $.ajax({
+                  url: `${base_url}dashboard/fetchstatesnncountrie`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: { c_id: c_id },
+                  success: function (response) {
+                    if (response.status) {
+                      $("#state_id").empty();
+                      $("#state_id").append('<option value="">Select one...</option>');
+                      $.each(response.data, function (index, state) {
+                        $("#state_id").append('<option value="' + state.id + '">' + state.name + '</option>');
+                      });
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+            });
+          </script>
+
+          <script>
+            $(document).ready(function () {
+              var base_url = $("#basepath").val();
+              $("#quotation_form").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/submitquotation`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}thank-you`);
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+            });
+          </script>
+
+          <script>
+            $(document).ready(function () {
+              var base_url = $("#basepath").val();
+              $("#contact_form").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/submitcontactform`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}thank-you`);
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+            });
+          </script>
+
+          <script src="<?php echo base_url(); ?>/assets/js/html55d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/common5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script type="text/javascript">
+            function findAncestor_with_name(el, nam) {
+              this.for_check_str += el.tagName + "->";
+              // console.log(this);
+              if (el.parentElement.name.toLowerCase() == 'html'.toLowerCase()) {
+                return el.parentElement;
+              }
+              if (el.parentElement.name.toLowerCase() == nam.toLowerCase()) {
+                return el.parentElement;
               }
 
-              msg.innerHTML = value;
-              container.appendChild(msg);
+              return findAncestor_with_name(el.parentElement, nam);
+            }
+            function contact_us(from_c) {
+              $("span").remove(".error");
+              //  $( from_c).children( ".error" ).remove();
+              var msg = {};
+              $.ajax({
+                url: "https://tilindia.in/products/contact_us",
+                type: 'POST',
+                async: false,
+                dataType: "json",
+                data: $(from_c).serialize(),
+                success: function (response) {
+                  console.log(response);
+                  if (typeof response.success != "undefined") {
+                    msg = document.createElement('h1');
+                    msg.setAttribute('class', 'success');
+                    msg.innerHTML = response.success;
+                    window.location.replace("thank-you.html");
+                    // from_c.innerHTML="<div class='thanks_msg'><strong>Thank You Contacting Us</strong>We will get back to you shortly</div>";
+                    // from_c.appendChild(msg);      
+                  } else if (typeof response.error != "undefined") {
+                    msg = document.createElement('h1');
+                    msg.setAttribute('class', 'error');
+                    msg.innerHTML = response.error;
+                    window.location.replace("error_occurred.html");
+                    //from_c.innerHTML="";
+                    //from_c.appendChild(msg);  
+                  } else {
+                    $.each(response, function (key, value) {
+                      console.log(key);
+                      var elem = from_c.querySelectorAll('#' + key)[0];
+                      var container = elem.parentNode;
+                      msg = document.createElement('span');
+                      msg.setAttribute('class', 'error');
+                      if ("g-recaptcha-response" == key) {
+                        container = tilindia.trav.findAncestor_with_cls(container, 'form-group');
+                      }
+
+                      msg.innerHTML = value;
+                      container.appendChild(msg);
+                    });
+
+                  }
+                  //console.log(typeof response.error);
+                },
+                error: function (jqXHR, exception) {
+                  console.log(jqXHR);
+                  console.log(exception);
+                  msg = document.createElement('h1');
+                  msg.setAttribute('class', 'error');
+                  msg.innerHTML = "An Error Occurred,<br>Please Try Again Later";
+                  window.location.replace("error_occurred.html");
+                  //from_c.innerHTML="";
+                  //from_c.appendChild(msg);  
+
+                }
+              }).always(function (data) {
+                grecaptcha.reset();
+              });
+              return false;
+            }
+          </script>
+
+          <script>
+            /*$(document).ready(function(){  
+             
+                if($(window).width()<=767){  	
+                $('.dropdown-menu').hide(); 	
+                $(document).on("click",".caret",function(){  
+                if($(this).parent().siblings('ul').is(':visible')){  	
+                $(this).parent().siblings('ul').slideUp(300); 	
+                } else {  	
+                $('ul.dropdown-menu').not($(this).parents('ul')).slideUp(300); 	
+                $(this).parent().siblings('ul').slideDown(300).addClass("submenu_bg"); 	
+                } 	
+                   
+                return false; 	
+                }); 	
+                } 	
+             });*/
+
+
+
+            jQuery(document).ready(function ($) {
+              /*for menu*/
+              if ($(window).width() <= 991) {
+                $('.dropdown-menu').hide();
+                //$('.mbl_menu ul li a').removeClass('active');
+                $(document).on("click", ".caret", function () {
+                  $(this).parent().removeClass('active')
+                  if ($(this).parent().siblings('ul').is(':visible')) {
+                    $(this).parent().siblings('ul').slideUp(300);
+                    //alert('close');
+
+                  } else {
+                    $('ul.dropdown-menu').not($(this).parents('ul')).slideUp(300);
+                    $(this).parent().siblings('ul').slideDown(300).addClass("submenu_bg");
+                    //alert('open');
+                    $(this).parent().addClass('active')
+                  }
+
+                  return false;
+                });
+              }
+            });
+            function openForm() {
+              document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+              document.getElementById("myForm").style.display = "none";
+            }
+          </script>
+          <iframe id="doenload_frame" style="display:none;"></iframe>
+          <script src="<?php echo base_url(); ?>/assets/js/slick5d4f.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script type="text/javascript" defer>
+            /*Open Popup*/
+            // var flag = 0;
+            // $('#firstopenPopup').modal('show');
+            // function openPopup(){ 
+            //   var video = document.getElementById("video_tag");   
+            //   video.addEventListener("timeupdate", function(){ 
+            //     this.pause();
+            //   });
+
+            //   //$('#firstopenPopup').modal('hide');
+            //   $('#firstopenPopup').modal('hide');
+            //   $('#firstopenContent').modal('show');
+            // }
+
+            // if(flag == 0){ 
+            //   setTimeout(openPopup, 10000);
+            //   flag = 1;
+            // }
+
+            function init() {
+              var vidDefer = document.getElementsByTagName('iframe');
+              for (var i = 0; i < vidDefer.length; i++) {
+                if (vidDefer[i].getAttribute('data-src')) {
+                  vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
+                }
+              }
+            }
+            window.onload = init;
+            $(window).on('load', function () {
+
+            });
+            $(document).ready(function ($) {
+
+
+
+
+              $('.home_banner').slick({
+                dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                lazyLoad: 'ondemand',
+                responsive: [
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      arrows: false,
+                    }
+                  }
+                ]
+              });
+
+              $('.slickSlider').show();
+              ////////////////////////////////////////
+              $('.globalAssociates').slick({
+                dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                responsive: [
+                  {
+                    breakpoint: 1080,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 1,
+                      infinite: true,
+                      //dots: true
+                    }
+                  },
+                  {
+                    breakpoint: 960,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 1
+                    }
+                  },
+                  {
+                    breakpoint: 680,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 1
+                    }
+                  },
+                  {
+                    breakpoint: 580,
+                    settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 1
+                    }
+                  }
+                ]
+              });
+              ////////////////////////////////////
+              $('.home_video').slick({
+                dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                responsive: [
+                  {
+                    breakpoint: 1080,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 1,
+                      infinite: true,
+                      //dots: true
+                    }
+                  },
+                  {
+                    breakpoint: 760,
+                    settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 1
+                    }
+                  },
+                  {
+                    breakpoint: 580,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1
+                    }
+                  }
+                ]
+              });
+              /////////////////////////////////////
+              /*$('.news_slick').slick({ 
+                      dots: false,
+                      //infinite: true,
+                  arrows: true,
+                  autoplay: true,
+                    ///autoplaySpeed: 2000,
+                    //fade: true,
+                  vertical: true,
+                      speed: 800,
+                  slidesToScroll: 1,
+                      slidesToShow: 1,
+                  responsive: [
+                  { 
+                    breakpoint: 768,
+                    settings: { 
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                    }
+                  }
+                ]
+                      }); */
+
             });
 
-          }
-          //console.log(typeof response.error);
-        },
-        error: function (jqXHR, exception) {
-          console.log(jqXHR);
-          console.log(exception);
-          msg = document.createElement('h1');
-          msg.setAttribute('class', 'error');
-          msg.innerHTML = "An Error Occurred,<br>Please Try Again Later";
-          window.location.replace("error_occurred.html");
-          //from_c.innerHTML="";
-          //from_c.appendChild(msg);  
-
-        }
-      }).always(function (data) {
-        grecaptcha.reset();
-      });
-      return false;
-    }
-  </script>
-
-  <script>
-    /*$(document).ready(function(){  
-     
-        if($(window).width()<=767){  	
-        $('.dropdown-menu').hide(); 	
-        $(document).on("click",".caret",function(){  
-        if($(this).parent().siblings('ul').is(':visible')){  	
-        $(this).parent().siblings('ul').slideUp(300); 	
-        } else {  	
-        $('ul.dropdown-menu').not($(this).parents('ul')).slideUp(300); 	
-        $(this).parent().siblings('ul').slideDown(300).addClass("submenu_bg"); 	
-        } 	
-           
-        return false; 	
-        }); 	
-        } 	
-     });*/
-
-
-
-    jQuery(document).ready(function ($) {
-      /*for menu*/
-      if ($(window).width() <= 991) {
-        $('.dropdown-menu').hide();
-        //$('.mbl_menu ul li a').removeClass('active');
-        $(document).on("click", ".caret", function () {
-          $(this).parent().removeClass('active')
-          if ($(this).parent().siblings('ul').is(':visible')) {
-            $(this).parent().siblings('ul').slideUp(300);
-            //alert('close');
-
-          } else {
-            $('ul.dropdown-menu').not($(this).parents('ul')).slideUp(300);
-            $(this).parent().siblings('ul').slideDown(300).addClass("submenu_bg");
-            //alert('open');
-            $(this).parent().addClass('active')
-          }
-
-          return false;
-        });
-      }
-    });
-
-    $('#c_id').on('change', function (e) {
-      // alert("asd");
-      $.ajax({
-        type: "POST",
-        url: "https://tilindia.in/products/getCStateAjax",
-        data: $('#quotation_form').serialize(),
-        dataType: "text",
-        cache: false,
-        success:
-          function (data) {
-            // alert(data);  //as a debugging message.
-            $("#s_div").html(data);
-          }
-      });// you have missed this bracket
-      return false;
-    });
-
-    $('#country_id').on('change', function (e) {
-      // alert("asd");
-      $.ajax({
-        type: "POST",
-        url: "https://tilindia.in/products/getStateAjax",
-        data: $('#contact_from').serialize(),
-        dataType: "text",
-        cache: false,
-        success:
-          function (data) {
-            // alert(data);  //as a debugging message.
-            $("#state_div").html(data);
-          }
-      });// you have missed this bracket
-      return false;
-    });
-
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-  </script>
-  <iframe id="doenload_frame" style="display:none;"></iframe>
-  <script src="<?php echo base_url(); ?>/assets/js/slick5d4f.js?c=-62170003270" type="text/javascript"
-    charset="utf-8"></script>
-  <script type="text/javascript" defer>
-    /*Open Popup*/
-    // var flag = 0;
-    // $('#firstopenPopup').modal('show');
-    // function openPopup(){ 
-    //   var video = document.getElementById("video_tag");   
-    //   video.addEventListener("timeupdate", function(){ 
-    //     this.pause();
-    //   });
-
-    //   //$('#firstopenPopup').modal('hide');
-    //   $('#firstopenPopup').modal('hide');
-    //   $('#firstopenContent').modal('show');
-    // }
-
-    // if(flag == 0){ 
-    //   setTimeout(openPopup, 10000);
-    //   flag = 1;
-    // }
-
-    function init() {
-      var vidDefer = document.getElementsByTagName('iframe');
-      for (var i = 0; i < vidDefer.length; i++) {
-        if (vidDefer[i].getAttribute('data-src')) {
-          vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
-        }
-      }
-    }
-    window.onload = init;
-    $(window).on('load', function () {
-
-    });
-    $(document).ready(function ($) {
-
-
-
-
-      $('.home_banner').slick({
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        lazyLoad: 'ondemand',
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              arrows: false,
+            jQuery(document).ready(function ($) {
+              $('.news_slick').slick({
+                dots: false,
+                infinite: true,
+                arrows: true,
+                autoplay: true,
+                ///autoplaySpeed: 2000,
+                //fade: true,
+                vertical: true,
+                speed: 800,
+                slidesToShow: 1,
+                responsive: [
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                    }
+                  }
+                ]
+              });
+            });
+            function toggleReadMore() {
+              var paragraph = document.querySelector('.truncate');
+              var button = document.querySelector('.read-more-btn');
+              paragraph.classList.toggle('expanded');
+              if (paragraph.classList.contains('expanded')) {
+                button.textContent = 'Read Less';
+              } else {
+                button.textContent = 'Read More';
+              }
             }
-          }
-        ]
-      });
+          </script>
 
-      $('.slickSlider').show();
-      ////////////////////////////////////////
-      $('.globalAssociates').slick({
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 3,
-        responsive: [
-          {
-            breakpoint: 1080,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-              infinite: true,
-              //dots: true
+
+
+
+
+
+
+
+
+
+
+          <style>
+            .modal-dialog {
+              /*width: 402px;*/
             }
-          },
-          {
-            breakpoint: 960,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 680,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 580,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      });
-      ////////////////////////////////////
-      $('.home_video').slick({
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 3,
-        responsive: [
-          {
-            breakpoint: 1080,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-              infinite: true,
-              //dots: true
-            }
-          },
-          {
-            breakpoint: 760,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 580,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      });
-      /////////////////////////////////////
-      /*$('.news_slick').slick({ 
-              dots: false,
-              //infinite: true,
-          arrows: true,
-          autoplay: true,
-            ///autoplaySpeed: 2000,
-            //fade: true,
-          vertical: true,
-              speed: 800,
-          slidesToScroll: 1,
-              slidesToShow: 1,
-          responsive: [
-          { 
-            breakpoint: 768,
-            settings: { 
-              slidesToShow: 1,
-              slidesToScroll: 1,
-            }
-          }
-        ]
-              }); */
+          </style>
 
-    });
+          <!--Open Popup-->
 
-    jQuery(document).ready(function ($) {
-      $('.news_slick').slick({
-        dots: false,
-        infinite: true,
-        arrows: true,
-        autoplay: true,
-        ///autoplaySpeed: 2000,
-        //fade: true,
-        vertical: true,
-        speed: 800,
-        slidesToShow: 1,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-            }
-          }
-        ]
-      });
-    });
-    function toggleReadMore() {
-      var paragraph = document.querySelector('.truncate');
-      var button = document.querySelector('.read-more-btn');
-      paragraph.classList.toggle('expanded');
-      if (paragraph.classList.contains('expanded')) {
-        button.textContent = 'Read Less';
-      } else {
-        button.textContent = 'Read More';
-      }
-    }
-  </script>
+          <div class="modal fade" id="firstopenPopup" tabindex="-1" role="dialog" aria-labelledby="firstopenPopup"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div id="videoOpenPopup">
+                    <video class="videoOpen" id="video_tag" autoplay loop muted controls>
+                      <source src="<?php echo base_url(); ?>/assets/images/till.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
 
-
-
-
-
-
-
-
-
-
-
-  <style>
-    .modal-dialog {
-      /*width: 402px;*/
-    }
-  </style>
-
-  <!--Open Popup-->
-
-  <div class="modal fade" id="firstopenPopup" tabindex="-1" role="dialog" aria-labelledby="firstopenPopup"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div id="videoOpenPopup">
-            <video class="videoOpen" id="video_tag" autoplay loop muted controls>
-              <source src="<?php echo base_url(); ?>/assets/images/till.mp4" type="video/mp4">
-            </video>
+              </div>
+            </div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!--Open Popup End-->
-  <!--Open Popup Content-->
-  <div class="modal fade" id="firstopenContent" tabindex="-1" role="dialog" aria-labelledby="firstopenContent"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div id="loaderContent">
-            <button type="button" class="closePopup" data-dismiss="modal"><i class="fa fa-times"></i></button>
-            <div class="innerScroll">
-              <p>
-                Gainwell Group, through its group entity - Indocrest Defence Solutions Private Limited (IDSPL), has
-                acquired a dominant stake in TIL (formerly Tractors India) Limited (NSE: TIL), one of India’s leading
-                infra equipment manufacturer. Gainwell Group, a Make-in-India conglomerate with significant presence in
-                the mining, construction, energy, defence, railways, and heavy equipment sectors, is expected to
-                accelerate TIL’s growth further and bolster its already robust order book for cranes, reach stackers,
-                material handling and defence equipment.
-                <br><br>
-                Gainwell Group promoter <b>Mr. Sunil Kumar Chaturvedi</b> has been appointed as a director of TIL today
-                is slated to be appointed, subject to Shareholders’ approval, the Chairman & Managing Director of TIL.
-                Click the buttons below to read the new CMD’s message to employees:
-              </p>
-              <div class="pdf-btn mb-2">
-                <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_English.pdf" target="_blank"
-                  class="read-btn">Read In English</a>
-                <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_Hindi.pdf" target="_blank"
-                  class="read-btn">Read In Hindi</a>
-                <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_Bengali.pdf" target="_blank"
-                  class="read-btn">Read In Bengali</a>
+          <!--Open Popup End-->
+          <!--Open Popup Content-->
+          <div class="modal fade" id="firstopenContent" tabindex="-1" role="dialog" aria-labelledby="firstopenContent"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div id="loaderContent">
+                    <button type="button" class="closePopup" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                    <div class="innerScroll">
+                      <p>
+                        Gainwell Group, through its group entity - Indocrest Defence Solutions Private Limited
+                        (IDSPL), has
+                        acquired a dominant stake in TIL (formerly Tractors India) Limited (NSE: TIL), one of India’s
+                        leading
+                        infra equipment manufacturer. Gainwell Group, a Make-in-India conglomerate with significant
+                        presence in
+                        the mining, construction, energy, defence, railways, and heavy equipment sectors, is expected
+                        to
+                        accelerate TIL’s growth further and bolster its already robust order book for cranes, reach
+                        stackers,
+                        material handling and defence equipment.
+                        <br><br>
+                        Gainwell Group promoter <b>Mr. Sunil Kumar Chaturvedi</b> has been appointed as a director of
+                        TIL today
+                        is slated to be appointed, subject to Shareholders’ approval, the Chairman & Managing Director
+                        of TIL.
+                        Click the buttons below to read the new CMD’s message to employees:
+                      </p>
+                      <div class="pdf-btn mb-2">
+                        <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_English.pdf"
+                          target="_blank" class="read-btn">Read In English</a>
+                        <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_Hindi.pdf"
+                          target="_blank" class="read-btn">Read In Hindi</a>
+                        <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_Bengali.pdf"
+                          target="_blank" class="read-btn">Read In Bengali</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1198,21 +1164,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
 
 </html>

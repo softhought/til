@@ -12,7 +12,11 @@ class ProductsMenu extends CI_Model
         return $this->generateMenuHTML($menu[0]["children"]);
     }
 
-
+    public function getNavProductsMenu()
+    {
+        $result = $this->db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get("product_master")->result_array();
+        return $this->buildNestedMenu($result, 0);
+    }
 
     private function buildNestedMenu($menuItems, $parentId)
     {
@@ -61,4 +65,33 @@ class ProductsMenu extends CI_Model
         $html .= '</ul>';
         return $html;
     }
+
+    function generateMenuHTML1($menuItems, $isSubNav = false, $parentSlugs = [])
+    {
+        $html = '<ul id="menu-thank-you" class="pro_left">'; // Adding the pro_left class to match the provided HTML structure
+
+        foreach ($menuItems as $key => $menuItem) {
+            $hasChildren = isset($menuItem['children']) && !empty($menuItem['children']);
+
+            $html .= '<li>'; // Start menu item
+            $html .= '<a href="' . $menuItem['url'] . '" class="sub_nav">' . $menuItem['name']; // Link with sub_nav class
+
+            if ($hasChildren) {
+                $html .= '<span class="caret"></span>'; // Add caret icon for items with children
+            }
+
+            $html .= '</a>';
+
+            if ($hasChildren) {
+                $html .= '<ul>'; // Start submenu
+                $html .= $this->generateMenuHTML($menuItem['children'], true, $parentSlugs);
+                $html .= '</ul>'; // End submenu
+            }
+
+            $html .= '</li>'; // End menu item
+        }
+        $html .= '</ul>';
+        return $html;
+    }
+
 }

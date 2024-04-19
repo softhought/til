@@ -46,7 +46,9 @@ class Products extends CI_Controller
             $value->spec_sheet_details = $this->commondatamodel->getAllRecordWhere('spec_sheet_details', ['product_model_dt_id'=> $value->prodect_model_dt_id]);
         }
 
-        // pre($product_model_details);exit;
+        $result['sheet_model'] = $this->commondatamodel->getAllRecordWhere("spec_sheet_details", ["product_master_id" => $product_master_id]);
+
+        // pre($result['sheet_model']);exit;
         $result["product_model"] = $product_model_details;
         webbody_helper($result, $page);
     }

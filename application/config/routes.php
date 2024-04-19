@@ -55,6 +55,13 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* -------------- AJAX ---------------------- */
+
+$route['dashboard/fetchstatesnncountrie'] = 'Dashboard/fetchStatesOnCountrie';
+$route['dashboard/submitquotation'] = 'Dashboard/submitQuotation';
+$route['dashboard/submitcontactform'] = 'Dashboard/submitContactForm';
+
+
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";
 $route['about-us/corporate-profile'] = "frontend/about/corporate_profile";
@@ -130,3 +137,6 @@ $route['careers/submit_cv'] = "frontend/careers/submit_cv";
 $route['contact-us/inquiry'] = "frontend/contactus/inquiry";
 
 $route["mediaadmin"] = "media";
+
+/* -------------- Thankyou ---------------------- */
+$route["thank-you"] = "Dashboard/thankyou";

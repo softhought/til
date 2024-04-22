@@ -1,5 +1,5 @@
 <section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/contact.jpg)">
+    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/contact.jpg)">
     <!-- <img src="/assets/images/inner_page_banners/contact.jpg" class="img-responsive" height="400"  alt="Get in Touch TIL"> -->
     <!-- <h1 class="m-0"></h1> -->
     <h1 class="m-0">Reach Out To Us</h1>
@@ -17,7 +17,8 @@
                 <div class="row curvebg pl-0 mt-0">
                     <div class="col-lg-4 col-12 ">
                         <div class="homepix">
-                            <img src="<?php echo base_url();?>tilindia/assets/images/inquiry_img.jpg" alt="inquiry_img" srcset="">
+                            <img src="<?php echo base_url(); ?>tilindia/assets/images/inquiry_img.jpg" alt="inquiry_img"
+                                srcset="">
                         </div>
                     </div>
                     <div class="col-lg-8 col-12" id="mainCol">
@@ -25,10 +26,9 @@
                             <!-- <h1></h1> -->
                             <p>Please fill up the form below:</p>
                             <!--start contact form box-->
-                            <script src='<?php echo base_url();?>www.google.com/recaptcha/api.js'></script>
-                            <form action="https://tilindia.in/contact-us/inquiry" enctype="multipart/form-data"
-                                class="contact_form inquiry_form" id="contact_from" method="POST"
-                                onsubmit="return contact_us(this);" accept-charset="utf-8">
+                            <script src='<?php echo base_url(); ?>www.google.com/recaptcha/api.js'></script>
+                            <form  enctype="multipart/form-data" class="contact_form inquiry_form" id="contact_us_form" method="POST"
+                                accept-charset="utf-8">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -69,7 +69,9 @@
                                             <select name="country_id" id="country_id" required="required"
                                                 class="form-control">
                                                 <option value="">Select Country</option>
-                                                
+                                                <?php foreach ($menu["country"] as $key => $value) {
+                                                    echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
+                                                } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -99,16 +101,9 @@
                                             <select name="nature_of_query_id" autocomplete="off" id="nature_of_query_id"
                                                 required="required" class="form-control">
                                                 <option value="" selected="selected">Please Select</option>
-                                                <option value="1">Get a Quote</option>
-                                                <option value="2">Sales Inquiry</option>
-                                                <option value="3">Looking for Parts</option>
-                                                <option value="4">Product Support</option>
-                                                <option value="5">General Inquiry</option>
-                                                <option value="6">Investor Relations</option>
-                                                <option value="7">Human Resources</option>
-                                                <option value="8">Financial Inquiry</option>
-                                                <option value="9">Customer Feedback</option>
-                                                <option value="10">Training Request / Nomination Received</option>
+                                                <?php foreach ($menu["nature_of_query"] as $key => $value) {
+                                                    echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
+                                                } ?>
                                             </select>
                                         </div>
                                     </div>

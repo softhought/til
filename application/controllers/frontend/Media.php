@@ -7,6 +7,7 @@ class Media extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->model('commondatamodel', 'commondatamodel', TRUE);
+        $this->load->model('ProductsMenu', 'productsmenu', TRUE);
 
     }
 
@@ -20,7 +21,7 @@ class Media extends CI_Controller
     public function videos()
     {
         $page = "web_view/media/videos.php";
-        $result = [];
+        $result["video"] = $this->productsmenu->getAllRecordWhereOrderBy("fuel_videos", ["is_disabled" => 0], "precedence", "ASC");
         webbody_helper($result, $page);
     }
 

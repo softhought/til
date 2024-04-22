@@ -7,6 +7,7 @@ if (!function_exists('webbody_helper')) {
         $heared_menu_content = [];
         $body_content_header = [];
         $CI->load->model('ProductsMenu', 'productsmenu', TRUE);
+        $CI->load->model('commondatamodel', 'commondatamodel', TRUE);
 
         $data['bodyview'] = $body_content_page;
         $data['leftmenusidebar'] = '';
@@ -14,6 +15,8 @@ if (!function_exists('webbody_helper')) {
         // $data['user']=$session['name'];
 
         $result["product_menu"] = $CI->productsmenu->getProductsMenu();
+        $result["country"] = $CI->commondatamodel->getAllDropdownData("tbl_countries");
+        $result["nature_of_query"] = $CI->commondatamodel->getAllRecordOrderBy("fuel_nature_of_query", "precedence", "ASC");
 
         $CI->template->setHeader($heared_menu_content);
         $CI->template->setBody($body_content_data);

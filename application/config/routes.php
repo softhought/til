@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once APPPATH . 'helpers/route_helper.php';
-$menuUrls = getAllMenuUrl("fuel_catagory");
+$menuUrls = getAllMenuUrl("product_master");
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -55,6 +55,13 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* -------------- AJAX ---------------------- */
+
+$route['dashboard/fetchstatesnncountrie'] = 'Dashboard/fetchStatesOnCountrie';
+$route['dashboard/submitquotation'] = 'Dashboard/submitQuotation';
+$route['dashboard/submitcontactform'] = 'Dashboard/submitContactForm';
+
+
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";
 $route['about-us/corporate-profile'] = "frontend/about/corporate_profile";
@@ -87,13 +94,13 @@ foreach ($menuUrls as $url) {
     
     switch ($url['level']) {
         case 1:
-            $routeValue = 'frontend/products/viewLevel_1/' . explode("/",$routeKey)[1] . '/' . $url['id'];
+            $routeValue = 'frontend/products/viewLevel_1/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
             break;
         case 2:
-            $routeValue = 'frontend/products/viewLevel_2/' . explode("/",$routeKey)[1] . '/' . $url['id'];
+            $routeValue = 'frontend/products/viewLevel_2/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
             break;
         case 3:
-            $routeValue = 'frontend/products/viewLevel_3/' . explode("/",$routeKey)[1] . '/' . $url['id'];
+            $routeValue = 'frontend/products/viewLevel_3/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
             break;
     }
 
@@ -130,3 +137,6 @@ $route['careers/submit_cv'] = "frontend/careers/submit_cv";
 $route['contact-us/inquiry'] = "frontend/contactus/inquiry";
 
 $route["mediaadmin"] = "media";
+
+/* -------------- Thankyou ---------------------- */
+$route["thank-you"] = "Dashboard/thankyou";

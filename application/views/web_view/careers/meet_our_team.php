@@ -1,5 +1,5 @@
 <section class="about-banner-section"
-    style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/meet_our_team_new.png)">
+    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/meet_our_team_new.png)">
     <div class="container">
         <h1 class="m-0">The Core Team</h1>
     </div>
@@ -14,7 +14,8 @@
                         energy to our place of work and values to our stakeholders.</h5>
                     <div class="icon-container">
                         <hr>
-                        <img src="<?php echo base_url();?>tilindia/assets/images/Rectangle.png" alt="rectangle" srcset="">
+                        <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="rectangle"
+                            srcset="">
                         <hr>
                     </div>
                 </div>
@@ -26,7 +27,8 @@
                         <div class="row curvebg pl-0 mt-0">
                             <div class="col-lg-12 col-12">
                                 <div class="product-item board-showcase">
-                                    <img src="<?php echo base_url();?>tilindia/assets/images/pinaki_niyogy.jpg" alt="pinaki_niyogy" />
+                                    <img src="<?php echo base_url(); ?>tilindia/assets/images/pinaki_niyogy.jpg"
+                                        alt="pinaki_niyogy" />
                                     <div class="text-content">
                                         <h3>Pinaki Niyogy</h3>
                                         <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
@@ -60,9 +62,7 @@
                                             industry committees and holds management development credentials from IIM
                                             Kolkata and IIM Bangalore.
                                         </p>
-                                        <span><a href="javascript:void(0)" class="more-read" style="color:#337ab7"
-                                                id="readMoreBtn01"
-                                                onclick="toggleReadMore('elipse01','readMoreBtn')">Read more</a></span>
+                                        <span><a href="javascript:void(0)" class="more-read" style="color:#337ab7" id="readMoreBtn01" data-target="elipse01">Read more</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,8 @@
                             <div class="col-lg-12 col-12">
                                 <div class="product-item board-showcase">
                                     <figure>
-                                        <img src="<?php echo base_url();?>tilindia/assets/images/KanhaiyaGupta.png" alt="KanhaiyaGupta" />
+                                        <img src="<?php echo base_url(); ?>tilindia/assets/images/KanhaiyaGupta.png"
+                                            alt="KanhaiyaGupta" />
                                     </figure>
                                     <div class="text-content">
                                         <h3>Mr. Kanhaiya Gupta</h3>
@@ -111,8 +112,7 @@
                                             proactive approach, strong business acumen, and ability to identify
                                             potential risks and develop mitigation plans.
                                         </p>
-                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn4"
-                                                onclick="toggleReadMore('elipse4','readMoreBtn4')">Read more</a></span>
+                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn4" data-target="elipse4">Read more</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +120,8 @@
                             <div class="col-lg-12 col-12">
                                 <div class="product-item board-showcase">
                                     <figure>
-                                        <img src="<?php echo base_url();?>tilindia/assets/images/SumitBiswas.png" alt="SumitBiswas" />
+                                        <img src="<?php echo base_url(); ?>tilindia/assets/images/SumitBiswas.png"
+                                            alt="SumitBiswas" />
                                     </figure>
                                     <div class="text-content">
                                         <h3>Mr. Sumit Biswas</h3>
@@ -155,8 +156,8 @@
                                             have positioned him as a key figure in the industry, culminating in his
                                             current leadership role at TIL Limited.
                                         </p>
-                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn3"
-                                                onclick="toggleReadMore('elipse3','readMoreBtn3')">Read more</a></span>
+                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn3" data-target="elipse3">Read
+                                                more</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +165,8 @@
                             <div class="col-lg-12 col-12">
                                 <div class="product-item board-showcase">
                                     <figure>
-                                        <img src="<?php echo base_url();?>tilindia/assets/images/ShamitaNandi.png" alt="ShamitaNandi" />
+                                        <img src="<?php echo base_url(); ?>tilindia/assets/images/ShamitaNandi.png"
+                                            alt="ShamitaNandi" />
                                     </figure>
                                     <div class="text-content">
                                         <h3>Ms. Shamita Nandi</h3>
@@ -209,15 +211,15 @@
                                             leadership.
 
                                         </p>
-                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn5"
-                                                onclick="toggleReadMore('elipse5','readMoreBtn5')">Read more</a></span>
+                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn5" data-target="elipse5">Read more</a></span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-12">
                                 <div class="product-item board-showcase">
-                                    <img src="<?php echo base_url();?>tilindia/assets/images/RisabhNair.png" alt="RisabhNair" />
+                                    <img src="<?php echo base_url(); ?>tilindia/assets/images/RisabhNair.png"
+                                        alt="RisabhNair" />
                                     <div class="text-content">
                                         <h3>Rishabh P Nair</h3>
                                         <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
@@ -253,8 +255,7 @@
                                             viz-a-viz branding and marketing strategies.
                                         </p>
                                         <span><a href="javascript:void(0)" class="more-read" style="color:#337ab7"
-                                                id="readMoreBtn02"
-                                                onclick="toggleReadMore('elipse02','readMoreBtn02')">Read
+                                                id="readMoreBtn02" data-target="elipse02">Read
                                                 more</a></span>
                                     </div>
                                 </div>
@@ -262,7 +263,7 @@
 
                             <div class="col-lg-12 col-12">
                                 <div class="product-item board-showcase">
-                                    <img src="<?php echo base_url();?>tilindia/assets/images/shekhar_bhattacharya.jpg"
+                                    <img src="<?php echo base_url(); ?>tilindia/assets/images/shekhar_bhattacharya.jpg"
                                         alt="shekhar_bhattacharya" />
                                     <div class="text-content">
                                         <h3>Sekhar Bhattacharjee</h3>

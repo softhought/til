@@ -37,8 +37,7 @@
                                 <div class="col-lg-3 col-md-3 col-12">
                                     <a href="<?php echo base_url() . "products/" . $bodycontent["main-section"][0]->slug . "/" . $product->slug; ?>">
                                         <div class="product-item material-card">
-                                            <img src="<?php echo base_url('assets/images/' . $product->catagory_image); ?>"
-                                                alt="<?php echo $product->banner_alt; ?>">
+                                            <img src="<?php echo base_url('assets/images/' . $product->catagory_image); ?>">
                                             <h5><?php echo $product->name; ?></h5>
                                             <p><?php echo $product->short_description; ?></p>
                                             <button class="mt-010">Know More</button>

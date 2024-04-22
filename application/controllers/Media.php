@@ -76,16 +76,18 @@ class Media extends CI_Controller {
             $action = trim($this->input->post('action'));
             $slectedvalue = trim($this->input->post('slectedvalue'));
             $media_tag = trim($this->input->post('media_tag'));
-
+            $table_name = trim($this->input->post('table_name'));
+            $ref_id = trim($this->input->post('ref_id'));
+            
             if ($action=='U') {
                 $pre_sl=$slno-1;
                 if ($pre_sl!='0') {
 
                     if($media_tag == 'NEWS' || $media_tag == 'TIL_TALK' || $media_tag == 'TIL_TOUCH'){
-                        $where = array('precedence'=>$pre_sl);
+                        $where = array('precedence'=>$pre_sl,'table_name'=>$table_name,'ref_id'=>$ref_id);
                         $preNewsNewslaterData=$this->commondatamodel->getSingleRowByWhereCls('document_details',$where);
-                        $table_name = $preNewsNewslaterData->table_name;
-                        $ref_id = $preNewsNewslaterData->ref_id;
+                        // $table_name = $preNewsNewslaterData->table_name;
+                        // $ref_id = $preNewsNewslaterData->ref_id;
                         if(!empty( $preNewsNewslaterData)){
                             $pre_docid = $preNewsNewslaterData->doc_id;
                             if(isset($pre_docid)){
@@ -133,39 +135,32 @@ class Media extends CI_Controller {
                             }
                         }
 
-                    }
+                    }/** end else */
                     
                     
                 }
             }elseif($action=='P'){
                 if($media_tag == 'NEWS' || $media_tag == 'TIL_TALK' || $media_tag == 'TIL_TOUCH'){
-                    $where_tag= array('menu_tag'=>$media_tag);
-                    $media_master_id = $this->commondatamodel->getSingleRowByWhereCls('document_details',$where);
-
-
-                    $where = array('precedence'=>$slectedvalue);
+                    
+                    $where = array('precedence'=>$slectedvalue,'table_name'=>$table_name,'ref_id'=>$ref_id);
                     $preNewsNewslaterData=$this->commondatamodel->getSingleRowByWhereCls('document_details',$where);
-                    pre($preNewsNewslaterData);exit;
-                    $table_name = $preNewsNewslaterData->table_name;
-                    $ref_id = $preNewsNewslaterData->ref_id;
 
-                    $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
+                    if(!empty( $preNewsNewslaterData)){
+                        $pre_docid = $preNewsNewslaterData->doc_id;
 
-                    if(!empty( $preVideoData)){
-                        $pre_videoid = $preVideoData->id;
+                        $update_array  = array("precedence" => $slectedvalue,'table_name'=>$table_name,'ref_id'=>$ref_id);                       
+                        $where = array("doc_id" => $id);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array,$where);
 
-                        $update_array  = array("precedence" => $slectedvalue);                       
-                        $where = array("id" => $id);
-                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array,$where);
-
-                        $update_array2  = array("precedence" => $slno);                            
-                        $where2 = array("id" => $pre_videoid);
-                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
+                        $update_array2  = array("precedence" => $slno,'table_name'=>$table_name,'ref_id'=>$ref_id);                            
+                        $where2 = array("doc_id" => $pre_docid);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array2,$where2);
 
                         if($update){
                             $json_response = array(
                                 "msg_status" => 1,
-                                "msg_data" => "Precedence updated"
+                                "msg_data" => "News and Newslater Precedence updated",
+                                "media_tag" => $media_tag
                             );
                         }
                     }
@@ -200,10 +195,10 @@ class Media extends CI_Controller {
                 if($media_tag == 'NEWS' || $media_tag == 'TIL_TALK' || $media_tag == 'TIL_TOUCH'){
                     $next_sl=$slno+1;
 
-                    $where = array('precedence'=>$next_sl);
+                    $where = array('precedence'=>$next_sl,'table_name'=>$table_name,'ref_id'=>$ref_id);
                     $preNewsNewslaterData=$this->commondatamodel->getSingleRowByWhereCls('document_details',$where);    
-                    $table_name = $preNewsNewslaterData->table_name;
-                    $ref_id = $preNewsNewslaterData->ref_id;
+                    // $table_name = $preNewsNewslaterData->table_name;
+                    // $ref_id = $preNewsNewslaterData->ref_id;
 
                     if(!empty($preNewsNewslaterData)){
                         // $next_videoid = $preVideoData->id;
@@ -393,11 +388,31 @@ class Media extends CI_Controller {
             $docID=$this->input->post('docID');
             $title_desc=$this->input->post('title_desc');
             $isdocument = trim($this->input->post('isdocument'));
+            $isdocumentname = trim($this->input->post('isdocumentname'));
             $dir = $_SERVER['DOCUMENT_ROOT'].'/til/assets-admin/pdf/news/';
             $date=date('Y-m-d H:i:s');
-            move_uploaded_file($_FILES['file']['tmp_name'],$dir.$_FILES['file']['name']) or die("Unable to Move Pdf");
-            $document_name = $_FILES['file']['name'];
-            $file_extension = pathinfo($document_name, PATHINFO_EXTENSION);
+            if($isdocument == 'Y'){
+                //move_uploaded_file($_FILES['file']['tmp_name'],$dir.$_FILES['file']['name']) or die("Unable to Move Pdf");
+                $document_name = $_FILES['file']['name'];
+
+                if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0){
+                    // Generate a random file name
+                    $randomFileName = uniqid('', true) . '_' . $_FILES["file"]["name"];
+                    move_uploaded_file($_FILES["file"]["tmp_name"], $dir . $randomFileName);
+                    
+                    
+                    $document_name = $randomFileName;
+                } else {
+                    echo "Error uploading file";
+                }
+
+                $file_extension = pathinfo($document_name, PATHINFO_EXTENSION);
+            }else{
+                $document_name =$isdocumentname;
+                $file_extension = pathinfo($isdocumentname, PATHINFO_EXTENSION);
+            }
+
+            
             if($mode == 'EDIT' &&  $docID > 0){
                 $where_update = array('doc_id'=>$docID);
                 $update_arr = array(
@@ -538,7 +553,14 @@ class Media extends CI_Controller {
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $result = '';
+           $result='';
+            // $media_tag = $this->input->post('media_tag');
+            
+            // $result['media_tag_name'] = $media_tag;
+            // $where_tag = array('media_master.menu_tag');
+            // $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
+            // $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
+            // //$result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
             $page="dashboard/media/newslater_till_talk_partial_view";
             $this->load->view($page,$result);
         }else{

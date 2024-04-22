@@ -1,4 +1,4 @@
-<!-- <script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script> -->
+
 <style>
    .select2-container--default .select2-selection--multiple .select2-selection__choice {
    background-color: #7a2386;
@@ -13,6 +13,7 @@
 }
 </style>
 <section class="layout-box-content-format1">
+<!-- <div class="partial_view_news_and_newslater" style="margin-top: -115px;"> -->
 <div class="partial_view_news_and_newslater">
 
 </div>
@@ -41,12 +42,9 @@
                <td><?php echo $list->title; ?></td>
                <td><?php echo $list->file_name; ?></td>
                <td>						
-                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'U','<?php echo $media_tag; ?>',<?php echo($list->table_name);?>,'<?php echo($list->ref_id);?>')"/ style="cursor:pointer;">
-                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'D','<?php echo $media_tag; ?>')"/ style="cursor:pointer;">
+                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'U','<?php echo $media_tag; ?>','<?php echo($list->table_name);?>','<?php echo($list->ref_id);?>')"/ style="cursor:pointer;">
+                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'D','<?php echo $media_tag; ?>','<?php echo($list->table_name);?>','<?php echo($list->ref_id);?>')"/ style="cursor:pointer;">
                </td>
-               <!-- <td>
-                  <?php echo $list->precedence; ?><input type="text" id="otherslno_<?= $list->precedence; ?>">
-               </td> -->
                <td>
                   <div class="row">
                      <div class="col-md-8">
@@ -63,7 +61,7 @@
                      </div>
                   
                      <div class="col-md-4">
-                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'P','<?php echo $media_tag; ?>')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
+                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'P','<?php echo $media_tag; ?>','<?php echo($list->table_name);?>','<?php echo($list->ref_id);?>')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
                      </div> 
                   </div>                  
 					</td>

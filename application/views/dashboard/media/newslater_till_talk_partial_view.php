@@ -14,8 +14,27 @@
 </style>
 <section class="layout-box-content-format1">
 <div class="partial_view_news_and_newslater">
-
+    
 </div>
+<!--- ---------------start hear listing ---------------------->
+<table id="video_partial_tbl" class="table customTbl table-bordered table-hover dataTable2">
+      <thead>
+         <tr>
+            <th>Sl</th>
+            <th style="width:150px;">Title Description</th>
+            <th>Document Name</th>
+            <th>Up/Down</th>
+            <th>Set Precedence</th>
+            <th>Status</th>
+            <th>Action</th>
+         </tr>
+      </thead>
+    
+      
+              
+   </table>
+
+   <!--- ----------------end hear listing ----------------------->
    
   
 </section>

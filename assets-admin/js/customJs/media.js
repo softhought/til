@@ -59,7 +59,7 @@ $(document).ready(function () {
         $("#docID").val(id);
         $(".mode").val("EDIT");
         $("#title_desc").val(title);
-        //$("#link").val(videoid);
+        $(".isdocumentname").val(filename);
         $(".save_btn").html("Update");
     });
 
@@ -224,9 +224,20 @@ $(document).ready(function () {
 
 
 }); // end of document ready
+function displayFileName() {
+    var fileInput = document.getElementById('file');
+    var fileName = fileInput.files[0].name;
+
+    var fileLabel = document.getElementById('file-label');
+    var isDocumentName = document.getElementById('isdocumentname');
+
+    fileLabel.textContent = fileName;
+    isDocumentName.value = fileName;
+}
+
 
 function loadPartialView(tabId, partialViewUrl,media_tag) {
-    $('#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data,#tab_five_data').html('');
+    //$('#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data,#tab_five_data').html('');
     $.ajax({
         url: partialViewUrl,
         //type: 'GET',
@@ -258,7 +269,7 @@ function validation() {
     }
     return true;
 }/**end  */
-function changeSerial(id, slno, action,media_tag,table_name) {
+function changeSerial(id, slno, action,media_tag,table_name,ref_id) {
     var slectedvalue = $("#otherslno_" + slno).val();
     var basepath = $("#basepath").val()
    
@@ -266,7 +277,7 @@ function changeSerial(id, slno, action,media_tag,table_name) {
         url: basepath + 'media/videoserialchange',
         dataType: 'json',
         type: 'post',
-        data: { id: id, slno: slno, action: action, slectedvalue: slectedvalue,media_tag:media_tag },
+        data: { id: id, slno: slno, action: action, slectedvalue: slectedvalue,media_tag:media_tag,table_name:table_name,ref_id:ref_id },
         success: function (result) {
             if (result.msg_status == 1) {
                 var media_tag = result.media_tag;
@@ -274,7 +285,7 @@ function changeSerial(id, slno, action,media_tag,table_name) {
                     loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
                         defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
-                loadPartialView("#tab_one", basepath + "media/video_partial_view");   //location.reload();
+                //loadPartialView("#tab_one", basepath + "media/video_partial_view");   //location.reload();
             }
         }
     });

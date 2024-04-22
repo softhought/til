@@ -1,4 +1,4 @@
-<script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script>
+<!-- <script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script> -->
 <style>
    .select2-container--default .select2-selection--multiple .select2-selection__choice {
    background-color: #7a2386;

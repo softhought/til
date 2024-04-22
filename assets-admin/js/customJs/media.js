@@ -56,10 +56,13 @@ $(document).ready(function () {
         var id = $(this).data('id');
         var title = ($(this).data('title'));
         var filename = $(this).data('filename');
+        var randomname = $(this).data('randomname');
         $("#docID").val(id);
         $(".mode").val("EDIT");
         $("#title_desc").val(title);
-        $(".isdocumentname").val(filename);
+        $(".userFileName").val(filename);
+        $(".randomFileName").val(randomname);
+        $(".prvFilename").val(filename);
         $(".save_btn").html("Update");
     });
 
@@ -109,18 +112,39 @@ $(document).ready(function () {
             }); /*end ajax call*/
         }/** end if */
     });/**end video  submit */
-    $(document).on('change', '#file', function (event) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        $("#isdocument").val('Y');
+    // $(document).on('change', '#file', function (event) {
+    //     event.preventDefault();
+    //     event.stopImmediatePropagation();
+    //     $("#isdocument").val('Y');
 
-    });/**end */
+    // });/**end */
+    $(document).on("click", ".browse", function () {
+		var file = $(this).parent().parent().parent().find(".file");
+		file.trigger("click");
+	});
+	$(document).on("change", ".file", function () {
+		$(this).parent().find(".form-control").val($(this).val().replace(/C:\\fakepath\\/i, "")
+			);
+            $(".isChangedFile").val("Y");
+	});
+    // $(document).on("change", "#fileName", function () {
+	// 	//var newfileName = $(".fileName").files[0].name;
+    //     var newfileName = this.files[0].name;
+	// 	var prvVal = $(".prvFilename").val();
+  
+	// 	// if (newfileName != prvVal) {
+	// 	// 	$(".isChangedFile").val("Y");
+	// 	// }
+    //     $(".isChangedFile").val("Y");
+       
+	// });
+
     $(document).on("submit", "#newsandnewslaterForm", function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
         var formData = new FormData($(this)[0]);
 
-        //if(validation()){
+        if(validationNewsNewslater()){
         $("#save_btn").css("display", "none");
         //$("#loaderbtn").css("display", "block");
         $.ajax({
@@ -168,7 +192,7 @@ $(document).ready(function () {
                 // alert(msg);
             },
         }); /*end ajax call*/
-        //}/** end if */
+        }/** end if */
     });/**end */
 
     $(document).on("click", ".status", function (event) {
@@ -306,5 +330,24 @@ function defaultViewNewsAndNewslater(targetElement, partialViewUrl, media_tag) {
         }
     });
 }/** for default view load end */
+function validationNewsNewslater() {
+    var title = $('.title_desc').val();
+    var fileInput = $('.fileName')[0];
+    $(".error_title").text('');
+    $(".error_file").text('');
+
+   
+    if (title == "") {
+        $(".error_title").text('Error : Enter title');
+        $(".title_desc").focus();
+        return false;
+    } 
+    if (fileInput.files.length === 0) { 
+        $(".error_file").text('Error: Select a document');
+        return false;
+    }
+    
+    return true;
+}/**end  */
 
 

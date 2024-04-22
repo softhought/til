@@ -357,6 +357,7 @@ class Media extends CI_Controller {
             $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
             $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
             $result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
+            //pre($result['newslist']);exit;
             $page="dashboard/media/news_partial_view";
             $this->load->view($page,$result);
         }else{
@@ -387,29 +388,34 @@ class Media extends CI_Controller {
             $mode=$this->input->post('mode');
             $docID=$this->input->post('docID');
             $title_desc=$this->input->post('title_desc');
-            $isdocument = trim($this->input->post('isdocument'));
-            $isdocumentname = trim($this->input->post('isdocumentname'));
-            $dir = $_SERVER['DOCUMENT_ROOT'].'/til/assets-admin/pdf/news/';
-            $date=date('Y-m-d H:i:s');
-            if($isdocument == 'Y'){
-                //move_uploaded_file($_FILES['file']['tmp_name'],$dir.$_FILES['file']['name']) or die("Unable to Move Pdf");
-                $document_name = $_FILES['file']['name'];
 
-                if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0){
+            $userFileName=$this->input->post('userFileName');
+            $isChangedFile=$this->input->post('isChangedFile');
+            $prvFilename=$this->input->post('prvFilename');
+            $randomFileName=$this->input->post('randomFileName');
+          
+            $dir = FILE_UPLOAD_BASE_PATH . '/assets/docs/pdf/';
+            $date=date('Y-m-d H:i:s');
+            if($isChangedFile == 'Y'){
+                //move_uploaded_file($_FILES['file']['tmp_name'],$dir.$_FILES['file']['name']) or die("Unable to Move Pdf");
+                $userFileName = $_FILES['fileName']['name'];
+
+                if(isset($_FILES['fileName']) && $_FILES['fileName']["error"] == 0){
                     // Generate a random file name
-                    $randomFileName = uniqid('', true) . '_' . $_FILES["file"]["name"];
-                    move_uploaded_file($_FILES["file"]["tmp_name"], $dir . $randomFileName);
+                    //$randomFileName = uniqid('', true) . '_' . $_FILES["file"]["name"];
+                    $random_genrate_name = 'pdf_file_' . uniqid('', true).'_' . $_FILES["fileName"]["name"];
+                    move_uploaded_file($_FILES["fileName"]["tmp_name"], $dir . $random_genrate_name);
                     
                     
-                    $document_name = $randomFileName;
+                    //$document_name = $randomFileName;
                 } else {
                     echo "Error uploading file";
                 }
 
-                $file_extension = pathinfo($document_name, PATHINFO_EXTENSION);
+                $file_extension = pathinfo($userFileName, PATHINFO_EXTENSION);
             }else{
-                $document_name =$isdocumentname;
-                $file_extension = pathinfo($isdocumentname, PATHINFO_EXTENSION);
+                $random_genrate_name =$randomFileName;
+                $file_extension = pathinfo($randomFileName, PATHINFO_EXTENSION);
             }
 
             
@@ -419,8 +425,10 @@ class Media extends CI_Controller {
                             'file_type' => $file_extension,                                
                             'table_name' => 'media_master',                                          
                             'ref_id' => $mediaMasterId,                                          
-                            'title' => $title_desc,                                          
-                            'file_name' => $document_name 
+                            'uploaded_file_desc' => $title_desc,                                          
+                            'random_file_name' => $random_genrate_name,   
+                            'user_file_name'=> $userFileName,
+                            'uploaded_by_user'=>$session['userid']
                             );
                 $update_status = $this->commondatamodel->updateSingleTableData('document_details',$update_arr,$where_update);
                 if($update_status)
@@ -444,13 +452,15 @@ class Media extends CI_Controller {
             }else{
                 
                 $insert_arr = array(
-                    'file_type' => $file_extension,                                
-                    'table_name' => 'media_master',                                          
-                    'ref_id' => $mediaMasterId,                                          
-                    'title' => $title_desc,                                          
-                    'file_name' => $document_name,                                                                                    
-                    'precedence' => 1,                                          
-                    'is_disabled' => 0,                                          
+                        'file_type' => $file_extension,                                
+                        'table_name' => 'media_master',                                          
+                        'ref_id' => $mediaMasterId,                                          
+                        'uploaded_file_desc' => $title_desc,                                          
+                        'random_file_name' => $random_genrate_name,   
+                        'user_file_name'=> $userFileName,                                                                        
+                        'precedence' => 1,                                          
+                        'is_disabled' => 0, 
+                        'uploaded_by_user'=>$session['userid']                                        
                 );
                 /** for reset serial no  */
                 $where_srl = array('table_name' =>'media_master','ref_id'=>$mediaMasterId);

@@ -1,9 +1,9 @@
 
 <style>
-   .select2-container--default .select2-selection--multiple .select2-selection__choice {
+   /* .select2-container--default .select2-selection--multiple .select2-selection__choice {
    background-color: #7a2386;
    border: 1px solid #fff;
-   }
+   } */
    .error-msg {
     color: red; 
     font-size: 16px; 
@@ -39,8 +39,8 @@
             foreach($newslist as $list){ ?>
             <tr>
                <td><?php echo $i++; ?></td>
-               <td><?php echo $list->title; ?></td>
-               <td><?php echo $list->file_name; ?></td>
+               <td><?php echo $list->uploaded_file_desc; ?></td>
+               <td><?php echo $list->user_file_name; ?></td>
                <td>						
                   <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'U','<?php echo $media_tag; ?>','<?php echo($list->table_name);?>','<?php echo($list->ref_id);?>')"/ style="cursor:pointer;">
                   <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->doc_id);?>,<?php echo $list->precedence;?>,'D','<?php echo $media_tag; ?>','<?php echo($list->table_name);?>','<?php echo($list->ref_id);?>')"/ style="cursor:pointer;">
@@ -75,8 +75,9 @@
                <td style="text-align:center;">
                   <a href="javascript:void(0);" class="btn tbl-action-btn padbtn update_news_newslater" 
                   data-id="<?php echo $list->doc_id;?>"
-                  data-title="<?php echo $list->title;?>"
-                  data-filename="<?php echo $list->file_name;?>"
+                  data-title="<?php echo $list->uploaded_file_desc;?>"
+                  data-filename="<?php echo $list->user_file_name;?>"
+                  data-randomname="<?php echo $list->random_file_name;?>"
                   >
                   <i class="fas fa-edit"></i>
                   </a>

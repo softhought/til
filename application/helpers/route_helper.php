@@ -11,6 +11,14 @@ if (!function_exists('getAllMenuUrl')) {
     }
 }
 
+if (!function_exists('getAllInvestorMenu')) {
+    function getAllInvestorMenu($table)
+    {
+        $db =& DB();
+        $result = $db->select('*')->where('is_disabled', '0')->get($table)->result_array();
+        return $result;
+    }
+}
 
 function buildNestedMenu($menuItems, $parentId, $depth = 0)
 {

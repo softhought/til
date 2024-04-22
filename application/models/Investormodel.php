@@ -103,7 +103,7 @@ public function insertIntoUploadFile($data,$where_data,$dir_path)
    $srl_no=1;
        for($i=0;$i<sizeof($data['docFile']['fileName']['name']);$i++)
     {
-          $_FILES['images[]']['name']= $_FILES['fileName']['name'][$i];
+        $_FILES['images[]']['name']= $_FILES['fileName']['name'][$i];
         $_FILES['images[]']['type']= $_FILES['fileName']['type'][$i];
         $_FILES['images[]']['tmp_name']= $_FILES['fileName']['tmp_name'][$i];
         $_FILES['images[]']['error']= $_FILES['fileName']['error'][$i];

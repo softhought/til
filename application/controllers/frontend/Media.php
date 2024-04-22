@@ -28,7 +28,9 @@ class Media extends CI_Controller
     public function news()
     {
         $page = "web_view/media/news.php";
-        $result = [];
+        $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "NEWS"]);
+        $result["news"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        
         webbody_helper($result, $page);
     }
 

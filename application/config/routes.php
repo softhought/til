@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once APPPATH . 'helpers/route_helper.php';
 $menuUrls = getAllMenuUrl("product_master");
+$investorMenu = getAllInvestorMenu("investor_relations_details");
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -114,6 +115,13 @@ $route['customer-support/maintenance-contract'] = "frontend/customersupport/main
 $route['customer-support/parts-warehouse'] = "frontend/customersupport/parts_warehouse";
 $route['customer-support/training'] = "frontend/customersupport/training";
 $route['contact-us/locations'] = "frontend/contactus/locations";
+
+/* -------------- Investor Relations ---------------------- */
+$route["investor-relations"] = "frontend/investorrelations";
+
+foreach ($investorMenu as $routeKey => $routeValue) {
+    $route[$routeValue["page_url"]] = "frontend/investorrelations/viewlayout/" . $routeValue["relations_dtl_id"];
+}
 
 /* -------------- Media ---------------------- */
 $route["media"] = "frontend/media";

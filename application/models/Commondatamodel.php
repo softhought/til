@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
 
 
 
@@ -6,317 +7,214 @@
 
 
 
-class Commondatamodel extends CI_Model{
-
-	
-
-	public function insertSingleTableData($table,$data){
-
-            $lastinsert_id = 0;
-
-        try {
-
-            $this->db->trans_begin();
+class Commondatamodel extends CI_Model
+{
 
 
 
-            $this->db->insert($table, $data);
+	public function insertSingleTableData($table, $data)
+	{
 
-            $lastinsert_id = $this->db->insert_id();
+		$lastinsert_id = 0;
 
+		try {
 
-
-            if ($this->db->trans_status() === FALSE) {
-
-                $this->db->trans_rollback();
-
-                $lastinsert_id=0;
-
-                return $lastinsert_id;
-
-            } else {
-
-                $this->db->trans_commit();
-
-              //  $this->insertLogData($table,$data,$lastinsert_id,'Insert');
-
-                return $lastinsert_id;
-
-            }
-
-        } catch (Exception $err) {
-
-            echo $err->getTraceAsString();
-
-        }
-
-    }
-
-    
-
-    public function updateSingleTableData($table,$data,$where){
+			$this->db->trans_begin();
 
 
 
-        
+			$this->db->insert($table, $data);
 
-        try {
+			$lastinsert_id = $this->db->insert_id();
 
-            $this->db->trans_begin();
 
-            //$this->db->where($where);
 
-			$this->db->update($table, $data,$where);
+			if ($this->db->trans_status() === FALSE) {
 
-			 //echo $this->db->last_query();
+				$this->db->trans_rollback();
 
-			 $this->db->last_query(); 
+				$lastinsert_id = 0;
+
+				return $lastinsert_id;
+
+			} else {
+
+				$this->db->trans_commit();
+
+				//  $this->insertLogData($table,$data,$lastinsert_id,'Insert');
+
+				return $lastinsert_id;
+
+			}
+
+		} catch (Exception $err) {
+
+			echo $err->getTraceAsString();
+
+		}
+
+	}
+
+
+
+	public function updateSingleTableData($table, $data, $where)
+	{
+
+
+
+
+
+		try {
+
+			$this->db->trans_begin();
+
+			//$this->db->where($where);
+
+			$this->db->update($table, $data, $where);
+
+			//echo $this->db->last_query();
+
+			$this->db->last_query();
 
 			$insert_id = $this->db->insert_id();
 
-			
 
-            //$affectedRow = $this->db->affected_rows();
 
-            if ($this->db->trans_status() === FALSE) {
+			//$affectedRow = $this->db->affected_rows();
 
-                $this->db->trans_rollback();
+			if ($this->db->trans_status() === FALSE) {
 
-                
+				$this->db->trans_rollback();
 
-                return FALSE;
 
-            } else {
 
-                $this->db->trans_commit();
+				return FALSE;
 
-                
+			} else {
 
-                return TRUE;
+				$this->db->trans_commit();
 
-            }
 
-        } catch (Exception $exc) {
 
-             return FALSE;
+				return TRUE;
 
-        }
+			}
 
-    }
+		} catch (Exception $exc) {
 
-    
+			return FALSE;
 
-    public function deleteTableData($table,$where)
+		}
 
-    {
+	}
 
-        $this->db->delete($table, $where); 
 
-		
 
-    }
+	public function deleteTableData($table, $where)
+	{
+
+		$this->db->delete($table, $where);
+
+
+
+	}
 
 
 
 	/* 
 
-		@insertMultiTableData('name of table array','insert value as array')
+		   @insertMultiTableData('name of table array','insert value as array')
 
-		@date 14.11.2017
+		   @date 14.11.2017
 
-		@By Mithilesh
+		   @By Mithilesh
 
-	*/
+	   */
 
-	
 
-	public function insertMultiTableData($tblnameArry,$insertArray){
 
-		try{
+	public function insertMultiTableData($tblnameArry, $insertArray)
+	{
 
-            $this->db->trans_begin();
+		try {
 
-			
+			$this->db->trans_begin();
 
-			for($i=0;$i<sizeof($insertArray);$i++)
 
-			{
 
-				 $this->db->insert($tblnameArry[$i], $insertArray[$i]);
+			for ($i = 0; $i < sizeof($insertArray); $i++) {
 
-				 
+				$this->db->insert($tblnameArry[$i], $insertArray[$i]);
+
+
 
 			}
 
-			if($this->db->trans_status() === FALSE) {
+			if ($this->db->trans_status() === FALSE) {
 
-                $this->db->trans_rollback();
+				$this->db->trans_rollback();
 
-                return false;
+				return false;
 
-            } else {
+			} else {
 
-                $this->db->trans_commit();
+				$this->db->trans_commit();
 
-                return true;
+				return true;
 
-            }
+			}
 
-        }
+		} catch (Exception $err) {
 
-		catch (Exception $err) {
-
-            echo $err->getTraceAsString();
-
-        }
-
-	}
-
-	
-
-	
-
-	public function checkExistanceData($table,$where)
-
-	{
-
-		
-
-		$this->db->select('*')
-
-				->from($table)
-
-				->where($where);
-
-		$query = $this->db->get();
-
-	   #echo $this->db->last_query();
-
-		if($query->num_rows()>0){
-
-			return 1;
+			echo $err->getTraceAsString();
 
 		}
 
-		else
+	}
 
-		{
+
+
+
+
+	public function checkExistanceData($table, $where)
+	{
+
+
+
+		$this->db->select('*')
+
+			->from($table)
+
+			->where($where);
+
+		$query = $this->db->get();
+
+		#echo $this->db->last_query();
+
+		if ($query->num_rows() > 0) {
+
+			return 1;
+
+		} else {
 
 			return 0;
 
 		}
 
-		
+
 
 	}
 
-	
+
 
 	public function getAllDropdownData($table)
-
 	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table);
-
-		$query = $this->db->get();
-
- 		// echo $this->db->last_query();
-
-
-
-		if($query->num_rows()> 0)
-
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
-
-				$data[] = $rows;
-
-            }
-
-            return $data;
-
-             
-
-        }
-
-		else
-
-		{
-
-             return $data;
-
-         }
-
-	}
-
-	
-
-	public function getSingleRowByWhereCls($table,$where)
-
-	{
-
-		$data = array();
-
-		$this->db->select("*")
-
-				->from($table)
-
-				->where($where)
-
-				->limit(1);
-
-		$query = $this->db->get();
-
-		
-
-		#echo "<br>".$this->db->last_query();
-
-		
-
-		if($query->num_rows()> 0)
-
-		{
-
-           $row = $query->row();
-
-           return $data = $row;
-
-             
-
-        }
-
-		else
-
-		{
-
-            return $data;
-
-        }
-
-	}
-
-	
-
-	
-
-	public function getAllRecordWhere($table,$where)
-
-	{
-
-		$data = array();
-
-		$this->db->select("*")
-
-				->from($table)
-
-				->where($where);
+			->from($table);
 
 		$query = $this->db->get();
 
@@ -324,31 +222,62 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
+		}
 
-         }
+	}
+
+
+
+	public function getSingleRowByWhereCls($table, $where)
+	{
+
+		$data = array();
+
+		$this->db->select("*")
+
+			->from($table)
+
+			->where($where)
+
+			->limit(1);
+
+		$query = $this->db->get();
+
+
+
+		#echo "<br>".$this->db->last_query();
+
+
+
+		if ($query->num_rows() > 0) {
+
+			$row = $query->row();
+
+			return $data = $row;
+
+
+
+		} else {
+
+			return $data;
+
+		}
 
 	}
 
@@ -356,19 +285,59 @@ class Commondatamodel extends CI_Model{
 
 
 
-		
-
-	public function getAllRecordWhereNotIn($table,$ignorarray=[])
-
-	{  
+	public function getAllRecordWhere($table, $where)
+	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table)
+			->from($table)
 
-				->where_not_in('id',$ignorarray);
+			->where($where);
+
+		$query = $this->db->get();
+
+		// echo $this->db->last_query();
+
+
+
+		if ($query->num_rows() > 0) {
+
+			foreach ($query->result() as $rows) {
+
+				$data[] = $rows;
+
+			}
+
+			return $data;
+
+
+
+		} else {
+
+			return $data;
+
+		}
+
+	}
+
+
+
+
+
+
+
+	public function getAllRecordWhereNotIn($table, $ignorarray = [])
+	{
+
+		$data = array();
+
+		$this->db->select("*")
+
+			->from($table)
+
+			->where_not_in('id', $ignorarray);
 
 		$query = $this->db->get();
 
@@ -376,49 +345,40 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 	}
 
 
 
-	public function getAllRecordWhereOrderBy($table,$where,$orderby)
-
+	public function getAllRecordWhereOrderBy($table, $where, $orderby)
 	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table)
+			->from($table)
 
-				->where($where)
+			->where($where)
 
-				->order_by($orderby);
+			->order_by($orderby);
 
 		$query = $this->db->get();
 
@@ -426,49 +386,78 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 	}
 
-
-
-	public function getAllRecordOrderByLike($table,$likecolumn,$likeStr,$orderby,$ordertag)
-
+	public function getAllRecordWhereOrderByCol($table, $where, $orderby, $orderTag)
 	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table)
+			->from($table)
 
-				->like($likecolumn,$likeStr,'after')
+			->where($where)
 
-				->order_by($orderby,$ordertag);
+			->order_by($orderby, $orderTag);
+
+		$query = $this->db->get();
+
+		#echo $this->db->last_query();
+
+
+
+		if ($query->num_rows() > 0) {
+
+			foreach ($query->result() as $rows) {
+
+				$data[] = $rows;
+
+			}
+
+			return $data;
+
+
+
+		} else {
+
+			return $data;
+
+		}
+
+	}
+
+
+	public function getAllRecordOrderByLike($table, $likecolumn, $likeStr, $orderby, $ordertag)
+	{
+
+		$data = array();
+
+		$this->db->select("*")
+
+			->from($table)
+
+			->like($likecolumn, $likeStr, 'after')
+
+			->order_by($orderby, $ordertag);
 
 		$query = $this->db->get();
 
@@ -476,31 +465,23 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 	}
 
@@ -508,21 +489,20 @@ class Commondatamodel extends CI_Model{
 
 
 
-	public function getAllRecordOrderByLikeWhere($table,$where,$likecolumn,$likeStr,$orderby,$ordertag)
-
+	public function getAllRecordOrderByLikeWhere($table, $where, $likecolumn, $likeStr, $orderby, $ordertag)
 	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table)
+			->from($table)
 
-				->where($where)
+			->where($where)
 
-				->like($likecolumn,$likeStr,'after')
+			->like($likecolumn, $likeStr, 'after')
 
-				->order_by($orderby,$ordertag);
+			->order_by($orderby, $ordertag);
 
 		$query = $this->db->get();
 
@@ -530,47 +510,38 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 	}
 
 
 
-	public function getAllRecordOrderBy($table,$orderby,$orderTag)
-
+	public function getAllRecordOrderBy($table, $orderby, $orderTag)
 	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table)
+			->from($table)
 
-				->order_by($orderby,$orderTag);
+			->order_by($orderby, $orderTag);
 
 		$query = $this->db->get();
 
@@ -578,31 +549,23 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 	}
 
@@ -610,53 +573,50 @@ class Commondatamodel extends CI_Model{
 
 	/*
 
-	@updateData_WithUserActivity('update table name','update table data','update table where condition','user activity table name','user activity table data');
+	   @updateData_WithUserActivity('update table name','update table data','update table where condition','user activity table name','user activity table data');
 
-	*/
+	   */
 
-	public function updateData_WithUserActivity($upd_tbl_name,$upd_data,$upd_where,$user_actvty_tbl,$user_actvy_data)
-
+	public function updateData_WithUserActivity($upd_tbl_name, $upd_data, $upd_where, $user_actvty_tbl, $user_actvy_data)
 	{
 
-		 try {
+		try {
 
-            $this->db->trans_begin();
+			$this->db->trans_begin();
 
 			$this->db->where($upd_where);
 
-            $this->db->update($upd_tbl_name,$upd_data);
+			$this->db->update($upd_tbl_name, $upd_data);
 
-         //   echo $this->db->last_query();
+			//   echo $this->db->last_query();
 
 			$this->db->insert($user_actvty_tbl, $user_actvy_data);
 
-			
 
-			
 
-				
 
-            if($this->db->trans_status() === FALSE) {
 
-                $this->db->trans_rollback();
 
-                return false;
 
-            } else {
+			if ($this->db->trans_status() === FALSE) {
 
-                $this->db->trans_commit();
+				$this->db->trans_rollback();
 
-                return true;
+				return false;
 
-            }
+			} else {
 
-        }
+				$this->db->trans_commit();
 
-		catch (Exception $err) {
+				return true;
 
-            echo $err->getTraceAsString();
+			}
 
-        }
+		} catch (Exception $err) {
+
+			echo $err->getTraceAsString();
+
+		}
 
 	}
 
@@ -666,18 +626,17 @@ class Commondatamodel extends CI_Model{
 
 	/* fetching Data For All type of document from any module
 
-	*  @getDocumentDetailData('where upload_from_module_id,upload_from_module');
+	   *  @getDocumentDetailData('where upload_from_module_id,upload_from_module');
 
-	*  On 23.01.2018
+	   *  On 23.01.2018
 
-	*  By Mithilesh
+	   *  By Mithilesh
 
-	*/
+	   */
 
 
 
 	public function getDocumentDetailData($where)
-
 	{
 
 
@@ -686,11 +645,11 @@ class Commondatamodel extends CI_Model{
 
 		$this->db->select("*")
 
-				->from('document_upload_all')
+			->from('document_upload_all')
 
-				->join('document_type','document_type.id = document_upload_all.document_type_id','INNER')
+			->join('document_type', 'document_type.id = document_upload_all.document_type_id', 'INNER')
 
-				->where($where);
+			->where($where);
 
 		$query = $this->db->get();
 
@@ -698,31 +657,23 @@ class Commondatamodel extends CI_Model{
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 
 
@@ -733,14 +684,13 @@ class Commondatamodel extends CI_Model{
 
 
 	public function rowcount($table)
-
 	{
 
-		
+
 
 		$this->db->select('*')
 
-				->from($table);
+			->from($table);
 
 
 
@@ -748,508 +698,472 @@ class Commondatamodel extends CI_Model{
 
 		$rowcount = $query->num_rows();
 
-	
 
-		if($query->num_rows()>0){
+
+		if ($query->num_rows() > 0) {
 
 			return $rowcount;
 
-		}
-
-		else
-
-		{
+		} else {
 
 			return 0;
 
 		}
 
-		
+
 
 	}
 
-        /**
+	/**
 
-         * @author Abhik
+	 * @author Abhik
 
-         * @param type $table
+	 * @param type $table
 
-         * @param type $column
+	 * @param type $column
 
-         * @param type $dataType
+	 * @param type $dataType
 
-         * @return boolean
+	 * @return boolean
 
-         */
+	 */
 
-        
 
-        public function duplicateValueCheck($table="",$where="")
 
-        {
+	public function duplicateValueCheck($table = "", $where = "")
+	{
 
-            
 
-			$query = $this->db->select("*")->from($table)->where($where)->get();
 
-			
+		$query = $this->db->select("*")->from($table)->where($where)->get();
 
-            if($query->num_rows()>0){
+
+
+		if ($query->num_rows() > 0) {
 
 			return TRUE;
 
-		}
-
-		else
-
-		{
+		} else {
 
 			return FALSE;
 
 		}
 
-            
-
-            
-
-        }
 
 
 
 
-
-        public function insertSingleTableDataRerurnInsertId($table,$data){
-
-		
-
-			$this->db->insert($table, $data);
-
-		    $insert_ID = $this->db->insert_id();
-
-            return $insert_ID;
-
-		}
-
-		
-
-		//added by sandipan on 14.02.2019
-
-		public function createVoucherNumber($school_id,$acd_session_id,$prefix,$accnt_year_id)
-
-		{
-
-			$where=[
-
-				"id"=>$accnt_year_id
-
-			];
-
-			$year=$this->getSingleRowByWhereCls('accounting_year_master',$where);
-
-			$start_yr=substr($year->start_yr,2);
-
-			$end_yr=substr($year->end_yr,2);
-
-			$serial=$this->getSerialnumber($school_id,$acd_session_id);
-
-			
-
-			$voucher_no=$prefix."/".$serial."/".$start_yr."-".$end_yr;
-
-			// echo $voucher_no;exit;
-
-			return $voucher_no;
-
-		}
+	}
 
 
 
 
 
-		public function getSerialnumber($school_id,$acd_session_id)
+	public function insertSingleTableDataRerurnInsertId($table, $data)
+	{
 
-		{
 
-		   
 
-			$lastnumber = (int)(0);
+		$this->db->insert($table, $data);
 
-			$serialno="";
+		$insert_ID = $this->db->insert_id();
 
-			$sql="SELECT *
+		return $insert_ID;
+
+	}
+
+
+
+	//added by sandipan on 14.02.2019
+
+	public function createVoucherNumber($school_id, $acd_session_id, $prefix, $accnt_year_id)
+	{
+
+		$where = [
+
+			"id" => $accnt_year_id
+
+		];
+
+		$year = $this->getSingleRowByWhereCls('accounting_year_master', $where);
+
+		$start_yr = substr($year->start_yr, 2);
+
+		$end_yr = substr($year->end_yr, 2);
+
+		$serial = $this->getSerialnumber($school_id, $acd_session_id);
+
+
+
+		$voucher_no = $prefix . "/" . $serial . "/" . $start_yr . "-" . $end_yr;
+
+		// echo $voucher_no;exit;
+
+		return $voucher_no;
+
+	}
+
+
+
+
+
+	public function getSerialnumber($school_id, $acd_session_id)
+	{
+
+
+
+		$lastnumber = (int) (0);
+
+		$serialno = "";
+
+		$sql = "SELECT *
 
 				FROM voucher_srl_master
 
-				WHERE school_id='".$school_id."'
+				WHERE school_id='" . $school_id . "'
 
 				AND acd_session_id='$acd_session_id'
 
 				LOCK IN SHARE MODE";
 
-			$query = $this->db->query($sql);
+		$query = $this->db->query($sql);
 
-			if ($query->num_rows() > 0) {
+		if ($query->num_rows() > 0) {
 
-				  $row = $query->row(); 
+			$row = $query->row();
 
-				  $lastnumber = $row->srl_no;
-
-			}
-
-			$digit = (int)(log($lastnumber,10)+1) ; 
-
-		  
-
-		   
-
-			if($digit==5){
-
-				$serialno ="0".$lastnumber;
-
-			}
-
-			elseif($digit==4){
-
-				  $serialno = "00".$lastnumber;
-
-			}
-
-			elseif($digit==3){
-
-				$serialno = "000".$lastnumber;
-
-			}
-
-			elseif($digit==2){
-
-				$serialno = "0000".$lastnumber;
-
-			}
-
-			elseif($digit==1){
-
-				$serialno = "00000".$lastnumber;
-
-			}
-
-			$lastnumber = $lastnumber + 1;
-
-			
-
-			//update
-
-			$upddata = [
-
-				'srl_no' => $lastnumber,
-
-			];
-
-			$where = [
-
-				'school_id' => $school_id,
-
-				'acd_session_id'=>$acd_session_id
-
-				];
-
-			$this->db->where($where); 
-
-			$this->db->update('voucher_srl_master', $upddata);
-
-			return $serialno;
+			$lastnumber = $row->srl_no;
 
 		}
 
+		$digit = (int) (log($lastnumber, 10) + 1);
 
 
 
 
 
+		if ($digit == 5) {
 
+			$serialno = "0" . $lastnumber;
 
+		} elseif ($digit == 4) {
 
-		public function getOnlyBankAndCashAccountList($school_id)
+			$serialno = "00" . $lastnumber;
 
-		{
+		} elseif ($digit == 3) {
 
-			$where=[
+			$serialno = "000" . $lastnumber;
 
-				"school_id"=>$school_id,
+		} elseif ($digit == 2) {
 
-				"is_active"=>"Y"            
+			$serialno = "0000" . $lastnumber;
 
-			];
+		} elseif ($digit == 1) {
 
-			$where_in=array(33,34);//id-33(cash),id-34(bank)
-
-			$data = array();
-
-			$this->db->select("*")
-
-					->from('account_master')
-
-					->where($where)
-
-					->where_in('group_id',$where_in)
-
-					->order_by('account_name');
-
-					
-
-			$query = $this->db->get();
-
-			// echo $this->db->last_query();exit;
-
-	
-
-			if($query->num_rows()> 0)
-
-			{
-
-				foreach ($query->result() as $rows)
-
-				{
-
-					$data[] = $rows;
-
-				}
-
-				// pre($data);
-
-				return $data;
-
-				 
-
-			}
-
-			else
-
-			{
-
-				 return $data;
-
-			 }
+			$serialno = "00000" . $lastnumber;
 
 		}
 
+		$lastnumber = $lastnumber + 1;
 
 
-		public function getListOfAccountWhereAccountsAreNotInBankAndCashGroup($school_id)
 
-		{
+		//update
 
-			$where=[
+		$upddata = [
 
-				"account_master.school_id"=>$school_id,
+			'srl_no' => $lastnumber,
 
-				"account_master.is_active"=>"Y"            
+		];
 
-			];
+		$where = [
 
-			$where_in=array('Cash','Bank');
+			'school_id' => $school_id,
 
-			$data = array();
+			'acd_session_id' => $acd_session_id
 
-			$this->db->select("*")
+		];
 
-					->from('account_master')
+		$this->db->where($where);
 
-					->join('group_master','account_master.group_id=group_master.id','INNER')
+		$this->db->update('voucher_srl_master', $upddata);
 
-					->where($where)
+		return $serialno;
 
-					->where_not_in('group_master.group_description',$where_in)
+	}
 
-					->order_by('account_master.account_name');
 
-					
 
-			$query = $this->db->get();	
 
-			if($query->num_rows()> 0)
 
-			{
 
-				foreach ($query->result() as $rows)
 
-				{
 
-					$data[] = $rows;
 
-				}
+	public function getOnlyBankAndCashAccountList($school_id)
+	{
 
-				// pre($data);
+		$where = [
 
-				return $data;
+			"school_id" => $school_id,
 
-				 
+			"is_active" => "Y"
+
+		];
+
+		$where_in = array(33, 34);//id-33(cash),id-34(bank)
+
+		$data = array();
+
+		$this->db->select("*")
+
+			->from('account_master')
+
+			->where($where)
+
+			->where_in('group_id', $where_in)
+
+			->order_by('account_name');
+
+
+
+		$query = $this->db->get();
+
+		// echo $this->db->last_query();exit;
+
+
+
+		if ($query->num_rows() > 0) {
+
+			foreach ($query->result() as $rows) {
+
+				$data[] = $rows;
 
 			}
 
-			else
+			// pre($data);
 
-			{
+			return $data;
 
-				 return $data;
 
-			 }
+
+		} else {
+
+			return $data;
 
 		}
 
+	}
+
+
+
+	public function getListOfAccountWhereAccountsAreNotInBankAndCashGroup($school_id)
+	{
+
+		$where = [
+
+			"account_master.school_id" => $school_id,
+
+			"account_master.is_active" => "Y"
+
+		];
+
+		$where_in = array('Cash', 'Bank');
+
+		$data = array();
+
+		$this->db->select("*")
+
+			->from('account_master')
+
+			->join('group_master', 'account_master.group_id=group_master.id', 'INNER')
+
+			->where($where)
+
+			->where_not_in('group_master.group_description', $where_in)
+
+			->order_by('account_master.account_name');
+
+
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+
+			foreach ($query->result() as $rows) {
+
+				$data[] = $rows;
+
+			}
+
+			// pre($data);
+
+			return $data;
+
+
+
+		} else {
+
+			return $data;
+
+		}
+
+	}
 
 
 
 
-	public function getCompanyNameById($id) {        
 
-			$query = $this->db->select('school_name')
+	public function getCompanyNameById($id)
+	{
 
-						  ->from('school_master')
+		$query = $this->db->select('school_name')
 
-						  ->where('id',$id)
+			->from('school_master')
 
-						  ->get();
+			->where('id', $id)
+
+			->get();
+
+		$row = $query->row();
+
+		return $row->school_name;
+
+		if ($query->num_rows() > 0) {
 
 			$row = $query->row();
 
 			return $row->school_name;
 
-			if ($query->num_rows() > 0) {
+		} else {
 
-				$row = $query->row();
-
-				return $row->school_name;
-
-			}else{
-
-				return '';
-
-			}
+			return '';
 
 		}
 
-	
+	}
 
-	public function getCompanyAddressById($id = '') {
+
+
+	public function getCompanyAddressById($id = '')
+	{
 
 		$query = $this->db->select('address')
 
-						  ->from('school_master')
+			->from('school_master')
 
-						  ->where('id',$id)
+			->where('id', $id)
 
-						  ->get();
+			->get();
 
-			if ($query->num_rows() > 0) {
+		if ($query->num_rows() > 0) {
 
-				$row = $query->row();
+			$row = $query->row();
 
-				return $row->address;
+			return $row->address;
 
-			}else{
+		} else {
 
-				return '';
-
-			}
+			return '';
 
 		}
 
+	}
 
 
-	public function getNameById($where,$select,$table) {
+
+	public function getNameById($where, $select, $table)
+	{
 
 		$query = $this->db->select($select)
 
-						  ->from($table)
+			->from($table)
 
-						  ->where($where)
+			->where($where)
 
-						  ->get();
+			->get();
 
-			//q();
+		//q();
 
-			if ($query->num_rows() > 0) {
+		if ($query->num_rows() > 0) {
 
-				$row = $query->row();
+			$row = $query->row();
 
-				return $row->$select;
+			return $row->$select;
 
-			}else{
+		} else {
 
-				return '';
-
-			}
+			return '';
 
 		}
 
+	}
 
 
 
 
-public function ActiveInactive($table,$data,$where)
 
-		{
+	public function ActiveInactive($table, $data, $where)
+	{
 
-			
 
-			try {
 
-				$this->db->trans_begin();
+		try {
 
-				//$this->db->where($where);
+			$this->db->trans_begin();
 
-				$this->db->update($table, $data,$where);
+			//$this->db->where($where);
 
-				$this->db->last_query();
+			$this->db->update($table, $data, $where);
 
-				
+			$this->db->last_query();
 
-				//$affectedRow = $this->db->affected_rows();
 
-				if ($this->db->trans_status() === FALSE) {
 
-					$this->db->trans_rollback();
+			//$affectedRow = $this->db->affected_rows();
 
-					
+			if ($this->db->trans_status() === FALSE) {
 
-					return FALSE;
+				$this->db->trans_rollback();
 
-				} else {
 
-					$this->db->trans_commit();
 
-					
+				return FALSE;
 
-					return TRUE;
+			} else {
 
-				}
+				$this->db->trans_commit();
 
-			} catch (Exception $exc) {
 
-				 return FALSE;
+
+				return TRUE;
 
 			}
 
+		} catch (Exception $exc) {
+
+			return FALSE;
+
 		}
+
+	}
 
 
 
 	public function getTableColumn($table)
-
 	{
 
-		$data =$fields = $this->db->list_fields($table);
+		$data = $fields = $this->db->list_fields($table);
 
-        return $data;
+		return $data;
 
-         
+
 
 	}
 
 
 
 	public function getYearlistUptoSessionYear($year_id)
-
 	{
 
 		$data = array();
@@ -1258,11 +1172,11 @@ public function ActiveInactive($table,$data,$where)
 
 		$this->db->select("*")
 
-				->from('financialyear')
+			->from('financialyear')
 
-				->where('year_id <=', $year_id)
+			->where('year_id <=', $year_id)
 
-				->order_by('year_id','desc');
+			->order_by('year_id', 'desc');
 
 		$query = $this->db->get();
 
@@ -1270,31 +1184,23 @@ public function ActiveInactive($table,$data,$where)
 
 
 
-		if($query->num_rows()> 0)
+		if ($query->num_rows() > 0) {
 
-		{
-
-            foreach ($query->result() as $rows)
-
-			{
+			foreach ($query->result() as $rows) {
 
 				$data[] = $rows;
 
-            }
+			}
 
-            return $data;
+			return $data;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-             return $data;
-
-         }
+		}
 
 	}
 
@@ -1302,148 +1208,151 @@ public function ActiveInactive($table,$data,$where)
 
 
 
-   public function insertLogData($table_name,$data_array,$row_id,$action){
+	public function insertLogData($table_name, $data_array, $row_id, $action)
+	{
 
-            $lastinsert_id = 0;
+		$lastinsert_id = 0;
 
-            $session = $this->session->userdata('user_detail');
+		$session = $this->session->userdata('user_detail');
 
-               $activity_data = array(
+		$activity_data = array(
 
-                        "log_date" =>date('Y-m-d H:i:s') ,
+			"log_date" => date('Y-m-d H:i:s'),
 
-                        "row_id" => $row_id,
+			"row_id" => $row_id,
 
-                        "table_name" =>$table_name,
+			"table_name" => $table_name,
 
-                        "action" => $action,
+			"action" => $action,
 
-                        "data_array" => json_encode($data_array),
+			"data_array" => json_encode($data_array),
 
-                        "user_id" => $session['userid'],
+			"user_id" => $session['userid'],
 
-                        "user_browser" => getUserBrowserName(),
+			"user_browser" => getUserBrowserName(),
 
-                        "user_platform" =>  getUserPlatform(),
+			"user_platform" => getUserPlatform(),
 
-                        "ip_address"=>getUserIPAddress()
+			"ip_address" => getUserIPAddress()
 
-                    );
-
-
-
-
-
-        try {
-
-            $this->db->trans_begin();
+		);
 
 
 
-            $this->db->insert('log_table', $activity_data);
-
-            $lastinsert_id = $this->db->insert_id();
 
 
+		try {
 
-            if ($this->db->trans_status() === FALSE) {
-
-                $this->db->trans_rollback();
-
-                $lastinsert_id=0;
-
-                return $lastinsert_id;
-
-            } else {
-
-                $this->db->trans_commit();
-
-                return $lastinsert_id;
-
-            }
-
-        } catch (Exception $err) {
-
-            echo $err->getTraceAsString();
-
-        }
-
-    }
+			$this->db->trans_begin();
 
 
 
-	
+			$this->db->insert('log_table', $activity_data);
 
-		public function no_to_words($no) {
+			$lastinsert_id = $this->db->insert_id();
 
-		$words = array('0' => '', 
+
+
+			if ($this->db->trans_status() === FALSE) {
+
+				$this->db->trans_rollback();
+
+				$lastinsert_id = 0;
+
+				return $lastinsert_id;
+
+			} else {
+
+				$this->db->trans_commit();
+
+				return $lastinsert_id;
+
+			}
+
+		} catch (Exception $err) {
+
+			echo $err->getTraceAsString();
+
+		}
+
+	}
+
+
+
+
+
+	public function no_to_words($no)
+	{
+
+		$words = array(
+			'0' => '',
 
 			'1' => 'One',
 
-			'2' => 'Two', 
+			'2' => 'Two',
 
-			'3' => 'Three', 
+			'3' => 'Three',
 
-			'4' => 'Four', 
+			'4' => 'Four',
 
-			'5' => 'Five', 
+			'5' => 'Five',
 
-			'6' => 'Six', 
+			'6' => 'Six',
 
-			'7' => 'Seven', 
+			'7' => 'Seven',
 
-			'8' => 'Eight', 
+			'8' => 'Eight',
 
-			'9' => 'Nine', 
+			'9' => 'Nine',
 
-			'10' => 'Ten', 
+			'10' => 'Ten',
 
 			'11' => 'Eleven',
 
-			'12' => 'Twelve', 
+			'12' => 'Twelve',
 
-			'13' => 'Thirteen', 
+			'13' => 'Thirteen',
 
-			'14' => 'Fourteen', 
+			'14' => 'Fourteen',
 
-			'15' => 'Fifteen', 
+			'15' => 'Fifteen',
 
-			'16' => 'Sixteen', 
+			'16' => 'Sixteen',
 
-			'17' => 'Seventeen', 
+			'17' => 'Seventeen',
 
-			'18' => 'Eighteen', 
+			'18' => 'Eighteen',
 
-			'19' => 'Nineteen', 
+			'19' => 'Nineteen',
 
-			'20' => 'Twenty', 
+			'20' => 'Twenty',
 
-			'30' => 'Thirty', 
+			'30' => 'Thirty',
 
-			'40' => 'Forty', 
+			'40' => 'Forty',
 
-			'50' => 'Fifty', 
+			'50' => 'Fifty',
 
 			'60' => 'Sixty',
 
-			'70' => 'Seventy', 
+			'70' => 'Seventy',
 
-			'80' => 'Eighty', 
+			'80' => 'Eighty',
 
 			'90' => 'Ninety',
 
-			'100' => 'Hundred', 
+			'100' => 'Hundred',
 
-			'1000' => 'Thousand', 
+			'1000' => 'Thousand',
 
-			'100000' => 'Lakh', 
+			'100000' => 'Lakh',
 
-			'10000000' => 'Crore');
+			'10000000' => 'Crore'
+		);
 
 		if ($no == 0)
 
 			return ' ';
-
 		else {
 
 			$novalue = '';
@@ -1478,15 +1387,14 @@ public function ActiveInactive($table,$data,$where)
 
 			if (array_key_exists("$highno", $words))
 
-				return $words["$highno"] . " " . $novalue . " " .$this->no_to_words($remainno);
-
+				return $words["$highno"] . " " . $novalue . " " . $this->no_to_words($remainno);
 			else {
 
 				$unit = $highno % 10;
 
 				$ten = (int) ($highno / 10) * 10;
 
-				return $words["$ten"] . " " . $words["$unit"] . " " . $novalue . " " .$this->no_to_words($remainno);
+				return $words["$ten"] . " " . $words["$unit"] . " " . $novalue . " " . $this->no_to_words($remainno);
 
 			}
 
@@ -1496,73 +1404,67 @@ public function ActiveInactive($table,$data,$where)
 
 
 
-	public function getSingleRowByWhereClsOrderBy($table,$where,$orderBy)
-
+	public function getSingleRowByWhereClsOrderBy($table, $where, $orderBy)
 	{
 
 		$data = array();
 
 		$this->db->select("*")
 
-				->from($table)
+			->from($table)
 
-				->where($where)
+			->where($where)
 
-				->order_by($orderBy)
+			->order_by($orderBy)
 
-				->limit(1);
+			->limit(1);
 
 		$query = $this->db->get();
 
-		
+
 
 		#echo "<br>".$this->db->last_query();
 
-		
 
-		if($query->num_rows()> 0)
 
-		{
+		if ($query->num_rows() > 0) {
 
-           $row = $query->row();
+			$row = $query->row();
 
-           return $data = $row;
+			return $data = $row;
 
-             
 
-        }
 
-		else
+		} else {
 
-		{
+			return $data;
 
-            return $data;
-
-        }
+		}
 
 	}
 
-	
 
 
 
-	public function fileUpload($data,$filename,$dir,$short_name = ""){
 
-		
+	public function fileUpload($data, $filename, $dir, $short_name = "")
+	{
+
+
 
 		$imagename = $short_name . uniqid() . time();
 
-	//    pre($_FILES);exit;
+		//    pre($_FILES);exit;
 
 		$config = [
 
-			'upload_path' => $dir,	
+			'upload_path' => $dir,
 
-			'allowed_types' => 'jpg|png|jpeg|gif',	
+			'allowed_types' => 'jpg|png|jpeg|gif',
 
 			'max_size' => '5120', // Can be set to particular file size , here it is 2 MB(2048 Kb)	
 
-			'max_filename' => '255',	
+			'max_filename' => '255',
 
 			// 'encrypt_name' => TRUE,	
 
@@ -1610,9 +1512,9 @@ public function ActiveInactive($table,$data,$where)
 
 		if ($this->upload->do_upload('images')) {
 
-			$file_detail = $this->upload->data();	
+			$file_detail = $this->upload->data();
 
-			$file_name = $file_detail['file_name'];	
+			$file_name = $file_detail['file_name'];
 
 			//pre($file_name);exit;
 
@@ -1622,115 +1524,106 @@ public function ActiveInactive($table,$data,$where)
 
 
 
-}
+	}
 
 
 
-public function getAllRecordGroupBy($table,$col,$totable,$join,$groupBy,$orderby,$where=[])
+	public function getAllRecordGroupBy($table, $col, $totable, $join, $groupBy, $orderby, $where = [])
+	{
 
-{
 
-		
 
-	$data = array();
+		$data = array();
 
-	$this->db->select($col)
+		$this->db->select($col)
 
-			->from($table)				
+			->from($table)
 
-			->join($totable,$join,"INNER")				
+			->join($totable, $join, "INNER")
 
-			->where($where)				
+			->where($where)
 
 			->group_by($groupBy)
 
 			->order_by($orderby);
 
-			
 
-	$query = $this->db->get();	
 
-	//q();
+		$query = $this->db->get();
 
-	if($query->num_rows()> 0)
+		//q();
 
-	{
+		if ($query->num_rows() > 0) {
 
-		foreach ($query->result() as $rows)
+			foreach ($query->result() as $rows) {
 
-		{
+				$data[] = $rows;
 
-			$data[] = $rows;
+			}
+
+			// pre($data);
+
+			return $data;
+
+
+
+		} else {
+
+			return $data;
 
 		}
 
-		// pre($data);
-
-		return $data;
-
-		 
-
 	}
 
-	else
-
-	{
-
-		 return $data;
-
-	 }
-
-} 
 
 
+	public function checkExistanceDataWhereNotIn(
 
-public function checkExistanceDataWhereNotIn(
+		$table,
 
-	$table,
+		$where,
 
-	$where,
+		$where_notequal
 
-	$where_notequal
+	) {
 
-) {
+		$this->db
 
-	$this->db
-
-		->select('*')
+			->select('*')
 
 
 
-		->from($table)
+			->from($table)
 
 
 
-		->where($where)
+			->where($where)
 
 
 
-		->where($where_notequal);
+			->where($where_notequal);
 
 
 
-	$query = $this->db->get();
+		$query = $this->db->get();
 
 
 
-	# echo $this->db->last_query();exit;
+		# echo $this->db->last_query();exit;
 
 
 
-	if ($query->num_rows() > 0) {
+		if ($query->num_rows() > 0) {
 
-		return 1;
+			return 1;
 
-	} else {
+		} else {
 
-		return 0;
+			return 0;
+
+		}
 
 	}
-
-}
 
 
 

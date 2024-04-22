@@ -22,7 +22,7 @@
     ga('send', 'pageview');
 
   </script>
-  <link rel="canonical" href="index.html" />
+  <link rel="canonical" href="index" />
   <meta name="msvalidate.01" content="E106D761105C04424A9ACCB1137CCE92" />
   <meta name="robots" content="noodp, noydir" />
 
@@ -83,7 +83,7 @@
       <div class="container">
         <div class="row">
           <div class="logo">
-            <a href="index.html" title="">
+            <a href="index" title="">
               <img src="<?php echo base_url(); ?>/assets/images/logo.png" alt="TIL Limited"
                 class="img-responsive" /></a>
           </div>
@@ -152,7 +152,7 @@
               <li class="last"><a href="<?php echo base_url(); ?>contact-us/locations">Service Locations</a></li>
             </ul>
           </li>
-          <li><a href="investor-relations.html">Investor Relations</a></li>
+          <li><a href="investor-relations">Investor Relations</a></li>
           <li><a href="<?php echo base_url(); ?>media">Media <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>media/videos">Video</a></li>
@@ -650,7 +650,7 @@
                 }
               });
               //   tilindia.config=__FUEL_INIT_PARAMS__;
-              tilindia.base_url = "index.html";
+              tilindia.base_url = "index";
             });
           </script>
 
@@ -801,7 +801,26 @@
               });
             });
           </script>
+          <script>
+            jQuery(document).ready(function ($) {
+              $(".sidebarlist").hide();
+              $(".invester_nav h4").eq().addClass("actives");
+              $(".invester_nav h4").click(function () {
+                $(this).next(".sidebarlist").slideToggle(300)
+                  .siblings(".sidebarlist:visible").slideUp(300);
+                $(this).toggleClass("actives");
+                $(this).siblings("h4").removeClass("actives");
+              });
 
+              if ($('.sidebarlist .activemenu').length > 0) {
+                $('.activemenu').closest('div.sidebarlist').show();
+              }
+              $(".mobl_dropHeading").click(function () {
+                $('#leftCol.invester_nav').slideToggle();
+                $(this).toggleClass('active')
+              })
+            });
+          </script>
           <script src="<?php echo base_url(); ?>/assets/js/html55d4f.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
           <script src="<?php echo base_url(); ?>/assets/js/common5d4f.js?c=-62170003270" type="text/javascript"
@@ -835,14 +854,14 @@
                     msg = document.createElement('h1');
                     msg.setAttribute('class', 'success');
                     msg.innerHTML = response.success;
-                    window.location.replace("thank-you.html");
+                    window.location.replace("thank-you");
                     // from_c.innerHTML="<div class='thanks_msg'><strong>Thank You Contacting Us</strong>We will get back to you shortly</div>";
                     // from_c.appendChild(msg);      
                   } else if (typeof response.error != "undefined") {
                     msg = document.createElement('h1');
                     msg.setAttribute('class', 'error');
                     msg.innerHTML = response.error;
-                    window.location.replace("error_occurred.html");
+                    window.location.replace("error_occurred");
                     //from_c.innerHTML="";
                     //from_c.appendChild(msg);  
                   } else {
@@ -869,7 +888,7 @@
                   msg = document.createElement('h1');
                   msg.setAttribute('class', 'error');
                   msg.innerHTML = "An Error Occurred,<br>Please Try Again Later";
-                  window.location.replace("error_occurred.html");
+                  window.location.replace("error_occurred");
                   //from_c.innerHTML="";
                   //from_c.appendChild(msg);  
 

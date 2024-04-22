@@ -17,6 +17,7 @@ class Home extends CI_Controller
         $page = "web_view/home.php";
         $result["product"] = $this->productsmenu->getNonParentRecords("product_master", "product_master_id", "ASC");
         $result["video"] = $this->productsmenu->getAllRecordWhereOrderBy("fuel_videos", ["is_disabled" => 0], "precedence", "ASC");
+        $result["active"] = "home";
         webbody_helper($result, $page);
     }
 

@@ -14,7 +14,7 @@ class About extends CI_Controller
     public function index()
     {       
         $page="web_view/about/about_us.php";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
@@ -23,27 +23,28 @@ class About extends CI_Controller
     {       
         $page="web_view/about/corporate_profile.php";
         $result["product"] = $this->productsmenu->getNonParentRecords("product_master", "product_master_id", "ASC");
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
     public function board_of_directors()
     {      
         $page="web_view/about/board_of_directors";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
     public function milestones()
     {      
         $page="web_view/about/milestones";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
     public function vision_and_values()
     {      
         $page="web_view/about/vision_and_values";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
@@ -51,21 +52,21 @@ class About extends CI_Controller
     public function corporate_social_responsibility()
     {      
         $page="web_view/about/corporate_social_responsibility";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
     public function code_of_conduct()
     {      
         $page="web_view/about/code_of_conduct";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 
     public function facilities()
     {      
         $page="web_view/about/facilities";
-        $result=[];
+        $result["active"] = "about";
         webbody_helper($result, $page);
     }
 

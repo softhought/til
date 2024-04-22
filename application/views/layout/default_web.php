@@ -98,7 +98,7 @@
           </div>
           <!--<div class="site_search_mbl">&nbsp;</div> -->
           <div class="siteSearch searchSection">
-            <form action="https://tilindia.in/search/index" enctype="multipart/form-data" class="search_from"
+            <form enctype="multipart/form-data" class="search_from"
               id="search_from" method="POST" accept-charset="utf-8">
               <input type="text" name="key_val" value="" placeholder="Search" autocomplete="off" id="key_val"
                 required="required" class="site_search" />
@@ -110,23 +110,13 @@
       </div>
 
     </div>
-    <div class="search_wraper clearfix">
-      <div class="siteSearch">
-        <form action="https://tilindia.in/search/index" enctype="multipart/form-data" class="search_from"
-          id="search_from" method="POST" action="https://tilindia.in/search/index" accept-charset="utf-8">
-          <input type="text" name="key_val" value="" placeholder="Search..." autocomplete="off" id="key_val"
-            required="required" class="site_search" />
-          <input type="submit" value="" class="site_search_butn" />
-        </form>
-      </div>
-    </div>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse nav-topBorder" role="navigation">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <ul id="menu-top-menu" class="nav navbar-nav ">
-          <li class="first active"><a href="<?php echo base_url(); ?>">Home</a></li>
-          <li><a href="<?php echo base_url(); ?>about-us" class="dropdown-toggle">About Us <span
+          <li class="first home"><a href="<?php echo base_url(); ?>">Home</a></li>
+          <li class="about"><a href="<?php echo base_url(); ?>about-us" class="dropdown-toggle">About Us <span
                 class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>about-us/corporate-profile">Corporate Profile</a></li>
@@ -139,11 +129,12 @@
               <li class="last"><a href="<?php echo base_url(); ?>about-us/facilities">Facilities</a></li>
             </ul>
           </li>
-          <li>
+          <li class="products">
             <a href="<?php echo base_url(); ?>products" class="dropdown-toggle">Products <span class="caret"></span></a>
             <?php echo $menu["product_menu"]; ?>
           </li>
-          <li><a href="<?php echo base_url(); ?>customer-support">Customer Support <span class="caret"></span></a>
+          <li class="customer-support"><a href="<?php echo base_url(); ?>customer-support">Customer Support <span
+                class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>customer-support/maintenance-contract">Maintenance
                   Contract</a></li>
@@ -152,7 +143,7 @@
               <li class="last"><a href="<?php echo base_url(); ?>contact-us/locations">Service Locations</a></li>
             </ul>
           </li>
-          <li><a href="investor-relations">Investor Relations</a></li>
+          <li class="investor-relations"><a href="<?php echo base_url(); ?>investor-relations">Investor Relations</a></li>
           <li><a href="<?php echo base_url(); ?>media">Media <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>media/videos">Video</a></li>
@@ -166,7 +157,7 @@
               </li>
             </ul>
           </li>
-          <li><a href="<?php echo base_url(); ?>careers">Careers <span class="caret"></span></a>
+          <li class="careers"><a href="<?php echo base_url(); ?>careers">Careers <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>careers/life-til">Life @TIL</a></li>
               <li><a href="<?php echo base_url(); ?>careers/meet-our-team">Meet Our Team</a></li>
@@ -175,7 +166,7 @@
                   Employer</a></li>
             </ul>
           </li>
-          <li class="last"><a href="#">Contact Us <span class="caret"></span></a>
+          <li class="last contact-us"><a href="#">Contact Us <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>contact-us/locations">Locations</a></li>
               <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
@@ -783,6 +774,72 @@
                   }
                 });
               });
+
+              $("#submit_your_cv").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/submityourcv`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}thank-you`);
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+
+              $("#training_form").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/submittrainingform`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}thank-you`);
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+
+              $("#search_from").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/searchfrom`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}thank-you`);
+                    }
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
             });
           </script>
           <script>
@@ -799,6 +856,11 @@
                   $("#" + elipseId).removeClass("expands");
                 }
               });
+            });
+          </script>
+          <script>
+            $(document).ready(function () {
+              $('li.<?php echo $bodycontent["active"] ?>').addClass('active');
             });
           </script>
           <script>

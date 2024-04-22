@@ -1,7 +1,6 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Dashboard extends CI_Controller
 {
 
@@ -176,7 +175,7 @@ class Dashboard extends CI_Controller
         $query = $_POST["query"];
         $nature_of_query_id = $_POST["nature_of_query_id"];
         $ip_address = $_SERVER['REMOTE_ADDR'];
-        
+
         $dataArr = [
             'organization' => $organization,
             'time' => date('Y-m-d H:i:s'),
@@ -194,6 +193,101 @@ class Dashboard extends CI_Controller
         ];
 
         $insertedId = $this->commondatamodel->insertSingleTableData("contact_us", $dataArr);
+
+        if ($insertedId) {
+            echo json_encode(["status" => true]);
+        } else {
+            echo json_encode(["status" => false]);
+        }
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function submityourcv()
+    {
+        if (isset($_FILES['resume'])) {
+            $file = $_FILES['resume'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/uploads/job/application/resume/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s'); // Format: yyyy_mm_dd_hh_mm_ss
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['resume']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $candidte_name = $_POST["candidte_name"];
+                    $function_id = $_POST["function_id"];
+                    $technical_qualification = $_POST["technical_qualification"];
+                    $linkedIn_profile = $_POST["linkedIn_profile"];
+                    $massage = $_POST["massage"];
+                    $ip_address = $_SERVER['REMOTE_ADDR'];
+
+                    $dataArr = [
+                        'candidte_name' => $candidte_name,
+                        'function_id' => $function_id,
+                        'technical_qualification' => $technical_qualification,
+                        'linkedIn_profile' => $linkedIn_profile,
+                        'massage' => $massage,
+                        'resume' => $fileDestination,
+                        'ip_address' => $ip_address,
+
+                    ];
+
+                    $insertedId = $this->commondatamodel->insertSingleTableData("resume_submission", $dataArr);
+
+                    if ($insertedId) {
+                        echo json_encode(["status" => true]);
+                    }
+                    exit;
+                } else {
+                    echo json_encode(["status" => false]);
+                }
+            } else {
+                echo json_encode(["status" => false]);
+            }
+        } else {
+            echo json_encode(["status" => false]);
+        }
+        header('Content-Type: application/json');
+    }
+
+    public function submittrainingform()
+    {
+        $customer_name = $_POST["customer_name"];
+        $company_name = $_POST["company_name"];
+        $phone = $_POST["phone"];
+        $email = $_POST["email"];
+        $address = $_POST["address"];
+        $training_id = $_POST["training_id"];
+        $training_month = $_POST["training_month"];
+        $training_year = $_POST["training_year"];
+        $location_id = $_POST["location_id"];
+        $ip_address = $_SERVER['REMOTE_ADDR'];
+
+        $dataArr = [
+            'customer_name' => $customer_name,
+            'company_name' => $company_name,
+            'phone' => $phone,
+            'email' => $email,
+            'address' => $address,
+            'training_id' => $training_id,
+            'training_month' => $training_month,
+            'training_year' => $training_year,
+            'location_id' => $location_id,
+            'ip_address' => $ip_address,
+        ];
+
+        $insertedId = $this->commondatamodel->insertSingleTableData("customer_support_training", $dataArr);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);
@@ -1003,9 +1097,40 @@ class Dashboard extends CI_Controller
 
     }
 
-    public function thankyou() {
+    public function thankyou()
+    {
         $page = "web_view/thank_you.php";
         $result["product_menu"] = $this->productsmenu->getNavProductsMenu()[0]["children"];
         webbody_helper($result, $page);
+    }
+
+    public function searchfrom()
+    {
+        $query = $_POST["key_val"];
+        $jsonResult = $this->executePythonScript($query);
+        pre($jsonResult);
+
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function executePythonScript($keyWord)
+    {
+        $dir = 'assets/script/script.py';
+        $pythonScript = "python {$dir}";
+        putenv("PYTHONIOENCODING=utf-8");
+
+        $command = "{$pythonScript} {$keyWord}";
+        $output = shell_exec($command);
+
+        $decodedOutput = json_decode($output, true);
+
+        if ($decodedOutput !== null) {
+            $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+            return $jsonOutput;
+        } else {
+            return "Failed to decode JSON output.";
+        }
     }
 }

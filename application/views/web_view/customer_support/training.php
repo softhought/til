@@ -95,12 +95,7 @@
                                             <div class="training-form ">
                                                 <p>(All Fields will be <span style="color:#f00">*</span>marked
                                                     mandatory) </p><br>
-                                                <form action="https://tilindia.in/customer-support/training"
-                                                    enctype="multipart/form-data" class="quotation_form"
-                                                    id="quotation_form" data-toggle="validator" role="form"
-                                                    method="POST" onsubmit="return training_request(this);"
-                                                    accept-charset="utf-8">
-
+                                                <form enctype="multipart/form-data" class="training_form" id="training_form" data-toggle="validator" role="form" method="POST" accept-charset="utf-8">
                                                     <div class="row">
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">

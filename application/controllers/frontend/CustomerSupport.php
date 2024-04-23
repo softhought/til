@@ -13,28 +13,28 @@ class CustomerSupport extends CI_Controller
     public function index()
     {
         $page = "web_view/customer_support/customer_support.php";
-        $result = [];
+        $result["active"] = "customer-support";
         webbody_helper($result, $page);
     }
 
     public function maintenance_contract()
     {
         $page = "web_view/customer_support/maintenance_contract.php";
-        $result = [];
+        $result["active"] = "customer-support";
         webbody_helper($result, $page);
     }
 
     public function parts_warehouse()
     {
         $page = "web_view/customer_support/parts_warehouse.php";
-        $result = [];
+        $result["active"] = "customer-support";
         webbody_helper($result, $page);
     }
 
     public function training()
     {
         $page = "web_view/customer_support/training.php";
-        $result = [];
+        $result["active"] = "customer-support";
         webbody_helper($result, $page);
     }
 }

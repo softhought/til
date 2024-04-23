@@ -18,6 +18,7 @@ class InvestorRelations extends CI_Controller
         }
 
         $result["investorMenu"] = $investorMaster;
+        $result["active"] = "investor-relations";
         webbody_helper($result, $page);
     }
 
@@ -35,8 +36,9 @@ class InvestorRelations extends CI_Controller
         if ($investorRelationsDetails->is_file_uploaded == "Y") {
             $investorRelationsDetails->file = $this->commondatamodel->getAllRecordWhereOrderByCol("document_details", ["ref_id" => $investorRelationsDetails->relations_dtl_id, "table_name" => "investor_relations_details", "is_disabled" => 0], "precedence", "ASC");
         }
+        
         $result["investorRelationsDetails"] = $investorRelationsDetails;
-
+        $result["active"] = "investor-relations";
         webbody_helper($result, $page);
     }
 }

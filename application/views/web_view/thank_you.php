@@ -9,7 +9,7 @@
                     <div class="centerbox">
 
                         <div id="crumbs">
-                            <a><a href="index.html">Home</a></a>
+                            <a><a href="<?php echo base_url(); ?>">Home</a></a>
                         </div>
 
                     </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3" id="leftCol">
-                    <div class="sidebarlist">
+                    <div class="">
                         <div class="menu-about-us-container">
 
                             <ul id="menu-thank-you" class="pro_left">

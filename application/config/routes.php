@@ -61,6 +61,10 @@ $route['translate_uri_dashes'] = FALSE;
 $route['dashboard/fetchstatesnncountrie'] = 'Dashboard/fetchStatesOnCountrie';
 $route['dashboard/submitquotation'] = 'Dashboard/submitQuotation';
 $route['dashboard/submitcontactform'] = 'Dashboard/submitContactForm';
+$route['dashboard/submityourcv'] = 'Dashboard/submityourcv';
+$route['dashboard/submittrainingform'] = 'Dashboard/submittrainingform';
+$route['dashboard/searchfrom'] = 'Dashboard/searchfrom';
+
 
 
 /* -------------- About---------------------- */
@@ -148,3 +152,6 @@ $route["mediaadmin"] = "media";
 
 /* -------------- Thankyou ---------------------- */
 $route["thank-you"] = "Dashboard/thankyou";
+
+/* -------------- Search ---------------------- */
+$route["search/index"] = "frontend/Search";

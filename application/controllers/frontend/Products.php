@@ -15,6 +15,7 @@ class Products extends CI_Controller
         $result["products"] = $this->commondatamodel->getAllRecordWhere("product_master", ['parent_id' => 1, 'is_disabled' => 0]);
         $result["main-section"] = $this->commondatamodel->getAllRecordWhere("product_master", ['product_master_id' => 1, 'is_disabled' => 0]);
         // pre($result["main-section"]);exit;
+        $result["active"] = "products";
         webbody_helper($result, $page);
     }
 
@@ -24,6 +25,7 @@ class Products extends CI_Controller
         $result["products"] = $this->commondatamodel->getAllRecordWhere("product_master", ['parent_id' => $product_master_id, 'is_disabled' => 0]);
         $result["main-section"] = $this->commondatamodel->getAllRecordWhere("product_master", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
         // pre($result["main-section"]);exit;
+        $result["active"] = "products";
         webbody_helper($result, $page);
     }
 
@@ -33,6 +35,7 @@ class Products extends CI_Controller
         $result["slug"] = $parentSlug;
         $result["products"] = $this->commondatamodel->getAllRecordWhere("product_master", ['parent_id' => $product_master_id, 'is_disabled' => 0]);
         $result["main-section"] = $this->commondatamodel->getAllRecordWhere("product_master", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
+        $result["active"] = "products";
         webbody_helper($result, $page);
     }
 
@@ -50,6 +53,7 @@ class Products extends CI_Controller
 
         // pre($result['sheet_model']);exit;
         $result["product_model"] = $product_model_details;
+        $result["active"] = "products";
         webbody_helper($result, $page);
     }
 }

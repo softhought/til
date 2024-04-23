@@ -30,6 +30,13 @@ class Login extends CI_Controller {
         );
         $this->session->set_userdata('quote_captcha_session', $captcha_data); 
         $result['captcha_data'] = $captcha_data;
+
+        $session = $this->session->userdata('user_detail');
+
+        if(isset($session)){
+            redirect('dashboard', 'refresh');
+        }
+
         $page="login/login2";
         $this->load->view($page,$result);
     }/** end  */

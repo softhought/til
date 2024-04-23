@@ -29,6 +29,7 @@ class Media extends CI_Controller {
             $result['btnTextLoader'] = "Saving...";
             $result['videoId'] = 0;
             $result['videolist'] = $this->mediamodel->getVideoAllList();
+            $result['media_tag'] = $this->input->post('media_tag');
             $page="dashboard/media/video_partial_view";
             $this->load->view($page,$result);
         }else{
@@ -78,7 +79,8 @@ class Media extends CI_Controller {
             $media_tag = trim($this->input->post('media_tag'));
             $table_name = trim($this->input->post('table_name'));
             $ref_id = trim($this->input->post('ref_id'));
-            
+            $json_response = array();
+
             if ($action=='U') {
                 $pre_sl=$slno-1;
                 if ($pre_sl!='0') {
@@ -112,6 +114,7 @@ class Media extends CI_Controller {
 
                     }/** end media_tag */
                     else{
+                        
                         $where = array('precedence'=>$pre_sl);
                         $preVideoData=$this->commondatamodel->getSingleRowByWhereCls('fuel_videos',$where);
                         if(!empty( $preVideoData)){
@@ -128,8 +131,9 @@ class Media extends CI_Controller {
     
                                 if($update){
                                     $json_response = array(
-                                        "msg_status" => 1,
-                                        "msg_data" => "Precedence updated"
+                                        "msg_status" => 2,
+                                        "msg_data" => "Precedence updated",
+                                        "media_tag" => $media_tag
                                     );
                                 }
                             }
@@ -183,8 +187,9 @@ class Media extends CI_Controller {
 
                         if($update){
                             $json_response = array(
-                                "msg_status" => 1,
-                                "msg_data" => "Precedence updated"
+                                "msg_status" => 2,
+                                "msg_data" => "Precedence updated",
+                                "media_tag" => $media_tag
                             );
                         }
                     }
@@ -242,8 +247,9 @@ class Media extends CI_Controller {
                         $update = $this->commondatamodel->updateSingleTableData('fuel_videos',$update_array2,$where2);
                         if($update){
                             $json_response = array(
-                                "msg_status" => 1,
-                                "msg_data" => "Precedence updated"
+                                "msg_status" => 2,
+                                "msg_data" => "Precedence updated",
+                                "media_tag" => $media_tag
                             );
                         }
                         
@@ -353,7 +359,7 @@ class Media extends CI_Controller {
 		{ 
             $media_tag = $this->input->post('media_tag');
             $result['media_tag_name'] = $media_tag;
-            $where_tag = array('media_master.menu_tag');
+            $where_tag = array('media_master.menu_tag'=>$result['media_tag_name']);
             $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
             $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
             $result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
@@ -373,6 +379,7 @@ class Media extends CI_Controller {
             $media_tag = $this->input->post('media_tag');
             $where = array('media_master.menu_tag'=>$media_tag);
             $result['list'] = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where);
+            //pre($result['list']);exit;
             $page="dashboard/media/default_partial_view_news_and_newslater";
             $this->load->view($page,$result);
         }else{
@@ -396,6 +403,7 @@ class Media extends CI_Controller {
           
             $dir = FILE_UPLOAD_BASE_PATH . '/assets/docs/pdf/';
             $date=date('Y-m-d H:i:s');
+           
             if($isChangedFile == 'Y'){
                 //move_uploaded_file($_FILES['file']['tmp_name'],$dir.$_FILES['file']['name']) or die("Unable to Move Pdf");
                 $userFileName = $_FILES['fileName']['name'];
@@ -552,27 +560,75 @@ class Media extends CI_Controller {
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $result = '';
+            $result['mode'] = "ADD";
+            $result['btnText'] = "Save";
+            $result['btnTextLoader'] = "Saving...";
+            $result['eventHappiningId'] = 0;
             $page="dashboard/media/events_happining_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');
 		}
     }/** end  */
+    public function eventsHappining_add_edit_action(){
+        $session = $this->session->userdata('user_detail');
+		if($this->session->userdata('user_detail')){
+            $mode = $this->input->post('mode');
+            $eventHappiningId = $this->input->post('eventHappiningId');
+            $mode = $this->input->post('mode');
+            $event_title = $this->input->post('event_title');
+            $userimage_name = $_FILES['fileName']['name'];
+            
+            $dir = FILE_UPLOAD_BASE_PATH . '/assets-admin/upload_image/event_image/';
+            $docFiles = $_FILES;
+            pre();
+            foreach ($docFiles['name'] as $index => $fileName) {
+                $fileData = [
+                    'name' => $docFiles['name'][$index],
+                    'type' => $docFiles['type'][$index],
+                    'tmp_name' => $docFiles['tmp_name'][$index],
+                    'error' => $docFiles['error'][$index],
+                    'size' => $docFiles['size'][$index]
+                ];
+                
+                $image_name = $this->commondatamodel->fileUploadmultiple($fileData, 'images', $dir);
+                pre('image_name:'. $image_name);
+               
+            }			
+         
+           
+            // if($mode == 'EDIT' &&  $eventHappiningId > 0){
+
+            // }else{
+
+            // }
+           
+
+
+
+        }else{
+			redirect('login','refresh');
+		}
+    }
     public function till_talk_partal_view(){
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-           $result='';
-            // $media_tag = $this->input->post('media_tag');
-            
-            // $result['media_tag_name'] = $media_tag;
-            // $where_tag = array('media_master.menu_tag');
-            // $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
-            // $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
-            // //$result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
+            $media_tag = $this->input->post('media_tag');
+            $result['media_tag_name'] = $media_tag;
+            $where_tag = array('media_master.menu_tag'=>$result['media_tag_name']);
+           
+            $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
+            $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
+            // pre($where_srl);
+            // exit;
+            $result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
+             //pre($result['newslist']);exit;
             $page="dashboard/media/newslater_till_talk_partial_view";
             $this->load->view($page,$result);
+
+
+
         }else{
 			redirect('login','refresh');
 		}
@@ -581,7 +637,15 @@ class Media extends CI_Controller {
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))
 		{ 
-            $result = '';
+            $media_tag = $this->input->post('media_tag');
+            $result['media_tag_name'] = $media_tag;
+            $where_tag = array('media_master.menu_tag'=>$result['media_tag_name']);
+           
+            $media_masterID = $this->commondatamodel->getSingleRowByWhereCls('media_master',$where_tag)->media_master_id;
+            $where_srl = array('table_name' =>'media_master','ref_id'=>$media_masterID);
+            // pre($where_srl);
+            // exit;
+            $result['newslist'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_srl,'precedence');
             $page="dashboard/media/newslater_till_touch_partial_view ";
             $this->load->view($page,$result);
         }else{

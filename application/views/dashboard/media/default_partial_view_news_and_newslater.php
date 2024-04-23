@@ -44,51 +44,8 @@ td {
    <input type="hidden" name="mediaMasterId" id="mediaMasterId" value="<?php echo $list->media_master_id; ?>"><br>
    <input type="hidden" name="mode" id="mode" class="mode" value="ADD"><br>
    <input type="hidden" name="docID" id="docID" value="<?php echo $doc_id; ?>"><br>
-   <!-- <div class="row">
-      <div class="col-md-3">
-         <label for="title_desc">Title Description <span style="color:red;font-size:15px;">*</span></label>
-         <div class="form-group">
-            <div class="input-group input-group-sm">
-               <input type="text" class="form-control forminputs typeahead" id="title_desc" name="title_desc" placeholder="Enter Description" autocomplete="off" value="">
-                 
-            </div>
-            <p id="error_title_desc" class="error-msg"></p>
-         </div>
-      </div>
-      
-      <div class="col-md-3">
-         <label for="upload_document">&nbsp;</label>
-         <div class="custom-file">
-            <input type="file" name="file" id="file" class="custom-file-input" onchange="displayFileName()">
-            <label class="custom-file-label" for="file" id="file-label">Choose file</label>
-            <input type="hidden" name="isdocument" id="isdocument" value="N">
-            <input type="hidden" class="isdocumentname" name="isdocumentname" id="isdocumentname" value="">
-         </div>
-      </div>
-      
-      
-      <div class="col-md-2">
-         <label for=""></label>
-            <br>
-            <button type="submit" class="btn btn-sm action-button padbtn save_btn"
-               id="save_btn" style="margin-top: 4px;padding: 8px;">Save &nbsp;<i
-               class="fas fa-chevron-right"></i></button>
-         </div>
-      
-      
-      </div> -->
          <div class="row">
-            <!-- <div class="col-md-4">
-              
-               <div class="input-group input-group-sm">
-                 
-                  <input type="text" class="form-control forminputs typeahead title_desc" id="title_desc" name="title_desc"  placeholder="Enter Description" autocomplete="off" value="">
-                  
-                  
-               </div>
-               <p id="error_title" class="error-msg"></p>
-               
-            </div> -->
+            
 
             <div class="col-md-4">
                <label for="title_desc">Title Description <span style="color:red;font-size:15px;">*</span></label>
@@ -149,17 +106,4 @@ td {
                class="fas fa-chevron-right"></i></button>
             </div>
          </div>
-         
-         <!-- <input type="hidden" name="prvFilename" id="prvFilename"
-            class="form-control prvFilename" value="" readonly>
-         <input type="hidden" name="randomFileName" id="randomFileName"
-            class="form-control randomFileName" value="" readonly>
-         <input type="hidden" name="docDetailIDs" id="docDetailIDs"
-            class="form-control randomFileName" value="0" readonly> -->
-    
-      
-         
-      
-     
-   
 </form>

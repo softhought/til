@@ -1525,6 +1525,84 @@ class Commondatamodel extends CI_Model
 
 
 	}
+	/** -----------------------added by vikash ------------------------------ */
+	public function fileUploadmultiple($data, $filename, $dir_path, $short_name = "")
+{
+	
+
+    $config = array(
+        'upload_path' => $dir_path,
+        'allowed_types' => 'jpg|jpeg|png',
+        'max_size' => '5120', 
+        'max_filename' => '255',
+        'encrypt_name' => TRUE,
+        );
+
+    $this->load->library('upload', $config);
+    $images = array();
+    $detail_array = array();	
+    $count_docs = sizeof($data['docFile']['fileName']['name']);
+   $srl_no=1;
+       for($i=0;$i<sizeof($data['docFile']['fileName']['name']);$i++)
+    {
+        $_FILES['images[]']['name']= $_FILES['fileName']['name'][$i];
+        $_FILES['images[]']['type']= $_FILES['fileName']['type'][$i];
+        $_FILES['images[]']['tmp_name']= $_FILES['fileName']['tmp_name'][$i];
+        $_FILES['images[]']['error']= $_FILES['fileName']['error'][$i];
+        $_FILES['images[]']['size']= $_FILES['fileName']['size'][$i];
+        $this->upload->initialize($config);
+        if ($this->upload->do_upload('images[]'))
+        { 
+           $file_detail = $this->upload->data();
+           $file_name = $file_detail['file_name']; 
+           $detail_array =array(
+                "random_file_name" => $file_name,
+                "uploaded_file_desc" => $data['docType'][$i],
+                "user_file_name" => $data['userFilename'][$i],           
+                "table_name" => $where_data['From'],
+                "ref_id" => $where_data['masterID'],
+                "precedence" => $srl_no++,                
+                "uploaded_by_user" => $data['user_id'],
+                "is_disabled" => '0'
+            ); 
+
+             $this->db->insert('document_details',$detail_array);	
+           //  echo $this->db->last_query();
+        }else{
+          //  $errors = $this->upload->display_errors();
+          //  pre($errors);
+        }
+    }
+
+    // If File Not Changed Then insert Info
+    $countChanged = sizeof($data['isChangedFile']);
+
+   // echo "Count Changed ".$countChanged;
+  //  exit;
+
+    for($k=0;$k<$countChanged;$k++)
+    {
+        $detail_array_edit = array();
+
+        if($data['isChangedFile'][$k]=="N")
+        {   
+            $detail_array_edit =array(
+                "random_file_name" => $data['randomFileName'][$k],
+                "uploaded_file_desc" => $data['docType'][$k],
+                "user_file_name" => $data['prvFilename'][$k],
+                "table_name" => $where_data['From'],
+                "ref_id" => $where_data['masterID'],
+                "precedence" => $srl_no++,               
+                "uploaded_by_user" => $data['user_id'],
+                "is_disabled" => '0'
+            ); 
+
+            $this->db->insert('document_details',$detail_array_edit);
+            #echo $this->db->last_query();	
+        }
+    }
+}
+	/** -----------------------end by vikash ------------------------------ */
 
 
 

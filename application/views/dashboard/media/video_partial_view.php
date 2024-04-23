@@ -33,7 +33,7 @@
             <div class="form-group">
                <div class="input-group input-group-sm">
                   <input type="text" class="form-control forminputs typeahead" id="link" name="link"
-                     placeholder="Enter Id" autocomplete="off"
+                     placeholder="Enter video Id" autocomplete="off"
                      value="">
                </div>
                <p id="error_link" class="error-msg"></p>
@@ -68,6 +68,9 @@
          <?php 
             $i=1;
             $rowslno=$videolist;
+            $media_tag = '';
+            $table_name = '';
+            $ref_id = '';
             foreach($videolist as $list){ 
                
             ?>
@@ -83,9 +86,11 @@
                   <a href="<?php echo $youtube_link;?>" target="_blank"><img src="<?php echo $image_url; ?>" alt="" width="50"></a>
                   
                </td>
-               <td>						
-                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'U')"/ style="cursor:pointer;">
-                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'D')"/ style="cursor:pointer;">
+               <td>	
+                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'U','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')"/ style="cursor:pointer;">
+                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'D','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')"/ style="cursor:pointer;">
+
+
                </td>
                <td>
                   <div class="row">
@@ -103,7 +108,7 @@
                      </div>
                   
                      <div class="col-md-4">
-                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
+                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
                      </div> 
                   </div>                  
 					</td>

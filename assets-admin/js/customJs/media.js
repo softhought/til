@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     var basepath = $("#basepath").val();
     $media_tag = '';
+  
     loadPartialView("#tab_one", basepath + "media/video_partial_view",$media_tag);
     $(document).on("click", "#tab_one-tab", function (event) {
         event.preventDefault();
@@ -112,12 +113,7 @@ $(document).ready(function () {
             }); /*end ajax call*/
         }/** end if */
     });/**end video  submit */
-    // $(document).on('change', '#file', function (event) {
-    //     event.preventDefault();
-    //     event.stopImmediatePropagation();
-    //     $("#isdocument").val('Y');
-
-    // });/**end */
+    
     $(document).on("click", ".browse", function () {
 		var file = $(this).parent().parent().parent().find(".file");
 		file.trigger("click");
@@ -127,18 +123,114 @@ $(document).ready(function () {
 			);
             $(".isChangedFile").val("Y");
 	});
-    // $(document).on("change", "#fileName", function () {
-	// 	//var newfileName = $(".fileName").files[0].name;
-    //     var newfileName = this.files[0].name;
-	// 	var prvVal = $(".prvFilename").val();
-  
-	// 	// if (newfileName != prvVal) {
-	// 	// 	$(".isChangedFile").val("Y");
-	// 	// }
-    //     $(".isChangedFile").val("Y");
-       
-	// });
+    /** ----------------------mutiple image start ----------------------*/
+    $(document).on("click", ".multiplebrowse", function () {
+        var file = $(this).parent().parent().parent().find(".multiplefile"); 
+        file.trigger("click");
+    });
+    
+    $(document).on("change", ".multiplefile", function () { 
+        var filenames = "";
+        var files = $(this)[0].files;
+        for (var i = 0; i < files.length; i++) {
+            filenames += files[i].name + ", ";
+        }
+        filenames = filenames.replace(/,\s*$/, ""); 
+        $(this).parent().find(".form-control").val(filenames);
+        $(".isChangedFile").val("Y");
+    });
+    $(document).on("click", ".mutiple_img_btn", function() {
+        var html = '';
+      
+        html += '<div class="row">';
+        html += '    <div class="col-md-10">';
+        html += '        <label for="upload_doc">Upload Image </label>';
+        html += '        <input type="file" name="fileName[]" class="file fileName[]" id="fileName[]" accept="image/png, image/gif, image/jpeg" multiple>';
+        html += '        <div class="form-group">';
+        html += '            <div class="input-group input-group-sm">';
+        html += '                <input type="text" name="userFileName" id="userFileName" class="form-control input-xs userFileName" readonly placeholder="Upload Image" value="">';
+        html += '                <input type="hidden" name="isChangedFile" id="isChangedFile" class="isChangedFile" value="N">';
+        html += '                <input type="hidden" name="prvFilename" id="prvFilename" class="form-control prvFilename" value="" readonly>';
+        html += '                <input type="hidden" name="randomFileName" id="randomFileName" class="form-control randomFileName" value="" readonly>';
+        html += '                <span class="input-group-btn"></span>';
+        html += '            </div>';
+        html += '        </div>';
+        html += '        <p id="error_file" class="error-msg error_file"></p>';
+        html += '    </div>';
+        html += '    <div class="col-md-1">';
+        html += '        <div class="form-group">';
+        html += '            <button class="browse btn input-xs btn-sm" type="button" style="background: #f8bb06; color:#000;padding: 8px;margin-top: 30px;" id="uploadBtn">';
+        html += '                <i class="fa fa-folder-open" aria-hidden="true"></i>';
+        html += '            </button>';
+        html += '        </div>';
+        html += '    </div>';
 
+
+        html += '    <div class="col-md-1">';
+        html += '        <div class="form-group">';
+        html += '            <button class="remove-file-btn btn input-xs btn-sm" type="button" style="background: #f8bb06; color:#000; padding: 8px; margin-top: 30px;">';
+        html += '                 <i class="fa fa-times" aria-hidden="true"></i>';
+        html += '            </button>';
+        html += '        </div>';
+        html += '    </div>';
+
+        html += '</div>';
+       
+        
+        $("#mutiple_image_upload").append(html);
+    });
+    $(document).on("click", ".remove-file-btn", function() {
+        $(this).closest('.row').remove();
+    });
+    $(document).on("submit", "#eventsHappiningForm", function (event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var formData = new FormData($(this)[0]);
+
+        //if (validation()) {
+            $("#save_btn").css("display", "none");
+            //$("#loaderbtn").css("display", "block");
+            $.ajax({
+                type: "POST",
+                url: basepath + "media/eventsHappining_add_edit_action",
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (result) {
+                    if (result.msg_status == 1) {
+                        //loadPartialView("#tab_one", basepath + "media/video_partial_view");
+                    } else {
+                    }
+                },
+
+                error: function (jqXHR, exception) {
+                    var msg = "";
+
+                    if (jqXHR.status === 0) {
+                        msg = "Not connect.\n Verify Network.";
+                    } else if (jqXHR.status == 404) {
+                        msg = "Requested page not found. [404]";
+                    } else if (jqXHR.status == 500) {
+                        msg = "Internal Server Error [500].";
+                    } else if (exception === "parsererror") {
+                        msg = "Requested JSON parse failed.";
+                    } else if (exception === "timeout") {
+                        msg = "Time out error.";
+                    } else if (exception === "abort") {
+                        msg = "Ajax request aborted.";
+                    } else {
+                        msg = "Uncaught Error.\n" + jqXHR.responseText;
+                    }
+
+                    // alert(msg);
+                },
+            }); /*end ajax call*/
+        //}/** end if */
+    });/**end event happining submit */
+    
+    /** -----------mutiple image end---------------- */
+   
     $(document).on("submit", "#newsandnewslaterForm", function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -163,8 +255,10 @@ $(document).ready(function () {
                         defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TALK'){
                         loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TOUCH'){
                         loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }
                 } else {
                 }
@@ -194,6 +288,7 @@ $(document).ready(function () {
         }); /*end ajax call*/
         }/** end if */
     });/**end */
+   
 
     $(document).on("click", ".status", function (event) {
         event.preventDefault();
@@ -234,8 +329,12 @@ $(document).ready(function () {
                         loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
                         defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TALK'){
+                        loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
                     }else if(result.media_tag == 'TIL_TOUCH'){
+                        loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
+                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
                     }
                     
@@ -248,20 +347,10 @@ $(document).ready(function () {
 
 
 }); // end of document ready
-function displayFileName() {
-    var fileInput = document.getElementById('file');
-    var fileName = fileInput.files[0].name;
-
-    var fileLabel = document.getElementById('file-label');
-    var isDocumentName = document.getElementById('isdocumentname');
-
-    fileLabel.textContent = fileName;
-    isDocumentName.value = fileName;
-}
 
 
 function loadPartialView(tabId, partialViewUrl,media_tag) {
-    //$('#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data,#tab_five_data').html('');
+    $('#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data,#tab_five_data').html('');
     $.ajax({
         url: partialViewUrl,
         //type: 'GET',
@@ -287,7 +376,7 @@ function validation() {
         $("#title").focus();
         return false;
     } else if (link == "") {
-        $("#error_link").text('Error : Enter link');
+        $("#error_link").text('Error : Enter video id');
         $("#link").focus();
         return false;
     }
@@ -309,7 +398,17 @@ function changeSerial(id, slno, action,media_tag,table_name,ref_id) {
                     loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
                         defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
-                //loadPartialView("#tab_one", basepath + "media/video_partial_view");   //location.reload();
+                else if(result.media_tag == 'TIL_TALK'){
+                    loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
+                    defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                }
+                else if(result.media_tag == 'TIL_TOUCH'){
+                    loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
+                    defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                } 
+            }else if(result.msg_status == 2){
+                var media_tag = result.media_tag;
+                loadPartialView("#tab_one", basepath + "media/video_partial_view",media_tag);
             }
         }
     });
@@ -332,21 +431,23 @@ function defaultViewNewsAndNewslater(targetElement, partialViewUrl, media_tag) {
 }/** for default view load end */
 function validationNewsNewslater() {
     var title = $('.title_desc').val();
+    var mode = $('.mode').val();
     var fileInput = $('.fileName')[0];
+
     $(".error_title").text('');
     $(".error_file").text('');
 
-   
     if (title == "") {
         $(".error_title").text('Error : Enter title');
         $(".title_desc").focus();
         return false;
     } 
-    if (fileInput.files.length === 0) { 
-        $(".error_file").text('Error: Select a document');
-        return false;
+    if(mode == 'ADD'){
+        if (fileInput.files.length === 0) { 
+            $(".error_file").text('Error: Select a document');
+            return false;
+        }
     }
-    
     return true;
 }/**end  */
 

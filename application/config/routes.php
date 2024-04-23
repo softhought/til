@@ -148,10 +148,13 @@ $route['careers/submit_cv'] = "frontend/careers/submit_cv";
 /* -------------- Contact Us ---------------------- */
 $route['contact-us/inquiry'] = "frontend/contactus/inquiry";
 
-$route["mediaadmin"] = "media";
-
 /* -------------- Thankyou ---------------------- */
 $route["thank-you"] = "Dashboard/thankyou";
 
 /* -------------- Search ---------------------- */
 $route["search/index"] = "frontend/Search";
+
+/* -------------- Admin Route ---------------------- */
+$route["mediaadmin"] = "media";
+$route["admin"] = "Login";
+$route["product-list"] = "Products";

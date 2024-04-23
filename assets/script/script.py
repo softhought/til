@@ -3,6 +3,7 @@ import aiohttp
 import re
 import json
 import sys
+import os
 from bs4 import BeautifulSoup
 
 async def fetch_html_content(session, url):
@@ -53,8 +54,10 @@ async def main():
         sys.exit(1)
     
     keyword = sys.argv[1]
-
-    with open("urls.json", "r") as f:
+    
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(script_dir, "urls.json")
+    with open(json_path, "r") as f:
         urls = json.load(f)
 
     async with aiohttp.ClientSession() as session:

@@ -1108,24 +1108,42 @@ class Dashboard extends CI_Controller
     {
         $query = $_POST["key_val"];
         $jsonResult = $this->executePythonScript($query);
-        pre($jsonResult);
+
+        if (json_decode($jsonResult)) {
+            $decodeJson["content"] = json_decode($jsonResult);
+            $decodeJson["query"] = $query;
+            $_SESSION["search_result"] = json_encode($decodeJson);
+            
+            echo json_encode(["status" => true, "data" => $jsonResult, "query" => $query]);
+        } else {
+            $_SESSION["search_result"] = json_encode(["query" => $query]);
+            echo json_encode(["status" => true, "data" => $query]);
+        }
 
         header('Content-Type: application/json');
         exit;
     }
 
     public function executePythonScript($keyWord)
-    {
-        $dir = 'assets/script/script.py';
+    { 
+        $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
+
         $pythonScript = "python {$dir}";
         putenv("PYTHONIOENCODING=utf-8");
 
         $command = "{$pythonScript} {$keyWord}";
         $output = shell_exec($command);
-
+        
         $decodedOutput = json_decode($output, true);
 
         if ($decodedOutput !== null) {
+
+            foreach ($decodedOutput as &$item) {
+                if (isset($item['content'])) {
+                    $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
+                }
+            }
+
             $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
             return $jsonOutput;

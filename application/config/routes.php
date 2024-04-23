@@ -152,3 +152,6 @@ $route["mediaadmin"] = "media";
 
 /* -------------- Thankyou ---------------------- */
 $route["thank-you"] = "Dashboard/thankyou";
+
+/* -------------- Search ---------------------- */
+$route["search/index"] = "frontend/Search";

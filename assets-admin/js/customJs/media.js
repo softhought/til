@@ -2,13 +2,13 @@
 $(document).ready(function () {
 
     var basepath = $("#basepath").val();
-    $media_tag = '';
-  
-    loadPartialView("#tab_one", basepath + "media/video_partial_view",$media_tag);
+    var media_tag = '';
+   
+    loadPartialView("#tab_one", basepath + "media/video_partial_view",media_tag);
     $(document).on("click", "#tab_one-tab", function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
-        loadPartialView("#tab_one", basepath + "media/video_partial_view",$media_tag);
+        loadPartialView("#tab_one", basepath + "media/video_partial_view",media_tag);
     });
     $(document).on("click", "#tab_two-tab", function (event) {
         event.preventDefault();
@@ -20,7 +20,7 @@ $(document).ready(function () {
     $(document).on("click", "#tab_three-tab", function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
-        loadPartialView("#tab_three", basepath + "media/events_happining_partial_view",$media_tag);
+        loadPartialView("#tab_three", basepath + "media/events_happining_partial_view",media_tag);
     });
     $(document).on("click", "#tab_four-tab", function (event) {
         event.preventDefault();
@@ -139,49 +139,7 @@ $(document).ready(function () {
         $(this).parent().find(".form-control").val(filenames);
         $(".isChangedFile").val("Y");
     });
-    $(document).on("click", ".mutiple_img_btn", function() {
-        var html = '';
-      
-        html += '<div class="row">';
-        html += '    <div class="col-md-10">';
-        html += '        <label for="upload_doc">Upload Image </label>';
-        html += '        <input type="file" name="fileName[]" class="file fileName[]" id="fileName[]" accept="image/png, image/gif, image/jpeg" multiple>';
-        html += '        <div class="form-group">';
-        html += '            <div class="input-group input-group-sm">';
-        html += '                <input type="text" name="userFileName" id="userFileName" class="form-control input-xs userFileName" readonly placeholder="Upload Image" value="">';
-        html += '                <input type="hidden" name="isChangedFile" id="isChangedFile" class="isChangedFile" value="N">';
-        html += '                <input type="hidden" name="prvFilename" id="prvFilename" class="form-control prvFilename" value="" readonly>';
-        html += '                <input type="hidden" name="randomFileName" id="randomFileName" class="form-control randomFileName" value="" readonly>';
-        html += '                <span class="input-group-btn"></span>';
-        html += '            </div>';
-        html += '        </div>';
-        html += '        <p id="error_file" class="error-msg error_file"></p>';
-        html += '    </div>';
-        html += '    <div class="col-md-1">';
-        html += '        <div class="form-group">';
-        html += '            <button class="browse btn input-xs btn-sm" type="button" style="background: #f8bb06; color:#000;padding: 8px;margin-top: 30px;" id="uploadBtn">';
-        html += '                <i class="fa fa-folder-open" aria-hidden="true"></i>';
-        html += '            </button>';
-        html += '        </div>';
-        html += '    </div>';
-
-
-        html += '    <div class="col-md-1">';
-        html += '        <div class="form-group">';
-        html += '            <button class="remove-file-btn btn input-xs btn-sm" type="button" style="background: #f8bb06; color:#000; padding: 8px; margin-top: 30px;">';
-        html += '                 <i class="fa fa-times" aria-hidden="true"></i>';
-        html += '            </button>';
-        html += '        </div>';
-        html += '    </div>';
-
-        html += '</div>';
-       
-        
-        $("#mutiple_image_upload").append(html);
-    });
-    $(document).on("click", ".remove-file-btn", function() {
-        $(this).closest('.row').remove();
-    });
+  
     $(document).on("submit", "#eventsHappiningForm", function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -198,8 +156,10 @@ $(document).ready(function () {
                 contentType: false,
                 data: formData,
                 success: function (result) {
+                    var media_tag = '';
                     if (result.msg_status == 1) {
                         //loadPartialView("#tab_one", basepath + "media/video_partial_view");
+                        loadPartialView("#tab_three", basepath + "media/events_happining_partial_view",media_tag);
                     } else {
                     }
                 },
@@ -228,6 +188,49 @@ $(document).ready(function () {
             }); /*end ajax call*/
         //}/** end if */
     });/**end event happining submit */
+    $(document).on("click", ".showaddbtn", function() {
+        let mode="ADD";
+        let eventHappiningId=0;
+        loadAddEditView(basepath,eventHappiningId);
+    });
+    $(document).on('click', ".showupdatebtn", function(e) {   
+        e.preventDefault();
+        
+        let mode="EDIT";
+        var eventHappiningId=$(this).data("eventid");
+        loadAddEditView(basepath,eventHappiningId);  
+       
+
+    });
+    $(document).on("change", "#fileName", function() {
+        var files = $(this)[0].files;
+        var previewContainer = $('#image-asset-preview-container');
+        previewContainer.empty(); 
+        
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                var fileName = file.name;
+                var imageUrl = e.target.result;
+                var html = `<div class="image-preview-item">
+                <img src="${imageUrl}" alt="${fileName}">
+                <i class="fas fa-trash image-delete delete-icon"></i>
+
+                  
+                
+            </div>`;
+                previewContainer.append(html);
+            }
+            
+            reader.readAsDataURL(file);
+        }
+    });
+    $(document).on("click", ".delete-icon", function() {
+        $(this).parent().remove(); // Remove the parent element (image preview) when delete icon is clicked
+    });
+    
     
     /** -----------mutiple image end---------------- */
    
@@ -344,10 +347,30 @@ $(document).ready(function () {
         });
 
     });/**end */
-
+    /** mutiple image on click start  */
+    
+    
+    
+    /** mutiple image on click end  */
 
 }); // end of document ready
-
+function loadAddEditView(basepath,eventHappiningId){
+    
+    $("#add_edit_view_data").html("Loading....");
+    
+    $.ajax({
+        url: basepath + "media/add_edit_event_happining_partial_view",
+        type: 'POST',
+        data:{eventHappiningId:eventHappiningId},
+        success: function(data) {
+            $("#add_edit_view_data").html(data);
+          
+        },
+        error: function(xhr, status, error) {
+            console.error("Error loading partial view:", error);
+        }
+    });
+}
 
 function loadPartialView(tabId, partialViewUrl,media_tag) {
     $('#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data,#tab_five_data').html('');

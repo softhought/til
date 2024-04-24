@@ -1,77 +1,106 @@
-<!-- <script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script> -->
-<style type="text/css">
-   
-   .file {
-    visibility: hidden;
-    position: absolute;
-}
-
-#detail_Document .form-group {
-    margin-bottom: 0;
-    padding: 4px;
-}
-
-.fa-trash-alt {
-    color: #c01212;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.browse {
-    margin-left: -20px !important;
-}
-.error-msg {
-    color: red; 
-    font-size: 16px; 
-    font-family: Arial, sans-serif; 
-    font-weight: bold; 
-    margin-top: 10px; 
-}
-</style>
 <section class="layout-box-content-format1">
-   <form id="eventsHappiningForm" class="eventsHappiningForm" method="post">
-      <input type="hidden" name="mode" id="mode" value="<?php echo $mode; ?>">
-      <input type="hidden" name="eventHappiningId" id="eventHappiningId" value="<?php echo $eventHappiningId; ?>">
-      <div class="row">
-         <div class="col-md-4">
-            <label for="event_title">Event Title <span style="color:red;font-size:15px;">*</span></label>
-            <div class="form-group">
-               <div class="input-group input-group-sm">
-                  <input type="text" class="form-control forminputs typeahead event_title" id="event_title" name="event_title"  placeholder="Enter Event Title" autocomplete="off" value="">
-               </div>
-               <p id="error_title" class="error-msg error_title"></p>
-            </div>
-         </div>
-        
-         <div class="col-md-4">
-            <label for=""></label>
-            <br>
-            <button type="button" class="btn btn-sm action-button padbtn mutiple_img_btn"
-               id="mutiple_img_btn" style="margin-top: 4px;padding: 8px;">Add Images &nbsp;<i
-               class="fas fa-plus"></i></button>
-         </div>
-        
-        
-      </div>
-    <!---- for mutiple images start ---->
-      <div class="row">
-         <div class="col-md-6 file-upload-section">
-            <div class="row">
-               <div id="mutiple_image_upload"></div>
-            </div>
-            
-         </div>
-        
-      </div>
-    <!---- for mutiple images end ---->
-    <div class="row">
-    <div class="col-md-2">
-            <label for=""></label>
-            <br>
-            <button type="submit" class="btn btn-sm action-button padbtn"
-               id="save_btn" style="margin-top: 4px;padding: 8px;">Save &nbsp;<i
-               class="fas fa-chevron-right"></i></button>
-         </div>
-    </div>
-   </form>
+<a href="javascript:;" class="btn btn-warning btnpos showaddbtn" 
+   data-toggle="modal" data-target="#investorRelationsDetails"
+   style="margin-right:10px;"><i class="fas fa-plus"></i> Add </a>
+    <br>
+    <br>
+    <!--- ---------------start hear listing ---------------------->
+    <table id="video_partial_tbl" class="table customTbl table-bordered table-hover dataTable2">
+      <thead>
+         <tr>
+            <th>Sl</th>
+            <th style="width:150px;">Event Title</th>
+            <th>Up/Down</th>
+            <th>Set Precedence</th>
+            <th>Status</th>
+            <th>Action</th>
+         </tr>
+      </thead>
+      <tbody>
+         <?php 
+            $i=1;
+            $rowslno=$happinig_list;
+            $media_tag = '';
+            $table_name = '';
+            $ref_id = '';
+            foreach($happinig_list as $list){ 
+               
+            ?>
+            <tr>
+               <td><?php echo $i++; ?></td>
+               <td><?php echo $list->name; ?></td>
+               <td>	
+                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'U','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')"/ style="cursor:pointer;">
+                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'D','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')"/ style="cursor:pointer;">
+
+
+               </td>
+               <td>
+                  <div class="row">
+                     <div class="col-md-8">
+                        <select class="form-control select2" id="otherslno_<?= $list->precedence; ?>">
+                           
+                           <?php foreach($rowslno as $row_slno){
+                                    if($list->precedence != $row_slno->precedence ){
+                           ?>
+                              <option value="<?php echo $row_slno->precedence ?>"><?php echo $row_slno->precedence ?></option>
+
+                           <?php } } ?>
+                        
+                        </select>
+                     </div>
+                  
+                     <div class="col-md-4">
+                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
+                     </div> 
+                  </div>                  
+				</td>
+               <td align="center"> <?php if($list->published == 1){ ?>
+                  <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/active-icon.png" alt="Active" title="Active" id="<?php echo($list->id); ?>"  class="status" data-setstatus=1></a>
+                  <?php } else{ ?>
+                     <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/inactive2.png" alt="Inactive" title="Inactive" id="<?php echo($list->id); ?>" class="status" data-setstatus=0> </a>   
+               <?php } ?>
+               </td>
+               <td style="text-align:center;">
+                  <a href="javascript:void(0);" class="btn tbl-action-btn padbtn showupdatebtn" 
+                  data-eventid ="<?php echo $list->id;?>"
+                  
+                  data-toggle="modal" data-target="#investorRelationsDetails"
+                  >
+                  <i class="fas fa-edit"></i>
+                  </a>
+               </td>
+            </tr>
+
+         <?php } ?>
+         
+      </tbody>
+              
+   </table>
+
+   <!--- ----------------end hear listing ----------------------->
 </section>
+<div id="investorRelationsDetails" class="modal fade customModal format1 right" data-keyboard="false"
+      data-backdrop="false">
+      <div class="modal-dialog modal-xl" >
+          <div class="modal-content">
+              <div class="modal-header" style="background:#323232;; color:#ffffff;padding: 5px;color: #fff;">
+                  <h4 class="frm_header"></h4>
+                  <button type="button" class="close" style="color: white; opacity: 1;"
+                      data-dismiss="modal">&times;<span class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body" style="min-height: 350px;height: 650px overflow-y: auto;">
+              <input type="hidden" id="relations_master_id" name="relations_master_id" value="1">
+              <input type="hidden" id="investor_relation_head" name="investor_relation_head" value="" readonly>
+              <div id="add_edit_view_data">
+            
+            
+               </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+

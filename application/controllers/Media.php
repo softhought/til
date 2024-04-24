@@ -564,52 +564,121 @@ class Media extends CI_Controller {
             $result['btnText'] = "Save";
             $result['btnTextLoader'] = "Saving...";
             $result['eventHappiningId'] = 0;
+            $result['happinig_list'] = $this->mediamodel->getEventHappiningAllList();
             $page="dashboard/media/events_happining_partial_view";
             $this->load->view($page,$result);
         }else{
 			redirect('login','refresh');
 		}
     }/** end  */
-    public function eventsHappining_add_edit_action(){
+    public function add_edit_event_happining_partial_view(){
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail')){
-            $mode = $this->input->post('mode');
-            $eventHappiningId = $this->input->post('eventHappiningId');
-            $mode = $this->input->post('mode');
-            $event_title = $this->input->post('event_title');
-            $userimage_name = $_FILES['fileName']['name'];
-            
-            $dir = FILE_UPLOAD_BASE_PATH . '/assets-admin/upload_image/event_image/';
-            $docFiles = $_FILES;
-            pre();
-            foreach ($docFiles['name'] as $index => $fileName) {
-                $fileData = [
-                    'name' => $docFiles['name'][$index],
-                    'type' => $docFiles['type'][$index],
-                    'tmp_name' => $docFiles['tmp_name'][$index],
-                    'error' => $docFiles['error'][$index],
-                    'size' => $docFiles['size'][$index]
-                ];
-                
-                $image_name = $this->commondatamodel->fileUploadmultiple($fileData, 'images', $dir);
-                pre('image_name:'. $image_name);
+
+            $result['eventHappiningId'] = trim($this->input->post('eventHappiningId'));
+            if ($result['eventHappiningId'] == 0) {
+                $result['mode'] = "ADD";
+                $result['btnText'] = "Save";
+                $result['btnTextLoader'] = "Saving...";
+                $result['happiningEditdata'] = [];
                
-            }			
-         
-           
-            // if($mode == 'EDIT' &&  $eventHappiningId > 0){
-
-            // }else{
-
-            // }
-           
-
-
+            } else {
+                $result['mode'] = "EDIT";
+                $result['btnText'] = "Update";
+                $result['btnTextLoader'] = "Updating...";
+                $where = array('happenings.id'=>$result['eventHappiningId']);
+                $result['happiningEditdata']=$this->commondatamodel->getSingleRowByWhereCls('happenings',$where);
+                pre($result['happiningEditdata']);
+                
+            }
+            $page="dashboard/media/add_edit_event_happining_partial_view";
+            $this->load->view($page,$result);
 
         }else{
 			redirect('login','refresh');
 		}
+    }/**end */
+    public function eventsHappining_add_edit_action() {
+        $session = $this->session->userdata('user_detail');
+    
+        if ($session) {
+            $mode = $this->input->post('mode');
+            $eventHappiningId = $this->input->post('eventHappiningId');
+            $event_title = $this->input->post('event_title');
+            $dir_path = FILE_UPLOAD_BASE_PATH . '/assets-admin/upload_image/event_image/';
+            $uploaded_files = $_FILES;
+            $file_array = array("docFile" => $_FILES);
+            $fileupload = $this->mediamodel->fileUpload($file_array, $dir_path);
+    
+            if ($mode == 'EDIT' && $eventHappiningId > 0) {
+                
+            } else {
+                $images_data = array();
+                foreach ($fileupload as $image_name) {
+                  
+                    $image_data = array(
+                        'banner_alt' => $event_title,
+                        'banner_image' => $image_name
+                    );
+                    $images_data[] = $image_data;
+                }
+    
+               
+                $images_json = json_encode($images_data);
+                /** for reset serial no  */
+                $srl_no = $this->mediamodel->getEventHappiningAllList(); 
+        
+                $precedence_value = '';
+                $new_precedence_value = '';
+                 foreach($srl_no as $list){
+                     $id=$list->id;
+                     $precedence_value = $list->precedence;
+ 
+                     $new_precedence_value = $precedence_value+1;
+                     $update_array  = array("precedence" => $new_precedence_value);                       
+                     $where = array("id" => $id);
+                     $update = $this->commondatamodel->updateSingleTableData('happenings',$update_array,$where);
+ 
+                 }
+                 /** end for reset serial */
+    
+               
+                $insert_data = array(
+                    'name' => $event_title,
+                    'precedence' => 0,
+                    'images' => $images_json,
+                    'modification_time' => date('Y-m-d H:i:s'),
+                    'published' => 1
+                );
+    
+              
+                $insert_status = $this->commondatamodel->insertSingleTableData('happenings', $insert_data);
+    
+               
+                if ($insert_status) {
+                   
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Saved Succesfully",
+                       
+                    );
+                } else {
+                 
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "Failed to update"
+                    );
+                }
+            }
+            header('Content-Type: application/json');
+            echo json_encode( $json_response );
+            exit;
+        } else {
+            
+            redirect('login', 'refresh');
+        }
     }
+    
     public function till_talk_partal_view(){
         $session = $this->session->userdata('user_detail');
 		if($this->session->userdata('user_detail'))

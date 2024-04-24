@@ -64,8 +64,7 @@ $route['dashboard/submitcontactform'] = 'Dashboard/submitContactForm';
 $route['dashboard/submityourcv'] = 'Dashboard/submityourcv';
 $route['dashboard/submittrainingform'] = 'Dashboard/submittrainingform';
 $route['dashboard/searchfrom'] = 'Dashboard/searchfrom';
-
-
+$route['menu/addeditaction'] = 'Products/menu_add_edit_action';
 
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";
@@ -158,3 +157,4 @@ $route["search/index"] = "frontend/Search";
 $route["mediaadmin"] = "media";
 $route["admin"] = "Login";
 $route["product-list"] = "Products";
+$route["product-menu-add-edit/(:num)/(:any)/(:any)"] = "Products/menu_add_edit/$1/$2/$3";

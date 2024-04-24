@@ -4,6 +4,10 @@
         width: 100% !important;
     }
 
+    #cke_description{
+        width: -moz-available;
+    }
+
     .file {
         visibility: hidden;
         position: absolute;

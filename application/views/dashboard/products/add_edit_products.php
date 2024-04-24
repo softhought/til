@@ -58,10 +58,10 @@
                     <span class="badge badge-primary" style="margin-left: 20px;">Parent</span>
                 </span>
                 <div class="menu-actions">
-                    <a class="btn btn-warning showaddbtn action-btn">
+                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $parentMenu["product_master_id"] . "/menu/add" ?>" class="btn btn-warning showaddbtn action-btn">
                         <i class="fas fa-plus"></i> Add
                     </a>
-                    <a class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
+                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $parentMenu["product_master_id"] . "/menu/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
                 </div>
             </li>
 
@@ -73,10 +73,10 @@
                             <span class="badge badge-info" style="margin-left: 20px;">Level 1</span>
                         </span>
                         <div class="menu-actions">
-                            <a class="btn btn-warning showaddbtn action-btn">
+                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelOneValue["product_master_id"] . "/menu/add" ?>" class="btn btn-warning showaddbtn action-btn">
                                 <i class="fas fa-plus"></i> Add
                             </a>
-                            <a class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
+                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelOneValue["product_master_id"] . "/menu/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
                         </div>
                     </li>
 
@@ -88,10 +88,10 @@
                                     <span class="badge badge-warning" style="margin-left: 20px;">Level 2</span>
                                 </span>
                                 <div class="menu-actions">
-                                    <a class="btn btn-warning showaddbtn action-btn">
+                                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelTwoValue["product_master_id"] . "/product/add" ?>" class="btn btn-warning showaddbtn action-btn">
                                         <i class="fas fa-plus"></i> Add
                                     </a>
-                                    <a class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white"
+                                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelTwoValue["product_master_id"] . "/menu/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white"
                                             style="color: white;"></i></a>
                                 </div>
                             </li>
@@ -103,7 +103,7 @@
                                             <?php echo $levelThreeValue["name"]; ?>
                                             <span class="badge badge-success" style="margin-left: 20px;">Level 3</span></span>
                                         <div class="menu-actions">
-                                            <a class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit"
+                                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelThreeValue["product_master_id"] . "/product/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit"
                                                     style="color: white"></i></a>
                                         </div>
                                     </li>

@@ -1,5 +1,5 @@
 <section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/products.jpg)">
+    style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->banner_image; ?>)">
     <div class="container">
         <h1 class="m-0">
         </h1>

@@ -1,9 +1,6 @@
 
 <style>
-   /* .select2-container--default .select2-selection--multiple .select2-selection__choice {
-   background-color: #7a2386;
-   border: 1px solid #fff;
-   } */
+   
    .error-msg {
     color: red; 
     font-size: 16px; 
@@ -14,9 +11,13 @@
 </style>
 <section class="layout-box-content-format1">
 
-<div class="partial_view_news_and_newslater">
+<!-- <div class="partial_view_news_and_newslater">
+
+</div> -->
+<div id="partial_view_news_and_newslater">
 
 </div>
+   
    
    <!--- ---------------start hear listing ---------------------->
    <table id="video_partial_tbl" class="table customTbl table-bordered table-hover dataTable2">

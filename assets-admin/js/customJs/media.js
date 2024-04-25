@@ -10,34 +10,57 @@ $(document).ready(function () {
         event.stopImmediatePropagation();
         loadPartialView("#tab_one", basepath + "media/video_partial_view",media_tag);
     });
-    $(document).on("click", "#tab_two-tab", function (event) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        var media_tag = $(this).data("mediatag");
-        loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
-        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
-    });
+    // $(document).on("click", "#tab_two-tab", function (event) {
+    //     event.preventDefault();
+    //     event.stopImmediatePropagation();
+    //     var media_tag = $(this).data("mediatag");
+    //     loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
+
+       
+    //     //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+    //     defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+    // });
     $(document).on("click", "#tab_three-tab", function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
         loadPartialView("#tab_three", basepath + "media/events_happining_partial_view",media_tag);
     });
-    $(document).on("click", "#tab_four-tab", function (event) {
+    // $(document).on("click", "#tab_four-tab", function (event) {
+    //     event.preventDefault();
+    //     event.stopImmediatePropagation();
+    //     var media_tag = $(this).data("mediatag");
+    //     loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
+    //     //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+    //     defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+    // });
+    // $(document).on("click", "#tab_five-tab", function (event) {
+    //     event.preventDefault();
+    //     event.stopImmediatePropagation();
+    //     var media_tag = $(this).data("mediatag");
+    //     loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
+    //     //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+    //     defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+    // });
+    $(document).on("click", "#tab_two-tab, #tab_four-tab, #tab_five-tab", function(event) {
         event.preventDefault();
         event.stopImmediatePropagation();
         var media_tag = $(this).data("mediatag");
-        loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
-        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
-
+        var targetElement = "#partial_view_news_and_newslater";
+        
+        if ($(this).is("#tab_two-tab")) {
+            loadPartialView("#tab_two", basepath + "media/news_partial_view", media_tag);
+        } else if ($(this).is("#tab_four-tab")) {
+            loadPartialView("#tab_four", basepath + "media/till_talk_partal_view", media_tag);
+        } else if ($(this).is("#tab_five-tab")) {
+            loadPartialView("#tab_five", basepath + "media/till_touch_partal_view", media_tag);
+        }
+        
+        defaultViewNewsAndNewslater(targetElement, basepath + "media/defaultViewNewsAndNewslater", media_tag);
     });
-    $(document).on("click", "#tab_five-tab", function (event) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        var media_tag = $(this).data("mediatag");
-        loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
-        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
-
-    });
+    
     /** ---------------for video section start ------------------*/
     $(document).on("click", ".update_btn", function (event) {
         event.preventDefault();
@@ -171,13 +194,19 @@ $(document).ready(function () {
                     var media_tag = result.media_tag;
                     if(result.media_tag == 'NEWS'){
                         loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TALK'){
                         loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TOUCH'){
                         loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }
                 } else {
                 }
@@ -224,14 +253,20 @@ $(document).ready(function () {
                     var media_tag=result.media_tag;
                     if(result.media_tag == 'NEWS'){
                         loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TALK'){
                         loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
                     }else if(result.media_tag == 'TIL_TOUCH'){
                         loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
                     }
                     
@@ -441,7 +476,7 @@ function defaultViewNewsAndNewslater(targetElement, partialViewUrl, media_tag) {
         dataType: 'html',
         data: { media_tag: media_tag },
         success: function (data) {
-            // Update the target element with the loaded partial view content
+           
             $(targetElement).html(data);
         },
         error: function (xhr, status, error) {
@@ -463,16 +498,17 @@ function changeSerial(id, slno, action,media_tag,table_name,ref_id) {
                 var media_tag = result.media_tag;
                 if(result.media_tag == 'NEWS'){
                     loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
-                        defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
                 else if(result.media_tag == 'TIL_TALK'){
                     loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
-                    defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                    defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
                 else if(result.media_tag == 'TIL_TOUCH'){
                     loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
-                    defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
-                } 
+                    defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                }
+                 
             }else if(result.msg_status == 2){
                 var media_tag = result.media_tag;
                 loadPartialView("#tab_one", basepath + "media/video_partial_view",media_tag);

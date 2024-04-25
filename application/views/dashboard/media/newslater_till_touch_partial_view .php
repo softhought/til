@@ -13,7 +13,10 @@
 }
 </style>
 <section class="layout-box-content-format1">
-<div class="partial_view_news_and_newslater">
+<!-- <div class="partial_view_news_and_newslater">
+
+</div> -->
+<div id="partial_view_news_and_newslater">
 
 </div>
    <!--- ---------------start hear listing ---------------------->

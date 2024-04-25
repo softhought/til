@@ -164,7 +164,7 @@
                                 <button type="submit" class="btn btn-sm action-button" id="savebtn"
                                     style="width: 60%;"><?php echo isset($bodycontent["editData"]) ? "Update" : "Save" ?></button>
                                 <span class="btn btn-sm action-button loaderbtn" id="loaderbtn"
-                                    style="display:none;width: 60%;">Processing....</span>
+                                    style="display:none;width: 100%;">Processing....</span>
                             </div>
                         </div>
                     </div>
@@ -224,6 +224,14 @@
                 $("#bannerimageerr").css("border", "");
             }
 
+            if ($("#catagory_image").val().trim() === "") {
+                $("#catagory_image_err").css("border", "1px solid red");
+                $("#catagory_image_err").css("border-radius", "5px");
+                valid = false;
+            } else {
+                $("#catagory_image_err").css("border", "");
+            }
+
             if ($("#short_description").val().trim() === "") {
                 $("#short_descriptionerr").css("border", "1px solid red");
                 $("#short_descriptionerr").css("border-radius", "5px");
@@ -255,7 +263,7 @@
                         if (response.status) {
                             $("#loaderbtn").hide();
                             $("#savebtn").show();
-                            window.location.replace(`${base_url}product-list`);
+                            window.location.replace(`<?php echo base_url(); ?>product-list`);
                         }
                     },
                     error: function (jqXHR, exception) {

@@ -58,60 +58,74 @@
                     <span class="badge badge-primary" style="margin-left: 20px;">Parent</span>
                 </span>
                 <div class="menu-actions">
-                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $parentMenu["product_master_id"] . "/menu/add" ?>" class="btn btn-warning showaddbtn action-btn">
+                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $parentMenu["product_master_id"] . "/menu/add" ?>"
+                        class="btn btn-warning showaddbtn action-btn">
                         <i class="fas fa-plus"></i> Add
                     </a>
-                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $parentMenu["product_master_id"] . "/menu/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
+                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $parentMenu["product_master_id"] . "/menu/edit" ?>"
+                        class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
                 </div>
             </li>
 
             <ul class="submenu show" id="menu_<?php echo $parentKey; ?>">
-                <?php foreach ($parentMenu["children"] as $levelOneKey => $levelOneValue) { ?>
-                    <li class="menu-item" data-target="#level_1_<?php echo $levelOneKey; ?>">
-                        <span class="menu-title" style="font-weight: bold; font-size: 18px;">
-                            <i class="menu-icon fa fa-chevron-right"></i> <?php echo $levelOneValue["name"]; ?>
-                            <span class="badge badge-info" style="margin-left: 20px;">Level 1</span>
-                        </span>
-                        <div class="menu-actions">
-                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelOneValue["product_master_id"] . "/menu/add" ?>" class="btn btn-warning showaddbtn action-btn">
-                                <i class="fas fa-plus"></i> Add
-                            </a>
-                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelOneValue["product_master_id"] . "/menu/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white;"></i></a>
-                        </div>
-                    </li>
+                <?php if (isset($parentMenu["children"])) {
+                    foreach ($parentMenu["children"] as $levelOneKey => $levelOneValue) { ?>
+                        <li class="menu-item" data-target="#level_1_<?php echo $levelOneKey; ?>">
+                            <span class="menu-title" style="font-weight: bold; font-size: 18px;">
+                                <i class="menu-icon fa fa-chevron-right"></i> <?php echo $levelOneValue["name"]; ?>
+                                <span class="badge badge-info" style="margin-left: 20px;">Level 1</span>
+                            </span>
+                            <div class="menu-actions">
+                                <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelOneValue["product_master_id"] . "/menu/add" ?>"
+                                    class="btn btn-warning showaddbtn action-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </a>
+                                <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelOneValue["product_master_id"] . "/menu/edit" ?>"
+                                    class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit"
+                                        style="color: white;"></i></a>
+                            </div>
+                        </li>
 
-                    <ul class="submenu show" id="level_1_<?php echo $levelOneKey; ?>">
-                        <?php foreach ($levelOneValue["children"] as $levelTwoKey => $levelTwoValue) { ?>
-                            <li class="menu-item" data-target="#level_2_<?php echo $levelTwoKey; ?>">
-                                <span class="menu-title" style="font-weight: bold; font-size: 16px;">
-                                    <i class="menu-icon fa fa-chevron-right"></i> <?php echo $levelTwoValue["name"]; ?>
-                                    <span class="badge badge-warning" style="margin-left: 20px;">Level 2</span>
-                                </span>
-                                <div class="menu-actions">
-                                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelTwoValue["product_master_id"] . "/product/add" ?>" class="btn btn-warning showaddbtn action-btn">
-                                        <i class="fas fa-plus"></i> Add
-                                    </a>
-                                    <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelTwoValue["product_master_id"] . "/menu/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white"
-                                            style="color: white;"></i></a>
-                                </div>
-                            </li>
-
-                            <ul class="submenu" id="level_2_<?php echo $levelTwoKey; ?>">
-                                <?php foreach ($levelTwoValue["children"] as $levelThreeKey => $levelThreeValue) { ?>
-                                    <li class="menu-item level-3">
-                                        <span class="menu-title" style="font-weight: bold; font-size: 14px;">
-                                            <?php echo $levelThreeValue["name"]; ?>
-                                            <span class="badge badge-success" style="margin-left: 20px;">Level 3</span></span>
+                        <ul class="submenu show" id="level_1_<?php echo $levelOneKey; ?>">
+                            <?php if (isset($levelOneValue["children"])) {
+                                foreach ($levelOneValue["children"] as $levelTwoKey => $levelTwoValue) { ?>
+                                    <li class="menu-item" data-target="#level_2_<?php echo $levelTwoKey; ?>">
+                                        <span class="menu-title" style="font-weight: bold; font-size: 16px;">
+                                            <i class="menu-icon fa fa-chevron-right"></i> <?php echo $levelTwoValue["name"]; ?>
+                                            <span class="badge badge-warning" style="margin-left: 20px;">Level 2</span>
+                                        </span>
                                         <div class="menu-actions">
-                                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelThreeValue["product_master_id"] . "/product/edit" ?>" class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit"
-                                                    style="color: white"></i></a>
+                                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelTwoValue["product_master_id"] . "/product/add" ?>"
+                                                class="btn btn-warning showaddbtn action-btn">
+                                                <i class="fas fa-plus"></i> Add
+                                            </a>
+                                            <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelTwoValue["product_master_id"] . "/menu/edit" ?>"
+                                                class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit" style="color: white"
+                                                    style="color: white;"></i></a>
                                         </div>
                                     </li>
-                                <?php } ?>
-                            </ul>
-                        <?php } ?>
-                    </ul>
-                <?php } ?>
+
+                                    <ul class="submenu" id="level_2_<?php echo $levelTwoKey; ?>">
+                                        <?php if (isset($levelTwoValue["children"])) {
+                                            foreach ($levelTwoValue["children"] as $levelThreeKey => $levelThreeValue) { ?>
+                                                <li class="menu-item level-3">
+                                                    <span class="menu-title" style="font-weight: bold; font-size: 14px;">
+                                                        <?php echo $levelThreeValue["name"]; ?>
+                                                        <span class="badge badge-success" style="margin-left: 20px;">Level 3</span></span>
+                                                    <div class="menu-actions">
+                                                        <a href="<?php echo base_url() . "product-menu-add-edit/" . $levelThreeValue["product_master_id"] . "/product/edit" ?>"
+                                                            class="btn btn-sm btn-secondary action-btn"><i class="fas fa-edit"
+                                                                style="color: white"></i></a>
+                                                    </div>
+                                                </li>
+                                            <?php }
+                                        } ?>
+                                    </ul>
+                                <?php }
+                            } ?>
+                        </ul>
+                    <?php }
+                } ?>
             </ul>
         <?php } ?>
     </ul>

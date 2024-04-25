@@ -13,7 +13,7 @@
             <div class="container">
                 <h3 class="m-0 fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h3>
 
-                <h5><?php echo $bodycontent["main-section"][0]->about; ?></h5>
+                <?php echo $bodycontent["main-section"][0]->about; ?>
                 <div class="icon-container">
                     <hr>
                     <img src="<?php echo base_url();?>tilindia/assets/images/Rectangle.png" alt="rectangle" />

@@ -114,7 +114,7 @@
           <a href="<?php echo base_url() . $value["url"]; ?>">
             <div class="product-item">
               <figure>
-                <img src="<?php echo base_url(); ?>assets/images/<?php echo $value["banner_image"] ?>" alt="rectangle" />
+                <img src="<?php echo base_url(); ?>assets/images/<?php echo $value["catagory_image"] ?>" alt="rectangle" />
               </figure>
               <h5><?php echo $value["name"]; ?></h5>
               <button>Request for a quote</button>

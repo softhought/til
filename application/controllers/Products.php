@@ -34,7 +34,11 @@ class Products extends CI_Controller
 
             if ($isProductPage == "product") {
                 $page = "dashboard/products/product_add_edit";
-
+                if ($mode == "edit") {
+                    $result["editData"] = $this->commondatamodel->getSingleRowByWhereCls("product_master", ["product_master_id" => $id]);
+                } else {
+                    $result["parentId"] = $id;
+                }
 
             } elseif ($isProductPage == "menu") {
                 if ($mode == "edit") {
@@ -66,9 +70,9 @@ class Products extends CI_Controller
         $dataArr = [
             'slug' => $slug,
             'parent_id' => $parent_id,
-            'title' => $title,
+            'name' => $title,
             'short_description' => $short_description,
-            'description' => $description
+            'about' => $description
         ];
 
         if (isset($_FILES['bannerimagefile'])) {
@@ -117,13 +121,13 @@ class Products extends CI_Controller
 
             if ($fileError === 0) {
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                    $dataArr = array_merge([
+                    $dataArr = array_merge($dataArr, [
                         'catagory_image' => $newFilename
-                    ], $dataArr);
+                    ]);
                 }
             }
         }
-        
+
         if ($mode == "edit") {
             $product_master_id = $_POST["product_master_id"];
             $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id]);
@@ -138,5 +142,154 @@ class Products extends CI_Controller
         }
         header('Content-Type: application/json');
         exit;
+    }
+
+    public function product_add_edit_action()
+    {
+        $mode = $_POST["mode"];
+        $slug = $_POST["slug"];
+        $parent_id = $_POST["parent_id"];
+        $title = $_POST["title"];
+        $short_description = $_POST["short_description"];
+        $description = $_POST["description"];
+
+        $dataArr = [
+            'slug' => $slug,
+            'parent_id' => $parent_id,
+            'name' => $title,
+            'short_description' => $short_description,
+            'about' => $description
+        ];
+
+        if (isset($_FILES['bannerimagefile'])) {
+            $file = $_FILES['bannerimagefile'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/images/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s');
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['bannerimagefile']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'banner_image' => $newFilename
+                    ]);
+                }
+            }
+        }
+
+        if (isset($_FILES['catagory_image_file'])) {
+            $file = $_FILES['catagory_image_file'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/images/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s');
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['catagory_image_file']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'catagory_image' => $newFilename
+                    ]);
+                }
+            }
+        }
+
+        if ($mode == "edit") {
+            $product_master_id = $_POST["product_master_id"];
+            $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id]);
+        } else {
+            $status = $this->commondatamodel->insertSingleTableData("product_master", $dataArr);
+        }
+
+        if ($status) {
+            echo json_encode(["status" => true, "product_master_id" => $status]);
+        } else {
+            echo json_encode(["status" => false]);
+        }
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function fetchtemplate() {
+        $result = $this->commondatamodel->getAllDropdownData("template_master");
+        echo json_encode(["status" => true, "data" => $result]);
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function fetchtemplatecolumn() {
+        $template_id = $_POST["template_id"];
+        $result = $this->commondatamodel->getSingleRowByWhereCls("template_master", ["template_id" => $template_id]);
+        $decodeResultCol = json_decode($result->column_names, true);
+        echo json_encode(["status" => true, "data" => $decodeResultCol]);
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function modeladdeditaction() {
+        $mode = $_POST["model_mode"];
+        $product_master_id = $_POST["model_product_master_id"];
+        $template_master_id = $_POST["template_set"];
+        $title = $_POST["model_title"];
+        $about = $_POST["model_description"];
+
+        $dataArr = [
+            'product_master_id' => $product_master_id,
+            'template_master_id' => $template_master_id,
+            'title' => $title,
+            'about' => $about,
+        ];
+
+        if ($mode == "edit") {
+            $prodect_model_dt_id = $_POST["prodect_model_dt_id"];
+            $status = $this->commondatamodel->updateSingleTableData("product_model_details", $dataArr, ["prodect_model_dt_id" => $prodect_model_dt_id]);
+        } else {
+            $status = $this->commondatamodel->insertSingleTableData("product_model_details", $dataArr);
+        }
+
+        if ($status) {
+            echo json_encode(["status" => true]);
+        } else {
+            echo json_encode(["status" => false]);
+        }
+
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function fetchtemplatedata() {
+        $prodect_model_dt_id = $_POST["prodect_model_dt_id"];
+        $result = $this->commondatamodel->getSingleRowByWhereCls("product_model_details", ["prodect_model_dt_id" => $prodect_model_dt_id]);
+       
+        echo json_encode(["status" => true, "data" => $result]);
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function productModelPartialView() {
+        $product_master_id = $_POST['product_master_id'];
+        $result["product_model_details"] = $this->commondatamodel->getAllRecordWhere('product_model_details', ['product_master_id' => $product_master_id]);
+        $page = "dashboard/products/model_template_partial_view";
+        $this->load->view($page, $result);
     }
 }

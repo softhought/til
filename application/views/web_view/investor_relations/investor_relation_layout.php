@@ -18,7 +18,7 @@
                             <div class="sidebarlist" style="display: none;">
                                 <div class="menu-investor-menu-container">
                                     <ul id="menu-investor-menu" class="left-nav">
-                                        <?php foreach ($mainMenu->details as $key => $subMenu) { 
+                                        <?php foreach ($mainMenu->details as $key => $subMenu) {
                                             $activeStatus = $bodycontent["investorRelationsDetails"]->page_url == $subMenu->page_url ? "activemenu" : ""; ?>
                                             <li class="<?php echo $activeStatus; ?>"><a
                                                     href="<?php echo base_url() . $subMenu->page_url ?>"><?php echo $subMenu->title ?></a>
@@ -40,18 +40,36 @@
                         </figure>
                     </div>
                     <?php echo $bodycontent["investorRelationsDetails"]->description ?>
-                    <div class="entry-content">
-                        <?php if ($bodycontent["investorRelationsDetails"]->is_file_uploaded == "Y") { ?>
+
+                    <?php if ($bodycontent["investorRelationsDetails"]->is_file_uploaded == "Y") { ?>
+                        <div class="entry-content">
                             <div class="news_list" style="width:100%">
                                 <ul>
                                     <?php foreach ($bodycontent["investorRelationsDetails"]->file as $key => $file) { ?>
-                                        <p><a class="pdf_link" href="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $file->random_file_name; ?>" target="_blank">Click to view / download the documents.</a></p>
-                                        <hr>
+                                        <li>
+                                            <strong class="pdfIcon">
+                                                <?php echo $file->uploaded_file_desc; ?>
+                                            </strong>
+                                            <aside>
+                                                <a href="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $file->random_file_name; ?>"
+                                                    target="_blank" class="download_pdf"
+                                                    title="<?php echo $file->uploaded_file_desc; ?>">
+                                                    View
+                                                </a>
+                                                /
+                                                <a href="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $file->random_file_name; ?>"
+                                                    download="<?php echo $file->uploaded_file_desc; ?>"
+                                                    title="<?php echo $file->uploaded_file_desc; ?>">
+                                                    Download Document
+                                                </a>
+                                            </aside>
+                                            <div class="clear"></div>
+                                        </li>
                                     <?php } ?>
                                 </ul>
                             </div>
-                        <?php } ?>
-                    </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

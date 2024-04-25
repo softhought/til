@@ -564,8 +564,8 @@
                             if ($("#mode").val() == "add") {
                                 $("#product_master_id").val(response.product_master_id);
                                 $("#createmodeltemplate").prop("disabled", false);
+                                window.location.replace(window.location.href.split("/").slice(0, -1).concat("edit").join("/"));
                             }
-
                         }
                     },
                     error: function (jqXHR, exception) {

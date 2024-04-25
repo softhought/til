@@ -56,7 +56,7 @@ $(document).ready(function () {
         let mode="EDIT";
         let relations_master_id=$(this).data("relationsmasterid");
         var relations_dtl_id = $(this).data("relationsdtlid");
-
+        
         loadAddEditView(basepath,relations_master_id,relations_dtl_id);     
         $(".frm_header").html($("#investor_relation_head").val());
 

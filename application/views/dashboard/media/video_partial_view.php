@@ -39,12 +39,13 @@
                <p id="error_link" class="error-msg"></p>
             </div>
          </div>
-         <div class="col-md-2">
+         <div class="col-md-3">
             <label for=""></label>
                <br>
                <button type="submit" class="btn btn-sm action-button padbtn"
-                  id="save_btn" style="margin-top: 4px;padding: 8px;">Save &nbsp;<i
+                  id="save_btn" style="margin-top: 4px;padding: 8px;"><?php echo $btnText; ?> &nbsp;<i
                   class="fas fa-chevron-right"></i></button>
+                  <span class="btn btn-sm action-button loaderbtn" id="loaderbtn" style="display:none;width: 60%;"><?php echo $btnTextLoader; ?></span>   
             </div>
          
 

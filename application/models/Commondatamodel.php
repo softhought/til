@@ -59,11 +59,6 @@ class Commondatamodel extends CI_Model
 
 	public function updateSingleTableData($table, $data, $where)
 	{
-
-
-
-
-
 		try {
 
 			$this->db->trans_begin();
@@ -72,9 +67,7 @@ class Commondatamodel extends CI_Model
 
 			$this->db->update($table, $data, $where);
 
-			//echo $this->db->last_query();
-
-			$this->db->last_query();
+			// echo $this->db->last_query();exit;
 
 			$insert_id = $this->db->insert_id();
 

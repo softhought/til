@@ -1,4 +1,4 @@
-<!-- <script src="<?php echo base_url();?>assets-admin/js/customJs/media.js"></script> -->
+
 <style type="text/css">
 
 .file {
@@ -7,20 +7,6 @@
 }
 
 
-.table td,
-.table th {
-    vertical-align: middle !important;
-}
-
-/* .tablepad th,
-td {
-    padding: 0px 0px !important;
-} */
-
-#detail_Document .form-group {
-    margin-bottom: 0;
-    padding: 4px;
-}
 
 .fa-trash-alt {
     color: #c01212;
@@ -40,10 +26,10 @@ td {
 }
 </style>
 <form id="newsandnewslaterForm" class="newsandnewslaterForm" method="post" enctype="multipart/form-data">
-   <input type="hidden" name="media_tag" id="media_tag" value="<?php echo $list->menu_tag; ?>"><br>
-   <input type="hidden" name="mediaMasterId" id="mediaMasterId" value="<?php echo $list->media_master_id; ?>"><br>
-   <input type="hidden" name="mode" id="mode" class="mode" value="ADD"><br>
-   <input type="hidden" name="docID" id="docID" value="<?php echo $doc_id; ?>"><br>
+   <input type="hidden" name="media_tag" id="media_tag" value="<?php echo $list->menu_tag; ?>">
+   <input type="hidden" name="mediaMasterId" id="mediaMasterId" value="<?php echo $list->media_master_id; ?>">
+   <input type="hidden" name="mode" id="mode" class="mode" value="ADD">
+   <input type="hidden" name="docID" id="docID" value="<?php echo $doc_id; ?>">
          <div class="row">
             
 
@@ -104,6 +90,7 @@ td {
             <button type="submit" class="btn btn-sm action-button padbtn save_btn"
                id="save_btn" style="padding: 8px; margin-top:10px;">Save &nbsp;<i
                class="fas fa-chevron-right"></i></button>
+               <span class="btn btn-sm action-button loaderbtn" id="loaderbtn" style="display:none;width: 60%;"><?php echo $btnTextLoader; ?></span>
             </div>
          </div>
 </form>

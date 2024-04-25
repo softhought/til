@@ -21,8 +21,8 @@
             $i=1;
             $rowslno=$happinig_list;
             $media_tag = '';
-            $table_name = '';
-            $ref_id = '';
+           
+            
             foreach($happinig_list as $list){ 
                
             ?>
@@ -30,8 +30,8 @@
                <td><?php echo $i++; ?></td>
                <td><?php echo $list->name; ?></td>
                <td>	
-                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'U','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')"/ style="cursor:pointer;">
-                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'D','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')"/ style="cursor:pointer;">
+                  <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active" onclick="changeSerialEvent(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'U')"/ style="cursor:pointer;">
+                  <img src="<?php echo base_url(); ?>assets-admin/img/down.png" alt="Active" title="down arrow" id="active" onclick="changeSerialEvent(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'D')"/ style="cursor:pointer;">
 
 
                </td>
@@ -51,14 +51,14 @@
                      </div>
                   
                      <div class="col-md-4">
-                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerial(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P','<?php echo $media_tag; ?>','<?php echo $table_name;?>','<?php echo $ref_id;?>')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
+                        <button type="button" class="btn tbl-action-btn padbtn" onclick="changeSerialEvent(<?php echo($list->id);?>,<?php echo $list->precedence;?>,'P')" style="margin: 3px -6px;"><i class="fas fa-sync-alt" aria-hidden="true" title="click for set precedence" ></i>    </button>   
                      </div> 
                   </div>                  
 				</td>
                <td align="center"> <?php if($list->published == 1){ ?>
-                  <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/active-icon.png" alt="Active" title="Active" id="<?php echo($list->id); ?>"  class="status" data-setstatus=1></a>
+                  <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/active-icon.png" alt="Active" title="Active" id="<?php echo($list->id); ?>"  class="eventstatus" data-setstatus=0></a>
                   <?php } else{ ?>
-                     <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/inactive2.png" alt="Inactive" title="Inactive" id="<?php echo($list->id); ?>" class="status" data-setstatus=0> </a>   
+                     <a href="javascript:void(0);"><img src="<?php echo base_url(); ?>assets-admin/img/inactive2.png" alt="Inactive" title="Inactive" id="<?php echo($list->id); ?>" class="eventstatus" data-setstatus=1> </a>   
                <?php } ?>
                </td>
                <td style="text-align:center;">

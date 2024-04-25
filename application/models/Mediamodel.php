@@ -52,7 +52,43 @@ class Mediamodel extends CI_Model{
 	}/** end */
 
 	
-	public function fileUpload($data, $dir_path)
+// 	public function fileUpload($data, $dir_path)
+// { 
+//     $config = array(
+//         'upload_path' => $dir_path,
+//         'allowed_types' => 'pdf|jpg|jpeg|png',
+//         'max_size' => '5120', 
+//         'max_filename' => '255',
+//         'encrypt_name' => TRUE,
+//     );
+
+//     $this->load->library('upload', $config);
+//     $uploaded_files = array();
+
+//     for ($i = 0; $i < sizeof($data['docFile']['fileName']['name']); $i++)
+//     {
+
+//         $_FILES['image']['name'] = $data['docFile']['fileName']['name'][$i];
+//         $_FILES['image']['type'] = $data['docFile']['fileName']['type'][$i];
+//         $_FILES['image']['tmp_name'] = $data['docFile']['fileName']['tmp_name'][$i];
+//         $_FILES['image']['error'] = $data['docFile']['fileName']['error'][$i];
+//         $_FILES['image']['size'] = $data['docFile']['fileName']['size'][$i];
+
+//         $this->upload->initialize($config);
+//         if ($this->upload->do_upload('image'))
+//         { 
+//             $file_detail = $this->upload->data();
+//             $uploaded_files[] = $file_detail['file_name']; 
+//         } 
+//         else
+//         {
+//             $errors[] = $this->upload->display_errors();
+//         }
+//     }
+
+//     return $uploaded_files;
+// }
+public function fileUpload($data, $dir_path)
 { 
     $config = array(
         'upload_path' => $dir_path,
@@ -67,6 +103,7 @@ class Mediamodel extends CI_Model{
 
     for ($i = 0; $i < sizeof($data['docFile']['fileName']['name']); $i++)
     {
+
         $_FILES['image']['name'] = $data['docFile']['fileName']['name'][$i];
         $_FILES['image']['type'] = $data['docFile']['fileName']['type'][$i];
         $_FILES['image']['tmp_name'] = $data['docFile']['fileName']['tmp_name'][$i];
@@ -77,7 +114,12 @@ class Mediamodel extends CI_Model{
         if ($this->upload->do_upload('image'))
         { 
             $file_detail = $this->upload->data();
-            $uploaded_files[] = 'gallery_image_'.$file_detail['file_name']; 
+            // Rename the file with prefix "gallery_image_"
+            //$new_file_name = 'gallery_image_' . $file_detail['file_name'];
+            $new_file_name = 'image_gallery/gallery_image_' . $file_detail['file_name'];
+            $uploaded_path = $file_detail['file_path'] . $new_file_name;
+            rename($file_detail['full_path'], $uploaded_path);
+            $uploaded_files[] = $new_file_name; 
         } 
         else
         {
@@ -87,5 +129,4 @@ class Mediamodel extends CI_Model{
 
     return $uploaded_files;
 }
-
 }/**end */

@@ -70,6 +70,7 @@ $route['product/fetchtemplate'] = 'Products/fetchtemplate';
 $route['product/fetchtemplatecolumn'] = 'Products/fetchtemplatecolumn';
 $route['product/modeladdeditaction'] = 'Products/modeladdeditaction';
 $route['product/fetchtemplatedata'] = 'Products/fetchtemplatedata';
+$route['product/fetchproductmodelpartialview'] = 'Products/productModelPartialView';
 
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";

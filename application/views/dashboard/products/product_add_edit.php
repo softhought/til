@@ -159,6 +159,13 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="product_model_partialview"></div>
+                        </div>
+                    </div>
+                    
                     <hr>
                     <div class="formblock-box">
                         <div class="row">
@@ -183,6 +190,7 @@
     <div class="col-md-1"></div>
 </div>
 
+<!-- Model -->
 <div id="createmodeltemplateModel" class="modal fade customModal format1 right" data-keyboard="false"
     data-backdrop="false">
     <div class="modal-dialog modal-xl">
@@ -258,6 +266,7 @@
 
 <script>
     $(document).ready(function () {
+        load_product_model_partial_view($("#product_master_id").val());
         $("#createmodeltemplate").click(function () {
             $("#model_product_master_id").val($("#product_master_id").val());
             $("#model_mode").val("add");
@@ -294,7 +303,7 @@
             showTemplateTable(template_id);
         });
     });
-    
+
     function showTemplateTable(template_id) {
         $("#tableContainer").empty();
         $.ajax({
@@ -420,6 +429,22 @@
         return valid;
     }
 
+    function load_product_model_partial_view(product_master_id) {
+        $("#product_model_partialview").html("");
+        $.ajax({
+            url: "<?php echo base_url(); ?>product/fetchproductmodelpartialview",
+            type: 'POST',
+            data: { product_master_id: product_master_id },
+            success: function (data) {
+                $("#product_model_partialview").html(data);
+
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading partial view:", error);
+            }
+        });
+    }
+
     $("#createtemplateform").on("submit", function (e) {
         e.preventDefault();
 
@@ -444,6 +469,7 @@
                         $("#createtemplateform")[0].reset();
                         $("#createmodeltemplateModel").modal("hide");
                     }
+                    load_product_model_partial_view($("#product_master_id").val());
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR);

@@ -285,4 +285,11 @@ class Products extends CI_Controller
         header('Content-Type: application/json');
         exit;
     }
+
+    public function productModelPartialView() {
+        $product_master_id = $_POST['product_master_id'];
+        $result["product_model_details"] = $this->commondatamodel->getAllRecordWhere('product_model_details', ['product_master_id' => $product_master_id]);
+        $page = "dashboard/products/model_template_partial_view";
+        $this->load->view($page, $result);
+    }
 }

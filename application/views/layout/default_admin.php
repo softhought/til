@@ -507,6 +507,19 @@ if(!empty($check)){
     <script>
     $(document).ready(function() {
 
+        $(".more-read").click(function () {
+                var elipseId = $(this).attr("data-target");
+                var buttonText = $(this).text();
+
+                if (buttonText === "Read more") {
+                  $("#" + elipseId).addClass("expands");
+                  $(this).text("Read less");
+                } else {
+                  $(this).text("Read more");
+                  $("#" + elipseId).removeClass("expands");
+                }
+              });
+
 
         $(document).on("click", ".logHistory", function() {
 

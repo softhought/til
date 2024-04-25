@@ -192,22 +192,24 @@ $(document).ready(function () {
                     $(".save_btn").css("display", "block");
                     $(".loaderbtn").css("display", "none");
                     var media_tag = result.media_tag;
+                    var targetElement = "#partial_view_news_and_newslater";
                     if(result.media_tag == 'NEWS'){
                         loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
                         //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
-                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        // defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TALK'){
                         loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
                         //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
-                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        // defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }else if(result.media_tag == 'TIL_TOUCH'){
                         loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
                         //defaultViewNewsAndNewslater(".partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
 
-                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        // defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                     }
+                    defaultViewNewsAndNewslater(targetElement, basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 } else {
                 }
             },
@@ -496,19 +498,21 @@ function changeSerial(id, slno, action,media_tag,table_name,ref_id) {
         success: function (result) {
             if (result.msg_status == 1) {
                 var media_tag = result.media_tag;
+                var targetElement = "#partial_view_news_and_newslater";
                 if(result.media_tag == 'NEWS'){
                     loadPartialView("#tab_two", basepath + "media/news_partial_view",media_tag);
-                        defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                        //defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
                 else if(result.media_tag == 'TIL_TALK'){
                     loadPartialView("#tab_four", basepath + "media/till_talk_partal_view",media_tag);
-                    defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                    //defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
                 else if(result.media_tag == 'TIL_TOUCH'){
                     loadPartialView("#tab_five", basepath + "media/till_touch_partal_view",media_tag);
-                    defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
+                    //defaultViewNewsAndNewslater("#partial_view_news_and_newslater", basepath + "media/defaultViewNewsAndNewslater", media_tag);
                 }
                  
+               defaultViewNewsAndNewslater(targetElement, basepath + "media/defaultViewNewsAndNewslater", media_tag);
             }else if(result.msg_status == 2){
                 var media_tag = result.media_tag;
                 loadPartialView("#tab_one", basepath + "media/video_partial_view",media_tag);

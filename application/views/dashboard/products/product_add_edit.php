@@ -57,7 +57,7 @@
                 <div class="card-header box-shdw">
                     <h3 class="card-title">Products Page</h3>
                 </div><!-- /.card-header -->
-                <form name="menuForm" id="menuForm" class="p-4" enctype="multipart/form-data">
+                <form name="productform" id="productform" class="p-4" enctype="multipart/form-data">
 
                     <input type="hidden" id="mode" name="mode"
                         value="<?php echo isset($bodycontent["editData"]) ? "edit" : "add" ?>">
@@ -165,7 +165,7 @@
                             <div id="product_model_partialview"></div>
                         </div>
                     </div>
-                    
+
                     <hr>
                     <div class="formblock-box">
                         <div class="row">
@@ -541,7 +541,7 @@
             return valid;
         }
 
-        $("#menuForm").on("submit", function (e) {
+        $("#productform").on("submit", function (e) {
             e.preventDefault();
 
             var isValid = validate();
@@ -564,7 +564,9 @@
                             if ($("#mode").val() == "add") {
                                 $("#product_master_id").val(response.product_master_id);
                                 $("#createmodeltemplate").prop("disabled", false);
-                                window.location.replace(window.location.href.split("/").slice(0, -1).concat("edit").join("/"));
+                                window.location.replace(
+                                    window.location.href.split("/").slice(0, -3).concat(response.product_master_id, "product", "edit").join("/")
+                                );
                             }
                         }
                     },

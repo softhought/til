@@ -10,7 +10,7 @@ public function fileUploadInvestor($data){
     {
 
 
-    $dir_path = FILE_UPLOAD_BASE_PATH.'/assets/test_doc/'; //server
+    $dir_path = FILE_UPLOAD_BASE_PATH.'/assets/docs/pdf/'; //server
         $is_file_uploaded = "N";
         $totalfilesupload = 0;
         if(isset($data['docFile']['fileName']))

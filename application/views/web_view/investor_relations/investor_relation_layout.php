@@ -45,7 +45,8 @@
                             <div class="news_list" style="width:100%">
                                 <ul>
                                     <?php foreach ($bodycontent["investorRelationsDetails"]->file as $key => $file) { ?>
-                                        <p><a class="pdf_link" href="<?php echo base_url(); ?>assets/pdf/<?php echo $file->user_file_name; ?>" target="_blank">Click to view / download the documents.</a></p>
+                                        <p><a class="pdf_link" href="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $file->random_file_name; ?>" target="_blank">Click to view / download the documents.</a></p>
+                                        <hr>
                                     <?php } ?>
                                 </ul>
                             </div>

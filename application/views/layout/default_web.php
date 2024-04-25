@@ -32,22 +32,33 @@
     content="Material Handling Equipment in India, reach stackers, truck cranes India, jaw crushers, forklifts trucks">
   <meta name="description"
     content="TIL limited is a reputed manufacturer of material handling equipment in India. We manufacture a wide range of cranes, stone crushers and various other material handling solutions and crushing and screening solution.">
-  <link href="<?php echo base_url(); ?>/assets/images/favicon.png" type="image/x-icon" rel="icon" />
+  <link href="<?php echo base_url(); ?>assets/images/favicon.png" type="image/x-icon" rel="icon" />
   <!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">-->
-  <link href="<?php echo base_url(); ?>/assets/css/main5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/animate5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/font-awesome.min5d4f.css?c=-62170003270" media="all"
+  <!-- <link href="<?php echo base_url(); ?>assets/css/main5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/animate5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/bootstrap.min5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/font-awesome.min5d4f.css?c=-62170003270" media="all"
     rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/custom5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/bootstrap-dropdownhover5d4f.css?c=-62170003270" media="all"
+  <link href="<?php echo base_url(); ?>assets/css/custom5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/bootstrap-dropdownhover5d4f.css?c=-62170003270" media="all"
     rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/jquery.mCustomScrollbar5d4f.css?c=-62170003270" media="all"
+  <link href="<?php echo base_url(); ?>assets/css/jquery.mCustomScrollbar5d4f.css?c=-62170003270" media="all"
     rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/jquery.fancybox5d4f.css?c=-62170003270" media="all"
+  <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox5d4f.css?c=-62170003270" media="all"
     rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/js/jquery-ui.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/js/jquery-ui.min.css" rel="stylesheet"> -->
+  <link href="<?php echo base_url(); ?>assets/css/main.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/animate.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/custom.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/bootstrap-dropdownhover.css?c=-62170003270" media="all"
+    rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/jquery.mCustomScrollbar.css?c=-62170003270" media="all"
+    rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="assets//js/jquery-ui.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
@@ -104,9 +115,9 @@
 </head>
 
 <body>
-  <link href="<?php echo base_url(); ?>/assets/css/ticker5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/slick5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
-  <link href="<?php echo base_url(); ?>/assets/css/slick-theme5d4f.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/ticker.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/slick.css?c=-62170003270" media="all" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assets/css/slick-theme.css?c=-62170003270" media="all" rel="stylesheet" />
   <div class="loader-center">
     <div class="loader" style="display: none"></div>
   </div>
@@ -117,7 +128,7 @@
         <div class="row">
           <div class="logo">
             <a href="index" title="">
-              <img src="<?php echo base_url(); ?>/assets/images/logo.png" alt="TIL Limited"
+              <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="TIL Limited"
                 class="img-responsive" /></a>
           </div>
           <samp class="mobl_button">
@@ -247,15 +258,15 @@
           <p>TIL Limited</p>
           <div class="">
             <a href="#">
-              <img src="<?php echo base_url(); ?>/assets/images/phone-icon.png" alt="icon" />
+              <img src="<?php echo base_url(); ?>assets/images/phone-icon.png" alt="icon" />
               <p>+91 33 2469 3732-6</p>
             </a>
             <a href="#" style="align-items: flex-start;">
-              <img src="<?php echo base_url(); ?>/assets/images/geo-pin.png" style="padding-top: 14px;" alt="icon" />
+              <img src="<?php echo base_url(); ?>assets/images/geo-pin.png" style="padding-top: 14px;" alt="icon" />
               <p>1, Taratolla Road,Garden Reach, Kolkata 700 024, West Bengal</p>
             </a>
             <a href="#">
-              <img src="<?php echo base_url(); ?>/assets/images/office-icon.png" alt="icon" />
+              <img src="<?php echo base_url(); ?>assets/images/office-icon.png" alt="icon" />
               <p>+91 33 2469 2143, 3731</p>
             </a>
             <p>CIN: L74999WB1974PLC041725</p>
@@ -282,7 +293,7 @@
         <div class="socialLinks"><a href="https://www.facebook.com/tillimited/" class="facebook" target="_blank" title="Facebook"><i></i></a><a href="https://www.youtube.com/tillimitedindia" class="youtube" target="_blank" title="Youtube"><i></i><span></span></a><a href="https://www.linkedin.com/company/til-limited-ind/" class="linkedIn" target="_blank" title="LinkedIn"><i></i><span></span></a> </div>
         </br>
         <h4>Digital Payment:</h4>
-        <div style="padding-top: 5px;"><a href="/<?php echo base_url(); ?>/assets/pdf/tractorindia@sbi.pdf" target="_blank"><img src="/<?php echo base_url(); ?>/assets/images/BhimUpi-logo.png" alt="Bhim UPI" /></a></div> -->
+        <div style="padding-top: 5px;"><a href="/<?php echo base_url(); ?>assets/pdf/tractorindia@sbi.pdf" target="_blank"><img src="/<?php echo base_url(); ?>assets/images/BhimUpi-logo.png" alt="Bhim UPI" /></a></div> -->
         </div>
         <!-- end col -->
 
@@ -320,8 +331,8 @@
             </div>
             <div class="">
               <p class="p-0">Digital Payment:</p>
-              <a href="<?php echo base_url(); ?>/assets/pdf/tractorindia%40sbi.pdf" target="_blank"><img
-                  style="width:50%" src="<?php echo base_url(); ?>/assets/images/BhimUpi-logo.png" class="paylogo"
+              <a href="<?php echo base_url(); ?>assets/pdf/tractorindia%40sbi.pdf" target="_blank"><img
+                  style="width:50%" src="<?php echo base_url(); ?>assets/images/BhimUpi-logo.png" class="paylogo"
                   alt="Bhim UPI" /></a>
             </div>
           </div>
@@ -528,7 +539,7 @@
                 <div class="form-group">
                   <label for="organization">Organization <span style="color:#f00">*</span> </label>
                   <div class="input-container">
-                    <img src="../../../tilindia/assets/images/organization-icon.png" alt="organization" srcset="">
+                    <img src="../../../tilindiaassets/images/organization-icon.png" alt="organization" srcset="">
                     <input type="text" name="organization" value="" placeholder="Organization" autocomplete="off"
                       id="organization" class="form-control" />
                   </div>
@@ -643,22 +654,40 @@
             </div>
           </div>
 
-          <script src="<?php echo base_url(); ?>/assets/js/jquery.min5d4f.js?c=-62170003270" type="text/javascript"
+          <!-- <script src="<?php echo base_url(); ?>assets/js/jquery.min5d4f.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/jquery-ui.min5d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min5d4f.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min5d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/bootstrap.min5d4f.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/bootstrap-dropdownhover5d4f.js?c=-62170003270"
+          <script src="<?php echo base_url(); ?>assets/js/bootstrap-dropdownhover5d4f.js?c=-62170003270"
             type="text/javascript" charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/jquery.mCustomScrollbar.concat.min5d4f.js?c=-62170003270"
+          <script src="<?php echo base_url(); ?>assets/js/jquery.mCustomScrollbar.concat.min5d4f.js?c=-62170003270"
             type="text/javascript" charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/til_class5d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/til_class5d4f.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/notify.min5d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/notify.min5d4f.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/jquery.fancybox.pack5d4f.js?c=-62170003270"
+          <script src="<?php echo base_url(); ?>assets/js/jquery.fancybox.pack5d4f.js?c=-62170003270"
+            type="text/javascript" charset="utf-8"></script> -->
+
+
+          <script src="<?php echo base_url(); ?>assets/js/jquery.min.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/bootstrap-dropdownhover.js?c=-62170003270"
             type="text/javascript" charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/jquery.mCustomScrollbar.concat.min.js?c=-62170003270"
+            type="text/javascript" charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/til_class.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/notify.min.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/jquery.fancybox.pack.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
           <script>
             $(document).ready(function () {
               $("ul#menu-top-menu > li").addClass("dropdown");
@@ -919,103 +948,14 @@
               })
             });
           </script>
-          <script src="<?php echo base_url(); ?>/assets/js/html55d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script src="<?php echo base_url(); ?>/assets/js/common5d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/common.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-          <script type="text/javascript">
-            function findAncestor_with_name(el, nam) {
-              this.for_check_str += el.tagName + "->";
-              // console.log(this);
-              if (el.parentElement.name.toLowerCase() == 'html'.toLowerCase()) {
-                return el.parentElement;
-              }
-              if (el.parentElement.name.toLowerCase() == nam.toLowerCase()) {
-                return el.parentElement;
-              }
-
-              return findAncestor_with_name(el.parentElement, nam);
-            }
-            function contact_us(from_c) {
-              $("span").remove(".error");
-              //  $( from_c).children( ".error" ).remove();
-              var msg = {};
-              $.ajax({
-                url: "https://tilindia.in/products/contact_us",
-                type: 'POST',
-                async: false,
-                dataType: "json",
-                data: $(from_c).serialize(),
-                success: function (response) {
-                  console.log(response);
-                  if (typeof response.success != "undefined") {
-                    msg = document.createElement('h1');
-                    msg.setAttribute('class', 'success');
-                    msg.innerHTML = response.success;
-                    window.location.replace("thank-you");
-                    // from_c.innerHTML="<div class='thanks_msg'><strong>Thank You Contacting Us</strong>We will get back to you shortly</div>";
-                    // from_c.appendChild(msg);      
-                  } else if (typeof response.error != "undefined") {
-                    msg = document.createElement('h1');
-                    msg.setAttribute('class', 'error');
-                    msg.innerHTML = response.error;
-                    window.location.replace("error_occurred");
-                    //from_c.innerHTML="";
-                    //from_c.appendChild(msg);  
-                  } else {
-                    $.each(response, function (key, value) {
-                      console.log(key);
-                      var elem = from_c.querySelectorAll('#' + key)[0];
-                      var container = elem.parentNode;
-                      msg = document.createElement('span');
-                      msg.setAttribute('class', 'error');
-                      if ("g-recaptcha-response" == key) {
-                        container = tilindia.trav.findAncestor_with_cls(container, 'form-group');
-                      }
-
-                      msg.innerHTML = value;
-                      container.appendChild(msg);
-                    });
-
-                  }
-                  //console.log(typeof response.error);
-                },
-                error: function (jqXHR, exception) {
-                  console.log(jqXHR);
-                  console.log(exception);
-                  msg = document.createElement('h1');
-                  msg.setAttribute('class', 'error');
-                  msg.innerHTML = "An Error Occurred,<br>Please Try Again Later";
-                  window.location.replace("error_occurred");
-                  //from_c.innerHTML="";
-                  //from_c.appendChild(msg);  
-
-                }
-              }).always(function (data) {
-                grecaptcha.reset();
-              });
-              return false;
-            }
-          </script>
+         
 
           <script>
-            /*$(document).ready(function(){  
-             
-                if($(window).width()<=767){  	
-                $('.dropdown-menu').hide(); 	
-                $(document).on("click",".caret",function(){  
-                if($(this).parent().siblings('ul').is(':visible')){  	
-                $(this).parent().siblings('ul').slideUp(300); 	
-                } else {  	
-                $('ul.dropdown-menu').not($(this).parents('ul')).slideUp(300); 	
-                $(this).parent().siblings('ul').slideDown(300).addClass("submenu_bg"); 	
-                } 	
-                   
-                return false; 	
-                }); 	
-                } 	
-             });*/
-
+           
 
 
             jQuery(document).ready(function ($) {
@@ -1049,7 +989,7 @@
             }
           </script>
           <iframe id="doenload_frame" style="display:none;"></iframe>
-          <script src="<?php echo base_url(); ?>/assets/js/slick5d4f.js?c=-62170003270" type="text/javascript"
+          <script src="<?php echo base_url(); ?>assets/js/slick.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
           <script type="text/javascript" defer>
             /*Open Popup*/
@@ -1264,7 +1204,7 @@
                 <div class="modal-body">
                   <div id="videoOpenPopup">
                     <video class="videoOpen" id="video_tag" autoplay loop muted controls>
-                      <source src="<?php echo base_url(); ?>/assets/images/till.mp4" type="video/mp4">
+                      <source src="<?php echo base_url(); ?>assets/images/till.mp4" type="video/mp4">
                     </video>
                   </div>
                 </div>
@@ -1302,11 +1242,11 @@
                         Click the buttons below to read the new CMD’s message to employees:
                       </p>
                       <div class="pdf-btn mb-2">
-                        <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_English.pdf"
+                        <a href="tilindia/<?php echo base_url(); ?>assets/pdf/Employee%20message_English.pdf"
                           target="_blank" class="read-btn">Read In English</a>
-                        <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_Hindi.pdf"
+                        <a href="tilindia/<?php echo base_url(); ?>assets/pdf/Employee%20message_Hindi.pdf"
                           target="_blank" class="read-btn">Read In Hindi</a>
-                        <a href="tilindia/<?php echo base_url(); ?>/assets/pdf/Employee%20message_Bengali.pdf"
+                        <a href="tilindia/<?php echo base_url(); ?>assets/pdf/Employee%20message_Bengali.pdf"
                           target="_blank" class="read-btn">Read In Bengali</a>
                       </div>
                     </div>

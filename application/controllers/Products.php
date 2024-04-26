@@ -230,14 +230,16 @@ class Products extends CI_Controller
         exit;
     }
 
-    public function fetchtemplate() {
+    public function fetchtemplate()
+    {
         $result = $this->commondatamodel->getAllDropdownData("template_master");
         echo json_encode(["status" => true, "data" => $result]);
         header('Content-Type: application/json');
         exit;
     }
 
-    public function fetchtemplatecolumn() {
+    public function fetchtemplatecolumn()
+    {
         $template_id = $_POST["template_id"];
         $result = $this->commondatamodel->getSingleRowByWhereCls("template_master", ["template_id" => $template_id]);
         $decodeResultCol = json_decode($result->column_names, true);
@@ -246,7 +248,8 @@ class Products extends CI_Controller
         exit;
     }
 
-    public function modeladdeditaction() {
+    public function modeladdeditaction()
+    {
         $mode = $_POST["model_mode"];
         $product_master_id = $_POST["model_product_master_id"];
         $template_master_id = $_POST["template_set"];
@@ -277,19 +280,107 @@ class Products extends CI_Controller
         exit;
     }
 
-    public function fetchtemplatedata() {
+    public function fetchtemplatedata()
+    {
         $prodect_model_dt_id = $_POST["prodect_model_dt_id"];
         $result = $this->commondatamodel->getSingleRowByWhereCls("product_model_details", ["prodect_model_dt_id" => $prodect_model_dt_id]);
-       
+
         echo json_encode(["status" => true, "data" => $result]);
         header('Content-Type: application/json');
         exit;
     }
 
-    public function productModelPartialView() {
+    public function productModelPartialView()
+    {
         $product_master_id = $_POST['product_master_id'];
         $result["product_model_details"] = $this->commondatamodel->getAllRecordWhere('product_model_details', ['product_master_id' => $product_master_id]);
+        $product_model_details = $this->commondatamodel->getAllRecordWhere("product_model_details", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
+        foreach ($product_model_details as $key => $value) {
+            $value->template_master = json_decode($this->commondatamodel->getSingleRowByWhereCls("template_master", ['template_id' => $value->template_master_id])->column_names);
+            $value->spec_sheet_details = $this->commondatamodel->getAllRecordWhere('spec_sheet_details', ['product_model_dt_id' => $value->prodect_model_dt_id]);
+        }
+
+        $result["product_model"] = $product_model_details;
         $page = "dashboard/products/model_template_partial_view";
         $this->load->view($page, $result);
+    }
+
+    public function addEditSpecSheet()
+    {
+        $spec_product_master_id = $_POST["spec_product_master_id"];
+        $spec_product_model_dt_id = $_POST["spec_product_model_dt_id"];
+        $template_master_id = $this->commondatamodel->getSingleRowByWhereCls("product_model_details", ['prodect_model_dt_id' => $spec_product_model_dt_id, 'is_disabled' => 0])->template_master_id;
+
+        $template_master = json_decode($this->commondatamodel->getSingleRowByWhereCls("template_master", ['template_id' => $template_master_id])->column_names);
+
+        $dataArr = [
+            'product_model_dt_id' => $spec_product_model_dt_id,
+            'product_master_id' => $spec_product_master_id,
+        ];
+
+        foreach ($template_master as $key => $value) {
+            if ($key != "spec_sheet") {
+                $dataArr = array_merge([
+                    $key => $_POST[$key]
+                ], $dataArr);
+                $responseArr[] = array("type" => "text", "value" => $_POST[$key]);
+            }
+        }
+
+        if (isset($_FILES['spec_sheet'])) {
+            $file = $_FILES['spec_sheet'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+            $originalFilename = $file['name'];
+
+            $uploadDir = 'assets/pdf/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $fileDestination = $uploadDir . $originalFilename;
+
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'spec_sheet' => $originalFilename,
+                    ]);
+                    $responseArr[] = array("type" => "link", "value" => $originalFilename);
+                } else {
+                    $responseArr[] = array("type" => "link", "value" => "");
+                }
+            } else {
+                $responseArr[] = array("type" => "link", "value" => "");
+            }
+        } else {
+            $responseArr[] = array("type" => "link", "value" => "");
+        }
+
+        $insertedId = $this->commondatamodel->insertSingleTableData("spec_sheet_details", $dataArr);
+
+        $response = array(
+            "status" => true,
+            "id" => $insertedId,
+            "data" => $responseArr,
+            "is_disabled" => false
+        );
+        echo json_encode($response);
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function activeInactiveSpecSheet()
+    {
+        $spec_sheet_dt_id = $_POST["spec_sheet_dt_id"];
+        $status = $_POST["status"];
+
+        $result = $this->commondatamodel->updateSingleTableData("spec_sheet_details", ["is_disabled" => $status], ["spec_sheet_dt_id" => $spec_sheet_dt_id]);
+        if ($result) {
+            echo json_encode(["status" => true, "data" => $result]);
+        } else {
+            echo json_encode(["status" => false, "error" => "Fail to Update status"]);
+        }
+        header('Content-Type: application/json');
+        exit;
     }
 }

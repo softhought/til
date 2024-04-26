@@ -71,6 +71,8 @@ $route['product/fetchtemplatecolumn'] = 'Products/fetchtemplatecolumn';
 $route['product/modeladdeditaction'] = 'Products/modeladdeditaction';
 $route['product/fetchtemplatedata'] = 'Products/fetchtemplatedata';
 $route['product/fetchproductmodelpartialview'] = 'Products/productModelPartialView';
+$route['product/addeditspecsheet'] = 'Products/addEditSpecSheet';
+$route['product/activeinactivespecsheet'] = 'Products/activeInactiveSpecSheet';
 
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";

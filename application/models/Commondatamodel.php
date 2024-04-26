@@ -254,7 +254,7 @@ class Commondatamodel extends CI_Model
 
 
 
-		#echo "<br>".$this->db->last_query();
+		// echo "<br>".$this->db->last_query();
 
 
 

@@ -43,6 +43,54 @@ public function enquiry()
 
 }
 
+public function product_quotation_received()
+{
+    $session = $this->session->userdata('user_detail');
+    if($this->session->userdata('user_detail'))
+    {  
+        $page = "dashboard/master/product_quotation_received.php";
+        $header="";
+        $result['productquotationList'] = $this->mastermodel->productQuotationList();  
+      //  pre($result['participantList']);exit;
+        createbody_method($result, $page, $header, $session);
+    }else{
+        redirect('login','refresh');
+    }
+
+}
+
+public function resume()
+{
+    $session = $this->session->userdata('user_detail');
+    if($this->session->userdata('user_detail'))
+    {  
+        $page = "dashboard/master/resume_view.php";
+        $header="";
+        $result['resumeList'] = $this->mastermodel->resumeList();  
+      //  pre($result['participantList']);exit;
+        createbody_method($result, $page, $header, $session);
+    }else{
+        redirect('login','refresh');
+    }
+
+}
+
+public function customer_support_training()
+{
+    $session = $this->session->userdata('user_detail');
+    if($this->session->userdata('user_detail'))
+    {  
+        $page = "dashboard/master/customer_support_training.php";
+        $header="";
+        $result['tranningList'] = $this->mastermodel->customerSupportTrainingList();  
+      //  pre($result['participantList']);exit;
+        createbody_method($result, $page, $header, $session);
+    }else{
+        redirect('login','refresh');
+    }
+
+}
+
 
 
 

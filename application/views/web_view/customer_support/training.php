@@ -240,10 +240,10 @@
                                                                     class="form-control">
                                                                     <option value="" label="Please Select Location">
                                                                         Please Select Location</option>
+                                                                    <option value="1" label="TIL Premise">TIL Premise</option>    
                                                                     <option value="2" label="Customer Site">Customer
                                                                         Site</option>
-                                                                    <option value="1" label="TIL Premise">TIL Premise
-                                                                    </option>
+                                                                  
                                                                 </select>
 
                                                             </div>

@@ -35,6 +35,7 @@ class Careers extends CI_Controller
     {
         $page = "web_view/careers/vacancies.php";
         $result["active"] = "careers";
+        $result["openings"] = $this->commondatamodel->getAllRecordWhere("current_openings", ["is_disabled" => 0]);
         webbody_helper($result, $page);
     }
 

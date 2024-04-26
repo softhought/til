@@ -103,6 +103,7 @@ body {
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
     background-color: #ffcd11!important;
     color: #000;
+    padding-left: 17px;
   }
 
 [class*="sidebar-dark-"] .nav-sidebar > .nav-item.menu-open > .nav-link,

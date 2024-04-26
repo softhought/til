@@ -31,7 +31,7 @@ notice_partial_view
                </td>
                <td>
                   <?php if ($value->fileupload_count != "") { ?>
-                     <a href="javascript:void(0);" class="btn tbl-action-btn padbtn showDocs"
+                     <a href="javascript:void(0);" class="btn tbl-action-btn padbtn showDocs" style="width: 37px; height: 25px;"
                         data-relationsdtlid="<?php echo $value->relations_dtl_id; ?>"
                         data-relationsmasterid="<?php echo $value->relations_master_id; ?>"
                         data-dochead="<?php echo $value->title; ?>" data-toggle="modal" data-target="#investorRelationsDocs">

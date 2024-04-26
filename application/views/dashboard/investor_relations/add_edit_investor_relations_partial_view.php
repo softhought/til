@@ -4,7 +4,7 @@
         width: 100% !important;
     }
 
-    #cke_description{
+    #cke_description {
         width: -moz-available;
     }
 
@@ -136,10 +136,9 @@ td {
             <label for="groupname">Title</label>
             <div class="form-group">
                 <div class="input-group input-group-sm" id="titleerr">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title"
-                        value="<?php if ($mode == "EDIT") {
-                            echo $relationEditdata->title;
-                        } ?>" autocomplete="off">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="<?php if ($mode == "EDIT") {
+                        echo $relationEditdata->title;
+                    } ?>" autocomplete="off">
                 </div>
             </div>
         </div>
@@ -150,11 +149,9 @@ td {
             <label for="groupname">Page Url</label>
             <div class="form-group">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" name="page_url" id="page_url" placeholder=""
-                        value="<?php if ($mode == "EDIT") {
-                            echo $relationEditdata->page_url;
-                        } ?>" autocomplete="off"
-                        readonly>
+                    <input type="text" class="form-control" name="page_url" id="page_url" placeholder="" value="<?php if ($mode == "EDIT") {
+                        echo $relationEditdata->page_url;
+                    } ?>" autocomplete="off" readonly>
                 </div>
             </div>
         </div>
@@ -165,10 +162,9 @@ td {
             <label for="groupname"> Description</label>
             <div class="form-group" id="mail_bodyerr">
                 <div class="input-group input-group-sm">
-                    <textarea class="form-control ckeditor1" style="width: 100%;" name="description"
-                        id="description"><?php if ($mode == "EDIT") {
-                            echo $relationEditdata->description;
-                        } ?></textarea>
+                    <textarea class="form-control ckeditor1" style="width: 100%;" name="description" id="description"><?php if ($mode == "EDIT") {
+                        echo $relationEditdata->description;
+                    } ?></textarea>
 
                 </div>
             </div>
@@ -317,7 +313,7 @@ td {
                                         </td>
                                     </tr>
 
-                                <?php
+                                    <?php
                                 }
                             }
 

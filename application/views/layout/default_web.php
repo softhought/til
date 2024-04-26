@@ -59,7 +59,7 @@
     rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="assets//js/jquery-ui.min.css" rel="stylesheet">
-
+  <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -188,7 +188,7 @@
           </li>
           <li class="investor-relations"><a href="<?php echo base_url(); ?>investor-relations">Investor Relations</a>
           </li>
-          <li><a href="<?php echo base_url(); ?>media">Media <span class="caret"></span></a>
+          <li class="media-menu"><a href="<?php echo base_url(); ?>media">Media <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>media/videos">Video</a></li>
               <li><a href="<?php echo base_url(); ?>media/news">News</a></li>
@@ -948,6 +948,22 @@
                 $('#leftCol.invester_nav').slideToggle();
                 $(this).toggleClass('active')
               })
+            });
+          </script>
+          <script src="<?php echo base_url(); ?>assets/js/venobox.js?c=-62170003270" type="text/javascript" charset="utf-8"></script>
+          <script type="text/javascript">
+            $(document).ready(function () {
+              $('.venobox').venobox({
+                border: '10px',
+                bgcolor: '#ffc72c',
+                numeratio: true,
+                cb_pre_open: function (obj) {
+                },
+                cb_post_open: function (obj, gallIndex, thenext, theprev) {
+                },
+                cb_after_nav: function (obj, gallIndex, thenext, theprev) {
+                },
+              });
             });
           </script>
           <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"

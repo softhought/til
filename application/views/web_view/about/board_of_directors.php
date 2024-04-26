@@ -22,322 +22,39 @@
                         <section>
                             <div class="container">
                                 <div class="row curvebg pl-0 mt-0 mb-0">
-                                    <div class="col-lg-12 col-12">
-                                        <div class="product-item board-showcase">
-                                            <figure>
-                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/SarojPunhani.png"
-                                                    alt="SarojPunhani" />
-                                            </figure>
-                                            <div class="text-content">
-                                                <h3>Saroj Punhani</h3>
-                                                <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                                                    </svg>
-                                                    <span style="padding-left:8px; font-size:17px">Non-Executive
-                                                        Independent Director</span>
-                                                </p>
-                                                <p id="elipse10" class="text-elipse" style="padding:12px 0">Saroj
-                                                    Punhani
-                                                    is a distinguished member of the Indian Audit and Accounts Service
-                                                    in the Provincial & Federal government. With an experience spanning
-                                                    over almost four decade, she has successfully navigated complex
-                                                    bureaucratic landscapes, implemented effective policies, and
-                                                    delivered impactful results.
-                                                    <br><br>
-                                                    Through her career, she has held key positions with various
-                                                    Ministries of GOI and office of CAG of India . She worked as Central
-                                                    Information Commissioner with the Central Information Commission
-                                                    ,Deputy Comptroller & Auditor General (HR, Training & International
-                                                    Relations )Additional Deputy Comptroller & Auditor General looking
-                                                    after Audit reports , Joint Secretary & Financial Advisor,
-                                                    Department of Post, Ministry of Communications, GOI , Director
-                                                    General (Commercial) looking
-                                                    after audit of PSUs; Executive Vice President (Finance & Support
-                                                    Services) PTC India , Ministry of Power, GOI , First Secretary
-                                                    (Economic Cooperation), Embassy of India, Kathmandu , Nepal, MEA,
-                                                    GOI and Under/Secretary Deputy Secretary (Navy and Coast Guard)
-                                                    Ministry of Defence, GOI.
+                                    <?php $index = 1; foreach ($bodycontent["teamList"] as $key => $value) {
+                                        if ($value->team_member_type == "BOD") { ?>
 
-                                                    <br><br>
-                                                    <b>Address:</b> &nbsp; TIL Limited, 1 Taratolla Road, Garden Reach,
-                                                    Kolkata-700020, India
+                                            <div class="col-lg-12 col-12">
+                                                <div class="product-item board-showcase">
+                                                    <figure>
+                                                        <img src="<?php echo base_url() . "tilindia/assets/images/" . $value->member_pic; ?>"
+                                                            alt="<?php echo $value->member_name ?>" />
+                                                    </figure>
+                                                    <div class="text-content">
+                                                        <h3><?php echo $value->member_name ?></h3>
+                                                        <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                                                viewBox="0 0 512 512">
+                                                                <path
+                                                                    d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
+                                                            </svg>
+                                                            <span style="padding-left:8px; font-size:17px"><?php echo $value->designation ?></span>
+                                                        </p>
+                                                        <p id="elipse<?php echo $index; ?>" class="text-elipse" style="padding:12px 0"><?php echo $value->about; ?>
 
-                                                    <br>
-                                                    <b>DIN No:</b> &nbsp; 08922018
-                                                </p>
-                                                <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn6"
-                                                        data-target="elipse10">Read
-                                                        more</a></span>
+                                                            <br><br>
+                                                            <b>Address:</b> &nbsp; <?php echo $value->address; ?>
+                                                            <br>
+                                                            <b>DIN No:</b> &nbsp; <?php echo $value->din_no; ?>
+                                                        </p>
+                                                        <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn6"
+                                                                data-target="elipse<?php echo $index++; ?>">Read
+                                                                more</a></span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <div class="product-item board-showcase">
-                                            <figure>
-                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/GeneralSingh.png"
-                                                    alt="GeneralSingh" />
-                                            </figure>
-                                            <div class="text-content">
-                                                <h3>General N.B Singh (Retired)</h3>
-                                                <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                                                    </svg>
-                                                    <span style="padding-left:8px; font-size:17px">Non Executive
-                                                        Independent Director</span>
-                                                </p>
-                                                <p id="elipse11" class="text-elipse" style="padding:12px 0">
-                                                    Lt Gen N B Singh, a distinguished veteran, served in the Indian Army
-                                                    for 41 years, reaching the pinnacle as Director General, Electronics
-                                                    and Mechanical Engineering (EME) Corps. He also led the Information
-                                                    Systems Directorate at Army HQs .Specializing in Armoured Fighting
-                                                    Vehicles, he commanded units on Western, Eastern, and Northern
-                                                    borders, overseeing system readiness of Army's hardware from rifles
-                                                    to UAVs. Trained in Germany , General Singh strategized the
-                                                    establishment of assembly line for recapitalization of T72 tanks.
-                                                    <br><br>
-                                                    As Military Attache Technical at the Indian Embassy at Moscow , he
-                                                    handled the induction of T90 tanks .As head of the Army’s industrial
-                                                    base at Meerut, he brought to fruition D level reset infrastructure
-                                                    for T-90 tanks, UAVs, rocket systems, missiles and radars. He gave a
-                                                    new direction to the Army’s indigenisation efforts by introducing
-                                                    projects aimed at sub system level indigenisation and technology
-                                                    insertion like the BRDM, BMP mobility upgrade and VT 72
-                                                    indigenisation.
-                                                    <br><br>
-                                                    As DG Information Systems, he was responsible for accelerating the
-                                                    pace of development of Army’s operational and management information
-                                                    systems contributing significantly to availability of inputs for
-                                                    decision support at highest level. General Singh pioneered mission
-                                                    engineering analytics and reliability prediction using big data,
-                                                    significantly transforming Army equipment readiness strategies.
-                                                    <br><br>
-                                                    Recognized with Param Vishishtha, Ati Vishishtha, and Vishishtha
-                                                    Seva medals, he is a Fellow of the Institution of Engineers, an SAE
-                                                    Member, and holds a PhD in Knowledge Leadership. As Commandant of
-                                                    Military College of EME ,he played a key role in skill development
-                                                    of over one lakh EME technicians across 44 technical streams,
-                                                    leaving an enduring legacy of excellence and innovation.
-                                                    <br><br>
-                                                    <b>Address:</b> &nbsp; TIL Limited, 1 Taratolla Road, Garden Reach,
-                                                    Kolkata-700020, India
-                                                    <br>
-                                                    <b>DIN No:</b> &nbsp; 09699871
-
-                                                </p>
-                                                <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn5"
-                                                        data-target="elipse11">Read
-                                                        more</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <div class="product-item board-showcase">
-                                            <figure>
-                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/AmitMukherjee.jpg"
-                                                    alt="director" />
-                                            </figure>
-                                            <div class="text-content">
-                                                <h3>Amit Mukherjee</h3>
-                                                <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                                                    </svg>
-                                                    <span style="padding-left:8px; font-size:17px"> Non-Executive
-                                                        Independent Director </span>
-                                                </p>
-                                                <p id="elipse12" class="text-elipse" style="padding:12px 0">Amit is one
-                                                    of the co-founders of Unigrow Solutions, a business consulting firm.
-                                                    He brings in a rich and varied corporate experience as a business
-                                                    and functional leader in the field of technology and supply chain.
-                                                    Amit is one of the few who has a very deep understanding of business
-                                                    coupled with his domain knowledge of technology. Amit started his
-                                                    career in Tata Steel where he worked in planning, supply chain and
-                                                    in the technology group. His subsequent stints were with SAP India,
-                                                    Hewlett Packard, Reliance Energy, RPG group as Group CIO and
-                                                    Executive Director.
-                                                    <br><br>
-                                                    During his tenure at RPG group, he transitioned from a functional
-                                                    head to a business head and managed the Spencer’s Retail business as
-                                                    Executive Director responsible for four functions namely:
-                                                    Operations, IT, Supply Chain and Projects. His last assignment was
-                                                    as the Chief Operating Officer of Srei Sahaj e-Village Limited, a
-                                                    company formed under the aegis of NEGP for providing online
-                                                    government and consumer facing services to the rural population
-                                                    using ICT.
-                                                    <br><br>
-                                                    <b>Address:</b> &nbsp; TIL Limited, 1 Taratolla Road, Garden Reach,
-                                                    Kolkata-700020, India
-                                                    <br>
-                                                    <b>DIN No:</b> &nbsp; 06746412
-
-
-                                                </p>
-                                                <span><a href="javascript:void(0)" class="more-read " id="readMoreBtn4"
-                                                        data-target="elipse12">Read
-                                                        more</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <div class="product-item board-showcase">
-                                            <figure>
-                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/AlokTripathi.png"
-                                                    alt="AlokTripathi" />
-                                            </figure>
-                                            <div class="text-content">
-                                                <h3>Alok Kumar Tripathi</h3>
-                                                <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                                                    </svg>
-                                                    <span style="padding-left:8px; font-size:17px"> Whole Time Director
-                                                        & President </span>
-                                                </p>
-                                                <p id="elipse13" class="text-elipse" style="padding:12px 0">Alok is an
-                                                    engineering graduate from BMS College of Engineering, Bengaluru, and
-                                                    completed his PGDBM from IMT, Ghaziabad. With over three decades of
-                                                    extensive industry experience, Alok embarked on his professional
-                                                    journey with BEML, Bengaluru, and then went on to serve at HMEED,
-                                                    Thiruvallur. In 1995, Alok joined Tractors India Limited and has
-                                                    since held various leadership positions in Branch Operations, Parts
-                                                    Marketing Operations, Spare Parts and Construction Machine Sales
-                                                    verticals. Prior to assuming his current role as National Product
-                                                    Support Head at the Gainwell Group, he was the Head Territory East
-                                                    for the Construction Business.
-                                                    <br> <br>
-                                                    His endearing personality, and people skills have helped him drive
-                                                    excellence in customer engagement and deliver measurable impact in
-                                                    terms of profitability for the aftermarket business. Today he wears
-                                                    many hats as he provides strategic guidance to the Product Support
-                                                    team and takes charge of designing, constructing, and leading the
-                                                    product support operations with the ultimate objective of achieving
-                                                    customer loyalty, market share, and profitability.
-                                                    <br><br>
-                                                    <b>Address:</b> &nbsp; TIL Limited, 1 Taratolla Road, Garden Reach,
-                                                    Kolkata-700020, India
-                                                    <br>
-                                                    <b>DIN No:</b> &nbsp; 10470292
-
-                                                </p>
-                                                <span><a href="javascript:void(0)" class="more-read " id="readMoreBtn3"
-                                                        data-target="elipse13">Read
-                                                        more</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <div class="product-item board-showcase">
-                                            <figure>
-                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/AyanBanerjee.png"
-                                                    alt="AyanBanerjee" />
-                                            </figure>
-                                            <div class="text-content">
-                                                <h3>Ayan Banerjee</h3>
-                                                <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                                                    </svg>
-                                                    <span style="padding-left:8px; font-size:17px">Whole Time
-                                                        Director</span>
-                                                </p>
-                                                <p id="elipse14" class="text-elipse" style="padding:12px 0">
-                                                    Ayan Banerjee boasts an illustrious career spanning nearly three
-                                                    decades, showcasing extensive expertise in heavy engineering,
-                                                    refractory, electronics, and media across global business
-                                                    landscapes. With a proven track record in startup ventures, he has
-                                                    been pivotal in establishing robust accounting and commercial
-                                                    processes, shaping direct and indirect tax environments, and
-                                                    steering treasury functions. A qualified Chartered Accountant from
-                                                    the prestigious M/S Lovelock & Lewes audit firm, Ayan currently
-                                                    serves as the Group Chief Financial Officer at Gainwell Group, where
-                                                    his dynamic leadership has been instrumental in achieving
-                                                    unparalleled financial success. His accomplishments include
-                                                    optimizing working capital management, overseeing international
-                                                    transfer pricing, ensuring SOX compliance, facilitating seamless
-                                                    merger and acquisition activities, and mitigating different direct
-                                                    and indirect tax cases . Ayan's multifaceted experience and
-                                                    strategic acumen underscore his significant contributions to the
-                                                    financial landscape of the organizations he has served.
-                                                    <br><br>
-                                                    <b>Address:</b> &nbsp; TIL Limited, 1 Taratolla Road, Garden Reach,
-                                                    Kolkata-700020, India
-                                                    <br>
-                                                    <b>DIN No:</b> &nbsp; 07563764
-                                                </p>
-                                                <span><a href="javascript:void(0)" class="more-read " id="readMoreBtn2"
-                                                        data-target="elipse14">Read
-                                                        more</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <div class="product-item board-showcase">
-                                            <figure>
-                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/SunilChaturvedi.png"
-                                                    alt="SunilChaturvedi" />
-                                            </figure>
-                                            <div class="text-content">
-                                                <h3>Sunil Kumar Chaturvedi</h3>
-                                                <p><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                                        viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                                                    </svg>
-                                                    <span style="padding-left:8px; font-size:17px">Chairman and Managing
-                                                        Director</span>
-                                                </p>
-                                                <p id="elipse15" class="text-elipse" style="padding:12px 0">Sunil
-                                                    Chaturvedi, a Fellow Chartered Accountant by training has worked for
-                                                    two decades as a member of the Civil Services in Indian
-                                                    Administrative Service (IAS). During these years, he has held
-                                                    various positions in the State Government of West Bengal as well as
-                                                    in different Ministries of Government of India including Director in
-                                                    the Department of Economic Affairs, Ministry of Finance, Private
-                                                    Secretary to the Railways Minister, Govt of India, Director in the
-                                                    Ministry of Heavy Industries and Public Enterprises, Project
-                                                    Director of the National Automotive Testing and R&D Infrastructure
-                                                    Project (NATRiP), and finally, Commissioner and Special Secretary in
-                                                    the Department of Micro and Small Scale Enterprises, Government of
-                                                    West Bengal. He has represented Government of India on various
-                                                    international fora including the United Nations in its Woking
-                                                    Party-29 for harmonization of global automotive standards. After
-                                                    voluntarily retiring from the Government in 2008, Sunil served on
-                                                    the board of Bharat Forge Limited as an Executive Director and Chief
-                                                    Operating Officer for the Capital Goods Business till December 2013.
-                                                    <br><br>
-                                                    Sunil joined Gainwell (then known as Tractors India Private Limited)
-                                                    in January 2014 and completed its management buyout in June 2016.
-                                                    Since then, he has been chairing the board of Gainwell. He is a
-                                                    member of various professional and trade bodies within and outside
-                                                    India including Society of Automotive Engineers (SAE), Confederation
-                                                    of Indian Industry (CII), Federation of Indian Chambers of Commerce
-                                                    and Industry (FICCI)and Associated Chambers of Commerce (Assocham),
-                                                    Bengal Chambers of Commerce (BCC)
-                                                    <br><br>
-                                                    <b>Address:</b> &nbsp; TIL Limited, 1 Taratolla Road, Garden Reach,
-                                                    Kolkata-700020, India
-                                                    <br>
-                                                    <b>DIN No:</b> &nbsp; 02183147
-                                                </p>
-                                                <span><a href="javascript:void(0)" class="more-read" id="readMoreBtn1"
-                                                        data-target="elipse15">Read
-                                                        more</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                        <?php }
+                                    } ?>
                                 </div>
                             </div>
                             <div class="container">

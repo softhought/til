@@ -2,11 +2,11 @@
     .card {
         background-color: #fff;
         border: 1px solid #e0e0e0;
-        border-radius: 8px;
+        border-radius: 25px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        margin: 20px;
         overflow: hidden;
         transition: box-shadow 0.3s ease;
+        margin-top: 40px;
     }
 
     .card:hover {
@@ -126,26 +126,31 @@
                                                             style="font-size:18px;"> recruitment@tilindia.com
                                                         </span></a>
                                                 </p>
-                                                <a href="<?php echo base_url(); ?>careers/submit_cv"><button
+                                                <a href="<?php echo base_url(); ?>careers/submit_cv/0"><button
                                                         style="border:none"> SUBMIT CV
                                                     </button></a>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8 col-12">
-                                            <div class="card">
-                                                <div class="content">
-                                                    <h1>Vacancies</h1>
-                                                    <p>
-                                                        You may submit your CV here, and we will consider it for
-                                                        suitable opportunities as they arise.
-                                                        For further queries, you may contact:
-                                                        <a href="mailto:recruitment@tilindia.com"
-                                                            style="font-size: 18px;">recruitment@tilindia.com</a>.
-                                                    </p>
+                                        <?php foreach ($bodycontent["openings"] as $key => $value) {
+                                            $type = $value->opening_type == "FT" ? "Full Time" : "Part Time" ?>
+                                            <a href="<?php echo base_url() . "careers/submit_cv/" . $value->current_opening_id ?>" class="col-md-4" style="cursor: pointer" >
+                                                <div class="card mt-4">
+                                                    <div class="content">
+                                                        <h3><?php echo $type; ?></h3>
+                                                        <h5><?php echo $value->opening_title; ?></h5>
+                                                        <p>
+                                                            <?php echo $value->opening_description; ?>
+                                                        </p>
+                                                        <span
+                                                            style="position: relative; color: #666666; font-size: 16px; margin-right: 15px; display: inline-block;">
+                                                            <span class="icon fa fa-calendar"
+                                                                style="color: #a87c01;"></span>
+                                                            <?php echo date("d-M-Y", strtotime($value->entry_date)); ?></span>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
+                                            </a>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </section>

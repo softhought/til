@@ -46,9 +46,12 @@ class Careers extends CI_Controller
         webbody_helper($result, $page);
     }
 
-    public function submit_cv()
+    public function submit_cv($current_opening_id)
     {
         $page = "web_view/careers/submit_cv.php";
+        if ($current_opening_id != 0) {
+            $result["current_openings"] = $this->commondatamodel->getSingleRowByWhereCls("current_openings", ["current_opening_id" => $current_opening_id]);
+        } 
         $result["active"] = "careers";
         webbody_helper($result, $page);
     }

@@ -13,9 +13,8 @@
    <tbody>
       <?php
          $sl = 1;
-         $dir_path = base_url().'assets/test_doc'; //local
-         foreach ($documenDtl as $key => $value) {
-         
+         $dir_path = base_url().'docs/pdf/'; //local
+         foreach ($documenDtl as $key => $value) {        
              ?>
       <tr>
          <td><?php echo $sl++; ?></td>

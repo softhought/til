@@ -39,6 +39,11 @@ class Media extends CI_Controller
     {
         $page = "web_view/media/events_happenings.php";
         $result["active"] = "media-menu";
+        $mediaGallery = $this->commondatamodel->getAllRecordWhereOrderByCol("happenings", ["published" => 1], "precedence", "ASC");
+        foreach ($mediaGallery as $key => $value) {
+            $value->gallery = json_decode($value->images, true);
+        }
+        $result["mediaGallery"] = $mediaGallery;
         webbody_helper($result, $page);
     }
 

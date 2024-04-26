@@ -92,6 +92,48 @@ class Mastermodel extends CI_Model
 
     }
 
+    public function currentOpeningsList()
+    {
+        $where=[];
+        $data = array();
+        $this->db->select("current_openings.*")
+            ->from('current_openings')
+            ->where($where)
+            ->order_by('current_openings.current_opening_id','desc');
+        $query = $this->db->get();
+        #echo $this->db->last_query();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $rows) {
+                $data[] = $rows;
+            }
+            return $data;
+        } else {
+            return $data;
+        }
+
+    }
+
+    public function currentOpeningsList()
+    {
+        $where=[];
+        $data = array();
+        $this->db->select("current_openings.*")
+            ->from('current_openings')
+            ->where($where)
+            ->order_by('current_openings.current_opening_id','desc');
+        $query = $this->db->get();
+        #echo $this->db->last_query();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $rows) {
+                $data[] = $rows;
+            }
+            return $data;
+        } else {
+            return $data;
+        }
+
+    }
+
 
 
 }

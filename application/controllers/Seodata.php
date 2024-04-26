@@ -1,6 +1,6 @@
 <?php (defined('BASEPATH')) or exit('No direct script access allowed');
 
-class Master extends CI_Controller
+class Seodata extends CI_Controller
 {
     public function __construct()
     {
@@ -11,89 +11,12 @@ class Master extends CI_Controller
 
     }
 
-    public function nature_of_query()
+
+    public function index()
     {
         $session = $this->session->userdata('user_detail');
         if ($this->session->userdata('user_detail')) {
-            $page = "dashboard/master/nature_of_query.php";
-            $header = "";
-            $orderby = 'id';
-            $result['nature_of_queryList'] = $this->commondatamodel->getAllRecordWhereOrderBy('fuel_nature_of_query', [], $orderby);
-
-            //  pre($result['participantList']);exit;
-            createbody_method($result, $page, $header, $session);
-        } else {
-            redirect('login', 'refresh');
-        }
-
-    }
-
-    public function enquiry()
-    {
-        $session = $this->session->userdata('user_detail');
-        if ($this->session->userdata('user_detail')) {
-            $page = "dashboard/master/enquiry.php";
-            $header = "";
-            $result['contactusList'] = $this->mastermodel->enquiryData();
-
-            //  pre($result['participantList']);exit;
-            createbody_method($result, $page, $header, $session);
-        } else {
-            redirect('login', 'refresh');
-        }
-
-    }
-
-    public function product_quotation_received()
-    {
-        $session = $this->session->userdata('user_detail');
-        if ($this->session->userdata('user_detail')) {
-            $page = "dashboard/master/product_quotation_received.php";
-            $header = "";
-            $result['productquotationList'] = $this->mastermodel->productQuotationList();
-            //  pre($result['participantList']);exit;
-            createbody_method($result, $page, $header, $session);
-        } else {
-            redirect('login', 'refresh');
-        }
-
-    }
-
-    public function resume()
-    {
-        $session = $this->session->userdata('user_detail');
-        if ($this->session->userdata('user_detail')) {
-            $page = "dashboard/master/resume_view.php";
-            $header = "";
-            $result['resumeList'] = $this->mastermodel->resumeList();
-            //  pre($result['participantList']);exit;
-            createbody_method($result, $page, $header, $session);
-        } else {
-            redirect('login', 'refresh');
-        }
-
-    }
-
-    public function customer_support_training()
-    {
-        $session = $this->session->userdata('user_detail');
-        if ($this->session->userdata('user_detail')) {
-            $page = "dashboard/master/customer_support_training.php";
-            $header = "";
-            $result['tranningList'] = $this->mastermodel->customerSupportTrainingList();
-            //  pre($result['participantList']);exit;
-            createbody_method($result, $page, $header, $session);
-        } else {
-            redirect('login', 'refresh');
-        }
-
-    }
-
-    public function current_openings()
-    {
-        $session = $this->session->userdata('user_detail');
-        if ($this->session->userdata('user_detail')) {
-            $page = "dashboard/master/current_openings.php";
+            $page = "dashboard/seo/seo_list.php";
             $header = "";
             $result['openingsList'] = $this->mastermodel->currentOpeningsList();
             //  pre($result['participantList']);exit;
@@ -123,7 +46,7 @@ class Master extends CI_Controller
                 $result['openingEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('current_openings', $where);
 
             }
-            $page = "dashboard/master/current_openings_add_edit.php";
+            $page = "dashboard/seo/seo_add_edit.php";
             $header = "";
           
 
@@ -199,9 +122,4 @@ class Master extends CI_Controller
 
 
 
-
-
-
-
-
-}
+} /* end of class */

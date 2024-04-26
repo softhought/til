@@ -59,7 +59,7 @@
     rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="assets//js/jquery-ui.min.css" rel="stylesheet">
-
+  <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -128,8 +128,7 @@
         <div class="row">
           <div class="logo">
             <a href="index" title="">
-              <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="TIL Limited"
-                class="img-responsive" /></a>
+              <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="TIL Limited" class="img-responsive" /></a>
           </div>
           <samp class="mobl_button">
             <span></span>
@@ -189,7 +188,7 @@
           </li>
           <li class="investor-relations"><a href="<?php echo base_url(); ?>investor-relations">Investor Relations</a>
           </li>
-          <li><a href="<?php echo base_url(); ?>media">Media <span class="caret"></span></a>
+          <li class="media-menu"><a href="<?php echo base_url(); ?>media">Media <span class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
               <li class="first"><a href="<?php echo base_url(); ?>media/videos">Video</a></li>
               <li><a href="<?php echo base_url(); ?>media/news">News</a></li>
@@ -539,7 +538,10 @@
                 <div class="form-group">
                   <label for="organization">Organization <span style="color:#f00">*</span> </label>
                   <div class="input-container">
-                    <img src="../../../tilindiaassets/images/organization-icon.png" alt="organization" srcset="">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 384 512">
+                      <path
+                        d="M48 0C21.5 0 0 21.5 0 48V464c0 26.5 21.5 48 48 48h96V432c0-26.5 21.5-48 48-48s48 21.5 48 48v80h96c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H48zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm112-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM80 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V112zM272 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16z" />
+                    </svg>
                     <input type="text" name="organization" value="" placeholder="Organization" autocomplete="off"
                       id="organization" class="form-control" />
                   </div>
@@ -948,14 +950,30 @@
               })
             });
           </script>
+          <script src="<?php echo base_url(); ?>assets/js/venobox.js?c=-62170003270" type="text/javascript" charset="utf-8"></script>
+          <script type="text/javascript">
+            $(document).ready(function () {
+              $('.venobox').venobox({
+                border: '10px',
+                bgcolor: '#ffc72c',
+                numeratio: true,
+                cb_pre_open: function (obj) {
+                },
+                cb_post_open: function (obj, gallIndex, thenext, theprev) {
+                },
+                cb_after_nav: function (obj, gallIndex, thenext, theprev) {
+                },
+              });
+            });
+          </script>
           <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
           <script src="<?php echo base_url(); ?>assets/js/common.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
-         
+
 
           <script>
-           
+
 
 
             jQuery(document).ready(function ($) {

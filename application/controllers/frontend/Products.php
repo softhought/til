@@ -46,10 +46,10 @@ class Products extends CI_Controller
         $product_model_details = $this->commondatamodel->getAllRecordWhere("product_model_details", ['product_master_id' => $product_master_id, 'is_disabled'=> 0]);
         foreach ($product_model_details as $key => $value) {
             $value->template_master = json_decode($this->commondatamodel->getSingleRowByWhereCls("template_master", ['template_id' => $value->template_master_id])->column_names);
-            $value->spec_sheet_details = $this->commondatamodel->getAllRecordWhere('spec_sheet_details', ['product_model_dt_id'=> $value->prodect_model_dt_id]);
+            $value->spec_sheet_details = $this->commondatamodel->getAllRecordWhere('spec_sheet_details', ['product_model_dt_id'=> $value->prodect_model_dt_id,  "is_disabled" => 0]);
         }
 
-        $result['sheet_model'] = $this->commondatamodel->getAllRecordWhere("spec_sheet_details", ["product_master_id" => $product_master_id]);
+        $result['sheet_model'] = $this->commondatamodel->getAllRecordWhere("spec_sheet_details", ["product_master_id" => $product_master_id, "is_disabled" => 0]);
 
         // pre($result['sheet_model']);exit;
         $result["product_model"] = $product_model_details;

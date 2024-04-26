@@ -14,7 +14,7 @@ class Media extends CI_Controller
     public function index()
     {
         $page = "web_view/media/media.php";
-        $result = [];
+        $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
 
@@ -22,6 +22,7 @@ class Media extends CI_Controller
     {
         $page = "web_view/media/videos.php";
         $result["video"] = $this->productsmenu->getAllRecordWhereOrderBy("fuel_videos", ["is_disabled" => 0], "precedence", "ASC");
+        $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
 
@@ -30,21 +31,26 @@ class Media extends CI_Controller
         $page = "web_view/media/news.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "NEWS"]);
         $result["news"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
-        
+        $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
 
     public function events_happenings()
     {
         $page = "web_view/media/events_happenings.php";
-        $result = [];
+        $result["active"] = "media-menu";
+        $mediaGallery = $this->commondatamodel->getAllRecordWhereOrderByCol("happenings", ["published" => 1], "precedence", "ASC");
+        foreach ($mediaGallery as $key => $value) {
+            $value->gallery = json_decode($value->images, true);
+        }
+        $result["mediaGallery"] = $mediaGallery;
         webbody_helper($result, $page);
     }
 
     public function newsletter()
     {
         $page = "web_view/media/newsletter.php";
-        $result = [];
+        $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
 
@@ -53,6 +59,7 @@ class Media extends CI_Controller
         $page = "web_view/media/newsletter/til_talk.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "TIL_TALK"]);
         $result["til_talk"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
 
@@ -61,6 +68,7 @@ class Media extends CI_Controller
         $page = "web_view/media/newsletter/til_touch.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "TIL_TOUCH"]);
         $result["til_touch"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
 }

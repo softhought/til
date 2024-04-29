@@ -53,6 +53,8 @@ class Careers extends CI_Controller
         if ($current_opening_id != 0) {
             $result["current_openings"] = $this->commondatamodel->getSingleRowByWhereCls("current_openings", ["current_opening_id" => $current_opening_id]);
         } 
+
+        $result["functions_career"] = $this->commondatamodel->getAllRecordWhereOrderByCol("functions_career", ["is_disabled" => 0], "precedence", "ASC");
         $result["active"] = "careers";
         webbody_helper($result, $page);
     }

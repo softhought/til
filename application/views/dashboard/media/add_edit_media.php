@@ -23,29 +23,19 @@
    <div class="card-body">
       <div class="tab-content" id="custom-tabs-three-tabContent">
          <div class="tab-pane fade active show" id="tab_one" role="tabpanel" aria-labelledby="tab_one-tab">
-            <div id="tab_one_data">
-
-            </div>
+            <div id="tab_one_data"> </div>
          </div>
          <div class="tab-pane fade" id="tab_two" role="tabpanel" aria-labelledby="tab_two-tab">
-            <div id="tab_two_data">
-
-            </div>
+            <div id="tab_two_data"> </div>
          </div>
          <div class="tab-pane fade" id="tab_three" role="tabpanel" aria-labelledby="tab_three-tab">
-            <div id="tab_three_data">
-
-            </div>
+            <div id="tab_three_data"></div>
          </div>
          <div class="tab-pane fade" id="tab_four" role="tabpanel" aria-labelledby="tab_four-tab">
-            <div id="tab_four_data">
-                
-            </div>
+            <div id="tab_four_data"> </div>
          </div>
          <div class="tab-pane fade" id="tab_five" role="tabpanel" aria-labelledby="tab_five-tab">
-            <div id="tab_five_data">
-                
-            </div>
+            <div id="tab_five_data"> </div>
          </div>
       </div>
    </div>

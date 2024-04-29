@@ -13,60 +13,30 @@
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .card .image {
-        background: #f5f5f5;
-        text-align: center;
-    }
-
-    .card .image img {
-        width: 100%;
-        height: auto;
-    }
-
     .card .content {
         padding: 20px;
+        position: relative;
     }
 
-    .card h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
+    .short-description {
+        max-height: 30px;
+        overflow: hidden;
+        transition: all 0.3s ease;
     }
 
-    .card p {
-        font-size: 16px;
-        color: #666;
-        line-height: 1.5;
-        margin-bottom: 20px;
+    .expanded {
+        max-height: none;
     }
 
-    .card a {
-        text-decoration: none;
+    .read-more {
         color: #007bff;
-    }
-
-    .card button {
-        height: 50px;
-        width: 150px;
-        background-color: #ffc72c;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        color: #000 !important;
-        box-shadow: 0 5px 0px 0 #000;
-        border-radius: 6px;
-        justify-content: center;
-        font-weight: 600 !important;
-        font-size: 15px;
-        letter-spacing: 1px;
-        margin-top: 25px;
-    }
-
-    .card button:hover {
-        background-color: #000;
-        box-shadow: 0 5px 0px 0 #ffc72c;
-        color: #fff !important;
-        transform: scaleY(10px);
-        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        background: #fff;
+        padding: 5px;
+        border-radius: 5px;
     }
 </style>
 <section class="about-banner-section "
@@ -132,25 +102,29 @@
                                             </div>
                                         </div>
                                         <?php foreach ($bodycontent["openings"] as $key => $value) {
-                                            $type = $value->opening_type == "FT" ? "Full Time" : "Part Time" ?>
-                                            <a href="<?php echo base_url() . "careers/submit_cv/" . $value->current_opening_id ?>" class="col-md-4" style="cursor: pointer" >
+                                            $type = $value->opening_type == "FT" ? "Full Time" : "Part Time"; ?>
+                                            <div class="col-md-4" style="cursor: pointer"
+                                                onclick="cardClick('<?php echo base_url() . 'careers/submit_cv/' . $value->current_opening_id ?>')">
                                                 <div class="card mt-4">
                                                     <div class="content">
                                                         <h3><?php echo $type; ?></h3>
                                                         <h5><?php echo $value->opening_title; ?></h5>
-                                                        <p>
-                                                            <?php echo $value->opening_description; ?>
-                                                        </p>
+                                                        <div class="short-description">
+                                                            <p><?php echo $value->opening_description; ?></p>
+                                                        </div>
+                                                        <span class="read-more"
+                                                            onclick="toggleDescription(event, this)">Read More</span>
                                                         <span
                                                             style="position: relative; color: #666666; font-size: 16px; margin-right: 15px; display: inline-block;">
                                                             <span class="icon fa fa-calendar"
                                                                 style="color: #a87c01;"></span>
-                                                            <?php echo date("d-M-Y", strtotime($value->entry_date)); ?></span>
-                                                        </ul>
+                                                            <?php echo date("d-M-Y", strtotime($value->entry_date)); ?>
+                                                        </span>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </div>
                                         <?php } ?>
+
                                     </div>
                                 </div>
                             </section>
@@ -161,3 +135,18 @@
         </div>
     </div>
 </section>
+
+<script>
+    function cardClick(url) {
+        window.location.href = url;
+    }
+
+    function toggleDescription(event, element) {
+        event.stopPropagation();
+
+        const content = element.parentNode.querySelector('.short-description');
+        const isExpanded = content.classList.toggle('expanded');
+        element.textContent = isExpanded ? 'Read Less' : 'Read More';
+    }
+
+</script>

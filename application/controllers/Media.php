@@ -374,10 +374,11 @@ class Media extends CI_Controller
             $result['doc_id'] = 0;
             $media_tag = $this->input->post('media_tag');
             $where = array('media_master.menu_tag' => $media_tag);
-            $result['list'] = $this->commondatamodel->getSingleRowByWhereCls('media_master', $where);
-            //pre($result['list']);exit;
-            $page = "dashboard/media/default_partial_view_news_and_newslater";
-            $this->load->view($page, $result);
+            $data = $this->commondatamodel->getSingleRowByWhereCls('media_master', $where);
+          
+            header('Content-Type: application/json');
+            echo json_encode(['data' => $data]);
+            exit;
         } else {
             redirect('login', 'refresh');
         }

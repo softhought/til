@@ -113,14 +113,14 @@ class Mastermodel extends CI_Model
 
     }
 
-    public function currentOpeningsList()
+    public function seoDataList()
     {
         $where=[];
         $data = array();
-        $this->db->select("current_openings.*")
-            ->from('current_openings')
+        $this->db->select("seo_details.*")
+            ->from('seo_details')
             ->where($where)
-            ->order_by('current_openings.current_opening_id','desc');
+            ->order_by('seo_details.seo_dtl_id','asc');
         $query = $this->db->get();
         #echo $this->db->last_query();
         if ($query->num_rows() > 0) {
@@ -132,6 +132,32 @@ class Mastermodel extends CI_Model
             return $data;
         }
 
+    }
+
+
+    public function get_next_precedence($table_name,$column_name,$where) {
+        // Select the maximum value of the specified column
+        $this->db->select_max($column_name);
+        
+        // Specify the table name
+        $this->db->from($table_name);
+        
+        // If where condition is provided, apply it
+        if ($where) {
+            $this->db->where($where);
+        }
+        
+        // Get the result
+        $query = $this->db->get();
+        
+        // Check if there are rows returned
+        if ($query->num_rows() > 0) {
+            // Get the maximum value
+            $row = $query->row();
+            return $row->$column_name+1;
+        } else {
+            return 1; // Return null if no rows found
+        }
     }
 
 

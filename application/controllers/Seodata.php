@@ -18,7 +18,7 @@ class Seodata extends CI_Controller
         if ($this->session->userdata('user_detail')) {
             $page = "dashboard/seo/seo_list.php";
             $header = "";
-            $result['openingsList'] = $this->mastermodel->currentOpeningsList();
+            $result['seodataList'] = $this->mastermodel->seoDataList();
             //  pre($result['participantList']);exit;
             createbody_method($result, $page, $header, $session);
         } else {
@@ -27,7 +27,7 @@ class Seodata extends CI_Controller
 
     }
 
-    public function current_opening_create()
+    public function seo_data_create()
     {
         $session = $this->session->userdata('user_detail');
         if ($this->session->userdata('user_detail')) {
@@ -35,15 +35,15 @@ class Seodata extends CI_Controller
                 $result['mode'] = "ADD";
                 $result['btnText'] = "Create";
                 $result['btnTextLoader'] = "Saving...";
-                $result['upeningId'] = 0;
-                $result['openingEditdata'] = [];
+                $result['seodtlId'] = 0;
+                $result['seoEditdata'] = [];
             } else {
                 $result['mode'] = "EDIT";
                 $result['btnText'] = "Update";
                 $result['btnTextLoader'] = "Updating...";
-                $result['upeningId'] = $this->uri->segment(3);
-                $where = array('current_opening_id' => $result['upeningId']);
-                $result['openingEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('current_openings', $where);
+                $result['seodtlId'] = $this->uri->segment(3);
+                $where = array('seo_dtl_id' => $result['seodtlId']);
+                $result['seoEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('seo_details', $where);
 
             }
             $page = "dashboard/seo/seo_add_edit.php";
@@ -57,23 +57,27 @@ class Seodata extends CI_Controller
 
     }
 
-    public function current_opening_action()
+    public function seo_data_action()
     {
         $session = $this->session->userdata('user_detail');
         if ($this->session->userdata('user_detail')) {
-            $current_opening_id = $this->input->post('current_opening_id');
+            $seo_dtl_id = $this->input->post('seo_dtl_id');
             $mode = $this->input->post('mode');
-            $opening_type = trim($this->input->post('opening_type'));
-            $opening_title = trim($this->input->post('opening_title'));
-            $opening_description = trim($this->input->post('opening_description'));
+            $page_url = trim($this->input->post('page_url'));
+            $page_title = trim($this->input->post('page_title'));
+            $seo_keyword = $this->input->post('seo_keyword');
+            $meta_description = $this->input->post('meta_description');
+            $canonical_url = $this->input->post('canonical_url');
 
             if ($mode == "ADD") {
                 $insert_Arr = array(
-                    'opening_type' => $opening_type,
-                    'opening_title' => $opening_title,
-                    'opening_description' => $opening_description,
+                    'page_url' => $page_url,
+                    'page_title' => $page_title,
+                    'seo_keyword' => $seo_keyword,
+                    'meta_description' => $meta_description,
+                    'canonical_url' => $canonical_url
                 );
-                $insertId = $this->commondatamodel->insertSingleTableData('current_openings', $insert_Arr);
+                $insertId = $this->commondatamodel->insertSingleTableData('seo_details', $insert_Arr);
                 if ($insertId) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -88,14 +92,16 @@ class Seodata extends CI_Controller
 
             } else {
                 $where = array(
-                    "current_openings.current_opening_id" => $current_opening_id
+                    "seo_details.seo_dtl_id" => $seo_dtl_id
                 );
                 $data = array(
-                    'opening_type' => $opening_type,
-                    'opening_title' => $opening_title,
-                    'opening_description' => $opening_description,
+                    'page_url' => $page_url,
+                    'page_title' => $page_title,
+                    'seo_keyword' => $seo_keyword,
+                    'meta_description' => $meta_description,
+                    'canonical_url' => $canonical_url,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('current_openings', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('seo_details', $data, $where);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,

@@ -28,6 +28,103 @@ class Master extends CI_Controller
 
     }
 
+    public function nature_of_query_add_edit()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            if ($this->uri->segment(3) == NULL) {
+                $result['mode'] = "ADD";
+                $result['btnText'] = "Create";
+                $result['btnTextLoader'] = "Saving...";
+                $result['queryid'] = 0;
+                $result['queryEditdata'] = [];
+            } else {
+                $result['mode'] = "EDIT";
+                $result['btnText'] = "Update";
+                $result['btnTextLoader'] = "Updating...";
+                $result['queryid'] = $this->uri->segment(3);
+                $where = array('id' => $result['queryid']);
+                $result['queryEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('fuel_nature_of_query', $where);
+
+            }
+            $page = "dashboard/master/nature_of_query_add_edit.php";
+            $header = "";
+
+            
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+
+    }
+    public function nature_of_query_action()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $queryid = $this->input->post('queryid');
+            $mode = $this->input->post('mode');
+            $name = trim($this->input->post('name'));
+            $email = strtolower($this->input->post('email'));
+            $cc_to = strtolower($this->input->post('cc_to'));
+
+            if ($mode == "ADD") {
+
+                $next_precedence=$this->mastermodel->get_next_precedence('fuel_nature_of_query','precedence',[]);
+                $insert_Arr = array(
+                    'name' => $name,
+                    'email' => $email,
+                    'cc_to' => $cc_to,
+                    'precedence' => $next_precedence,
+                );
+                $insertId = $this->commondatamodel->insertSingleTableData('fuel_nature_of_query', $insert_Arr);
+                if ($insertId) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Saved successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+
+            } else {
+                $where = array(
+                    "fuel_nature_of_query.id" => $queryid
+                );
+                $data = array(
+                    'name' => $name,
+                    'email' => $email,
+                    'cc_to' => $cc_to,
+                );
+                $updateData = $this->commondatamodel->updateSingleTableData('fuel_nature_of_query', $data, $where);
+                if ($updateData) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Updates successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+            }
+
+
+
+
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit;
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+   
+   
+   
     public function enquiry()
     {
         $session = $this->session->userdata('user_detail');

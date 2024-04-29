@@ -1,4 +1,3 @@
-shareholders_information_partial_view
 <section class="layout-box-content-format1">
    <table class="table customTbl table-bordered table-striped dataTable" style="width: 100%">
       <thead>

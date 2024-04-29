@@ -128,9 +128,9 @@ td {
 
 <form name="investorRelationFrom" id="investorRelationFrom" enctype="multipart/form-data">
 
-    <input type="text" id="mode" name="mode" value="<?php echo $mode; ?>">
-    <input type="text" id="relations_dtl_id" name="relations_dtl_id" value="<?php echo $relations_dtl_id; ?>">
-    <input type="text" id="relations_master_id" name="relations_master_id" value="<?php echo $relations_master_id; ?>">
+    <input type="hidden" id="mode" name="mode" value="<?php echo $mode; ?>">
+    <input type="hidden" id="relations_dtl_id" name="relations_dtl_id" value="<?php echo $relations_dtl_id; ?>">
+    <input type="hidden" id="relations_master_id" name="relations_master_id" value="<?php echo $relations_master_id; ?>">
     <div class="row">
         <div class="col-md-12">
             <label for="groupname">Title</label>
@@ -237,7 +237,8 @@ td {
                                     <tr id="rowDocument_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>">
                                         <td>
 
-
+                                            <input type="hidden" name="precedence[]" id="precedence_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>" 
+                                            class="precedenceData" value="<?php echo $value->precedence; ?>">
                                             <input type="text" name="docType[]"
                                                 id="docType_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>"
                                                 class="form-control docType" value="<?php echo $value->uploaded_file_desc; ?>">

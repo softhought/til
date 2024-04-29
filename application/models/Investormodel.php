@@ -71,6 +71,8 @@ public function fileUploadInvestor($data){
 
 public function insertIntoUploadFile($data,$where_data,$dir_path)
 { 
+
+    
     if($data['mode']=="EDIT" && $where_data['masterID']>0)
     {
 
@@ -119,7 +121,7 @@ public function insertIntoUploadFile($data,$where_data,$dir_path)
                 "user_file_name" => $data['userFilename'][$i],           
                 "table_name" => $where_data['From'],
                 "ref_id" => $where_data['masterID'],
-                "precedence" => $srl_no++,                
+                "precedence" => $data['precedence'][$i],                
                 "uploaded_by_user" => $data['user_id'],
                 "is_disabled" => '0'
             ); 
@@ -137,7 +139,7 @@ public function insertIntoUploadFile($data,$where_data,$dir_path)
 
    // echo "Count Changed ".$countChanged;
   //  exit;
-
+  //pre($data);exit;
     for($k=0;$k<$countChanged;$k++)
     {
         $detail_array_edit = array();
@@ -150,7 +152,7 @@ public function insertIntoUploadFile($data,$where_data,$dir_path)
                 "user_file_name" => $data['prvFilename'][$k],
                 "table_name" => $where_data['From'],
                 "ref_id" => $where_data['masterID'],
-                "precedence" => $srl_no++,               
+                "precedence" => $data['precedence'][$k],               
                 "uploaded_by_user" => $data['user_id'],
                 "is_disabled" => '0'
             ); 
@@ -176,6 +178,27 @@ foreach ($fileList as $key => $value) {
 
 
 
+}
+
+
+public function increment_precedence($current_precedence,$new_precedence,$relations_dtl_id) {
+    $this->db->set('precedence', 'precedence+1', FALSE);
+    $this->db->where('precedence >=', $new_precedence);
+    $this->db->where('precedence <', $current_precedence);
+    $this->db->where('table_name', 'investor_relations_details');
+    $this->db->where('ref_id', $relations_dtl_id);
+    $this->db->update('document_details');
+    #echo $this->db->last_query();
+}
+
+public function deincrement_precedence($current_precedence,$new_precedence,$relations_dtl_id) {
+    $this->db->set('precedence', 'precedence-1', FALSE);
+    $this->db->where('precedence >', $current_precedence);
+    $this->db->where('precedence <', $new_precedence);
+    $this->db->where('table_name', 'investor_relations_details');
+    $this->db->where('ref_id', $relations_dtl_id);
+    $this->db->update('document_details');
+    #echo $this->db->last_query();
 }
 
 

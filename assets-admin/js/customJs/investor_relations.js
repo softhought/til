@@ -149,6 +149,11 @@ $(document).ready(function () {
 				//$("#detail_Document table").css("display", "block");
 				$("#detail_Document table tbody").append(result);
 				$(".select2").select2();
+                var precedence=1;
+                $('.precedenceData').each(function() {
+                    // Reset precedence data for each element
+                    $(this).val(precedence++);
+                });
 			},
 			error: function (jqXHR, exception) {
 				var msg = "";
@@ -232,6 +237,34 @@ $(document).ready(function () {
 
     });
 
+    $(document).on("click", ".reldocstatus", function (event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var uid = $(this).attr("id");
+        var status = $(this).data("setstatus");
+
+        let relations_master_id=$("#doc_relations_master_id").val();
+        let relations_dtl_id=$("#doc_relations_dtl_id").val();
+        //var url = basepath + "media/setStatus";
+        $.ajax({
+            url: basepath + 'investor/setRelationDocStatus',
+            dataType: 'json',
+            type: 'post',
+            data: { uid: uid, status: status },
+            success: function (result) {
+                if (result.msg_status == 1) {
+                    loadDocumentView(basepath,relations_master_id,relations_dtl_id);
+                }
+
+                Toast.fire({
+                    type: 'success',
+                    title: result.msg_data
+                })
+            }
+        });
+
+    });
+
 
     
 }); // end of document ready
@@ -276,12 +309,18 @@ function loadPartialView(tabId, partialViewUrl) {
 
     
     $("#tab_one_data,#tab_two_data,#tab_three_data,#tab_four_data").html("");
+   // $(tabId + "_data").html(data);
     $.ajax({
         url: partialViewUrl,
         type: 'GET',
         success: function(data) {
             $(tabId + "_data").html(data);
-            $('.dataTable').DataTable({ paging: false });
+            // Check if DataTable exists
+            if ($.fn.DataTable.isDataTable('.dataTable')) {
+                // If DataTable exists, destroy it
+                $('.dataTable').DataTable().destroy();
+            }
+            $('.dataTable').DataTable({ paging: false, autoWidth: false });
         },
         error: function(xhr, status, error) {
             console.error("Error loading partial view:", error);
@@ -337,4 +376,28 @@ function detailDocumentValidation() {
 	});
 
 	return isValid;
+}
+
+function changeSerialDoc(id, slno, action) {
+    var slectedvalue = $("#otherslno_" + slno).val();
+    // var slectedvalue = "Test";
+    var basepath = $("#basepath").val();
+
+    let relations_master_id=$("#doc_relations_master_id").val();
+    let relations_dtl_id=$("#doc_relations_dtl_id").val();
+    $(".actrow").removeClass("actrow");
+    $.ajax({
+        url: basepath + 'investor/DocSerialchange',
+        dataType: 'json',
+        type: 'post',
+        data: { id: id, slno: slno, action: action,relations_dtl_id:relations_dtl_id, slectedvalue: slectedvalue },
+        success: function (result) {
+            
+            if (result.msg_status == 1) {
+                loadDocumentView(basepath,relations_master_id,relations_dtl_id);
+              //  $("#docrow_"+id).children('td, th').addClass("actrow");
+               
+            }
+        }
+    });
 }

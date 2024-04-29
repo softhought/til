@@ -3,10 +3,10 @@
    <div class="card card-primary list-view">
       <div class="card-header box-shdw">
          <h3 class="card-title">Nature of Query </h3>
-         <!-- <div class="btn-group btn-group-sm float-right " role="group" aria-label="MoreActionButtons">
-            <a href="<?php echo base_url(); ?>user/create" class="btn btn-info btnpos link_tab">
+        <div class="btn-group btn-group-sm float-right " role="group" aria-label="MoreActionButtons">
+            <a href="<?php echo base_url(); ?>master/nature_of_query_add_edit" class="btn btn-info btnpos link_tab">
             <i class="fas fa-plus"></i> Add </a> 
-         </div> -->
+         </div>
        
       </div>
       <!-- /.card-header -->
@@ -19,6 +19,7 @@
                      <th>Name</th>
                      <th>Email</th>
                      <th>CC</th>
+                     <th>Action</th>
                    
                   </tr>
                </thead>
@@ -31,6 +32,12 @@
                      <td><?php echo $list->name; ?> </td>
                      <td><?php echo $list->email; ?> </td>
                      <td><?php echo $list->cc_to; ?> </td>
+                     <td>
+                     <a href="<?php echo base_url(); ?>master/nature_of_query_add_edit/<?php echo $list->id; ?>"
+                              class="btn tbl-action-btn padbtn">
+                           <i class="fas fa-edit"></i>
+                           </a>
+                     </td>
                    
                   </tr>
                   <?php } ?>

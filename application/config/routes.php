@@ -71,6 +71,8 @@ $route['product/fetchtemplatecolumn'] = 'Products/fetchtemplatecolumn';
 $route['product/modeladdeditaction'] = 'Products/modeladdeditaction';
 $route['product/fetchtemplatedata'] = 'Products/fetchtemplatedata';
 $route['product/fetchproductmodelpartialview'] = 'Products/productModelPartialView';
+$route['product/addeditspecsheet'] = 'Products/addEditSpecSheet';
+$route['product/activeinactivespecsheet'] = 'Products/activeInactiveSpecSheet';
 
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";
@@ -147,7 +149,7 @@ $route['careers/life-til'] = "frontend/careers/life_til";
 $route['careers/meet-our-team'] = "frontend/careers/meet_our_team";
 $route['careers/vacancies'] = "frontend/careers/vacancies";
 $route['careers/equal-opportunity-employer'] = "frontend/careers/equal_opportunity_employer";
-$route['careers/submit_cv'] = "frontend/careers/submit_cv";
+$route['careers/submit_cv/(:num)'] = "frontend/careers/submit_cv/$1";
 
 
 /* -------------- Contact Us ---------------------- */
@@ -164,3 +166,9 @@ $route["mediaadmin"] = "media";
 $route["admin"] = "Login";
 $route["product-list"] = "Products";
 $route["product-menu-add-edit/(:num)/(:any)/(:any)"] = "Products/menu_add_edit/$1/$2/$3";
+
+/* -------------- Team Route ---------------------- */
+$route["team/activeinactive/(:num)/(:any)"] = "team/activeInactive/$1/$2";
+$route["team/addedit/(:num)"] = "team/addEdit/$1";
+$route["team/addedit"] = "team/addEdit";
+$route["team/addeditaction"] = "team/addEditAction";

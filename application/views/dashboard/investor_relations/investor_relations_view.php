@@ -1,12 +1,23 @@
 <script src="<?php echo base_url(); ?>assets-admin/js/customJs/investor_relations.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="<?php echo (base_url()); ?>assets-admin/plugins/ckeditor5/styles.css"> -->
 
+<style>
+   #example th:nth-child(1),
+#example td:nth-child(1) {
+    width: 10%; /* Set width of first column */
+}
+
+#example th:nth-child(2),
+#example td:nth-child(2) {
+    width: 80%; /* Set width of second column */
+}
+</style>
 
 <div class="card card-primary card-outline card-tabs">
    <div class="card-header p-0 pt-1 border-bottom-0">
       <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
          <li class="nav-item">
-            <a class="nav-link active" id="tab_one-tab" data-toggle="pill" href="#tab_one" role="tab"
+            <a class="nav-link" id="tab_one-tab" data-toggle="pill" href="#tab_one" role="tab"
                aria-controls="tab_one" aria-selected="true">Corporate Governance</a>
          </li>
 

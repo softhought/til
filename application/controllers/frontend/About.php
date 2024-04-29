@@ -31,6 +31,7 @@ class About extends CI_Controller
     {      
         $page="web_view/about/board_of_directors";
         $result["active"] = "about";
+        $result["teamList"] = $this->commondatamodel->getAllRecordWhereOrderBy('team_member_master', ["is_disabled" => 0], 'precedence');
         webbody_helper($result, $page);
     }
 

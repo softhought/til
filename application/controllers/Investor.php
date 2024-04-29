@@ -108,7 +108,8 @@ class Investor extends CI_Controller
 					'document_details.ref_id' => $result['relations_dtl_id'], 
 					'document_details.table_name' => "investor_relations_details"
 				);
-				 $result['documenDtl'] = $this->commondatamodel->getAllRecordWhere('document_details',$where_doc);
+                $orderby = 'precedence';
+                $result['documenDtl'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_doc,$orderby);
 
             }
 
@@ -163,11 +164,13 @@ class Investor extends CI_Controller
             $dataArry = $_POST;
             if(isset($_POST['docType'])){
                 $docType = $dataArry['docType'];
+                $precedence = $dataArry['precedence'];
                 $userFilename = $dataArry['userFileName'];
                 $fileDesc = NULL;
                 $isChangedFile = $dataArry['isChangedFile'];
             }else{
                     $docType = NULL;
+                    $precedence = NULL;
                     $userFilename = NULL;
                     $fileDesc = NULL;
                     $isChangedFile = NULL;
@@ -192,6 +195,7 @@ class Investor extends CI_Controller
                         "isChangedFile" => $isChangedFile,
                         "mode" => $mode,
                         "docType" => $docType,
+                        "precedence" => $precedence,
                         "userFilename" => $userFilename,
                         "docFile" => $_FILES,
                         "fileDesc" => $fileDesc,
@@ -246,6 +250,7 @@ class Investor extends CI_Controller
                             'docDetailIDs' => $docDetailIDs, 
                             "mode" => $mode,
                             "docType" => $docType,
+                            "precedence" => $precedence,
                             "userFilename" => $userFilename,
                             "docFile" => $_FILES,
                             "fileDesc" => $fileDesc,
@@ -300,7 +305,8 @@ class Investor extends CI_Controller
 					'document_details.ref_id' => $result['relations_dtl_id'], 
 					'document_details.table_name' => "investor_relations_details"
 				);
-				 $result['documenDtl'] = $this->commondatamodel->getAllRecordWhere('document_details',$where_doc);
+                $orderby = 'precedence';
+				 $result['documenDtl'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details',$where_doc,$orderby);
 
 
             $orderby = 'relations_dtl_id';
@@ -347,5 +353,136 @@ class Investor extends CI_Controller
         }
     }
 
+    public function setRelationDocStatus(){
+        $session = $this->session->userdata('user_detail');
+        if($this->session->userdata('user_detail')){
+            $updID = trim($this->input->post('uid'));
+            $status = trim($this->input->post('status'));
+            $update_array  = array("is_disabled" => $status);   
+            $where = array("doc_id" => $updID);
+            $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array,$where);
+            if($update)
+            {
+                $json_response = array(
+                    "msg_status" => 1,
+                    "msg_data" => "Status successfully updated"
+                );
+            }
+            else
+            {
+                $json_response = array(
+                    "msg_status" => 0,
+                    "msg_data" => "Failed to update"
+                );
+            }
+            header('Content-Type: application/json');
+            echo json_encode( $json_response );
+            exit;
+
+        }
+        else {
+            redirect('login','refresh');
+        }
+    }
+
+
+    public function DocSerialchange(){
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $doc_id = trim($this->input->post('id'));
+            $slno = trim($this->input->post('slno'));
+            $action = trim($this->input->post('action'));
+            $slectedvalue = trim($this->input->post('slectedvalue')); 
+            $relations_dtl_id = $this->input->post('relations_dtl_id'); 
+            $table_name="investor_relations_details";
+            $json_response = array();
+            if ($action == 'U') {
+                $pre_sl = $slno - 1;
+                
+                if ($pre_sl != '0') {
+               // if ($pre_sl != '0' || $pre_sl == '0') {
+
+                    $where = array('precedence' => $pre_sl,'ref_id' => $relations_dtl_id,'table_name' => $table_name);
+                    $preDocData = $this->commondatamodel->getSingleRowByWhereCls('document_details', $where);
+                    if (!empty($preDocData)) {
+                        $pre_Docid = $preDocData->doc_id;                        
+                            $update_array = array("precedence" => $pre_sl);
+                            $where = array("doc_id" => $doc_id);                       
+                            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+
+                            $update_array2 = array("precedence" => $slno);
+                            $where2 = array("doc_id" => $pre_Docid);
+                            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+
+                            if ($update) {
+                                $json_response = array(
+                                    "msg_status" => 1,
+                                    "msg_data" => "Precedence updated"
+                                    
+                                );
+                            }
+                        
+                    }
+                }
+            } elseif ($action == 'P') {
+                $where = array('precedence' => $slectedvalue,'ref_id' => $relations_dtl_id,'table_name' => $table_name);
+                $preDocData = $this->commondatamodel->getSingleRowByWhereCls('document_details', $where);
+                if (!empty($preDocData)) {
+                    $pre_Docid = $preDocData->doc_id;
+
+                    $update_array = array("precedence" => $slectedvalue);
+                    $where = array("doc_id" => $doc_id);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+
+                    $update_array2 = array("precedence" => $slno);
+                    $where2 = array("doc_id" => $pre_Docid);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+
+                    if ($update) {
+                        $json_response = array(
+                            "msg_status" => 1,
+                            "msg_data" => "Precedence updated"
+                           
+                        );
+                    }
+                }
+               
+            }elseif ($action == 'D'){
+                $next_sl = $slno + 1;
+
+                $where = array('precedence' => $next_sl,'ref_id' => $relations_dtl_id,'table_name' => $table_name);
+                $preDocData = $this->commondatamodel->getSingleRowByWhereCls('document_details', $where);
+                
+                if (!empty($preDocData)) {
+                    $next_Docid= $preDocData->doc_id;
+
+                    $update_array = array("precedence" => $next_sl);
+                    $where = array("doc_id" => $doc_id);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+
+                    $update_array2 = array("precedence" => $slno);
+                    $where2 = array("doc_id" => $next_Docid);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                    if ($update) {
+                        $json_response = array(
+                            "msg_status" => 1,
+                            "msg_data" => "Precedence updated"
+                            
+                        );
+                    }
+
+                }
+            }
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit;
+
+        } else {
+
+            redirect('login', 'refresh');
+
+        }
+
+    }
 
 } /* end of class */

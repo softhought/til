@@ -159,15 +159,15 @@
                             </div>
                         </div>
                     </div>
-
+                </form>
+                <div class="p-3" style="margin-top: -35px">
                     <div class="row">
                         <div class="col-md-12">
                             <div id="product_model_partialview"></div>
                         </div>
                     </div>
-
                     <hr>
-                    <div class="formblock-box">
+                    <div class="formblock-box p-2">
                         <div class="row">
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-sm action-button" id="createmodeltemplate"
@@ -183,7 +183,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </section>
     </div>
@@ -218,7 +218,7 @@
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="Function" class="form-label">Chose Template</label>
-                                <div>
+                                <div id="template_seterr">
                                     <select class="form-select select2" name="template_set" id="template_set"></select>
                                 </div>
                             </div>
@@ -261,13 +261,22 @@
         var title = $(this).val();
         var formattedText = title.toLowerCase().replace(/ /g, "-");
         $(slug).val(formattedText);
+
     });
+    CKEDITOR.replaceAll('ckeditor1');
+    function updateEditorContent() {
+        var ckeditors = CKEDITOR.instances;
+        for (var instance in ckeditors) {
+            ckeditors[instance].updateElement();
+        }
+    }
 </script>
 
 <script>
     $(document).ready(function () {
         load_product_model_partial_view($("#product_master_id").val());
         $("#createmodeltemplate").click(function () {
+            $("#createtemplateform")[0].reset();
             $("#model_product_master_id").val($("#product_master_id").val());
             $("#model_mode").val("add");
             $("#modelsavebtn").text("Save");
@@ -418,6 +427,14 @@
             $("#model_titleerr").css("border", "");
         }
 
+        if ($("#template_set").val().trim() === "") {
+            $("#template_setrr").css("border", "1px solid red");
+            $("#template_setrr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#template_setrr").css("border", "");
+        }
+
         if ($("#model_description").val().trim() === "") {
             $("#model_descriptionerr").css("border", "1px solid red");
             $("#model_descriptionerr").css("border-radius", "5px");
@@ -470,6 +487,7 @@
                         $("#createmodeltemplateModel").modal("hide");
                     }
                     load_product_model_partial_view($("#product_master_id").val());
+                    
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR);
@@ -547,6 +565,7 @@
             var isValid = validate();
 
             if (isValid) {
+                updateEditorContent();
                 $("#loaderbtn").show();
                 $("#savebtn").hide();
                 var formData = new FormData($(this)[0]);
@@ -567,6 +586,7 @@
                                 window.location.replace(
                                     window.location.href.split("/").slice(0, -3).concat(response.product_master_id, "product", "edit").join("/")
                                 );
+
                             }
                         }
                     },
@@ -578,5 +598,6 @@
             }
         });
 
+       
     });
 </script>

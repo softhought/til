@@ -226,6 +226,7 @@ class Dashboard extends CI_Controller
             if ($fileError === 0) {
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     $candidte_name = $_POST["candidte_name"];
+                    $current_opening_id = $_POST["current_opening_id"];
                     $function_id = $_POST["function_id"];
                     $technical_qualification = $_POST["technical_qualification"];
                     $linkedIn_profile = $_POST["linkedIn_profile"];

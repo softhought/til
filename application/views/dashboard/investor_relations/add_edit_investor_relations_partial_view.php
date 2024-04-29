@@ -4,7 +4,7 @@
         width: 100% !important;
     }
 
-    #cke_description{
+    #cke_description {
         width: -moz-available;
     }
 
@@ -128,18 +128,17 @@ td {
 
 <form name="investorRelationFrom" id="investorRelationFrom" enctype="multipart/form-data">
 
-    <input type="text" id="mode" name="mode" value="<?php echo $mode; ?>">
-    <input type="text" id="relations_dtl_id" name="relations_dtl_id" value="<?php echo $relations_dtl_id; ?>">
-    <input type="text" id="relations_master_id" name="relations_master_id" value="<?php echo $relations_master_id; ?>">
+    <input type="hidden" id="mode" name="mode" value="<?php echo $mode; ?>">
+    <input type="hidden" id="relations_dtl_id" name="relations_dtl_id" value="<?php echo $relations_dtl_id; ?>">
+    <input type="hidden" id="relations_master_id" name="relations_master_id" value="<?php echo $relations_master_id; ?>">
     <div class="row">
         <div class="col-md-12">
             <label for="groupname">Title</label>
             <div class="form-group">
                 <div class="input-group input-group-sm" id="titleerr">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title"
-                        value="<?php if ($mode == "EDIT") {
-                            echo $relationEditdata->title;
-                        } ?>" autocomplete="off">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="<?php if ($mode == "EDIT") {
+                        echo $relationEditdata->title;
+                    } ?>" autocomplete="off">
                 </div>
             </div>
         </div>
@@ -150,11 +149,9 @@ td {
             <label for="groupname">Page Url</label>
             <div class="form-group">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" name="page_url" id="page_url" placeholder=""
-                        value="<?php if ($mode == "EDIT") {
-                            echo $relationEditdata->page_url;
-                        } ?>" autocomplete="off"
-                        readonly>
+                    <input type="text" class="form-control" name="page_url" id="page_url" placeholder="" value="<?php if ($mode == "EDIT") {
+                        echo $relationEditdata->page_url;
+                    } ?>" autocomplete="off" readonly>
                 </div>
             </div>
         </div>
@@ -165,10 +162,9 @@ td {
             <label for="groupname"> Description</label>
             <div class="form-group" id="mail_bodyerr">
                 <div class="input-group input-group-sm">
-                    <textarea class="form-control ckeditor1" style="width: 100%;" name="description"
-                        id="description"><?php if ($mode == "EDIT") {
-                            echo $relationEditdata->description;
-                        } ?></textarea>
+                    <textarea class="form-control ckeditor1" style="width: 100%;" name="description" id="description"><?php if ($mode == "EDIT") {
+                        echo $relationEditdata->description;
+                    } ?></textarea>
 
                 </div>
             </div>
@@ -241,7 +237,8 @@ td {
                                     <tr id="rowDocument_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>">
                                         <td>
 
-
+                                            <input type="hidden" name="precedence[]" id="precedence_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>" 
+                                            class="precedenceData" value="<?php echo $value->precedence; ?>">
                                             <input type="text" name="docType[]"
                                                 id="docType_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>"
                                                 class="form-control docType" value="<?php echo $value->uploaded_file_desc; ?>">
@@ -317,7 +314,7 @@ td {
                                         </td>
                                     </tr>
 
-                                <?php
+                                    <?php
                                 }
                             }
 

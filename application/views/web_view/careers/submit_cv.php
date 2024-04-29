@@ -27,8 +27,21 @@
       <div>
         <article class="status-publish hentry" style="margin-bottom: 40px;">
           <div class="entry-content">
-            <form enctype="multipart/form-data" class="submit_your_cv" id="submit_your_cv" method="POST"
-              onsubmit="return apply_job(this);">
+            <form enctype="multipart/form-data" class="submit_your_cv" id="submit_your_cv" method="POST">
+              <input type="hidden" name="current_opening_id"
+                value="<?php echo isset($bodycontent["current_openings"]) ? $bodycontent["current_openings"]->current_opening_id : 0; ?>">
+              <?php if (isset($bodycontent["current_openings"])) { ?>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="candidte_name">Application For </label>
+                      <input type="text" value="<?php echo $bodycontent["current_openings"]->opening_title; ?>"
+                        autocomplete="off" id="candidte_name" class="form-control" readonly />
+
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
               <div class="row">
                 <div class="col-md-6 col-12">
                   <div class="form-group">
@@ -98,4 +111,3 @@
     </div>
   </div>
 </section>
-

@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 if (!function_exists('webbody_helper')) {
     function webbody_helper($body_content_data, $body_content_page)
@@ -17,6 +18,14 @@ if (!function_exists('webbody_helper')) {
         $result["product_menu"] = $CI->productsmenu->getProductsMenu();
         $result["country"] = $CI->commondatamodel->getAllDropdownData("tbl_countries");
         $result["nature_of_query"] = $CI->commondatamodel->getAllRecordOrderBy("fuel_nature_of_query", "precedence", "ASC");
+
+        $mainurl = substr(current_url(), strlen(base_url()));
+        $mainurl = $mainurl == "" ? "home" : $mainurl;
+        $result["seo_details"] = $CI->commondatamodel->getSingleRowByWhereCls("seo_details", ["page_url" => $mainurl]);
+
+        if (empty($result["seo_details"])) {
+            $result["seo_details"] = $CI->commondatamodel->getSingleRowByWhereCls("seo_details", ["page_url" => "home"]);
+        }
 
         $CI->template->setHeader($heared_menu_content);
         $CI->template->setBody($body_content_data);

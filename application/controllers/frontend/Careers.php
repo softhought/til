@@ -28,6 +28,7 @@ class Careers extends CI_Controller
     {
         $page = "web_view/careers/meet_our_team.php";
         $result["active"] = "careers";
+        $result["teamList"] = $this->commondatamodel->getAllRecordWhereOrderBy('team_member_master', ["is_disabled" => 0], 'precedence');
         webbody_helper($result, $page);
     }
 
@@ -35,6 +36,7 @@ class Careers extends CI_Controller
     {
         $page = "web_view/careers/vacancies.php";
         $result["active"] = "careers";
+        $result["openings"] = $this->commondatamodel->getAllRecordWhere("current_openings", ["is_disabled" => 0]);
         webbody_helper($result, $page);
     }
 
@@ -45,9 +47,12 @@ class Careers extends CI_Controller
         webbody_helper($result, $page);
     }
 
-    public function submit_cv()
+    public function submit_cv($current_opening_id)
     {
         $page = "web_view/careers/submit_cv.php";
+        if ($current_opening_id != 0) {
+            $result["current_openings"] = $this->commondatamodel->getSingleRowByWhereCls("current_openings", ["current_opening_id" => $current_opening_id]);
+        } 
         $result["active"] = "careers";
         webbody_helper($result, $page);
     }

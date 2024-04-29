@@ -22,16 +22,16 @@
     ga('send', 'pageview');
 
   </script>
-  <link rel="canonical" href="index" />
+  <link rel="canonical" href="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->canonical_url ? $menu["seo_details"]->canonical_url : ""; ?>" />
   <meta name="msvalidate.01" content="E106D761105C04424A9ACCB1137CCE92" />
   <meta name="robots" content="noodp, noydir" />
 
-  <title>Material Handling Equipment in India | TIL Limited</title>
+  <title><?php echo isset($menu["seo_details"]) && $menu["seo_details"]->page_title ? $menu["seo_details"]->page_title : ""; ?></title>
 
   <meta name="keywords"
-    content="Material Handling Equipment in India, reach stackers, truck cranes India, jaw crushers, forklifts trucks">
+    content="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->seo_keyword ? $menu["seo_details"]->seo_keyword : ""; ?>">
   <meta name="description"
-    content="TIL limited is a reputed manufacturer of material handling equipment in India. We manufacture a wide range of cranes, stone crushers and various other material handling solutions and crushing and screening solution.">
+    content="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->meta_description ? $menu["seo_details"]->meta_description : ""; ?>">
   <link href="<?php echo base_url(); ?>assets/images/favicon.png" type="image/x-icon" rel="icon" />
   <!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">-->

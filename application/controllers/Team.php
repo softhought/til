@@ -6,6 +6,7 @@ class Team extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('commondatamodel', 'commondatamodel', TRUE);
         $this->load->model('mastermodel', 'mastermodel', TRUE);
 
     }
@@ -68,6 +69,7 @@ class Team extends CI_Controller
             'about' => $about,
             'address' => $address,
             'din_no' => $din_no,
+            'precedence' => $this->mastermodel->get_next_precedence("team_member_master", "precedence", []),
         ];
 
         if (isset($_FILES['member_picfile'])) {

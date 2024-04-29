@@ -28,6 +28,7 @@ class Careers extends CI_Controller
     {
         $page = "web_view/careers/meet_our_team.php";
         $result["active"] = "careers";
+        $result["teamList"] = $this->commondatamodel->getAllRecordWhereOrderBy('team_member_master', ["is_disabled" => 0], 'precedence');
         webbody_helper($result, $page);
     }
 

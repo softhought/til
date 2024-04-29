@@ -158,7 +158,7 @@
                             <label for="groupname"> About</label>
                             <div class="form-group" id="about_err">
                                 <div class="input-group input-group-sm">
-                                    <textarea class="form-control ckeditor" style="width: 100%;" name="about"
+                                    <textarea class="form-control" style="width: 100%; height: 200px;" name="about"
                                         id="about"><?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->about : "" ?></textarea>
                                 </div>
                             </div>

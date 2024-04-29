@@ -57,16 +57,10 @@
                     <select name="function_id" name="function_id" autocomplete="off" id="function_id"
                       required="required" placeholder="Function" class="form-control">
                       <option value="" label="--select--">--select--</option>
-                      <option value="1" label="Manufacturing">Manufacturing</option>
-                      <option value="2" label="Sales &amp; marketing">Sales &amp; marketing</option>
-                      <option value="3" label="Customer Support">Customer Support</option>
-                      <option value="4" label="Corporate Finance">Corporate Finance</option>
-                      <option value="5" label="Corporate HR &amp; ER">Corporate HR &amp; ER</option>
-                      <option value="6" label="Corporate Communications">Corporate Communications</option>
-                      <option value="7" label="Design">Design</option>
-                      <option value="8" label="Quality Assurance">Quality Assurance</option>
-                      <option value="9" label="Corporate Strategy">Corporate Strategy</option>
-                      <option value="10" label="Administration">Administration</option>
+                      <?php foreach ($bodycontent["functions_career"] as $key => $value) { ?>
+                        <option value="<?php echo $value->id; ?>" label="<?php echo $value->name ?>">
+                          <?php echo $value->name ?></option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>

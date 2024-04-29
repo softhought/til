@@ -487,7 +487,7 @@
                         $("#createmodeltemplateModel").modal("hide");
                     }
                     load_product_model_partial_view($("#product_master_id").val());
-                    
+
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR);
@@ -521,43 +521,9 @@
             $("#catagory_image").val(fileName);
         });
 
-        function validate() {
-            var valid = true;
-
-            if ($("#title").val().trim() === "") {
-                $("#titleerr").css("border", "1px solid red");
-                $("#titleerr").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#titleerr").css("border", "");
-            }
-
-            if ($("#bannerimage").val().trim() === "") {
-                $("#bannerimageerr").css("border", "1px solid red");
-                $("#bannerimageerr").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#bannerimageerr").css("border", "");
-            }
-
-            if ($("#catagory_image").val().trim() === "") {
-                $("#catagory_image_err").css("border", "1px solid red");
-                $("#catagory_image_err").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#catagory_image_err").css("border", "");
-            }
-
-            if ($("#short_description").val().trim() === "") {
-                $("#short_descriptionerr").css("border", "1px solid red");
-                $("#short_descriptionerr").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#short_descriptionerr").css("border", "");
-            }
-
-            return valid;
-        }
+        $("#savebtn").on("click", function(e) {
+            $("#productform").submit();
+        })
 
         $("#productform").on("submit", function (e) {
             e.preventDefault();
@@ -598,6 +564,44 @@
             }
         });
 
-       
+
     });
+
+    function validate() {
+        var valid = true;
+
+        if ($("#title").val().trim() === "") {
+            $("#titleerr").css("border", "1px solid red");
+            $("#titleerr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#titleerr").css("border", "");
+        }
+
+        if ($("#bannerimage").val().trim() === "") {
+            $("#bannerimageerr").css("border", "1px solid red");
+            $("#bannerimageerr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#bannerimageerr").css("border", "");
+        }
+
+        if ($("#catagory_image").val().trim() === "") {
+            $("#catagory_image_err").css("border", "1px solid red");
+            $("#catagory_image_err").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#catagory_image_err").css("border", "");
+        }
+
+        if ($("#short_description").val().trim() === "") {
+            $("#short_descriptionerr").css("border", "1px solid red");
+            $("#short_descriptionerr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#short_descriptionerr").css("border", "");
+        }
+
+        return valid;
+    }
 </script>

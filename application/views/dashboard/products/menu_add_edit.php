@@ -149,7 +149,7 @@
                             <label for="groupname"> Description</label>
                             <div class="form-group" id="mail_bodyerr">
                                 <div class="input-group input-group-sm">
-                                    <textarea class="form-control ckeditor" style="width: 100%;" name="description"
+                                    <textarea class="form-control ckeditor1" style="width: 100%;" name="description"
                                         id="description"><?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->about : "" ?></textarea>
                                 </div>
                             </div>
@@ -183,10 +183,19 @@
         var formattedText = title.toLowerCase().replace(/ /g, "-");
         $(slug).val(formattedText);
     });
+   
+    function updateEditorContent() {
+        var ckeditors = CKEDITOR.instances;
+        for (var instance in ckeditors) {
+            ckeditors[instance].updateElement();
+        }
+    }
 </script>
 
 <script>
     $(document).ready(function () {
+        updateEditorContent();
+        CKEDITOR.replaceAll('ckeditor1');
         $("#bannerimageUploadBtn").on("click", function () {
             $("#bannerimagefile").click();
         });

@@ -133,6 +133,10 @@ $(document).ready(function () {
         var file = $(this).parent().parent().parent().find(".file");
         file.trigger("click");
     });
+
+    $(document).on("click", "#browseImage", function () {
+        $("#fileName").click();
+    })
     $(document).on("change", ".file", function () {
         $(this).parent().find(".form-control").val($(this).val().replace(/C:\\fakepath\\/i, "")
         );
@@ -314,7 +318,7 @@ $(document).ready(function () {
                                     <img src="${imageUrl}" alt="${fileName}">
                                     <i class="fas fa-trash image-delete delete-icon"></i>
                                 </div>`;
-                    previewContainer.append(html);
+                    $("#browse-div").before(html);
                 };
             })(file);
 

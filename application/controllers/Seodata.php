@@ -127,5 +127,42 @@ class Seodata extends CI_Controller
     }
 
 
+    public function checkPageUrl()
+    {
+        $session = $this->session->userdata('user_detail');
+        if($this->session->userdata('user_detail'))
+        {
+            $page_url = trim($this->input->post('page_url'));
+            $where = array(
+                "seo_details.page_url" => trim($page_url)
+                );
+                $exist = $this->commondatamodel->duplicateValueCheck('seo_details',$where);
+            if($exist)
+            {
+                $json_response = array(
+                    "msg_status" => 1,
+                    "msg_data" => "Successfully deleted"
+                );
+            }
+            else
+            {
+                $json_response = array(
+                    "msg_status" => 0,
+                    "msg_data" => "Failed to delete"
+                );
+            }
+
+        header('Content-Type: application/json');
+        echo json_encode( $json_response );
+        exit;
+        }
+        else
+        {
+            redirect('login','refresh');
+        }
+
+    }
+
+
 
 } /* end of class */

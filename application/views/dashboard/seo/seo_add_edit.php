@@ -90,9 +90,61 @@
            }
    
        });
+
+
+       $(document).on("input", "#page_url", function () {
+		var page_url = $(this).val();
+		var mode = $("#mode").val();
+		var urlpath = basepath + "seodata/checkPageUrl";
+
+        if(mode=="EDIT"){
+            return false;
+        }
+		$("#page_url").removeClass("err-border");
+		$("#page_url").text("");
+		$.ajax({
+			type: "POST",
+			url: urlpath,
+			data: { page_url: page_url },
+			dataType: "json",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success: function (result) {
+				if (result.msg_status == 1) {
+					$("#savebtn").hide();
+					$("#page_url").focus().addClass("err-border");
+                    Toast.fire({
+                        type: "error",
+                        title: "Enter page url already exist",
+                    });
+					//location.reload();
+				} else {
+					$("#savebtn").show();
+				}
+			},
+			error: function (jqXHR, exception) {
+				var msg = "";
+				if (jqXHR.status === 0) {
+					msg = "Not connect.\n Verify Network.";
+				} else if (jqXHR.status == 404) {
+					msg = "Requested page not found. [404]";
+				} else if (jqXHR.status == 500) {
+					msg = "Internal Server Error [500].";
+				} else if (exception === "parsererror") {
+					msg = "Requested JSON parse failed.";
+				} else if (exception === "timeout") {
+					msg = "Time out error.";
+				} else if (exception === "abort") {
+					msg = "Ajax request aborted.";
+				} else {
+					msg = "Uncaught Error.\n" + jqXHR.responseText;
+				}
+				alert(msg);
+			},
+		}); /*end ajax call*/
+	});
    
    
-   });
+   });/* end of document ready */
 
    function Validate() {
    
@@ -204,6 +256,7 @@
                            <input type="text" class="form-control" name="page_url" id="page_url"
                               placeholder="Enter Page URL" value="<?php if($bodycontent['mode'] == 'EDIT'){echo $bodycontent['seoEditdata']->page_url;}?>" autocomplete="off">
                         </div>
+                        <span></span>
                      </div>
                   </div>             
                </div>

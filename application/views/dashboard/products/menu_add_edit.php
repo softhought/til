@@ -187,7 +187,8 @@
         var formattedText = title.toLowerCase().replace(/ /g, "-");
         $(slug).val(formattedText);
     });
-
+    
+    CKEDITOR.replaceAll('ckeditor1');
     function updateEditorContent() {
         var ckeditors = CKEDITOR.instances;
         for (var instance in ckeditors) {
@@ -198,8 +199,9 @@
 
 <script>
     $(document).ready(function () {
-        updateEditorContent();
-        CKEDITOR.replaceAll('ckeditor1');
+        
+       
+        
         $("#bannerimageUploadBtn").on("click", function () {
             $("#bannerimagefile").click();
         });
@@ -260,7 +262,7 @@
             e.preventDefault();
 
             var isValid = validate();
-
+            updateEditorContent();
             if (isValid) {
                 $("#loaderbtn").show();
                 $("#savebtn").hide();

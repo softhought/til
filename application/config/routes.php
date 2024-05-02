@@ -172,3 +172,6 @@ $route["team/activeinactive/(:num)/(:any)"] = "team/activeInactive/$1/$2";
 $route["team/addedit/(:num)"] = "team/addEdit/$1";
 $route["team/addedit"] = "team/addEdit";
 $route["team/addeditaction"] = "team/addEditAction";
+
+/* -------------- Privecy Policy added by vikash ---------------------- */
+$route['privacy-policy'] = "frontend/privacypolicy";

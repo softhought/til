@@ -345,6 +345,10 @@
                   style="width:50%" src="<?php echo base_url(); ?>assets/images/BhimUpi-logo.png" class="paylogo"
                   alt="Bhim UPI" /></a>
             </div>
+            <!---- added by vikash 30-04-2024 ---->
+            <!-- <a href="https://tilindia.in/privacy-policy" target="_blank"><p class="p-0">Privacy Policy</p></a> -->
+            <a href="<?php echo base_url(); ?>privacy-policy" target="_blank"><p class="p-0">Privacy Policy</p></a>
+            <!---- end by vikash 30-04-2024 ---->
           </div>
         </div>
         <!-- end col -->

@@ -122,6 +122,12 @@ class Master extends CI_Controller
             redirect('login', 'refresh');
         }
     }
+
+    public function activeInactiveNatureofquery($id, $status)
+    {
+        $this->commondatamodel->updateSingleTableData("fuel_nature_of_query", ["is_disabled" => $status], ["id" => $id]);
+        redirect('master/nature_of_query', 'refresh');
+    }
    
    
    
@@ -295,10 +301,239 @@ class Master extends CI_Controller
     }
 
 
+    public function faq_view()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $page = "dashboard/master/faq_view.php";
+            $header = "";
+            $orderby = 'precedence';
+            $result['faqList'] = $this->commondatamodel->getAllRecordWhereOrderBy('faq_details', [], $orderby);
+
+            //  pre($result['participantList']);exit;
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+
+    }
+
+    public function faq_add_edit()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            if ($this->uri->segment(3) == NULL) {
+                $result['mode'] = "ADD";
+                $result['btnText'] = "Create";
+                $result['btnTextLoader'] = "Saving...";
+                $result['faqid'] = 0;
+                $result['faqEditdata'] = [];
+            } else {
+                $result['mode'] = "EDIT";
+                $result['btnText'] = "Update";
+                $result['btnTextLoader'] = "Updating...";
+                $result['faqid'] = $this->uri->segment(3);
+                $where = array('faq_del_id' => $result['faqid']);
+                $result['faqEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('faq_details', $where);
+
+            }
+            $page = "dashboard/master/faq_add_edit.php";
+            $header = "";
+
+            
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+
+    }
+
+    public function faq_action()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $faq_del_id = $this->input->post('faq_del_id');
+            $mode = $this->input->post('mode');
+            $faq_question = trim($this->input->post('faq_question'));
+            $faq_answer = strtolower($this->input->post('faq_answer'));
+         
+            if ($mode == "ADD") {
+
+                $next_precedence=$this->mastermodel->get_next_precedence('faq_details','precedence',[]);
+                $insert_Arr = array(
+                    'faq_question' => $faq_question,
+                    'faq_answer' => $faq_answer,
+                    'precedence' => $next_precedence,
+                );
+                $insertId = $this->commondatamodel->insertSingleTableData('faq_details', $insert_Arr);
+                if ($insertId) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Saved successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+
+            } else {
+                $where = array(
+                    "faq_details.faq_del_id" => $faq_del_id
+                );
+                $data = array(
+                    'faq_question' => $faq_question,
+                    'faq_answer' => $faq_answer,
+                );
+                $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where);
+                if ($updateData) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Updates successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+            }
 
 
 
 
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit;
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
+    public function activeInactiveFaq($id, $status)
+    {
+        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id]);
+        redirect('master/faq_view', 'refresh');
+    }
 
 
-}
+    public function functions_career()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $page = "dashboard/master/functions_career_view.php";
+            $header = "";
+            $orderby = 'id';
+            $result['functions_careerList'] = $this->commondatamodel->getAllRecordWhereOrderBy('functions_career', [], $orderby);
+
+            //  pre($result['participantList']);exit;
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+
+    }
+
+    public function activeInactiveFunctionscareer($id, $status)
+    {
+        $this->commondatamodel->updateSingleTableData("functions_career", ["is_disabled" => $status], ["id" => $id]);
+        redirect('master/functions_career', 'refresh');
+    }
+
+
+
+
+    public function functions_career_add_edit()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            if ($this->uri->segment(3) == NULL) {
+                $result['mode'] = "ADD";
+                $result['btnText'] = "Create";
+                $result['btnTextLoader'] = "Saving...";
+                $result['functionsid'] = 0;
+                $result['functionEditdata'] = [];
+            } else {
+                $result['mode'] = "EDIT";
+                $result['btnText'] = "Update";
+                $result['btnTextLoader'] = "Updating...";
+                $result['functionsid'] = $this->uri->segment(3);
+                $where = array('id' => $result['functionsid']);
+                $result['functionEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('functions_career', $where);
+
+            }
+            $page = "dashboard/master/functions_career_add_edit.php";
+            $header = "";
+
+            
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+
+    }
+
+    public function functions_career_action()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $functions_id = $this->input->post('functions_id');
+            $mode = $this->input->post('mode');
+            $functions_name = trim($this->input->post('functions_name'));
+         
+            if ($mode == "ADD") {
+
+                $next_precedence=$this->mastermodel->get_next_precedence('functions_career','precedence',[]);
+                $insert_Arr = array(
+                    'name' => $functions_name,
+                    'precedence' => $next_precedence,
+                );
+                $insertId = $this->commondatamodel->insertSingleTableData('functions_career', $insert_Arr);
+                if ($insertId) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Saved successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+
+            } else {
+                $where = array(
+                    "functions_career.id" => $functions_id
+                );
+                $data = array(
+                    'name' => $functions_name
+                );
+             
+                $updateData = $this->commondatamodel->updateSingleTableData('functions_career', $data, $where);
+                if ($updateData) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Updates successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+            }
+
+
+
+
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit;
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
+
+}/* end of class  */

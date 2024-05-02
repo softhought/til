@@ -257,7 +257,7 @@
                                                         </div>
                                                         <br>
                                                         <div class="col-md-12 col-12">
-                                                            <input type="submit" name="" id="" value="Submit"
+                                                            <input type="submit" name="" id="training_form_button" value="Submit"
                                                                 type="submit" tabindex="10" class="btn btn_contact" />
                                                         </div>
                                                         <!--<button type="submit" class="btn btn_contact">Submit</button>-->

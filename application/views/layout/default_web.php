@@ -22,11 +22,22 @@
     ga('send', 'pageview');
 
   </script>
-  <link rel="canonical" href="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->canonical_url ? $menu["seo_details"]->canonical_url : ""; ?>" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZWNNXMLL6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MZWNNXMLL6');
+  </script>
+  <link rel="canonical"
+    href="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->canonical_url ? $menu["seo_details"]->canonical_url : ""; ?>" />
   <meta name="msvalidate.01" content="E106D761105C04424A9ACCB1137CCE92" />
   <meta name="robots" content="noodp, noydir" />
 
-  <title><?php echo isset($menu["seo_details"]) && $menu["seo_details"]->page_title ? $menu["seo_details"]->page_title : ""; ?></title>
+  <title>
+    <?php echo isset($menu["seo_details"]) && $menu["seo_details"]->page_title ? $menu["seo_details"]->page_title : ""; ?>
+  </title>
 
   <meta name="keywords"
     content="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->seo_keyword ? $menu["seo_details"]->seo_keyword : ""; ?>">
@@ -59,7 +70,7 @@
     rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="assets//js/jquery-ui.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet"/>
+  <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -385,9 +396,9 @@
         </svg>
       </button>
     </div>
-    <!-- Your form content goes here -->
-    <!--start contact form box-->
-    <script src='../www.google.com/recaptcha/api.js'></script>
+    <script
+      src="https://www.google.com/recaptcha/enterprise.js?render=6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8"></script>
+
     <div class="enquiry-form-overflow">
 
       <form enctype="multipart/form-data" class="contact_form" id="contact_form" method="POST" accept-charset="utf-8">
@@ -500,7 +511,7 @@
         <div class="form-group">
           <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
         </div>
-        <button type="submit" class="btn btn_contact">Submit</button>
+        <button type="submit" class="btn btn_contact" id="contact_form_button">Submit</button>
 
       </form>
     </div>
@@ -648,7 +659,7 @@
                 <div class="form-group">
                   <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" id="quotation_form_button">Submit</button>
                 <div class="scroll-top-wrapper "><span class="scroll-top-inner"><i
                       class="fa fa-2x fa-arrow-circle-up"></i></span>
                 </div>
@@ -771,6 +782,8 @@
               var base_url = $("#basepath").val();
               $("#quotation_form").submit(function (event) {
                 event.preventDefault();
+                $("#quotation_form_button").prop("disabled", true);
+                $("#quotation_form_button").html("Processing....");
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/submitquotation`,
@@ -781,6 +794,8 @@
                   contentType: false,
                   success: function (response) {
                     if (response.status) {
+                      $("#quotation_form_button").prop("disabled", false);
+                      $("#quotation_form_button").html("Submit");
                       window.location.replace(`${base_url}thank-you`);
                     }
                   },
@@ -798,6 +813,8 @@
               var base_url = $("#basepath").val();
               $("#contact_form").submit(function (event) {
                 event.preventDefault();
+                $("#contact_form_button").prop("disabled", true);
+                $("#contact_form_button").html("Processing....");
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/submitcontactform`,
@@ -808,6 +825,8 @@
                   contentType: false,
                   success: function (response) {
                     if (response.status) {
+                      $("#contact_form_button").prop("disabled", false);
+                      $("#contact_form_button").html("Submit");
                       window.location.replace(`${base_url}thank-you`);
                     }
                   },
@@ -820,6 +839,8 @@
 
               $("#contact_us_form").submit(function (event) {
                 event.preventDefault();
+                $("#contact_us_button").prop("disabled", true);
+                $("#contact_us_button").html("Processing....");
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/submitcontactform`,
@@ -830,6 +851,8 @@
                   contentType: false,
                   success: function (response) {
                     if (response.status) {
+                      $("#contact_us_button").prop("disabled", false);
+                      $("#contact_us_button").html("Submit");
                       window.location.replace(`${base_url}thank-you`);
                     }
                   },
@@ -842,6 +865,8 @@
 
               $("#submit_your_cv").submit(function (event) {
                 event.preventDefault();
+                $("#submit_your_cv_button").prop("disabled", true);
+                $("#submit_your_cv_button").html("Processing....");
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/submityourcv`,
@@ -852,6 +877,8 @@
                   contentType: false,
                   success: function (response) {
                     if (response.status) {
+                      $("#submit_your_cv_button").prop("disabled", false);
+                      $("#submit_your_cv_button").html("Submit");
                       window.location.replace(`${base_url}thank-you`);
                     }
                   },
@@ -864,6 +891,8 @@
 
               $("#training_form").submit(function (event) {
                 event.preventDefault();
+                $("#training_form_button").prop("disabled", true);
+                $("#training_form_button").val("Processing....");
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/submittrainingform`,
@@ -874,6 +903,8 @@
                   contentType: false,
                   success: function (response) {
                     if (response.status) {
+                      $("#training_form_button").prop("disabled", false);
+                      $("#training_form_button").val("Submit");
                       window.location.replace(`${base_url}thank-you`);
                     }
                   },
@@ -931,6 +962,14 @@
             });
           </script>
           <script>
+            function onClick(e) {
+              e.preventDefault();
+              grecaptcha.enterprise.ready(async () => {
+                const token = await grecaptcha.enterprise.execute('6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8', { action: 'LOGIN' });
+              });
+            }
+          </script>
+          <script>
             jQuery(document).ready(function ($) {
               $(".sidebarlist").hide();
               $(".invester_nav h4").eq().addClass("actives");
@@ -950,7 +989,8 @@
               })
             });
           </script>
-          <script src="<?php echo base_url(); ?>assets/js/venobox.js?c=-62170003270" type="text/javascript" charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/venobox.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
           <script type="text/javascript">
             $(document).ready(function () {
               $('.venobox').venobox({

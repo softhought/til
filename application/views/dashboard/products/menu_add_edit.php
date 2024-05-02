@@ -35,13 +35,17 @@
         margin-left: -20px !important;
     }
 
-    #category_css {
-        margin-left: -115px;
+    .category_css-md-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
     }
 
     @media only screen and (max-width: 600px) {
-        #category_css {
-            margin-left: -0px;
+        .category_css-md-3 {
+            position: relative;
+            padding-left: 7.5px;
+            flex: 0 0 80%;
+            max-width: 100%;
         }
     }
 </style>
@@ -65,7 +69,7 @@
                         value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->product_master_id : "" ?>">
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="groupname">Title</label>
                             <div class="form-group">
                                 <div class="input-group input-group-sm" id="titleerr">
@@ -79,7 +83,7 @@
 
                         <input type="file" name="bannerimagefile" class="file fileName" id="bannerimagefile"
                             accept="image/*">
-                        <div class="col">
+                        <div class="col category_css-md-3">
                             <label for="groupname">Upload banner image</label>
                             <div class="form-group">
                                 <div class="input-group">
@@ -94,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col col-md-1" style="margin-left: 10px;">
                             <div class="form-group">
                                 <button class="browse btn input-xs btn-sm" type="button"
                                     style="background: #f8bb06; color: #000; padding: 7px; margin-top: 30px; margin-left: -8px !important;"
@@ -106,7 +110,7 @@
 
                         <input type="file" name="catagory_image_file" class="file fileName" id="catagory_image_file"
                             accept="image/*">
-                        <div class="col" id="category_css">
+                        <div class="col category_css-md-3">
                             <label for="groupname">Upload catagory image</label>
                             <div class="form-group">
                                 <div class="input-group">
@@ -121,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col col-md-1" style="margin-left: 10px;">
                             <div class="form-group">
                                 <button class="browse btn input-xs btn-sm" type="button"
                                     style="background: #f8bb06; color: #000; padding: 7px; margin-top: 30px; margin-left: -8px !important;"
@@ -183,7 +187,7 @@
         var formattedText = title.toLowerCase().replace(/ /g, "-");
         $(slug).val(formattedText);
     });
-   
+
     function updateEditorContent() {
         var ckeditors = CKEDITOR.instances;
         for (var instance in ckeditors) {

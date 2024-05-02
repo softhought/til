@@ -95,7 +95,7 @@
                   </div>
                 </div>
                 <div class="col-md-12 col-12">
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default" id="submit_your_cv_button">Submit</button>
                 </div>
               </div>
             </form>

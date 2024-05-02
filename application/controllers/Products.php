@@ -384,3 +384,5 @@ class Products extends CI_Controller
         exit;
     }
 }
+
+?>

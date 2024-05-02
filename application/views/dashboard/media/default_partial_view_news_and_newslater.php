@@ -65,7 +65,7 @@
                <div class="form-group">
                   <button class="browse btn input-xs btn-sm" type="button" style="background: #f8bb06; color:#000; padding-top: 10px;
                            margin-top: 32px;
-                           margin-left: -50px !important;" id="uploadBtn">
+                           margin-left: -10px !important;" id="uploadBtn">
                      <i class="fa fa-folder-open" aria-hidden="true"></i>
                   </button>
                </div>

@@ -17,7 +17,7 @@
       <?php
          $sl = 1;
          $rowslno=$documenDtl;
-         $dir_path = base_url().'docs/pdf'; //local
+         $dir_path = base_url().'assets/docs/pdf'; //local
          foreach ($documenDtl as $key => $value) {        
              ?>
       <tr id="docrow_<?php echo $value->doc_id; ?>">

@@ -115,14 +115,14 @@
                                                 required="required" value="" class="form-control markitup"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-12">
+                                    <!-- <div class="col-md-12 col-12">
                                         <div class="form-group">
                                             <div class="g-recaptcha"
-                                                data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+                                                data-sitekey="6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-12 col-12">
-                                        <button type="submit" class="btn btn_contact">Submit</button>
+                                        <button type="submit" class="btn btn_contact" id="contact_us_button">Submit</button>
                                     </div>
                                 </div>
 
@@ -136,4 +136,3 @@
             </div>
         </section>
     </div>
-</section>

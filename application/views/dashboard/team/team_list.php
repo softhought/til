@@ -42,6 +42,7 @@
                             <th>About</th>
                             <th style="width: 200px;">Address</th>
                             <th>Din No</th>
+                            <th>Type</th>
                             <th>Action</th>
                             <th>Status</th>
                         </tr>
@@ -64,6 +65,7 @@
                                 </td>
                                 <td><?php echo $value->address ?></td>
                                 <td><strong><?php echo $value->din_no ?></strong></td>
+                                <td><strong><?php echo $value->team_member_type ?></strong></td>
                                 <td><a href="<?php echo base_url() . "team/addedit/" . $value->team_member_id ?>"
                                         class="btn tbl-action-btn padbtn showupdatebtn">
                                         <i class="fas fa-edit" style="height: 19px;"></i>

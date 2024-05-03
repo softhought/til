@@ -27,7 +27,7 @@
 
                             <div class="box-behind"></div>
 
-                            <img src="<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->left_image != "" ? "tilindia/" . $bodycontent["main-section"][0]->left_image : $bodycontent["main-section"][0]->catagory_image; ?>"
+                            <img src="<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->left_image != "" ? $bodycontent["main-section"][0]->left_image : $bodycontent["main-section"][0]->catagory_image; ?>"
                                 class="img-responsive" alt="<?php echo $bodycontent["main-section"][0]->name; ?>" />
                         </div>
 

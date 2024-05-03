@@ -124,7 +124,7 @@
                                                                         style="color:#f00">*</span></label>
                                                                 <input type="tel" name="phone" value=""
                                                                     placeholder="Phone Number" autocomplete="off"
-                                                                    id="phone" tabindex="3" required="required"
+                                                                    id="phone" tabindex="3" required="required" maxlength="10"
                                                                     class="form-control" />
 
                                                             </div>

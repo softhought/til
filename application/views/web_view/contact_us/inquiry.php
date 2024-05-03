@@ -49,7 +49,7 @@
 
                                             <label for="phone">Phone Number <span>*</span></label>
                                             <input type="tel" name="phone" value="" placeholder="Phone no."
-                                                autocomplete="off" id="phone" required="required"
+                                                autocomplete="off" id="phone" required="required" maxlength="10"
                                                 class="form-control" />
                                         </div>
                                     </div>

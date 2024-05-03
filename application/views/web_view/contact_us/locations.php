@@ -261,31 +261,31 @@
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item tab" onclick="showData('tabs1',this)">
                                         <a class="nav-link " aria-current="page" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/kolkata-icon.svg" alt="" srcset="">
+                                            <img src="../tilindia/assets/images/kolkata-icon.svg" alt="kolkata" srcset="">
                                             Kolkata
                                         </a>
                                     </li>
                                     <li class="nav-item tab" onclick="showData('tabs2',this)">
                                         <a class="nav-link" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/chennai-icon.svg" alt="" srcset="">
+                                            <img src="../tilindia/assets/images/chennai-icon.svg" alt="chennai" srcset="">
                                             Chennai
                                         </a>
                                     </li>
                                     <li class="nav-item tab" onclick="showData('tabs3',this)">
                                         <a class="nav-link" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/delhi-icon.svg" alt="" srcset="">
+                                            <img src="../tilindia/assets/images/delhi-icon.svg" alt="delhi" srcset="">
                                             Delhi NCR
                                         </a>
                                     </li>
                                     <li class="nav-item tab" onclick="showData('tabs4',this)">
                                         <a class="nav-link" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/mumbai-icon.svg" alt="" srcset="">
+                                            <img src="../tilindia/assets/images/mumbai-icon.svg" alt="mumbai" srcset="">
                                             Mumbai
                                         </a>
                                     </li>
                                     <li class="nav-item tab" onclick="showData('tabs5',this)">
                                         <a class="nav-link" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/singralui-icon.svg" alt="" srcset="">
+                                            <img src="../tilindia/assets/images/singralui-icon.svg" alt="singralui" srcset="">
                                             Singrauli
                                         </a>
                                     </li>

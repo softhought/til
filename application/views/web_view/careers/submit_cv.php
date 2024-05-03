@@ -19,7 +19,7 @@
     <div class="col-md-4 col-12" id="leftCol">
 
       <div class="homepix">
-        <img src="<?php echo base_url(); ?>tilindia/assets/images/submit-cv.png" alt="" srcset="">
+        <img src="<?php echo base_url(); ?>tilindia/assets/images/submit-cv.png" alt="submit-cv" srcset="">
       </div>
     </div>
 

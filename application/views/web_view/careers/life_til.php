@@ -27,7 +27,7 @@
                                         <div class="homepix">
                                             <div class="box-behind"></div>
                                             <img src="<?php echo base_url();?>tilindia/assets/images/life_til.jpg" class="img-responsive"
-                                                alt="" srcset="">
+                                                alt="life_til" srcset="">
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-12 p-responsive">

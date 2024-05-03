@@ -76,7 +76,7 @@
                                             <div class="homepix">
                                                 <div class="box-behind"></div>
                                                 <img src="<?php echo base_url(); ?>tilindia/assets/images/vacancies.jpg"
-                                                    class="img-responsive" alt="" srcset="">
+                                                    class="img-responsive" alt="vacancies" srcset="">
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-12 p-responsive">

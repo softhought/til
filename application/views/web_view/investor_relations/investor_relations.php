@@ -33,7 +33,7 @@
                                                 <h1 style="line-height:40px">Investor <span>Relations</span></h1>
 
                                                 <figure>
-                                                        <img src="tilindia/assets/images/Rectangle.png" alt=""
+                                                        <img src="tilindia/assets/images/Rectangle.png" alt="Rectangle"
                                                                 srcset="">
                                                         <hr>
                                                 </figure>

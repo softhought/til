@@ -42,8 +42,8 @@ class Team extends CI_Controller
             }
             
             $result["role"] = [
-                ["key" => "BOD", "value" => "BOD"],
-                ["key" => "MT", "value" => "MT"],
+                ["key" => "BOD", "value" => "Board of Directors"],
+                ["key" => "MT", "value" => "Management Team"],
             ];
 
             createbody_method($result, $page, $header, $session);

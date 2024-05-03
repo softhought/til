@@ -1,5 +1,4 @@
 <section class="about_header about-banner-section"
-
     style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->banner_image; ?>">
 
     <div class="container">
@@ -28,16 +27,8 @@
 
                             <div class="box-behind"></div>
 
-                            <img src="<?php echo base_url(); ?>tilindia/assets/images/<?php 
-                             if($bodycontent["main-section"][0]->left_image!="") {
-                                echo $bodycontent["main-section"][0]->left_image; 
-                            } else {
-                                echo $bodycontent["main-section"][0]->catagory_image; 
-                            }
-                             ?>"
-
+                            <img src="<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->left_image != "" ? "tilindia/" . $bodycontent["main-section"][0]->left_image : $bodycontent["main-section"][0]->catagory_image; ?>"
                                 class="img-responsive" alt="<?php echo $bodycontent["main-section"][0]->name; ?>" />
-
                         </div>
 
                     </div>
@@ -55,7 +46,6 @@
                             <figure>
 
                                 <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png"
-
                                     alt="rectangle" />
 
                                 <hr />
@@ -141,21 +131,16 @@
                                                             </td>
 
                                                         <?php } else { ?>
-
                                                             <td class="column-<?php echo $index; ?>">
+                                                                <?php if ($value->$column) { ?>
+                                                                    <a href="<?php echo base_url(); ?>assets/pdf/<?php echo $value->$column; ?>"
+                                                                        target="_blank"><img
+                                                                            src="<?php echo base_url(); ?>tilindia/assets/images/pdf2.png"
+                                                                            alt="pdf2" width="22" height="22">
 
-                                                                <a href="<?php echo base_url(); ?>assets/pdf/<?php echo $value->$column; ?>"
-
-                                                                    target="_blank"><img
-
-                                                                        src="<?php echo base_url(); ?>tilindia/assets/images/pdf2.png"
-
-                                                                        alt="pdf2" width="22" height="22">
-
-                                                                </a>
-
+                                                                    </a>
+                                                                <?php } ?>
                                                             </td>
-
                                                         <?php }
 
                                                     } ?>

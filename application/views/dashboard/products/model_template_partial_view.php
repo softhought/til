@@ -177,7 +177,7 @@
             e.stopImmediatePropagation();
             $(".modelspecsubmit").prop("disabled", true);
             var formData = new FormData();
-
+            var myformData = new FormData($(this)[0]);
             $("#specsheetform textarea").each(function () {
                 var textAreaName = $(this).attr("name");
                 var textAreaValue = $(this).val();
@@ -191,6 +191,12 @@
                 formData.append(inputName, inputValue);
             });
 
+            $("#specsheetform input[type='file']").each(function () {
+                var fileName = $(this).attr("name");
+                var file = $(this)[0].files[0];
+                formData.append(fileName, file);
+            });
+            
             var prodect_model_dt_id = formData.get("spec_product_model_dt_id");
          
             $.ajax({

@@ -227,7 +227,7 @@
             <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
           </ul>
         </li>
-        <li class="faq"><a href="<?php echo base_url(); ?>faq">FAQ</a></li>
+        <!-- <li class="faq"><a href="<?php echo base_url(); ?>faq">FAQ</a></li> -->
         </ul>
       </div>
     </nav>

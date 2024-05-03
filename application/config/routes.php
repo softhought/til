@@ -175,3 +175,6 @@ $route["team/addeditaction"] = "team/addEditAction";
 
 /* -------------- Privecy Policy added by vikash ---------------------- */
 $route['privacy-policy'] = "frontend/privacypolicy";
+
+/* -------------- FAQ Route ---------------------- */
+$route['faq'] = "frontend/faq";

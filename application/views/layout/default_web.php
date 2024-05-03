@@ -222,11 +222,12 @@
             </ul>
           </li>
           <li class="last contact-us"><a href="#">Contact Us <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdownhover-bottom">
-              <li class="first"><a href="<?php echo base_url(); ?>contact-us/locations">Locations</a></li>
-              <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
-            </ul>
-          </li>
+          <ul class="dropdown-menu dropdownhover-bottom">
+            <li class="first"><a href="<?php echo base_url(); ?>contact-us/locations">Locations</a></li>
+            <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
+          </ul>
+        </li>
+        <li class="faq"><a href="<?php echo base_url(); ?>faq">FAQ</a></li>
         </ul>
       </div>
     </nav>

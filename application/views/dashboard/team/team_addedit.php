@@ -131,8 +131,8 @@
                                         <option value="">Select</option>
                                         <?php foreach ($bodycontent["role"] as $key => $value) { ?>
                                             <option value="<?php echo $value["key"] ?>" <?php if (isset($bodycontent["editData"]) && $bodycontent["editData"]->team_member_type == $value["key"]) {
-                                                echo "selected";
-                                            } ?>><?php echo $value["value"] ?></option>
+                                                   echo "selected";
+                                               } ?>><?php echo $value["value"] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -223,21 +223,23 @@
             } else {
                 $("#designation_err").css("border", "");
             }
+            
+            if ($("#team_member_type").val().trim() === "BOD") {
+                if ($("#din_no").val().trim() === "") {
+                    $("#din_no_err").css("border", "1px solid red");
+                    $("#din_no_err").css("border-radius", "5px");
+                    valid = false;
+                } else {
+                    $("#din_no_err").css("border", "");
+                }
 
-            if ($("#din_no").val().trim() === "") {
-                $("#din_no_err").css("border", "1px solid red");
-                $("#din_no_err").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#din_no_err").css("border", "");
-            }
-
-            if ($("#address").val().trim() === "") {
-                $("#address_err").css("border", "1px solid red");
-                $("#address_err").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#address_err").css("border", "");
+                if ($("#address").val().trim() === "") {
+                    $("#address_err").css("border", "1px solid red");
+                    $("#address_err").css("border-radius", "5px");
+                    valid = false;
+                } else {
+                    $("#address_err").css("border", "");
+                }
             }
 
             if ($("#about").val().trim() === "") {

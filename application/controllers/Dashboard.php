@@ -121,6 +121,7 @@ class Dashboard extends CI_Controller
 
     public function submitQuotation()
     {
+        $inputs = array();
         $organization = $_POST["organization"];
         $name = $_POST["name"];
         $phone = $_POST["phone"];
@@ -150,7 +151,22 @@ class Dashboard extends CI_Controller
             'ip_address' => $ip_address,
         ];
 
+
+        $inputs['organization'] = $organization;
+        $inputs['name'] = $name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['state_name'] = $state_name;
+        $inputs['country_name'] = $country_name;
+        $inputs['address'] = $address;
+        $inputs['query'] = $query;
+        $inputs['receipant'] = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 1]);
+        $inputs['product'] = $this->commondatamodel->getSingleRowByWhereCls("spec_sheet_details", ["spec_sheet_dt_id" => $spec_sheet_dt_id]);
+        $message = $this->load->view('mailers/quote', $inputs, TRUE);
+        $subject = "Get a Quote  ";
+
         $insertedId = $this->commondatamodel->insertSingleTableData("quotation_received", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "quotation_received", $insertedId);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);
@@ -1114,7 +1130,7 @@ class Dashboard extends CI_Controller
             $decodeJson["content"] = json_decode($jsonResult);
             $decodeJson["query"] = $query;
             $_SESSION["search_result"] = json_encode($decodeJson);
-            
+
             echo json_encode(["status" => true, "data" => $jsonResult, "query" => $query]);
         } else {
             $_SESSION["search_result"] = json_encode(["query" => $query]);
@@ -1126,7 +1142,7 @@ class Dashboard extends CI_Controller
     }
 
     public function executePythonScript($keyWord)
-    { 
+    {
         $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
 
         $pythonScript = "python {$dir}";
@@ -1134,7 +1150,7 @@ class Dashboard extends CI_Controller
 
         $command = "{$pythonScript} {$keyWord}";
         $output = shell_exec($command);
-        
+
         $decodedOutput = json_decode($output, true);
 
         if ($decodedOutput !== null) {
@@ -1153,14 +1169,32 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function unset_session() {
-        unset( $_SESSION["isUserAllowed"]);
-        echo json_encode(["status"=> true]);
+    public function unset_session()
+    {
+        unset($_SESSION["isUserAllowed"]);
+        echo json_encode(["status" => true]);
         header('Content-Type: application/json');
         exit;
     }
-    
-    public function test() {
-        echo SendEmail("sumandey7689@gmail.com", "Test", "Hi");
+
+    public function sendEmailData($inputs, $subject, $message, $table, $insertedId, $fileLink = "")
+    {
+        // $status = SendEmail($inputs['receipant']->email, $subject, $message, $inputs['receipant']->cc_to, "", $fileLink);
+        $status = SendEmail("sumanvar405@gmail.com", $subject, $message, "", "", $fileLink);
+
+        $dataArr = [
+            'user_refid' => $insertedId,
+            'email' => $inputs['receipant']->email,
+            'table_name' => $table,
+            'sub' => $subject,
+            'msg' => $message,
+            'to_cc_mail' => $inputs['receipant']->cc_to,
+            'mail_status' => $status,
+            'file_link' => $fileLink
+        ];
+
+        $insertedRow = $this->commondatamodel->insertSingleTableData("email_detail", $dataArr);
+        return $insertedRow;
     }
+
 }

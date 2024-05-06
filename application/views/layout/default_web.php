@@ -138,7 +138,7 @@
       <div class="container">
         <div class="row">
           <div class="logo">
-            <a href="index" title="">
+            <a href="<?php echo base_url(); ?>index" title="">
               <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="TIL Limited" class="img-responsive" /></a>
           </div>
           <samp class="mobl_button">
@@ -730,7 +730,7 @@
                 }
               });
               //   tilindia.config=__FUEL_INIT_PARAMS__;
-              tilindia.base_url = "index";
+              tilindia.base_url = "<?php echo base_url(); ?>index";
             });
           </script>
 

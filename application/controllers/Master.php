@@ -179,8 +179,8 @@ class Master extends CI_Controller
     public function resume_partial_view()
     {
         $function_id = $_POST["function_id"] != "" ? $_POST["function_id"] : "";
-        $from_date = $_POST["from_date"] != "" ? (DateTime::createFromFormat('d/m/Y', '01/' . $_POST["from_date"]))->format('Y-m-d') : "";
-        $to_date = $_POST["to_date"] != "" ? (DateTime::createFromFormat('d/m/Y', $this->getLastDayOfMonth($_POST["to_date"]))->format('Y-m-d')) : "";
+        $from_date = $_POST["from_date"] != "" ? (DateTime::createFromFormat('d/m/Y', $_POST["from_date"]))->format('Y-m-d') : "";
+        $to_date = $_POST["to_date"] != "" ? (DateTime::createFromFormat('d/m/Y', $_POST["to_date"])->format('Y-m-d')) : "";
 
         $page = "dashboard/master/resume_partial_view.php";
         $result['resumeList'] = $this->mastermodel->resumeList($function_id, $from_date, $to_date);

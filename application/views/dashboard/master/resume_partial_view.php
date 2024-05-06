@@ -3,6 +3,7 @@
         <tr>
             <th>Sl</th>
             <th>Functions Name</th>
+            <th style="width: 125px;">Application For</th>
             <th>Candidte Name</th>
             <th>Technical_Qualification</th>
             <th>Date</th>
@@ -16,6 +17,7 @@
             <tr>
                 <td><?php echo $sl++; ?> </td>
                 <td><?php echo $list->functions_name; ?> </td>
+                <td><?php echo $list->opening_title; ?> </td>
                 <td><?php echo $list->candidte_name; ?> </td>
                 <td><?php echo $list->technical_qualification; ?> </td>
                 <td><?php echo date("d-m-Y", strtotime($list->time)); ?> </td>

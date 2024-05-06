@@ -63,9 +63,10 @@ class Mastermodel extends CI_Model
             $this->db->where('time <=', $to_date);
         }
 
-        $this->db->select("candidte_name,technical_qualification,linkedIn_profile,resume,time,functions_career.name as functions_name")
+        $this->db->select("candidte_name,technical_qualification,linkedIn_profile,resume,time,functions_career.name as functions_name,opening_title")
             ->from('resume_submission')
             ->join('functions_career', 'functions_career.id=resume_submission.function_id', 'left')
+            ->join('current_openings', 'resume_submission.current_opening_id=current_openings.current_opening_id', 'left')
             ->where($where)
             ->order_by('resume_submission.id', 'desc')
             ->limit(2000);

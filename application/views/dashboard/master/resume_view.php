@@ -44,9 +44,9 @@
 <script>
    $(document).ready(function () {
       $(".datepickermonth").datepicker({
-         format: "mm/yyyy",
-         startView: "months",
-         minViewMode: "months",
+         format: "dd/mm/yyyy",
+         startView: "days",
+         minViewMode: "days",
          autoclose: true,
          orientation: "bottom",
       });
@@ -67,7 +67,7 @@
    });
 
    function fetchtable(function_id = "", from_date = "", to_date = "") {
-      $("#tableData").html(`Loading.....<i class="fa fa-spinner" aria-hidden="true"></i>`);
+      $("#tableData").html(`Loading.....`);
       $.ajax({
          url: "<?php echo base_url(); ?>master/resume_partial_view",
          type: 'POST',

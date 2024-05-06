@@ -41,7 +41,11 @@
 
     .category_css-md-3 {
         flex: 0 0 25%;
-        max-width: 25%;
+        max-width: 20%;
+    }
+
+    .browseBtn {
+        margin-left: 10px;
     }
 
     @media only screen and (max-width: 600px) {
@@ -51,7 +55,13 @@
             flex: 0 0 80%;
             max-width: 100%;
         }
+
+        .browseBtn {
+            margin-left: 10px;
+        }
     }
+
+
 </style>
 <div class="row">
     <div class="col-md-1"></div>
@@ -73,7 +83,7 @@
                         value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->product_master_id : "" ?>">
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <label for="groupname">Title</label>
                             <div class="form-group">
                                 <div class="input-group input-group-sm" id="titleerr">
@@ -87,55 +97,76 @@
 
                         <input type="file" name="bannerimagefile" class="file fileName" id="bannerimagefile"
                             accept="image/*">
-                        <div class="col category_css-md-3">
-                            <label for="groupname">Upload banner image</label>
-                            <div class="form-group">
-                                <div class="input-group">
+
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 4%;">
+                                <div class="form-group">
+                                    <label for="groupname">Upload banner image</label>
                                     <div class="input-group input-group-sm" id="bannerimageerr">
                                         <input type="text" name="bannerimage" id="bannerimage"
-                                            style="width: max-content;" class="form-control userFileName"
-                                            value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->banner_image : "" ?>"
-                                            readonly placeholder="Upload Document">
+                                            class="form-control userFileName"
+                                            style="border-radius: 5px;"
+                                            value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->banner_image : '' ?>"
+                                            readonly placeholder="1920 x 500">
+                                        <span class="input-group-btn" style="margin-left: 23px">
+                                            <button class="btn btn-sm browse" type="button"
+                                                style="background: #f8bb06; color: #000; padding: 7px;"
+                                                id="bannerimageUploadBtn">
+                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
                                     </div>
-                                    <span class="input-group-btn">
-                                    </span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-1" style="margin-left: 10px;">
-                            <div class="form-group">
-                                <button class="browse btn input-xs btn-sm" type="button"
-                                    style="background: #f8bb06; color: #000; padding: 7px; margin-top: 30px; margin-left: -8px !important;"
-                                    id="bannerimageUploadBtn">
-                                    <i class="fa fa-folder-open" aria-hidden="true"></i>
-                                </button>
                             </div>
                         </div>
 
                         <input type="file" name="catagory_image_file" class="file fileName" id="catagory_image_file"
                             accept="image/*">
-                        <div class="col category_css-md-3">
-                            <label for="groupname">Upload catagory image</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group input-group-sm" id="catagory_image_err">
+
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 4%;">
+                                <div class="form-group">
+                                    <label for="groupname">Upload category image</label>
+                                    <div class="input-group input-group-sm" id="category_image_err">
                                         <input type="text" name="catagory_image" id="catagory_image"
-                                            style="width: max-content;" class="form-control userFileName"
-                                            value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->catagory_image : "" ?>"
-                                            readonly placeholder="Upload Document">
+                                            class="form-control userFileName"
+                                            style="border-radius: 5px;"
+                                            value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->catagory_image : '' ?>"
+                                            readonly placeholder="365 x 180">
+                                        <span class="input-group-btn" style="margin-left: 23px">
+                                            <button class="btn btn-sm browse" type="button"
+                                                style="background: #f8bb06; color: #000; padding: 7px;"
+                                                id="catagoryimageuploadBtn">
+                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
                                     </div>
-                                    <span class="input-group-btn">
-                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col col-md-1" style="margin-left: 10px;">
-                            <div class="form-group">
-                                <button class="browse btn input-xs btn-sm" type="button"
-                                    style="background: #f8bb06; color: #000; padding: 7px; margin-top: 30px; margin-left: -8px !important;"
-                                    id="catagoryimageuploadBtn">
-                                    <i class="fa fa-folder-open" aria-hidden="true"></i>
-                                </button>
+
+                        <input type="file" name="side_image_file" class="file fileName" id="side_image_file"
+                            accept="image/*">
+
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 4%;">
+                                <div class="form-group">
+                                    <label for="groupname">Upload left side image</label>
+                                    <div class="input-group input-group-sm" id="left_image_err">
+                                        <input type="text" name="left_image" id="left_image"
+                                            class="form-control userFileName"
+                                            style="border-radius: 5px;"
+                                            value="<?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->left_image : '' ?>"
+                                            readonly placeholder="1800 x 1350">
+                                        <span class="input-group-btn" style="margin-left: 23px">
+                                            <button class="btn btn-sm browse" type="button"
+                                                style="background: #f8bb06; color: #000; padding: 7px;"
+                                                id="leftimageuploadBtn">
+                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -525,7 +556,16 @@
             $("#catagory_image").val(fileName);
         });
 
-        $("#savebtn").on("click", function(e) {
+        $("#leftimageuploadBtn").on("click", function () {
+            $("#side_image_file").click();
+        });
+
+        $("#side_image_file").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $("#left_image").val(fileName);
+        });
+
+        $("#savebtn").on("click", function (e) {
             $("#productform").submit();
         })
 

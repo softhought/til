@@ -222,12 +222,12 @@
             </ul>
           </li>
           <li class="last contact-us"><a href="#">Contact Us <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdownhover-bottom">
-            <li class="first"><a href="<?php echo base_url(); ?>contact-us/locations">Locations</a></li>
-            <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
-          </ul>
-        </li>
-        <!-- <li class="faq"><a href="<?php echo base_url(); ?>faq">FAQ</a></li> -->
+            <ul class="dropdown-menu dropdownhover-bottom">
+              <li class="first"><a href="<?php echo base_url(); ?>contact-us/locations">Locations</a></li>
+              <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
+            </ul>
+          </li>
+          <!-- <li class="faq"><a href="<?php echo base_url(); ?>faq">FAQ</a></li> -->
         </ul>
       </div>
     </nav>
@@ -348,7 +348,15 @@
             </div>
             <!---- added by vikash 30-04-2024 ---->
             <!-- <a href="https://tilindia.in/privacy-policy" target="_blank"><p class="p-0">Privacy Policy</p></a> -->
-            <a href="<?php echo base_url(); ?>privacy-policy" target="_blank"><p class="p-0">Privacy Policy</p></a>
+            <a href="<?php echo base_url(); ?>privacy-policy" target="_blank">
+              <p class="p-0">Privacy Policy</p>
+            </a>
+            <?php if (isset($menu["faqMenu"])) { ?>
+              <a href="<?php echo base_url(); ?>faq" target="_blank">
+                <p class="p-0">FAQ</p>
+              </a>
+            <?php } ?>
+
             <!---- end by vikash 30-04-2024 ---->
           </div>
         </div>

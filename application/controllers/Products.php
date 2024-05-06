@@ -214,6 +214,33 @@ class Products extends CI_Controller
             }
         }
 
+        if (isset($_FILES['side_image_file'])) {
+            $file = $_FILES['side_image_file'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/images/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s');
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['side_image_file']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'left_image' => $newFilename
+                    ]);
+                }
+            }
+        }
+
         if ($mode == "edit") {
             $product_master_id = $_POST["product_master_id"];
             $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id]);

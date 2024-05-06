@@ -1,6 +1,6 @@
 <section class="video-banner ">
   <video autoplay muted loop>
-    <source src="<?php echo base_url(); ?>tilindia/assets/images/video_banner.mp4" type="video/mp4">
+    <source src="<?php echo base_url(); ?>tilindia/assets/images/video_banner_new.mp4" type="video/mp4">
   </video>
   <div class="container">
     <div class="bannerText">

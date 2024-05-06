@@ -277,7 +277,19 @@ class Dashboard extends CI_Controller
 
                     ];
 
+                    $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 7]);
+                    $inputs['name'] = $candidte_name;
+                    $inputs['function'] = $this->commondatamodel->getSingleRowByWhereCls("functions_career", ["id" => 7])->name;
+                    $inputs['qualification'] = $technical_qualification;
+                    $inputs['linkedInProfile'] = $linkedIn_profile;
+                    $inputs['message'] = $massage;
+                    $inputs['receipant'] = $nature_of_query;
+            
+                    $message = $this->load->view('mailers/job_application', $inputs, TRUE);
+                    $subject = "Job Application Form  ";
+
                     $insertedId = $this->commondatamodel->insertSingleTableData("resume_submission", $dataArr);
+                    $this->sendEmailData($inputs, $subject, $message, "resume_submission", $insertedId);
 
                     if ($insertedId) {
                         echo json_encode(["status" => true]);

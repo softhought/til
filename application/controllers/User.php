@@ -100,7 +100,7 @@ class User extends CI_Controller
                 $update = $this->commondatamodel->updateSingleTableData('users', $upd_array, $upd_where, $userId);
                 /* insert log data */
 
-                $this->commondatamodel->insertLogData('users', $upd_array, $userId, 'Update');
+                // $this->commondatamodel->insertLogData('users', $upd_array, $userId, 'Update');
 
             } else {
                 $insert_Arr = [
@@ -532,7 +532,7 @@ class User extends CI_Controller
 
 
 
-            $updateData = $this->commondatamodel->updateSingleTableData('users', $data, $where. $userId);
+            $updateData = $this->commondatamodel->updateSingleTableData('users', $data, $where, $userId);
 
 
 

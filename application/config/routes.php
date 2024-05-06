@@ -74,6 +74,7 @@ $route['product/fetchproductmodelpartialview'] = 'Products/productModelPartialVi
 $route['product/addeditspecsheet'] = 'Products/addEditSpecSheet';
 $route['product/activeinactivespecsheet'] = 'Products/activeInactiveSpecSheet';
 $route['master/resume_partial_view'] = 'Master/resume_partial_view';
+$route['unset_session'] = 'Dashboard/unset_session';
 
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";

@@ -1222,7 +1222,7 @@ class Commondatamodel extends CI_Model
 
 			"data_array" => json_encode($data_array),
 
-			"user_id" => $session['userid'],
+			"user_id" => isset($session['userid']) ? $session['userid'] : "",
 
 			"user_browser" => getUserBrowserName(),
 

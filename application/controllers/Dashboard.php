@@ -1152,4 +1152,11 @@ class Dashboard extends CI_Controller
             return "Failed to decode JSON output.";
         }
     }
+
+    public function unset_session() {
+        unset( $_SESSION["isUserAllowed"]);
+        echo json_encode(["status"=> true]);
+        header('Content-Type: application/json');
+        exit;
+    }
 }

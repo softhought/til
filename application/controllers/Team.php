@@ -26,7 +26,7 @@ class Team extends CI_Controller
 
     public function activeInactive($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("team_member_master", ["is_disabled" => $status], ["team_member_id" => $id]);
+        $this->commondatamodel->updateSingleTableData("team_member_master", ["is_disabled" => $status], ["team_member_id" => $id], $id);
         redirect('team', 'refresh');
     }
 
@@ -100,7 +100,7 @@ class Team extends CI_Controller
 
         if ($mode == "edit") {
             $team_member_id = $_POST["team_member_id"];
-            $status = $this->commondatamodel->updateSingleTableData("team_member_master", $dataArr, ["team_member_id" => $team_member_id]);
+            $status = $this->commondatamodel->updateSingleTableData("team_member_master", $dataArr, ["team_member_id" => $team_member_id], $team_member_id);
         } else {
             $status = $this->commondatamodel->insertSingleTableData("team_member_master", $dataArr);
         }

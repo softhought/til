@@ -101,7 +101,7 @@ class Seodata extends CI_Controller
                     'meta_description' => $meta_description,
                     'canonical_url' => $canonical_url,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('seo_details', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('seo_details', $data, $where, $seo_dtl_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,

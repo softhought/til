@@ -98,7 +98,7 @@ class Master extends CI_Controller
                     'email' => $email,
                     'cc_to' => $cc_to,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('fuel_nature_of_query', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('fuel_nature_of_query', $data, $where, $queryid);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -125,7 +125,7 @@ class Master extends CI_Controller
 
     public function activeInactiveNatureofquery($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("fuel_nature_of_query", ["is_disabled" => $status], ["id" => $id]);
+        $this->commondatamodel->updateSingleTableData("fuel_nature_of_query", ["is_disabled" => $status], ["id" => $id], $id);
         redirect('master/nature_of_query', 'refresh');
     }
 
@@ -285,7 +285,7 @@ class Master extends CI_Controller
                     'opening_title' => $opening_title,
                     'opening_description' => $opening_description,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('current_openings', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('current_openings', $data, $where, $current_opening_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -396,7 +396,7 @@ class Master extends CI_Controller
                     'faq_question' => $faq_question,
                     'faq_answer' => $faq_answer,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where, $faq_del_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -423,7 +423,7 @@ class Master extends CI_Controller
 
     public function activeInactiveFaq($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id]);
+        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id], $id);
         redirect('master/faq_view', 'refresh');
     }
 
@@ -447,7 +447,7 @@ class Master extends CI_Controller
 
     public function activeInactiveFunctionscareer($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("functions_career", ["is_disabled" => $status], ["id" => $id]);
+        $this->commondatamodel->updateSingleTableData("functions_career", ["is_disabled" => $status], ["id" => $id], $id);
         redirect('master/functions_career', 'refresh');
     }
 
@@ -520,7 +520,7 @@ class Master extends CI_Controller
                     'name' => $functions_name
                 );
 
-                $updateData = $this->commondatamodel->updateSingleTableData('functions_career', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('functions_career', $data, $where, $functions_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,

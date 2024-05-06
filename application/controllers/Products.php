@@ -130,7 +130,7 @@ class Products extends CI_Controller
 
         if ($mode == "edit") {
             $product_master_id = $_POST["product_master_id"];
-            $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id]);
+            $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id], $product_master_id);
         } else {
             $status = $this->commondatamodel->insertSingleTableData("product_master", $dataArr);
         }
@@ -243,7 +243,7 @@ class Products extends CI_Controller
 
         if ($mode == "edit") {
             $product_master_id = $_POST["product_master_id"];
-            $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id]);
+            $status = $this->commondatamodel->updateSingleTableData("product_master", $dataArr, ["product_master_id" => $product_master_id], $product_master_id);
         } else {
             $status = $this->commondatamodel->insertSingleTableData("product_master", $dataArr);
         }
@@ -292,7 +292,7 @@ class Products extends CI_Controller
 
         if ($mode == "edit") {
             $prodect_model_dt_id = $_POST["prodect_model_dt_id"];
-            $status = $this->commondatamodel->updateSingleTableData("product_model_details", $dataArr, ["prodect_model_dt_id" => $prodect_model_dt_id]);
+            $status = $this->commondatamodel->updateSingleTableData("product_model_details", $dataArr, ["prodect_model_dt_id" => $prodect_model_dt_id], $prodect_model_dt_id);
         } else {
             $status = $this->commondatamodel->insertSingleTableData("product_model_details", $dataArr);
         }
@@ -401,7 +401,7 @@ class Products extends CI_Controller
         $spec_sheet_dt_id = $_POST["spec_sheet_dt_id"];
         $status = $_POST["status"];
 
-        $result = $this->commondatamodel->updateSingleTableData("spec_sheet_details", ["is_disabled" => $status], ["spec_sheet_dt_id" => $spec_sheet_dt_id]);
+        $result = $this->commondatamodel->updateSingleTableData("spec_sheet_details", ["is_disabled" => $status], ["spec_sheet_dt_id" => $spec_sheet_dt_id], $spec_sheet_dt_id);
         if ($result) {
             echo json_encode(["status" => true, "data" => $result]);
         } else {

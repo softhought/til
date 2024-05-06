@@ -73,7 +73,7 @@ class Login extends CI_Controller {
                     
                     $where=['id'=>$user_id];
                 
-                    $this->commondatamodel->updateSingleTableData('users',array('is_online'=>'Y','updated_at'=>date('Y-m-d H:i:s')),$where);
+                    $this->commondatamodel->updateSingleTableData('users',array('is_online'=>'Y','updated_at'=>date('Y-m-d H:i:s')),$where, $user_id);
 					$user = $this->login->get_user($user_id);
 					
 

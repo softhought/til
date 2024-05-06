@@ -164,6 +164,7 @@ $route["search/index"] = "frontend/Search";
 
 /* -------------- Admin Route ---------------------- */
 $route["mediaadmin"] = "media";
+$route["index"] = "Home";
 $route["admin"] = "Login";
 $route["product-list"] = "Products";
 $route["product-menu-add-edit/(:num)/(:any)/(:any)"] = "Products/menu_add_edit/$1/$2/$3";

@@ -97,7 +97,7 @@ class User extends CI_Controller
 
                 ];
                 $upd_where = array('users.id' => $userId);
-                $update = $this->commondatamodel->updateSingleTableData('users', $upd_array, $upd_where);
+                $update = $this->commondatamodel->updateSingleTableData('users', $upd_array, $upd_where, $userId);
                 /* insert log data */
 
                 $this->commondatamodel->insertLogData('users', $upd_array, $userId, 'Update');
@@ -532,7 +532,7 @@ class User extends CI_Controller
 
 
 
-            $updateData = $this->commondatamodel->updateSingleTableData('users', $data, $where);
+            $updateData = $this->commondatamodel->updateSingleTableData('users', $data, $where. $userId);
 
 
 
@@ -876,7 +876,7 @@ class User extends CI_Controller
 
 
 
-            $update = $this->commondatamodel->updateSingleTableData('restricted_url_master', $update_array, $where);
+            $update = $this->commondatamodel->updateSingleTableData('restricted_url_master', $update_array, $where, $updID);
 
             if ($update) {
 

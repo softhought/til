@@ -229,7 +229,7 @@ class Investor extends CI_Controller
                 
 
                 $upd_where = array('investor_relations_details.relations_dtl_id' => $relations_dtl_id);
-                $Updatedata = $this->commondatamodel->updateSingleTableData('investor_relations_details',$update_data,$upd_where);
+                $Updatedata = $this->commondatamodel->updateSingleTableData('investor_relations_details',$update_data,$upd_where, $relations_dtl_id);
 
                        /* file upload */
                        if(isset($_POST['docType'])){
@@ -328,7 +328,7 @@ class Investor extends CI_Controller
             $status = trim($this->input->post('status'));
             $update_array  = array("is_disabled" => $status);   
             $where = array("relations_dtl_id" => $updID);
-            $update = $this->commondatamodel->updateSingleTableData('investor_relations_details',$update_array,$where);
+            $update = $this->commondatamodel->updateSingleTableData('investor_relations_details',$update_array,$where, $updID);
             if($update)
             {
                 $json_response = array(
@@ -360,7 +360,7 @@ class Investor extends CI_Controller
             $status = trim($this->input->post('status'));
             $update_array  = array("is_disabled" => $status);   
             $where = array("doc_id" => $updID);
-            $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array,$where);
+            $update = $this->commondatamodel->updateSingleTableData('document_details',$update_array,$where, $updID);
             if($update)
             {
                 $json_response = array(
@@ -408,11 +408,11 @@ class Investor extends CI_Controller
                         $pre_Docid = $preDocData->doc_id;                        
                             $update_array = array("precedence" => $pre_sl);
                             $where = array("doc_id" => $doc_id);                       
-                            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+                            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $doc_id);
 
                             $update_array2 = array("precedence" => $slno);
                             $where2 = array("doc_id" => $pre_Docid);
-                            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2, $doc_id);
 
                             if ($update) {
                                 $json_response = array(
@@ -432,11 +432,11 @@ class Investor extends CI_Controller
 
                     $update_array = array("precedence" => $slectedvalue);
                     $where = array("doc_id" => $doc_id);
-                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $doc_id);
 
                     $update_array2 = array("precedence" => $slno);
                     $where2 = array("doc_id" => $pre_Docid);
-                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2, $pre_Docid);
 
                     if ($update) {
                         $json_response = array(
@@ -458,11 +458,11 @@ class Investor extends CI_Controller
 
                     $update_array = array("precedence" => $next_sl);
                     $where = array("doc_id" => $doc_id);
-                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $doc_id);
 
                     $update_array2 = array("precedence" => $slno);
                     $where2 = array("doc_id" => $next_Docid);
-                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2, $next_Docid);
                     if ($update) {
                         $json_response = array(
                             "msg_status" => 1,

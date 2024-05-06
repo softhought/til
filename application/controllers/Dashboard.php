@@ -1159,4 +1159,8 @@ class Dashboard extends CI_Controller
         header('Content-Type: application/json');
         exit;
     }
+    
+    public function test() {
+        echo SendEmail("sumandey7689@gmail.com", "Test", "Hi");
+    }
 }

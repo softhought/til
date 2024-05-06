@@ -179,6 +179,7 @@ class Dashboard extends CI_Controller
 
     public function submitContactForm()
     {
+        $inputs = array();
         $organization = $_POST["organization"];
         $name = $_POST["name"];
         $phone = $_POST["phone"];
@@ -208,7 +209,23 @@ class Dashboard extends CI_Controller
             'ip_address' => $ip_address,
         ];
 
+        $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => $nature_of_query_id]);
+        $inputs['organization'] = $organization;
+        $inputs['name'] = $name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['address'] = $address;
+        $inputs['state_name'] = $state_name;
+        $inputs['country_name'] = $country_name;
+        $inputs['nature_of_query'] = $nature_of_query->name;
+        $inputs['query'] = $query;
+        $inputs['receipant'] = $nature_of_query;
+
+        $message = $this->load->view('mailers/contact_us', $inputs, TRUE);
+        $subject = "Enquiry Form  ";
+
         $insertedId = $this->commondatamodel->insertSingleTableData("contact_us", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "contact_us", $insertedId);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);
@@ -304,7 +321,24 @@ class Dashboard extends CI_Controller
             'ip_address' => $ip_address,
         ];
 
+        $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 10]);
+        $inputs['company_name'] = $company_name;
+        $inputs['name'] = $customer_name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['address'] = $address;
+        $inputs['training'] = $this->commondatamodel->getSingleRowByWhereCls("training", ["id" => $training_id])->name;
+        $inputs['training_month'] = $training_month;
+        $inputs['training_year'] = $training_year;
+        $inputs['location'] = $this->commondatamodel->getSingleRowByWhereCls("training_locations", ["id" => $location_id])->name;
+        $inputs['nature_of_query'] = $nature_of_query->name;
+        $inputs['receipant'] = $nature_of_query;
+
+        $message = $this->load->view('mailers/training', $inputs, TRUE);
+        $subject = "Training Form  ";
+
         $insertedId = $this->commondatamodel->insertSingleTableData("customer_support_training", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "customer_support_training", $insertedId);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);

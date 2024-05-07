@@ -79,7 +79,7 @@ $route['unset_session'] = 'Dashboard/unset_session';
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";
 $route['about-us/corporate-profile'] = "frontend/about/corporate_profile";
-$route['about-us/board_of_directors'] = "frontend/about/board_of_directors";
+$route['about-us/board-of-directors'] = "frontend/about/board_of_directors";
 $route['about-us/milestones'] = "frontend/about/milestones";
 $route['about-us/vision-and-values'] = "frontend/about/vision_and_values";
 $route['about-us/corporate-social-responsibility'] = "frontend/about/corporate_social_responsibility";
@@ -181,3 +181,6 @@ $route['privacy-policy'] = "frontend/privacypolicy";
 
 /* -------------- FAQ Route ---------------------- */
 $route['faq'] = "frontend/faq";
+
+/* -------------- Cookie Policy Route ---------------------- */
+$route['cookie-policy'] = "frontend/cookiepolicy";

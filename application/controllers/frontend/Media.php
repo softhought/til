@@ -30,7 +30,8 @@ class Media extends CI_Controller
     {
         $page = "web_view/media/news.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "NEWS"]);
-        $result["news"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        $orderBy="precedence";
+        $result["news"] = $this->commondatamodel->getAllRecordWhereOrderBy("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0],$orderBy);
         $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
@@ -58,7 +59,8 @@ class Media extends CI_Controller
     {
         $page = "web_view/media/newsletter/til_talk.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "TIL_TALK"]);
-        $result["til_talk"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        $orderBy="precedence";
+        $result["til_talk"] = $this->commondatamodel->getAllRecordWhereOrderBy("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0],$orderBy);
         $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }
@@ -67,7 +69,8 @@ class Media extends CI_Controller
     {
         $page = "web_view/media/newsletter/til_touch.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "TIL_TOUCH"]);
-        $result["til_touch"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        $orderBy="precedence";
+        $result["til_touch"] = $this->commondatamodel->getAllRecordWhereOrderBy("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0],$orderBy);
         $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }

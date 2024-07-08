@@ -284,7 +284,7 @@ class Dashboard extends CI_Controller
                     $inputs['linkedInProfile'] = $linkedIn_profile;
                     $inputs['message'] = $massage;
                     $inputs['receipant'] = $nature_of_query;
-            
+
                     $message = $this->load->view('mailers/job_application', $inputs, TRUE);
                     $subject = "Job Application Form  ";
 
@@ -1171,7 +1171,6 @@ class Dashboard extends CI_Controller
     {
         $query = $_POST["key_val"];
         $jsonResult = $this->executePythonScript($query);
-
         if (json_decode($jsonResult)) {
             $decodeJson["content"] = json_decode($jsonResult);
             $decodeJson["query"] = $query;
@@ -1189,29 +1188,34 @@ class Dashboard extends CI_Controller
 
     public function executePythonScript($keyWord)
     {
-        $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
+        //echo $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
+        $dir = "/var/www/scripts/script.py";
+        $pythonExecutable = "/usr/bin/python3";
+        if (file_exists($dir) && is_executable($dir)) {
+            $pythonScript = "{$pythonExecutable} {$dir}";
+            putenv("PYTHONIOENCODING=utf-8");
 
-        $pythonScript = "python {$dir}";
-        putenv("PYTHONIOENCODING=utf-8");
+            $command = "{$pythonScript} {$keyWord} 2>&1";
+            $output = shell_exec($command);
 
-        $command = "{$pythonScript} {$keyWord}";
-        $output = shell_exec($command);
+            $decodedOutput = json_decode($output, true);
 
-        $decodedOutput = json_decode($output, true);
+            if ($decodedOutput !== null) {
 
-        if ($decodedOutput !== null) {
-
-            foreach ($decodedOutput as &$item) {
-                if (isset($item['content'])) {
-                    $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
+                foreach ($decodedOutput as &$item) {
+                    if (isset($item['content'])) {
+                        $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
+                    }
                 }
+
+                $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+                return $jsonOutput;
+            } else {
+                return "Failed to decode JSON output.";
             }
-
-            $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-
-            return $jsonOutput;
         } else {
-            return "Failed to decode JSON output.";
+            return "Error: Script file does not exist or is not executable.";
         }
     }
 

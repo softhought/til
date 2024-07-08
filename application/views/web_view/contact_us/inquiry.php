@@ -26,9 +26,9 @@
                             <!-- <h1></h1> -->
                             <p>Please fill up the form below:</p>
                             <!--start contact form box-->
-                            <script src='<?php echo base_url(); ?>www.google.com/recaptcha/api.js'></script>
-                            <form enctype="multipart/form-data" class="contact_form inquiry_form" id="contact_us_form"
-                                method="POST" accept-charset="utf-8">
+                            <!-- <script src='<?php echo base_url(); ?>www.google.com/recaptcha/api.js'></script> -->
+                            <form  enctype="multipart/form-data" class="contact_form inquiry_form" id="contact_us_form" method="POST"
+                                accept-charset="utf-8">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -41,11 +41,7 @@
                                         <div class="form-group">
                                             <label for="name">Full Name<span>*</span></label>
                                             <input type="text" name="name" value="" placeholder="Name"
-                                                autocomplete="off" id="name_in" required="required" class="form-control" />
-                                            <span id="name_in-error" style="color: red; display: none;">The name field
-                                                must
-                                                be at least 5 character
-                                                in length</span>
+                                                autocomplete="off" id="name" required="required" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -53,22 +49,16 @@
 
                                             <label for="phone">Phone Number <span>*</span></label>
                                             <input type="tel" name="phone" value="" placeholder="Phone no."
-                                                autocomplete="off" id="phone_in" required="required" maxlength="10"
+                                                autocomplete="off" id="phone" required="required" maxlength="10"
                                                 class="form-control" />
-                                            <span id="phone_in-error" style="color: red; display: none;">Please enter a
-                                                valid 10-digit phone
-                                                number.</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="email">Email Address <span>*</span></label>
                                             <input type="email" name="email" value="" placeholder="E-mail"
-                                                autocomplete="off" id="email_in" required="required"
+                                                autocomplete="off" id="email" required="required"
                                                 class="form-control" />
-                                            <span id="email_in-error" style="color: red; display: none;">Please enter a
-                                                valid email
-                                                address.</span>
                                         </div>
                                     </div>
 
@@ -125,15 +115,14 @@
                                                 required="required" value="" class="form-control markitup"></textarea>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-12 col-12">
+                                    <div class="col-md-12 col-12">
                                         <div class="form-group">
                                             <div class="g-recaptcha"
-                                                data-sitekey="6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8"></div>
+                                                data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-12 col-12">
-                                        <button type="submit" class="btn btn_contact"
-                                            id="contact_us_button">Submit</button>
+                                        <button type="submit" class="btn btn_contact" id="contact_us_button">Submit</button>
                                     </div>
                                 </div>
 

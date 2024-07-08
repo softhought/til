@@ -79,7 +79,7 @@
          <button type="submit" class="btn btn-sm action-button padbtn save_btn" id="save_btn"
             style="padding: 8px; margin-top:10px;">Save &nbsp;<i class="fas fa-chevron-right"></i></button>
          <span class="btn btn-sm action-button loaderbtn" id="loaderbtn"
-            style="display:none;width: 60%;">Updating...</span>
+            style="display:none;width: 60%;padding: 8px;margin-top:10px;">Processing...</span>
       </div>
    </div>
 </form>

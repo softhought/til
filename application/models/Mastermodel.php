@@ -68,8 +68,8 @@ class Mastermodel extends CI_Model
             ->join('functions_career', 'functions_career.id=resume_submission.function_id', 'left')
             ->join('current_openings', 'resume_submission.current_opening_id=current_openings.current_opening_id', 'left')
             ->where($where)
-            ->order_by('resume_submission.id', 'desc')
-            ->limit(2000);
+            ->order_by('resume_submission.id', 'desc');
+            //->limit(5000);
         $query = $this->db->get();
         #echo $this->db->last_query();
         $data = [];

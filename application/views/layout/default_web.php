@@ -10,16 +10,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="BJlnH_p-M_3TsmiUrd-MIRDZIzuNzvB7wn554c5Gtxw" />
+
   <script>
     (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      i['GoogleAnalyticsObject'] = r; 
+      i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '../www.google-analytics.com/analytics.js', 'ga');
+      }, i[r].l = 1 * new Date(); 
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; 
+      a.async = 1; 
+      a.src = g; 
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-8073479-18', 'auto');
     ga('send', 'pageview');
+
 
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZWNNXMLL6"></script>
@@ -409,8 +416,8 @@
         </svg>
       </button>
     </div>
-    <script
-      src="https://www.google.com/recaptcha/enterprise.js?render=6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8"></script>
+    <!-- <script
+      src="https://www.google.com/recaptcha/enterprise.js?render=6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8"></script> -->
 
     <div class="enquiry-form-overflow">
 
@@ -528,7 +535,7 @@
             id="query" required="required" value="" class="form-control markitup"></textarea>
         </div>
         <div class="form-group">
-          <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+          <div class="g-recaptcha" data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
         </div>
         <button type="submit" class="btn btn_contact" id="contact_form_button">Submit</button>
 
@@ -683,7 +690,7 @@
                     id="query" required="required" value="" class="form-control markitup"></textarea>
                 </div>
                 <div class="form-group">
-                  <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+                  <div class="g-recaptcha" data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
                 </div>
                 <button type="submit" class="btn btn-default" id="quotation_form_button">Submit</button>
                 <div class="scroll-top-wrapper "><span class="scroll-top-inner"><i
@@ -809,7 +816,7 @@
               $('#quotation_form').submit(function (event) {
                 event.preventDefault(); // Prevent form submission
 
-                if (validateQuotationInput()) {
+                if (validateQuotationInput() && validateForm()) {
                   $("#quotation_form_button").prop("disabled", true);
                   $("#quotation_form_button").html("Processing....");
 
@@ -899,7 +906,7 @@
               var base_url = $("#basepath").val();
               $("#contact_form").submit(function (event) {
                 event.preventDefault();
-                if (validateEnqueryInput()) {
+                if (validateEnqueryInput() && validateForm()) {
                   $("#contact_form_button").prop("disabled", true);
                   $("#contact_form_button").html("Processing....");
                   var formData = new FormData($(this)[0]);
@@ -927,7 +934,7 @@
 
               $("#contact_us_form").submit(function (event) {
                 event.preventDefault();
-                if (validateContactUsInput()) {
+                if (validateContactUsInput() && validateForm()) {
                   $("#contact_us_button").prop("disabled", true);
                   $("#contact_us_button").html("Processing....");
                   var formData = new FormData($(this)[0]);
@@ -981,7 +988,7 @@
 
               $("#training_form").submit(function (event) {
                 event.preventDefault();
-                if (validateTrainingInput()) {
+                if (validateTrainingInput() && validateForm()) {
 
 
                   $("#training_form_button").prop("disabled", true);
@@ -1055,14 +1062,14 @@
               $('li.<?php echo $bodycontent["active"] ?>').addClass('active');
             });
           </script>
-          <script>
+          <!-- <script>
             function onClick(e) {
               e.preventDefault();
               grecaptcha.enterprise.ready(async () => {
                 const token = await grecaptcha.enterprise.execute('6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8', { action: 'LOGIN' });
               });
             }
-          </script>
+          </script> -->
           <script>
             jQuery(document).ready(function ($) {
               $(".sidebarlist").hide();
@@ -1100,8 +1107,8 @@
               });
             });
           </script>
-          <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"
-            charset="utf-8"></script>
+          <!-- <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script> -->
           <script src="<?php echo base_url(); ?>assets/js/common.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
 
@@ -1540,5 +1547,15 @@
     </div>
   </div>
 </body>
+<script>
+  function validateForm() {
+    if (grecaptcha.getResponse() == "") {
+      alert("Please complete the reCAPTCHA to submit the form.");
+      return false;
+    }
+    return true; 
+  }
+</script>
 
 </html>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

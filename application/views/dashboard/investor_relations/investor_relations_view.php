@@ -74,8 +74,8 @@
                   class="sr-only">Close</span></button>
          </div>
          <div class="modal-body" style="min-height: 350px;height: 650px overflow-y: auto;">
-            <input type="text" id="relations_master_id" name="relations_master_id" value="1">
-            <input type="text" id="investor_relation_head" name="investor_relation_head" value="Corporate Governance"
+            <input type="hidden" id="relations_master_id" name="relations_master_id" value="1">
+            <input type="hidden" id="investor_relation_head" name="investor_relation_head" value="Corporate Governance"
                readonly>
             <div id="add_edit_view_data" style="display:none1;"></div>
 
@@ -96,7 +96,7 @@
          </div>
          <div class="modal-body" style="min-height: 350px;height: 650px overflow-y: auto;">
 
-            <div id="document_view_data" style="display:none1;"></div>
+            <div id="document_view_data" ></div>
 
          </div>
       </div>

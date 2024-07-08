@@ -7,6 +7,7 @@ class Login extends CI_Controller {
         $this->load->library('session');
         $this->load->model('commondatamodel','commondatamodel',TRUE);
         $this->load->model("Loginmodel", "login");
+        header("Access-Control-Allow-Origin: *");
     }
 
    public function index(){

@@ -59,7 +59,8 @@
                       <option value="" label="--select--">--select--</option>
                       <?php foreach ($bodycontent["functions_career"] as $key => $value) { ?>
                         <option value="<?php echo $value->id; ?>" label="<?php echo $value->name ?>">
-                          <?php echo $value->name ?></option>
+                          <?php echo $value->name ?>
+                        </option>
                       <?php } ?>
                     </select>
                   </div>
@@ -92,6 +93,9 @@
                     <input type="file" name="resume" value="" placeholder="CV Upload" autocomplete="off" id="resume"
                       required="required" onchange="validate_size(this)" accept=".odt,.doc,.docx,.pdf"
                       class="form-control document_upload" />
+                  </div>
+                  <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
                   </div>
                 </div>
                 <div class="col-md-12 col-12">

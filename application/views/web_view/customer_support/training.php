@@ -105,8 +105,12 @@
                                                                         style="color:#f00">*</span></label>
                                                                 <input type="text" name="customer_name" value=""
                                                                     placeholder="Customer Name" autocomplete="off"
-                                                                    tabindex="1" id="customer_name" required="required"
+                                                                    tabindex="1" id="customer_name_tr" required="required"
                                                                     class="form-control" />
+                                                                <span id="customer_name_tr-error"
+                                                                    style="color: red; display: none;">The name field
+                                                                    must be at least 5 character
+                                                                    in length</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -126,8 +130,12 @@
                                                                         style="color:#f00">*</span></label>
                                                                 <input type="tel" name="phone" value=""
                                                                     placeholder="Phone Number" autocomplete="off"
-                                                                    id="phone" tabindex="3" required="required"
+                                                                    id="phone_tr" tabindex="3" required="required"
                                                                     maxlength="10" class="form-control" />
+                                                                <span id="phone_tr-error"
+                                                                    style="color: red; display: none;">Please enter a
+                                                                    valid 10-digit phone
+                                                                    number.</span>
 
                                                             </div>
                                                         </div>
@@ -137,10 +145,14 @@
                                                                         style="color:#f00">*</span></label>
                                                                 <input type="email" name="email" value=""
                                                                     placeholder="Email Address" autocomplete="off"
-                                                                    id="email"
+                                                                    id="email_tr"
                                                                     data-error="That email address is invalid"
                                                                     tabindex="4" required="required"
                                                                     class="form-control" />
+                                                                <span id="email_tr-error"
+                                                                    style="color: red; display: none;">Please enter a
+                                                                    valid email
+                                                                    address.</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 col-12">

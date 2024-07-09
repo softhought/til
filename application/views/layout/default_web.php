@@ -13,14 +13,14 @@
 
   <script>
     (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; 
+      i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); 
+      }, i[r].l = 1 * new Date();
       a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; 
-      a.async = 1; 
-      a.src = g; 
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
       m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
@@ -137,7 +137,11 @@
   <link href="<?php echo base_url(); ?>assets/css/slick.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/css/slick-theme.css?c=-62170003270" media="all" rel="stylesheet" />
   <div class="loader-center">
-    <div class="loader" style="display: none"></div>
+    <div style="text-align: center;display:none;" id="loader">
+      <img src="<?php echo base_url(); ?>assets/images/logos/output-onlinegiftools.gif" id="gear-loader"
+        style="height: 150px;" />
+
+    </div>
   </div>
   <!-- -------------Start Menu ----------------------- -->
   <div id="nav" class="nav navbar-fixed-top">
@@ -1018,7 +1022,7 @@
 
               $("#search_from").submit(function (event) {
                 event.preventDefault();
-                $(".loader").show();
+                $("#loader").show();
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/searchfrom`,
@@ -1553,7 +1557,7 @@
       alert("Please complete the reCAPTCHA to submit the form.");
       return false;
     }
-    return true; 
+    return true;
   }
 </script>
 

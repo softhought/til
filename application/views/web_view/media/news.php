@@ -81,54 +81,20 @@
 
             <div class="container" id="mainCol">
                 <div class="row mt-4">
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="news-card">
-                            <img style="width: 100%; height: 200px; border-radius: 5px;" src="https://img.etimg.com/thumb/msid-107118118,width-300,height-225,imgsize-58026,resizemode-75/gainwell-engineering-enters-into-a-technology-licensing-agreement-for-underground-mining-equipment-with-caterpillar.jpg"
-                                alt="News Image">
-                            <div class="news">
-                                <h5>The Economic Times Gainwell Group acquires TIL Limited, invest Rs 1000 crore for
-                                    expansion</h5>
-                                <a href="https://m.economictimes.com/industry/indl-goods/svs/engineering/gainwell-commosales-to-acquire-til-ltd-invest-rs-1000-crore-for-expansion/articleshow/107118104.cms"
-                                    target="_blank" class="btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    <?php foreach ($bodycontent["news"] as $key => $value) { ?>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="news-card">
+                                <img style="width: 100%; height: 200px; border-radius: 5px;"
+                                    src="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $value->random_file_name ?>"
+                                    alt="News Image">
+                                <div class="news">
+                                    <h5><?php echo $value->uploaded_file_desc; ?></h5>
+                                    <a href="<?php echo $value->url; ?>"
+                                        target="_blank" class="btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="news-card">
-                            <img style="width: 100%; height: 200px; border-radius: 5px;" src="https://www.tilindia.in/assets/images/rough-terrain-cranes.jpg"
-                                alt="News Image">
-                            <div class="news">
-                                <h5>Indian Defence Review The Vanguard of India's Defence: High Technology Ground
-                                    Support Equipment</h5>
-                                <a href="https://www.indiandefencereview.com/news/the-vanguard-of-indias-defence-high-technology-ground-support-equipment/"
-                                    target="_blank" class="btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="news-card">
-                            <img style="width: 100%; height: 200px; border-radius: 5px;" src="https://www.manufacturingtodayindia.com/cloud/2024/01/25/Gainwell-Pic-1-1024x768.jpg"
-                                alt="News Image">
-                            <div class="news">
-                                <h5>Manufacturing Today India Gainwell Group secures majority stake in TIL Ltd, eyes $1
-                                    Billion turnover</h5>
-                                <a href="https://www.manufacturingtodayindia.com/gainwell-group-secures-majority-stake-in-til-ltd-eyes-1-billion-turnover/"
-                                    target="_blank" class="btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="news-card">
-                            <img style="width: 100%; height: 200px; border-radius: 5px;" src="https://static.theprint.in/wp-content/uploads/2023/06/theprint_default_image_new-696x392.jpg?compress=true&quality=80&w=800&dpr=1"
-                                alt="News Image">
-                            <div class="news">
-                                <h5>ThePrint Gainwell Group takes over management control of TIL Ltd after Rs 120 cr
-                                    investment</h5>
-                                <a href="https://theprint.in/economy/gainwell-group-takes-over-management-control-of-til-ltd-after-rs-120-cr-investment/1937918/"
-                                    target="_blank" class="btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

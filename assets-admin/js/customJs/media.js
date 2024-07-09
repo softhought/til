@@ -118,6 +118,7 @@ $(document).ready(function () {
         event.stopImmediatePropagation();
         var id = $(this).data('id');
         var title = ($(this).data('title'));
+        var url = ($(this).data('url'));
         var filename = $(this).data('filename');
         var randomname = $(this).data('randomname');
         $("#docID").val(id);
@@ -126,6 +127,7 @@ $(document).ready(function () {
         $(".userFileName").val(filename);
         $(".randomFileName").val(randomname);
         $(".prvFilename").val(filename);
+        $(".url").val(url);
         $(".save_btn").html("Update");
         $(".loaderbtn").html("Updating...");
     });
@@ -509,24 +511,41 @@ function validation() {
 }/**end  */
 function validationNewsNewslater() {
     var title = $('.title_desc').val();
+    var url = $('.url').val();
     var mode = $('.mode').val();
     var fileInput = $('.fileName')[0];
+    var urlPattern = /^(https?:\/\/)?([a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,}))(:\d+)?(\/[^\s]*)?$/;
+    var status = true;
 
     $(".error_title").text('');
     $(".error_file").text('');
+    $(".error_url").text('');
 
     if (title == "") {
         $(".error_title").text('Error : Enter title');
         $(".title_desc").focus();
-        return false;
+        status = false;
     }
+
+    if (url == "") {
+        $(".error_url").text('Error : Enter URL');
+        $(".url").focus();
+        status = false;
+    }
+    else if (!urlPattern.test(url)) {
+        $(".error_url").text('Error: Enter a valid URL');
+        $(".url").focus();
+        status = false;
+    }
+
+
     if (mode == 'ADD') {
         if (fileInput.files.length === 0) {
             $(".error_file").text('Error: Select a document');
-            return false;
+            status = false;
         }
     }
-    return true;
+    return status;
 }/**end  */
 
 function validationEvent() {

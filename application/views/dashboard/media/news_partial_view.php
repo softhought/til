@@ -10,7 +10,7 @@
 <section class="layout-box-content-format1">
 
    <div class="partial_view_news">
-      <?php include APPPATH . 'views/dashboard/media/default_partial_view_news_and_newslater.php' ?>
+      <?php include APPPATH . 'views/dashboard/media/default_partial_view_news.php' ?>
    </div>
 
    <!--- ---------------start hear listing ---------------------->
@@ -19,7 +19,8 @@
          <tr>
             <th>Sl</th>
             <th style="width:150px;">Title Description</th>
-            <th>Document Name</th>
+            <th>URL</th>
+            <!-- <th>Document Name</th> -->
             <th>Up/Down</th>
             <th>Set Precedence</th>
             <th>Status</th>
@@ -35,7 +36,10 @@
             <tr>
                <td><?php echo $i++; ?></td>
                <td><?php echo $list->uploaded_file_desc; ?></td>
-               <td><?php echo $list->user_file_name; ?></td>
+               <td><a href="<?php echo $list->url; ?>" target="_blank"><?php if ($list->url) {
+                  echo "View";
+               }?></a></td>
+               <!-- <td><?php echo $list->user_file_name; ?></td> -->
                <td>
                   <img src="<?php echo base_url(); ?>assets-admin/img/up.png" alt="Active" title="up arrow" id="active"
                      onclick="changeSerial(<?php echo ($list->doc_id); ?>,<?php echo $list->precedence; ?>,'U','<?php echo $media_tag; ?>','<?php echo ($list->table_name); ?>','<?php echo ($list->ref_id); ?>')"
@@ -83,6 +87,7 @@
                   <a href="javascript:void(0);" class="btn tbl-action-btn padbtn update_news_newslater"
                      data-id="<?php echo $list->doc_id; ?>" data-title="<?php echo $list->uploaded_file_desc; ?>"
                      data-filename="<?php echo $list->user_file_name; ?>"
+                     data-url="<?php echo $list->url; ?>"
                      data-randomname="<?php echo $list->random_file_name; ?>">
                      <i class="fas fa-edit"></i>
                   </a>

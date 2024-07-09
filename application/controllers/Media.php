@@ -393,6 +393,7 @@ class Media extends CI_Controller
             $mode = $this->input->post('mode');
             $docID = $this->input->post('docID');
             $title_desc = $this->input->post('title_desc');
+            $url = $this->input->post('url');
 
             $userFileName = $this->input->post('userFileName');
             $isChangedFile = $this->input->post('isChangedFile');
@@ -432,6 +433,7 @@ class Media extends CI_Controller
                     'table_name' => 'media_master',
                     'ref_id' => $mediaMasterId,
                     'uploaded_file_desc' => $title_desc,
+                    'url' => $url,
                     'random_file_name' => $random_genrate_name,
                     'user_file_name' => $userFileName,
                     'uploaded_by_user' => $session['userid']
@@ -459,6 +461,7 @@ class Media extends CI_Controller
                     'table_name' => 'media_master',
                     'ref_id' => $mediaMasterId,
                     'uploaded_file_desc' => $title_desc,
+                    'url' => $url,
                     'random_file_name' => $random_genrate_name,
                     'user_file_name' => $userFileName,
                     'precedence' => 1,

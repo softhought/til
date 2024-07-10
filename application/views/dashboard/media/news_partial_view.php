@@ -157,6 +157,7 @@
                   <a href="javascript:void(0);" class="btn tbl-action-btn padbtn update_news_newslater"
                      data-id="<?php echo $list->doc_id; ?>" data-title="<?php echo $list->uploaded_file_desc; ?>"
                      data-filename="<?php echo $list->user_file_name; ?>" data-url="<?php echo $list->url; ?>"
+                     data-publication="<?php echo $list->publication; ?>"
                      data-randomname="<?php echo $list->random_file_name; ?>">
                      <i class="fas fa-edit"></i>
                   </a>

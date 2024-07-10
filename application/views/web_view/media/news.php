@@ -50,6 +50,14 @@
     .news .btn:hover {
         background-color: #b98f1c;
     }
+
+    .publication-title {
+        color: #715500;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 14px;
+        font-family: system-ui;
+    }
 </style>
 
 <section class="about_header about-banner-section"
@@ -88,9 +96,10 @@
                                     src="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $value->random_file_name ?>"
                                     alt="News Image">
                                 <div class="news">
+                                    <h2 class="publication-title"><?php echo $value->publication; ?></h2>
                                     <h5><?php echo $value->uploaded_file_desc; ?></h5>
-                                    <a href="<?php echo $value->url; ?>"
-                                        target="_blank" class="btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    <a href="<?php echo $value->url; ?>" target="_blank" class="btn">Read More <i
+                                            class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>

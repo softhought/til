@@ -30,7 +30,7 @@
    <input type="hidden" name="mode" id="mode" class="mode" value="ADD">
    <input type="hidden" name="docID" id="docID" value="">
    <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
          <label for="title_desc">Title Description <span style="color:red;font-size:15px;">*</span></label>
          <div class="form-group">
             <div class="input-group input-group-sm">
@@ -41,7 +41,7 @@
             <p id="error_title" class="error-msg error_title"></p>
          </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
          <label for="url">URL <span style="color:red;font-size:15px;">*</span></label>
          <div class="form-group">
             <div class="input-group input-group-sm">
@@ -50,6 +50,17 @@
 
             </div>
             <p id="error_url" class="error-msg error_url"></p>
+         </div>
+      </div>
+      <div class="col-md-2">
+         <label for="url">PUBLICATION <span style="color:red;font-size:15px;"></span></label>
+         <div class="form-group">
+            <div class="input-group input-group-sm">
+               <input type="text" class="form-control forminputs typeahead publication" id="publication" name="publication"
+                  placeholder="Enter Publication" autocomplete="off" value="">
+
+            </div>
+            <p id="publication_url" class="error-msg error_publication"></p>
          </div>
       </div>
       <div class="col-md-3">

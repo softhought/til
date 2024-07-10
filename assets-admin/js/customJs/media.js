@@ -119,6 +119,7 @@ $(document).ready(function () {
         var id = $(this).data('id');
         var title = ($(this).data('title'));
         var url = ($(this).data('url'));
+        var publication = ($(this).data('publication'));
         var filename = $(this).data('filename');
         var randomname = $(this).data('randomname');
         $("#docID").val(id);
@@ -128,6 +129,7 @@ $(document).ready(function () {
         $(".randomFileName").val(randomname);
         $(".prvFilename").val(filename);
         $(".url").val(url);
+        $(".publication").val(publication);
         $(".save_btn").html("Update");
         $(".loaderbtn").html("Updating...");
     });
@@ -415,7 +417,7 @@ function loadPartialView(tabId, partialViewUrl, media_tag) {
         data: { media_tag: media_tag },
         success: function (data) {
             $(tabId + "_data").html(data);
-            $('.dataTable2').DataTable();
+            // $('.dataTable2').DataTable();
             defaultViewNewsAndNewslater(media_tag);
         },
         error: function (xhr, status, error) {
@@ -511,7 +513,6 @@ function validation() {
 }/**end  */
 function validationNewsNewslater() {
     var title = $('.title_desc').val();
-    var url = $('.url').val();
     var mode = $('.mode').val();
     var fileInput = $('.fileName')[0];
     var urlPattern = /^(https?:\/\/)?([a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,}))(:\d+)?(\/[^\s]*)?$/;
@@ -519,7 +520,6 @@ function validationNewsNewslater() {
 
     $(".error_title").text('');
     $(".error_file").text('');
-    $(".error_url").text('');
 
     if (title == "") {
         $(".error_title").text('Error : Enter title');
@@ -527,15 +527,21 @@ function validationNewsNewslater() {
         status = false;
     }
 
-    if (url == "") {
-        $(".error_url").text('Error : Enter URL');
-        $(".url").focus();
-        status = false;
-    }
-    else if (!urlPattern.test(url)) {
-        $(".error_url").text('Error: Enter a valid URL');
-        $(".url").focus();
-        status = false;
+    if ($("#mediaMasterId").val() == 1) {
+        var url = $('.url').val();
+        $(".error_url").text('');
+
+        if (url == "") {
+            $(".error_url").text('Error : Enter URL');
+            $(".url").focus();
+            status = false;
+        }
+        else if (!urlPattern.test(url)) {
+            $(".error_url").text('Error: Enter a valid URL');
+            $(".url").focus();
+            status = false;
+        }
+
     }
 
 

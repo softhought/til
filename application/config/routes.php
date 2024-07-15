@@ -88,7 +88,7 @@ $route['about-us/facilities'] = "frontend/about/facilities";
 
 /* -------------- Products---------------------- */
 
-$route['products'] = "frontend/products";
+$route['products'] = "frontend/products/product_new";
 $route['products_new'] = "frontend/products/product_new";
 // $route['products/material-handling-solutions'] = "frontend/products/material_handling_solutions";
 

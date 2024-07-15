@@ -15,7 +15,7 @@
         padding: 0 30px;
     }
 
-    .form-control {
+    .form-control-ff {
         display: block;
         width: 100%;
         height: 50px;
@@ -49,7 +49,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"
                         style="color: #374048; text-decoration: none;">TIL</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/products"
+                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>products"
                         style="color: #374048; text-decoration: none;">Products</a></li>
             </ol>
         </nav>
@@ -230,26 +230,26 @@
                     <div class="row" style="margin-bottom: 2rem;">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control onlynumber" placeholder="Phone" name="phone">
+                                <input type="text" class="form-control-ff onlynumber" placeholder="Phone" name="phone">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email" name="email">
+                                <input type="email" class="form-control-ff" placeholder="Email" name="email">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name" name="name">
+                                <input type="text" class="form-control-ff" placeholder="Name" name="name">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Organization" name="organization">
+                                <input type="text" class="form-control-ff" placeholder="Organization" name="organization">
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <select name="country_id" id="country_id" required="required" class="form-control">
+                            <select name="country_id" id="country_id" required="required" class="form-control-ff">
                                 <option value="">Select Country</option>
                                 <?php foreach ($menu["country"] as $key => $value) {
                                     echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
@@ -257,13 +257,13 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select name="state_id" id="state_id" required="required" class="form-control">
+                            <select name="state_id" id="state_id" required="required" class="form-control-ff">
                                 <option value="">Select State</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="submit" class="form-control" name="submitProductExpert" value="Submit"
+                                <input type="submit" class="form-control-ff" name="submitProductExpert" value="Submit"
                                     style="background: #ffc72c;margin-top: 1rem;">
                             </div>
                         </div>
@@ -377,7 +377,7 @@
         </section>
     </div>
     <div class="col-md-2">
-        <div class="menu-about-us-container">
+        <div class="menu-about-us-container" style="padding: 1rem;">
 
             <ul id="menu-thank-you" class="pro_left">
                 <?php foreach ($bodycontent["product_menu"] as $key => $rootMenu) { ?>

@@ -404,10 +404,11 @@
               <li class="last"><a href="<?php echo base_url(); ?>about-us/facilities">Facilities</a></li>
             </ul>
           </li>
-          <li class="products">
+          <!-- <li class="products">
             <a href="<?php echo base_url(); ?>products" class="dropdown-toggle">Products <span class="caret"></span></a>
             <?php echo $menu["product_menu"]; ?>
-          </li>
+          </li> -->
+          <li class="products"><a href="<?php echo base_url(); ?>products">Products</a>
           <li class="customer-support"><a href="<?php echo base_url(); ?>customer-support">Customer Support <span
                 class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">

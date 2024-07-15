@@ -54,10 +54,34 @@ class Products extends CI_Controller
         webbody_helper($result, $page);
     }
 
+    // public function viewLevel_3($parentSlug, $product_master_id)
+    // {
+    //     $page = "web_view/products/viewlevel_3.php";
+    //     $result["main-section"] = $this->commondatamodel->getAllRecordWhere("product_master", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
+    //     $product_model_details = $this->commondatamodel->getAllRecordWhere("product_model_details", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
+    //     foreach ($product_model_details as $key => $value) {
+    //         $value->template_master = json_decode($this->commondatamodel->getSingleRowByWhereCls("template_master", ['template_id' => $value->template_master_id])->column_names);
+    //         $value->spec_sheet_details = $this->commondatamodel->getAllRecordWhere('spec_sheet_details', ['product_model_dt_id' => $value->prodect_model_dt_id, "is_disabled" => 0]);
+    //     }
+
+    //     $result['sheet_model'] = $this->commondatamodel->getAllRecordWhere("spec_sheet_details", ["product_master_id" => $product_master_id, "is_disabled" => 0]);
+
+    //     // pre($result['sheet_model']);exit;
+    //     $result["product_model"] = $product_model_details;
+    //     $result["active"] = "products";
+    //     webbody_helper($result, $page);
+    // }
+
     public function viewLevel_3($parentSlug, $product_master_id)
     {
         $page = "web_view/products/viewlevel_3.php";
+
+        $result["products"] = $this->commondatamodel->getAllRecordWhere("product_master", ['parent_id' => $product_master_id, 'is_disabled' => 0]);
         $result["main-section"] = $this->commondatamodel->getAllRecordWhere("product_master", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
+        $result["productList"] = $this->productsmenu->getNonParentRecords("product_master", "product_master_id", "ASC");
+        $result["product_menu"] = $this->productsmenu->getNavProductsMenu()[0]["children"];
+        $result["faq"] = $this->commondatamodel->getAllRecordWhereOrderByCol("faq_details", ["is_disabled" => 0], "precedence", "ASC");
+
         $product_model_details = $this->commondatamodel->getAllRecordWhere("product_model_details", ['product_master_id' => $product_master_id, 'is_disabled' => 0]);
         foreach ($product_model_details as $key => $value) {
             $value->template_master = json_decode($this->commondatamodel->getSingleRowByWhereCls("template_master", ['template_id' => $value->template_master_id])->column_names);
@@ -66,7 +90,7 @@ class Products extends CI_Controller
 
         $result['sheet_model'] = $this->commondatamodel->getAllRecordWhere("spec_sheet_details", ["product_master_id" => $product_master_id, "is_disabled" => 0]);
 
-        // pre($result['sheet_model']);exit;
+        // pre($result['product_menu']);exit;
         $result["product_model"] = $product_model_details;
         $result["active"] = "products";
         webbody_helper($result, $page);

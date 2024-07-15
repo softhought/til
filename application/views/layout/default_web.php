@@ -129,7 +129,217 @@
         transform: rotate(360deg);
       }
     }
+
+    .breadcrumb {
+      padding: 30px 15px;
+      list-style: none;
+      background-color: #f5f5f500;
+      border-radius: 4px;
+      font-weight: bold;
+    }
   </style>
+  <style>
+    .accordion {
+      margin: 2rem 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .accordion .accordion-item {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .accordion .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion button[aria-expanded='true'] {
+      border-bottom: 1px solid #5f6368;
+      background-color: #f8f9fa;
+    }
+
+    .accordion button {
+      position: relative;
+      display: block;
+      text-align: left;
+      width: 100%;
+      padding: 1em 1.5em;
+      color: #333;
+      font-size: 1.15rem;
+      font-weight: 400;
+      border: none;
+      background: none;
+      outline: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .accordion button:hover,
+    .accordion button:focus {
+      color: #5f6368;
+      background-color: #f1f1f1;
+    }
+
+    .accordion .icon {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      right: 1.5em;
+      width: 22px;
+      height: 22px;
+      border: 1px solid #333;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .accordion .icon::before,
+    .accordion .icon::after {
+      content: '';
+      position: absolute;
+      background-color: currentColor;
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion .icon::before {
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 2px;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion .icon::after {
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 10px;
+      transform: translate(-50%, -50%);
+    }
+
+    .accordion button[aria-expanded='true'] .icon {
+      transform: translateY(-50%) rotate(45deg);
+      border-color: #5f6368;
+    }
+
+    .accordion button[aria-expanded='true'] .icon::after {
+      background-color: transparent;
+    }
+
+    .accordion .accordion-content {
+      padding: 1rem 1.5em;
+      background-color: #f9f9f9;
+      border-top: 1px solid #e0e0e0;
+      display: none;
+    }
+
+    .accordion button[aria-expanded='true']+.accordion-content {
+      display: block;
+      opacity: 1;
+      max-height: 100vh;
+      transition: all 200ms linear;
+      will-change: opacity, max-height;
+    }
+
+    .accordion .accordion-content p {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 1em 0;
+    }
+
+    .accordion .accordion-item+.accordion-item {
+      margin-top: 1rem;
+    }
+  </style>
+
+  <style>
+    .template_faq {
+      background: #edf3fe none repeat scroll 0 0;
+    }
+
+    .panel-group {
+      background: #fff none repeat scroll 0 0;
+      border-radius: 3px;
+      box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.04);
+      margin-bottom: 0;
+      padding: 30px;
+    }
+
+    #accordion .panel {
+      border: medium none;
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0 0 15px 10px;
+    }
+
+    #accordion .panel-heading {
+      border-radius: 30px;
+      padding: 0;
+    }
+
+    #accordion .panel-title a {
+      background: #ffb900 none repeat scroll 0 0;
+      border: 1px solid transparent;
+      border-radius: 30px;
+      color: #fff;
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 12px 20px 12px 50px;
+      position: relative;
+      transition: all 0.3s ease 0s;
+    }
+
+    #accordion .panel-title a.collapsed {
+      background: #fff none repeat scroll 0 0;
+      border: 1px solid #ddd;
+      color: #333;
+    }
+
+    #accordion .panel-title a::after,
+    #accordion .panel-title a.collapsed::after {
+      background: #ffb900 none repeat scroll 0 0;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.58);
+      color: #fff;
+      content: "";
+      font-family: fontawesome;
+      font-size: 25px;
+      height: 55px;
+      left: -20px;
+      line-height: 55px;
+      position: absolute;
+      text-align: center;
+      top: -5px;
+      transition: all 0.3s ease 0s;
+      width: 55px;
+    }
+
+    #accordion .panel-title a.collapsed::after {
+      background: #fff none repeat scroll 0 0;
+      border: 1px solid #ddd;
+      box-shadow: none;
+      color: #333;
+      content: "";
+    }
+
+    #accordion .panel-body {
+      background: transparent none repeat scroll 0 0;
+      border-top: medium none;
+      padding: 20px 25px 10px 9px;
+      position: relative;
+    }
+
+    #accordion .panel-body p {
+      border-left: 1px dashed #8c8c8c;
+      padding-left: 25px;
+    }
+  </style>
+
+
 </head>
 
 <body>
@@ -1563,3 +1773,28 @@
 
 </html>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<script>
+  const items = document.querySelectorAll(".accordion button");
+
+  function toggleAccordion() {
+    const itemToggle = this.getAttribute('aria-expanded');
+
+    for (i = 0; i < items.length; i++) {
+      items[i].setAttribute('aria-expanded', 'false');
+    }
+
+    if (itemToggle == 'false') {
+      this.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  items.forEach(item => item.addEventListener('click', toggleAccordion));
+</script>
+
+<script>
+  $(".onlynumber").bind("keyup paste", function () {
+    this.value = this.value.replace(/[^0-9]/g, "");
+  });
+</script>

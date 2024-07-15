@@ -101,6 +101,7 @@ class ProductsMenu extends CI_Model
             $urls[] = [
                 'slug' => $menuItem['slug'],
                 'name' => $menuItem['name'],
+                'short_description' => $menuItem['short_description'],
                 'banner_image' => $menuItem['banner_image'],
                 'catagory_image' => $menuItem['catagory_image'],
                 'parent_id' => $menuItem['parent_id'],

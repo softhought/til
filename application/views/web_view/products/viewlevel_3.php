@@ -61,9 +61,9 @@
             </ol>
         </nav>
 
-        <form class="form-inline" style="margin: -3rem 0 0 1rem;">
+        <form class="form-inline" style="margin: -3rem 0 0 1rem;" id="productSearchForm" method="post">
             <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search"
-                style="margin: 2rem; width: 40rem; height: 2.7rem;">
+                style="margin: 2rem; width: 40rem; height: 2.7rem;" name="productSearch" id="productSearch">
             <button class="btn btn-outline-success my-2 my-sm-0" style="background: #ffc72c;"
                 type="submit">Search</button>
         </form>

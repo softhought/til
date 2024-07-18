@@ -140,6 +140,11 @@ $(document).ready(function () {
     	// Add Document Detail
 	$(document).on("click", ".addDocument", function () {
 		rowNoUpload++;
+        var precedence=2;
+                $('.precedenceData').each(function() {
+                    // Reset precedence data for each element
+                    $(this).val(precedence++);
+                });
 		$.ajax({
 			type: "POST",
 			url: basepath + "investor/adddetaildocument",
@@ -147,13 +152,13 @@ $(document).ready(function () {
 			data: { rowNo: rowNoUpload },
 			success: function (result) {
 				//$("#detail_Document table").css("display", "inline");
-				$("#detail_Document table tbody").append(result);
+				$("#detail_Document table tbody").prepend(result);
 				$(".select2").select2();
-                var precedence=1;
-                $('.precedenceData').each(function() {
-                    // Reset precedence data for each element
-                    $(this).val(precedence++);
-                });
+                // var precedence=1;
+                // $('.precedenceData').each(function() {
+                //     // Reset precedence data for each element
+                //     $(this).val(precedence++);
+                // });
 			},
 			error: function (jqXHR, exception) {
 				var msg = "";

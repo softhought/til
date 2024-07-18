@@ -237,7 +237,42 @@ class Commondatamodel extends CI_Model
 
 	}
 
+	public function getSingleRowByWhereLike($table, $likecolumn, $likeStr)
+	{
 
+		$data = array();
+
+		$this->db->select("*")
+
+			->from($table)
+
+			->like($likecolumn, $likeStr, 'after')
+
+			->limit(1);
+
+		$query = $this->db->get();
+
+
+
+		// echo "<br>".$this->db->last_query();
+
+
+
+		if ($query->num_rows() > 0) {
+
+			$row = $query->row();
+
+			return $data = $row;
+
+
+
+		} else {
+
+			return $data;
+
+		}
+
+	}
 
 	public function getSingleRowByWhereCls($table, $where)
 	{

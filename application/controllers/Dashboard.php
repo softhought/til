@@ -1186,6 +1186,43 @@ class Dashboard extends CI_Controller
         exit;
     }
 
+    public function productsearchfrom()
+    {
+        $productSearch = trim($_POST['productSearch']);
+
+        $slugData = $this->commondatamodel->getSingleRowByWhereLike("product_master", "name", $productSearch);
+        if ($slugData) {
+            $slug = $this->getFullSlug($this->productsmenu->getNavProductsMenu()[0]["children"], $slugData->slug);
+
+            echo json_encode(["status" => true, "href" => 'products/' . $slug]);
+        } else {
+            echo json_encode(["status" => false]);
+        }
+
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function getFullSlug($products, $matchSlug, $baseSlug = '')
+    {
+        foreach ($products as $product) {
+            $currentSlug = $baseSlug ? $baseSlug . '/' . $product['slug'] : $product['slug'];
+
+            if ($product['slug'] === $matchSlug) {
+                return $currentSlug;
+            }
+
+            if (isset($product['children']) && !empty($product['children'])) {
+                $foundSlug = $this->getFullSlug($product['children'], $matchSlug, $currentSlug);
+                if ($foundSlug) {
+                    return $foundSlug;
+                }
+            }
+        }
+
+        return null;
+    }
+
     public function executePythonScript($keyWord)
     {
         //echo $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";

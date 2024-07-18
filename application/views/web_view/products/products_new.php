@@ -54,13 +54,12 @@
             </ol>
         </nav>
 
-        <form class="form-inline" style="margin: -3rem 0 0 1rem;">
+        <form class="form-inline" style="margin: -3rem 0 0 1rem;" id="productSearchForm" method="post">
             <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search"
-                style="margin: 2rem; width: 40rem; height: 2.7rem;">
+                style="margin: 2rem; width: 40rem; height: 2.7rem;" name="productSearch" id="productSearch">
             <button class="btn btn-outline-success my-2 my-sm-0" style="background: #ffc72c;"
                 type="submit">Search</button>
         </form>
-
 
         <section class="content_section" style="margin: 0 0 0 2rem;">
             <div class="container">
@@ -230,6 +229,11 @@
                     <div class="row" style="margin-bottom: 2rem;">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <input type="text" class="form-control-ff" placeholder="Name" name="name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <input type="text" class="form-control-ff onlynumber" placeholder="Phone" name="phone">
                             </div>
                         </div>
@@ -240,12 +244,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control-ff" placeholder="Name" name="name">
+                                <input type="text" class="form-control-ff" placeholder="Organization" name="organization">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control-ff" placeholder="Organization" name="organization">
+                                <textarea name=""> </textarea>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -64,6 +64,7 @@ $route['dashboard/submitcontactform'] = 'Dashboard/submitContactForm';
 $route['dashboard/submityourcv'] = 'Dashboard/submityourcv';
 $route['dashboard/submittrainingform'] = 'Dashboard/submittrainingform';
 $route['dashboard/searchfrom'] = 'Dashboard/searchfrom';
+$route['dashboard/productsearchfrom'] = 'Dashboard/productsearchfrom';
 $route['menu/addeditaction'] = 'Products/menu_add_edit_action';
 $route['product/addeditaction'] = 'Products/product_add_edit_action';
 $route['product/fetchtemplate'] = 'Products/fetchtemplate';

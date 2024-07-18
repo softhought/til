@@ -189,6 +189,14 @@ td {
 
         <br>
         <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                <button type="button" class="btn btn-sm btn-light addDocument"
+                    style="background: #f8bb06;color: #1f2d3d;">
+                    <span class="glyphicon glyphicon-plus"></span> Add Document
+                </button>
+            </div>
+        </div>
+        <div class="row">
 
 
             <div class="col-md-12" id="detail_Document">
@@ -237,9 +245,9 @@ td {
                                     <tr id="rowDocument_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>">
                                         <td>
 
-                                            <input type="hidden" name="precedence[]" id="precedence_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>" 
+                                            <input type="text" name="precedence[]" id="precedence_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>" 
                                             class="precedenceData" value="<?php echo $value->precedence; ?>">
-                                            <input type="text" name="docType[]"
+                                            <input type="hidden" name="docType[]"
                                                 id="docType_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>"
                                                 class="form-control docType" value="<?php echo $value->uploaded_file_desc; ?>">
 
@@ -328,14 +336,7 @@ td {
 
 
 
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 10px;">
-                <button type="button" class="btn btn-sm btn-light addDocument"
-                    style="background: #f8bb06;color: #1f2d3d;">
-                    <span class="glyphicon glyphicon-plus"></span> Add Document
-                </button>
-            </div>
-        </div>
+        
 
     </div><!-- end body box -->
 

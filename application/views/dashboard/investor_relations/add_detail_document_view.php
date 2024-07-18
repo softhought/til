@@ -4,8 +4,8 @@
 
             <input type="text" name="docType[]" id="docType_0_<?php echo $rowno; ?>" class="form-control docType"
                 value="">
-                <input type="hidden" name="precedence[]" id="precedence_0_<?php echo $rowno; ?>" class="form-control precedenceData"
-                value="">
+                <input type="text" name="precedence[]" id="precedence_0_<?php echo $rowno; ?>" class="form-control precedenceData"
+                value="1">
         </div>
         <input type="hidden" name="prvFilename[]" id="prvFilename_0_<?php echo $rowno; ?>"
             class="form-control prvFilename" value="" readonly>
@@ -23,7 +23,7 @@
             <div class="col-sm-10">
                 <div class="form-group">
                     <div class="input-group input-group-sm">
-                        <input type="text" name="userFileName[]" id="userFileName_0_<?php echo $rowno; ?>"
+                        <input type="hidden" name="userFileName[]" id="userFileName_0_<?php echo $rowno; ?>"
                             class="form-control input-xs userFileName" readonly placeholder="Upload Document">
 
                         <input type="hidden" name="isChangedFile[]" id="isChangedFile_0_<?php echo $rowno; ?>"

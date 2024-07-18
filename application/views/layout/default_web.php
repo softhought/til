@@ -1231,6 +1231,30 @@
                 }
               });
 
+              $("#productSearchForm").submit(function (event) {
+                event.preventDefault();
+                $("#loader").show();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                  url: `${base_url}dashboard/productsearchfrom`,
+                  type: 'POST',
+                  dataType: "json",
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    if (response.status) {
+                      window.location.replace(`${base_url}${response.href}`);
+                    }
+                    $("#loader").css("display", "none");
+                  },
+                  error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                  }
+                });
+              });
+
               $("#search_from").submit(function (event) {
                 event.preventDefault();
                 $("#loader").show();

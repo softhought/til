@@ -65,7 +65,7 @@
                <div class="form-group">
                   <button class="browse btn input-xs btn-sm" type="button" style="background: #f8bb06; color:#000; padding-top: 10px;
                            margin-top: 32px;
-                           margin-left: -50px !important;" id="uploadBtn">
+                           margin-left: -10px !important;" id="uploadBtn">
                      <i class="fa fa-folder-open" aria-hidden="true"></i>
                   </button>
                </div>
@@ -79,7 +79,7 @@
          <button type="submit" class="btn btn-sm action-button padbtn save_btn" id="save_btn"
             style="padding: 8px; margin-top:10px;">Save &nbsp;<i class="fas fa-chevron-right"></i></button>
          <span class="btn btn-sm action-button loaderbtn" id="loaderbtn"
-            style="display:none;width: 60%;">Updating...</span>
+            style="display:none;width: 60%;padding: 8px;margin-top:10px;">Processing...</span>
       </div>
    </div>
 </form>

@@ -19,6 +19,7 @@
                      <th>Title</th>
                      <th>Opening Description</th>
                      <th>Publish Date</th>
+                     <th>Status</th>
                      <th>Action</th>
                    
                   </tr>
@@ -32,6 +33,20 @@
                      <td><?php echo $list->opening_title; ?> </td>
                      <td><?php echo $list->opening_description; ?> </td>
                      <td><?php echo date("d-m-Y",strtotime($list->entry_date)); ?> </td>
+                     <td align="left"> <?php if ($list->is_disabled == 0) { ?>
+                                        <a
+                                            href="<?php echo base_url() . "master/activeInactiveCurrentOpening/" . $list->current_opening_id . "/1" ?>"><img
+                                                src="<?php echo base_url(); ?>assets-admin/img/active-icon.png" alt="Active"
+                                                title="Active" class="relstatus">
+                                        </a>
+                                    <?php } else { ?>
+                                        <a
+                                            href="<?php echo base_url() . "master/activeInactiveCurrentOpening/" . $list->current_opening_id . "/0" ?>"><img
+                                                src="<?php echo base_url(); ?>assets-admin/img/inactive2.png" alt="Inactive"
+                                                title="Inactive" class="relstatus">
+                                        </a>
+                                    <?php } ?>
+                                </td>
                      <td>
                      <a href="<?php echo base_url(); ?>master/current_opening_create/<?php echo $list->current_opening_id; ?>"
                               class="btn tbl-action-btn padbtn">

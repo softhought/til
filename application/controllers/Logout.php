@@ -1,77 +1,48 @@
-<?php
-
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-
-class Logout extends CI_Controller{
-
-
-    public function __construct() {
-
-
+<?php defined("BASEPATH") or exit("No direct script access allowed");
+class Logout extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
+        $this->load->model("commondatamodel", "commondatamodel", true);
 
-
-        $this->load->model('commondatamodel','commondatamodel',TRUE);
-
-
-        $this->load->library('session');
-
-
+        $this->load->library("session");
     }
 
+    public function index()
+    {
 
-    public function index(){
-
-
-        $session = $this->session->userdata('user_detail');
-
-
+        if ($this->session->userdata('user_detail')) {
+        $session = $this->session->userdata("user_detail");
         $where=[
-
-
-            "id"=>$session['user_account_activity_id']
-
-
+            "id"=>$session['userid']
         ];
 
+          $this->commondatamodel->updateSingleTableData('user_account_activity',array("logout_time"=>date('Y-m-d H:i:s')),$where);
 
-        $this->commondatamodel->updateSingleTableData('user_account_activity',array("logout_time"=>date('Y-m-d H:i:s')),$where);
-
-
-
-
-
-        $where1=[
-
-
-            'id'=>$session['userid']
-
-
+        $where1 = [
+            "id" => $session["userid"],
         ];
 
+        $this->commondatamodel->updateSingleTableData(
+            "users",
+            ["is_online" => "N", "updated_at" => date("Y-m-d H:i:s")],
+            $where1
+        );
 
-        $this->commondatamodel->updateSingleTableData('users',array('is_online'=>'N','updated_at'=>date('Y-m-d H:i:s')),$where1);
+        $this->session->unset_userdata("user_detail");
+        redirect('login', 'refresh');
+        exit;
 
-        $this->session->unset_userdata('user_data');
+       // unset($_SESSION["user_detail"]);
 
-        unset($_SESSION["user_detail"]);
+      } else {
+        redirect('login', 'refresh');
+      }
     }
 
-
-
-
-
-    public function __destruct() {
-
-
-        redirect('login');
-
-
-    }
-
-
+    // public function __destruct()
+    // {
+    //     redirect("login");
+    // }
 }
-
-

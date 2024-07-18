@@ -259,7 +259,7 @@
                         <div class="tab-section">
                             <div class="tab-style" id="address">
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item tab" onclick="showData('tabs1',this)">
+                                    <li class="nav-item tab" onclick="('tabs1',this)">
                                         <a class="nav-link " aria-current="page" href="javascript:void(0)">
                                             <img src="../tilindia/assets/images/kolkata-icon.svg" alt="" srcset="">
                                             Kolkata

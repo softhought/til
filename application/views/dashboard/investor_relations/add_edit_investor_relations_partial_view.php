@@ -245,9 +245,9 @@ td {
                                     <tr id="rowDocument_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>">
                                         <td>
 
-                                            <input type="text" name="precedence[]" id="precedence_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>" 
+                                            <input type="hidden" name="precedence[]" id="precedence_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>" 
                                             class="precedenceData" value="<?php echo $value->precedence; ?>">
-                                            <input type="hidden" name="docType[]"
+                                            <input type="text" name="docType[]"
                                                 id="docType_<?php echo $value->doc_id; ?>_<?php echo $value->ref_id; ?>"
                                                 class="form-control docType" value="<?php echo $value->uploaded_file_desc; ?>">
 

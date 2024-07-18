@@ -310,6 +310,12 @@ class Master extends CI_Controller
         }
     }
 
+    public function activeInactiveCurrentOpening($id, $status)
+    {
+        $this->commondatamodel->updateSingleTableData("current_openings", ["is_disabled" => $status], ["current_opening_id" => $id]);
+        redirect('master/current_openings', 'refresh');
+    }
+
 
     public function faq_view()
     {

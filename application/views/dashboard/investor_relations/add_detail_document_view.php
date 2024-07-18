@@ -4,7 +4,7 @@
 
             <input type="text" name="docType[]" id="docType_0_<?php echo $rowno; ?>" class="form-control docType"
                 value="">
-                <input type="text" name="precedence[]" id="precedence_0_<?php echo $rowno; ?>" class="form-control precedenceData"
+                <input type="hidden" name="precedence[]" id="precedence_0_<?php echo $rowno; ?>" class="form-control precedenceData"
                 value="1">
         </div>
         <input type="hidden" name="prvFilename[]" id="prvFilename_0_<?php echo $rowno; ?>"

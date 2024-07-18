@@ -47,7 +47,7 @@ class Media extends CI_Controller
             $status = trim($this->input->post('status'));
             $update_array = array("is_disabled" => $status);
             $where = array("id" => $updID);
-            $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where);
+            $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where, $updID);
             if ($update) {
                 $json_response = array(
                     "msg_status" => 1,
@@ -84,7 +84,7 @@ class Media extends CI_Controller
                     'title' => $title,
                     'video_id' => $link
                 );
-                $update_status = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_Arr, $where_array);
+                $update_status = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_Arr, $where_array, $videoId);
                 if ($update_status) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -118,7 +118,7 @@ class Media extends CI_Controller
                     $new_precedence_value = $precedence_value + 1;
                     $update_array = array("precedence" => $new_precedence_value);
                     $where = array("id" => $id);
-                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where);
+                    $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where, $id);
 
                 }
 
@@ -177,11 +177,11 @@ class Media extends CI_Controller
                                 $update_array1 = array("precedence" => $pre_sl);
 
                                 $where1 = array("doc_id" => $id, 'table_name' => $table_name, 'ref_id' => $ref_id);
-                                $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array1, $where1);
+                                $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array1, $where1, $ref_id);
 
                                 $update_array2 = array("precedence" => $slno);
                                 $where2 = array("doc_id" => $pre_docid, 'table_name' => $table_name, 'ref_id' => $ref_id);
-                                $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                                $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2, $ref_id);
 
                                 if ($update) {
                                     $json_response = array(
@@ -203,11 +203,11 @@ class Media extends CI_Controller
                                 $update_array = array("precedence" => $pre_sl);
 
                                 $where = array("id" => $id);
-                                $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where);
+                                $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where, $id);
 
                                 $update_array2 = array("precedence" => $slno);
                                 $where2 = array("id" => $pre_videoid);
-                                $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array2, $where2);
+                                $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array2, $where2, $pre_videoid);
 
                                 if ($update) {
                                     $json_response = array(
@@ -234,11 +234,11 @@ class Media extends CI_Controller
 
                         $update_array = array("precedence" => $slectedvalue, 'table_name' => $table_name, 'ref_id' => $ref_id);
                         $where = array("doc_id" => $id);
-                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $id);
 
                         $update_array2 = array("precedence" => $slno, 'table_name' => $table_name, 'ref_id' => $ref_id);
                         $where2 = array("doc_id" => $pre_docid);
-                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2, $pre_docid);
 
                         if ($update) {
                             $json_response = array(
@@ -258,11 +258,11 @@ class Media extends CI_Controller
 
                         $update_array = array("precedence" => $slectedvalue);
                         $where = array("id" => $id);
-                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where, $id);
 
                         $update_array2 = array("precedence" => $slno);
                         $where2 = array("id" => $pre_videoid);
-                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array2, $where2);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array2, $where2, $pre_videoid);
 
                         if ($update) {
                             $json_response = array(
@@ -290,11 +290,11 @@ class Media extends CI_Controller
 
                         $update_array = array("precedence" => $next_sl);
                         $where = array("doc_id" => $id, 'table_name' => $table_name, 'ref_id' => $ref_id);
-                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $id);
 
                         $update_array2 = array("precedence" => $slno);
                         $where2 = array("doc_id" => $next_doc_id, 'table_name' => $table_name, 'ref_id' => $ref_id);
-                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2);
+                        $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array2, $where2, $next_doc_id);
                         if ($update) {
                             $json_response = array(
                                 "msg_status" => 1,
@@ -318,11 +318,11 @@ class Media extends CI_Controller
 
                         $update_array = array("precedence" => $next_sl);
                         $where = array("id" => $id);
-                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array, $where, $id);
 
                         $update_array2 = array("precedence" => $slno);
                         $where2 = array("id" => $next_videoid);
-                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array2, $where2);
+                        $update = $this->commondatamodel->updateSingleTableData('fuel_videos', $update_array2, $where2, $next_videoid);
                         if ($update) {
                             $json_response = array(
                                 "msg_status" => 2,
@@ -393,6 +393,8 @@ class Media extends CI_Controller
             $mode = $this->input->post('mode');
             $docID = $this->input->post('docID');
             $title_desc = $this->input->post('title_desc');
+            $url = $this->input->post('url') ?: null;
+            $publication = $this->input->post('publication') ?: null;
 
             $userFileName = $this->input->post('userFileName');
             $isChangedFile = $this->input->post('isChangedFile');
@@ -432,11 +434,13 @@ class Media extends CI_Controller
                     'table_name' => 'media_master',
                     'ref_id' => $mediaMasterId,
                     'uploaded_file_desc' => $title_desc,
+                    'url' => $url,
+                    'publication' => $publication,
                     'random_file_name' => $random_genrate_name,
                     'user_file_name' => $userFileName,
                     'uploaded_by_user' => $session['userid']
                 );
-                $update_status = $this->commondatamodel->updateSingleTableData('document_details', $update_arr, $where_update);
+                $update_status = $this->commondatamodel->updateSingleTableData('document_details', $update_arr, $where_update, $docID);
                 if ($update_status) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -459,6 +463,8 @@ class Media extends CI_Controller
                     'table_name' => 'media_master',
                     'ref_id' => $mediaMasterId,
                     'uploaded_file_desc' => $title_desc,
+                    'url' => $url,
+                    'publication' => $publication,
                     'random_file_name' => $random_genrate_name,
                     'user_file_name' => $userFileName,
                     'precedence' => 1,
@@ -480,7 +486,7 @@ class Media extends CI_Controller
 
                     $update_array = ["precedence" => $new_precedence_value];
                     $where = array("table_name" => $table_name, "ref_id" => $ref_id, "doc_id" => $id);
-                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+                    $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $ref_id);
 
 
 
@@ -523,7 +529,7 @@ class Media extends CI_Controller
             $media_tag = trim($this->input->post('media_tag'));
             $update_array = array("is_disabled" => $status);
             $where = array("doc_id" => $updID);
-            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where);
+            $update = $this->commondatamodel->updateSingleTableData('document_details', $update_array, $where, $updID);
             if ($update) {
                 $json_response = array(
                     "msg_status" => 1,
@@ -678,7 +684,7 @@ class Media extends CI_Controller
                     'name' => $event_title,
                     'images' => $images_json,
                 );
-                $update_status = $this->commondatamodel->updateSingleTableData('happenings',$update_data,$where_update);
+                $update_status = $this->commondatamodel->updateSingleTableData('happenings',$update_data,$where_update, $eventHappiningId);
                 if ($update_status) {
                    
                     $json_response = array(
@@ -719,7 +725,7 @@ class Media extends CI_Controller
                      $new_precedence_value = $precedence_value+1;
                      $update_array  = array("precedence" => $new_precedence_value);                       
                      $where = array("id" => $id);
-                     $update = $this->commondatamodel->updateSingleTableData('happenings',$update_array,$where);
+                     $update = $this->commondatamodel->updateSingleTableData('happenings',$update_array,$where, $id);
  
                  }
                  /** end for reset serial */
@@ -782,11 +788,11 @@ class Media extends CI_Controller
                             $update_array = array("precedence" => $pre_sl);
 
                             $where = array("id" => $id);
-                            $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where);
+                            $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where, $id);
 
                             $update_array2 = array("precedence" => $slno);
                             $where2 = array("id" => $pre_Eventid);
-                            $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array2, $where2);
+                            $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array2, $where2, $pre_Eventid);
 
                             if ($update) {
                                 $json_response = array(
@@ -806,11 +812,11 @@ class Media extends CI_Controller
 
                     $update_array = array("precedence" => $slectedvalue);
                     $where = array("id" => $id);
-                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where);
+                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where, $id);
 
                     $update_array2 = array("precedence" => $slno);
                     $where2 = array("id" => $pre_Eventid);
-                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array2, $where2);
+                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array2, $where2, $pre_Eventid);
 
                     if ($update) {
                         $json_response = array(
@@ -831,11 +837,11 @@ class Media extends CI_Controller
 
                     $update_array = array("precedence" => $next_sl);
                     $where = array("id" => $id);
-                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where);
+                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where, $id);
 
                     $update_array2 = array("precedence" => $slno);
                     $where2 = array("id" => $next_Eventid);
-                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array2, $where2);
+                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array2, $where2, $next_Eventid);
                     if ($update) {
                         $json_response = array(
                             "msg_status" => 1,
@@ -864,7 +870,7 @@ class Media extends CI_Controller
             $status = trim($this->input->post('status'));
             $update_array = array("published" => $status);
             $where = array("id" => $uid);
-            $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where);
+            $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where, $uid);
             if ($update) {
                 $json_response = array(
                     "msg_status" => 1,

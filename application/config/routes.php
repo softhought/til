@@ -73,11 +73,13 @@ $route['product/fetchtemplatedata'] = 'Products/fetchtemplatedata';
 $route['product/fetchproductmodelpartialview'] = 'Products/productModelPartialView';
 $route['product/addeditspecsheet'] = 'Products/addEditSpecSheet';
 $route['product/activeinactivespecsheet'] = 'Products/activeInactiveSpecSheet';
+$route['master/resume_partial_view'] = 'Master/resume_partial_view';
+$route['unset_session'] = 'Dashboard/unset_session';
 
 /* -------------- About---------------------- */
 $route['about-us'] = "frontend/about";
 $route['about-us/corporate-profile'] = "frontend/about/corporate_profile";
-$route['about-us/board_of_directors'] = "frontend/about/board_of_directors";
+$route['about-us/board-of-directors'] = "frontend/about/board_of_directors";
 $route['about-us/milestones'] = "frontend/about/milestones";
 $route['about-us/vision-and-values'] = "frontend/about/vision_and_values";
 $route['about-us/corporate-social-responsibility'] = "frontend/about/corporate_social_responsibility";
@@ -163,6 +165,7 @@ $route["search/index"] = "frontend/Search";
 
 /* -------------- Admin Route ---------------------- */
 $route["mediaadmin"] = "media";
+$route["index"] = "Home";
 $route["admin"] = "Login";
 $route["product-list"] = "Products";
 $route["product-menu-add-edit/(:num)/(:any)/(:any)"] = "Products/menu_add_edit/$1/$2/$3";
@@ -175,3 +178,9 @@ $route["team/addeditaction"] = "team/addEditAction";
 
 /* -------------- Privecy Policy added by vikash ---------------------- */
 $route['privacy-policy'] = "frontend/privacypolicy";
+
+/* -------------- FAQ Route ---------------------- */
+$route['faq'] = "frontend/faq";
+
+/* -------------- Cookie Policy Route ---------------------- */
+$route['cookie-policy'] = "frontend/cookiepolicy";

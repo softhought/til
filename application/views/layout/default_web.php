@@ -10,23 +10,41 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="BJlnH_p-M_3TsmiUrd-MIRDZIzuNzvB7wn554c5Gtxw" />
+
   <script>
     (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '../www.google-analytics.com/analytics.js', 'ga');
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-8073479-18', 'auto');
     ga('send', 'pageview');
 
+
   </script>
-  <link rel="canonical" href="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->canonical_url ? $menu["seo_details"]->canonical_url : ""; ?>" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZWNNXMLL6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MZWNNXMLL6');
+  </script>
+  <link rel="canonical"
+    href="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->canonical_url ? $menu["seo_details"]->canonical_url : ""; ?>" />
   <meta name="msvalidate.01" content="E106D761105C04424A9ACCB1137CCE92" />
   <meta name="robots" content="noodp, noydir" />
 
-  <title><?php echo isset($menu["seo_details"]) && $menu["seo_details"]->page_title ? $menu["seo_details"]->page_title : ""; ?></title>
+  <title>
+    <?php echo isset($menu["seo_details"]) && $menu["seo_details"]->page_title ? $menu["seo_details"]->page_title : ""; ?>
+  </title>
 
   <meta name="keywords"
     content="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->seo_keyword ? $menu["seo_details"]->seo_keyword : ""; ?>">
@@ -59,7 +77,7 @@
     rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="assets//js/jquery-ui.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet"/>
+  <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -119,7 +137,11 @@
   <link href="<?php echo base_url(); ?>assets/css/slick.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/css/slick-theme.css?c=-62170003270" media="all" rel="stylesheet" />
   <div class="loader-center">
-    <div class="loader" style="display: none"></div>
+    <div style="text-align: center;display:none;" id="loader">
+      <img src="<?php echo base_url(); ?>assets/images/logos/output-onlinegiftools.gif" id="gear-loader"
+        style="height: 150px;" />
+
+    </div>
   </div>
   <!-- -------------Start Menu ----------------------- -->
   <div id="nav" class="nav navbar-fixed-top">
@@ -127,7 +149,7 @@
       <div class="container">
         <div class="row">
           <div class="logo">
-            <a href="index" title="">
+            <a href="<?php echo base_url(); ?>index" title="">
               <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="TIL Limited" class="img-responsive" /></a>
           </div>
           <samp class="mobl_button">
@@ -216,6 +238,7 @@
               <li class="last"><a href="<?php echo base_url(); ?>contact-us/inquiry">Inquiry</a></li>
             </ul>
           </li>
+          <!-- <li class="faq"><a href="<?php echo base_url(); ?>faq">FAQ</a></li> -->
         </ul>
       </div>
     </nav>
@@ -336,7 +359,15 @@
             </div>
             <!---- added by vikash 30-04-2024 ---->
             <!-- <a href="https://tilindia.in/privacy-policy" target="_blank"><p class="p-0">Privacy Policy</p></a> -->
-            <a href="<?php echo base_url(); ?>privacy-policy" target="_blank"><p class="p-0">Privacy Policy</p></a>
+            <a href="<?php echo base_url(); ?>privacy-policy" target="_blank">
+              <p class="p-0">Privacy Policy</p>
+            </a>
+            <?php if (isset($menu["faqMenu"])) { ?>
+              <a href="<?php echo base_url(); ?>faq" target="_blank">
+                <p class="p-0">FAQ</p>
+              </a>
+            <?php } ?>
+
             <!---- end by vikash 30-04-2024 ---->
           </div>
         </div>
@@ -389,9 +420,9 @@
         </svg>
       </button>
     </div>
-    <!-- Your form content goes here -->
-    <!--start contact form box-->
-    <script src='../www.google.com/recaptcha/api.js'></script>
+    <!-- <script
+      src="https://www.google.com/recaptcha/enterprise.js?render=6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8"></script> -->
+
     <div class="enquiry-form-overflow">
 
       <form enctype="multipart/form-data" class="contact_form" id="contact_form" method="POST" accept-charset="utf-8">
@@ -415,6 +446,8 @@
             </svg>
             <input type="text" name="name" value="" placeholder="Name" autocomplete="off" id="name" required="required"
               class="form-control" />
+            <span id="name_en-error" style="color: red; display: none;">The name field must be at least 5 character
+              in length</span>
           </div>
         </div>
         <div class="form-group">
@@ -427,7 +460,9 @@
                     d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
                 </svg>
                 <input type="tel" name="phone" value="" placeholder="Phone no." autocomplete="off" id="phone"
-                  required="required" class="form-control" />
+                  required="required" class="form-control" maxlength="10" />
+                <span id="phone_en-error" style="color: red; display: none;">Please enter a valid 10-digit phone
+                  number.</span>
               </div>
             </div>
             <div class="col-sm-6">
@@ -439,6 +474,8 @@
                 </svg>
                 <input type="email" name="email" value="" placeholder="E-mail" autocomplete="off" id="email"
                   required="required" class="form-control" />
+                <span id="email_en-error" style="color: red; display: none;">Please enter a valid email
+                  address.</span>
               </div>
             </div>
           </div>
@@ -502,9 +539,9 @@
             id="query" required="required" value="" class="form-control markitup"></textarea>
         </div>
         <div class="form-group">
-          <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+          <div class="g-recaptcha" data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
         </div>
-        <button type="submit" class="btn btn_contact">Submit</button>
+        <button type="submit" class="btn btn_contact" id="contact_form_button">Submit</button>
 
       </form>
     </div>
@@ -557,8 +594,10 @@
                       <path
                         d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                     </svg>
-                    <input type="text" name="name" value="" placeholder="Name" autocomplete="off" id="name"
-                      required="required" class="form-control" />
+                    <input type="text" name="name" value="" placeholder="Name" autocomplete="off"
+                      id="quotation_form_name" required="required" class="form-control" />
+                    <span id="name-error" style="color: red; display: none;">The name field must be at least 5 character
+                      in length</span>
                   </div>
                 </div>
                 <div class="form-group">
@@ -570,9 +609,12 @@
                           <path
                             d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
                         </svg>
-                        <input type="tel" name="phone" value="" placeholder="Phone no." autocomplete="off" id="phone"
-                          required="required" class="form-control" />
+                        <input type="tel" name="phone" value="" placeholder="Phone no." autocomplete="off"
+                          id="quotation_form_phone" required="required" class="form-control" maxlength="10" />
+                        <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone
+                          number.</span>
                       </div>
+
                     </div>
                     <div class="col-sm-6">
                       <label for="email">Email Address <span style="color:#f00">*</span></label>
@@ -581,8 +623,10 @@
                           <path
                             d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
                         </svg>
-                        <input type="email" name="email" value="" placeholder="E-mail" autocomplete="off" id="email"
-                          required="required" class="form-control" />
+                        <input type="email" name="email" value="" placeholder="E-mail" autocomplete="off"
+                          id="quotation_form_email" required="required" class="form-control" />
+                        <span id="email-error" style="color: red; display: none;">Please enter a valid email
+                          address.</span>
                       </div>
                     </div>
                   </div>
@@ -650,9 +694,9 @@
                     id="query" required="required" value="" class="form-control markitup"></textarea>
                 </div>
                 <div class="form-group">
-                  <div class="g-recaptcha" data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+                  <div class="g-recaptcha" data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" id="quotation_form_button">Submit</button>
                 <div class="scroll-top-wrapper "><span class="scroll-top-inner"><i
                       class="fa fa-2x fa-arrow-circle-up"></i></span>
                 </div>
@@ -710,7 +754,7 @@
                 }
               });
               //   tilindia.config=__FUEL_INIT_PARAMS__;
-              tilindia.base_url = "index";
+              tilindia.base_url = "<?php echo base_url(); ?>index";
             });
           </script>
 
@@ -773,26 +817,90 @@
           <script>
             $(document).ready(function () {
               var base_url = $("#basepath").val();
-              $("#quotation_form").submit(function (event) {
-                event.preventDefault();
-                var formData = new FormData($(this)[0]);
-                $.ajax({
-                  url: `${base_url}dashboard/submitquotation`,
-                  type: 'POST',
-                  dataType: "json",
-                  data: formData,
-                  processData: false,
-                  contentType: false,
-                  success: function (response) {
-                    if (response.status) {
-                      window.location.replace(`${base_url}thank-you`);
+              $('#quotation_form').submit(function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                if (validateQuotationInput() && validateForm()) {
+                  $("#quotation_form_button").prop("disabled", true);
+                  $("#quotation_form_button").html("Processing....");
+
+                  var formData = new FormData($(this)[0]);
+
+                  $.ajax({
+                    url: `${base_url}dashboard/submitquotation`,
+                    type: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                      $("#quotation_form_button").prop("disabled", false);
+                      $("#quotation_form_button").html("Submit");
+
+                      if (response.status) {
+                        window.location.replace(`${base_url}thank-you`);
+                      } else {
+                        // Handle error response if needed
+                        console.log(response.error);
+                      }
+                    },
+                    error: function (jqXHR, exception) {
+                      $("#quotation_form_button").prop("disabled", false);
+                      $("#quotation_form_button").html("Submit");
+                      console.log(jqXHR);
+                      console.log(exception);
                     }
-                  },
-                  error: function (jqXHR, exception) {
-                    console.log(jqXHR);
-                    console.log(exception);
-                  }
-                });
+                  });
+                }
+              });
+
+              // Input event listeners to hide error messages on input
+              $('#quotation_form_phone').on('input', function () {
+                $('#phone-error').hide();
+              });
+
+              $('#quotation_form_name').on('input', function () {
+                $('#name-error').hide();
+              });
+
+              $('#quotation_form_email').on('input', function () {
+                $('#email-error').hide();
+              });
+
+              $('#phone').on('input', function () {
+                $('#phone_en-error').hide();
+              });
+
+              $('#name').on('input', function () {
+                $('#name_en-error').hide();
+              });
+
+              $('#email').on('input', function () {
+                $('#email_en-error').hide();
+              });
+
+              $('#customer_name_tr').on('input', function () {
+                $('#customer_name_tr-error').hide();
+              });
+
+              $('#phone_tr').on('input', function () {
+                $('#phone_tr-error').hide();
+              });
+
+              $('#email_tr').on('input', function () {
+                $('#email_tr-error').hide();
+              });
+
+              $('#name_in').on('input', function () {
+                $('#name_in-error').hide();
+              });
+
+              $('#phone_in').on('input', function () {
+                $('#phone_in-error').hide();
+              });
+
+              $('#email_in').on('input', function () {
+                $('#email_in-error').hide();
               });
             });
           </script>
@@ -802,50 +910,64 @@
               var base_url = $("#basepath").val();
               $("#contact_form").submit(function (event) {
                 event.preventDefault();
-                var formData = new FormData($(this)[0]);
-                $.ajax({
-                  url: `${base_url}dashboard/submitcontactform`,
-                  type: 'POST',
-                  dataType: "json",
-                  data: formData,
-                  processData: false,
-                  contentType: false,
-                  success: function (response) {
-                    if (response.status) {
-                      window.location.replace(`${base_url}thank-you`);
+                if (validateEnqueryInput() && validateForm()) {
+                  $("#contact_form_button").prop("disabled", true);
+                  $("#contact_form_button").html("Processing....");
+                  var formData = new FormData($(this)[0]);
+                  $.ajax({
+                    url: `${base_url}dashboard/submitcontactform`,
+                    type: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                      if (response.status) {
+                        $("#contact_form_button").prop("disabled", false);
+                        $("#contact_form_button").html("Submit");
+                        window.location.replace(`${base_url}thank-you`);
+                      }
+                    },
+                    error: function (jqXHR, exception) {
+                      console.log(jqXHR);
+                      console.log(exception);
                     }
-                  },
-                  error: function (jqXHR, exception) {
-                    console.log(jqXHR);
-                    console.log(exception);
-                  }
-                });
+                  });
+                }
               });
 
               $("#contact_us_form").submit(function (event) {
                 event.preventDefault();
-                var formData = new FormData($(this)[0]);
-                $.ajax({
-                  url: `${base_url}dashboard/submitcontactform`,
-                  type: 'POST',
-                  dataType: "json",
-                  data: formData,
-                  processData: false,
-                  contentType: false,
-                  success: function (response) {
-                    if (response.status) {
-                      window.location.replace(`${base_url}thank-you`);
+                if (validateContactUsInput() && validateForm()) {
+                  $("#contact_us_button").prop("disabled", true);
+                  $("#contact_us_button").html("Processing....");
+                  var formData = new FormData($(this)[0]);
+                  $.ajax({
+                    url: `${base_url}dashboard/submitcontactform`,
+                    type: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                      if (response.status) {
+                        $("#contact_us_button").prop("disabled", false);
+                        $("#contact_us_button").html("Submit");
+                        window.location.replace(`${base_url}thank-you`);
+                      }
+                    },
+                    error: function (jqXHR, exception) {
+                      console.log(jqXHR);
+                      console.log(exception);
                     }
-                  },
-                  error: function (jqXHR, exception) {
-                    console.log(jqXHR);
-                    console.log(exception);
-                  }
-                });
+                  });
+                }
               });
 
               $("#submit_your_cv").submit(function (event) {
                 event.preventDefault();
+                $("#submit_your_cv_button").prop("disabled", true);
+                $("#submit_your_cv_button").html("Processing....");
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/submityourcv`,
@@ -856,6 +978,8 @@
                   contentType: false,
                   success: function (response) {
                     if (response.status) {
+                      $("#submit_your_cv_button").prop("disabled", false);
+                      $("#submit_your_cv_button").html("Submit");
                       window.location.replace(`${base_url}thank-you`);
                     }
                   },
@@ -868,29 +992,37 @@
 
               $("#training_form").submit(function (event) {
                 event.preventDefault();
-                var formData = new FormData($(this)[0]);
-                $.ajax({
-                  url: `${base_url}dashboard/submittrainingform`,
-                  type: 'POST',
-                  dataType: "json",
-                  data: formData,
-                  processData: false,
-                  contentType: false,
-                  success: function (response) {
-                    if (response.status) {
-                      window.location.replace(`${base_url}thank-you`);
+                if (validateTrainingInput() && validateForm()) {
+
+
+                  $("#training_form_button").prop("disabled", true);
+                  $("#training_form_button").val("Processing....");
+                  var formData = new FormData($(this)[0]);
+                  $.ajax({
+                    url: `${base_url}dashboard/submittrainingform`,
+                    type: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                      if (response.status) {
+                        $("#training_form_button").prop("disabled", false);
+                        $("#training_form_button").val("Submit");
+                        window.location.replace(`${base_url}thank-you`);
+                      }
+                    },
+                    error: function (jqXHR, exception) {
+                      console.log(jqXHR);
+                      console.log(exception);
                     }
-                  },
-                  error: function (jqXHR, exception) {
-                    console.log(jqXHR);
-                    console.log(exception);
-                  }
-                });
+                  });
+                }
               });
 
               $("#search_from").submit(function (event) {
                 event.preventDefault();
-                $(".loader").show();
+                $("#loader").show();
                 var formData = new FormData($(this)[0]);
                 $.ajax({
                   url: `${base_url}dashboard/searchfrom`,
@@ -934,6 +1066,14 @@
               $('li.<?php echo $bodycontent["active"] ?>').addClass('active');
             });
           </script>
+          <!-- <script>
+            function onClick(e) {
+              e.preventDefault();
+              grecaptcha.enterprise.ready(async () => {
+                const token = await grecaptcha.enterprise.execute('6Lde5c0pAAAAADzsbxrjkLT8VfetD8R-j6Hy-OV8', { action: 'LOGIN' });
+              });
+            }
+          </script> -->
           <script>
             jQuery(document).ready(function ($) {
               $(".sidebarlist").hide();
@@ -954,7 +1094,8 @@
               })
             });
           </script>
-          <script src="<?php echo base_url(); ?>assets/js/venobox.js?c=-62170003270" type="text/javascript" charset="utf-8"></script>
+          <script src="<?php echo base_url(); ?>assets/js/venobox.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script>
           <script type="text/javascript">
             $(document).ready(function () {
               $('.venobox').venobox({
@@ -970,8 +1111,8 @@
               });
             });
           </script>
-          <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"
-            charset="utf-8"></script>
+          <!-- <script src="<?php echo base_url(); ?>assets/js/html.js?c=-62170003270" type="text/javascript"
+            charset="utf-8"></script> -->
           <script src="<?php echo base_url(); ?>assets/js/common.js?c=-62170003270" type="text/javascript"
             charset="utf-8"></script>
 
@@ -1008,6 +1149,134 @@
 
             function closeForm() {
               document.getElementById("myForm").style.display = "none";
+            }
+
+            function validateQuotationInput() {
+              var phone = $('#quotation_form_phone').val();
+              var email = $('#quotation_form_email').val();
+              var phonePattern = /^[0-9]{10}$/;
+              var emailPattern = /^[^\s@]+@gmail\.com$/i;
+
+              var name = $("#quotation_form_name").val();
+              $('#phone-error').hide();
+              $('#name-error').hide();
+              $('#email-error').hide();
+
+              var status = true;
+
+              if (!phonePattern.test(phone)) {
+                $('#phone-error').show();
+                status = false;
+              }
+
+              if (name == "" || name.length < 5) {
+                $('#name-error').show();
+                status = false;
+              }
+
+              if (!emailPattern.test(email)) {
+                $('#email-error').show();
+                status = false;
+              }
+
+              return status;
+            }
+
+            function validateEnqueryInput() {
+              var phone = $('#phone').val();
+              var email = $('#email').val();
+
+              var phonePattern = /^[0-9]{10}$/;
+              var emailPattern = /^[^\s@]+@gmail\.com$/i;
+
+              var name = $("#name").val();
+              $('#phone_en-error').hide();
+              $('#name_en-error').hide();
+              $('#email_en-error').hide();
+
+              var status = true;
+
+              if (!phonePattern.test(phone)) {
+                $('#phone_en-error').show();
+                status = false;
+              }
+
+              if (name == "" || name.length < 5) {
+                $('#name_en-error').show();
+                status = false;
+              }
+
+              if (!emailPattern.test(email)) {
+                $('#email_en-error').show();
+                status = false;
+              }
+
+              return status;
+            }
+
+            function validateTrainingInput() {
+              var phone = $('#phone_tr').val();
+              var email = $('#email_tr').val();
+
+              var phonePattern = /^[0-9]{10}$/;
+              var emailPattern = /^[^\s@]+@gmail\.com$/i;
+
+              var name = $("#customer_name_tr").val();
+
+              $('#phone_tr-error').hide();
+              $('#customer_name_tr-error').hide();
+              $('#email_tr-error').hide();
+
+              var status = true;
+
+              if (!phonePattern.test(phone)) {
+                $('#phone_tr-error').show();
+                status = false;
+              }
+
+              if (name == "" || name.length < 5) {
+                $('#customer_name_tr-error').show();
+                status = false;
+              }
+
+              if (!emailPattern.test(email)) {
+                $('#email_tr-error').show();
+                status = false;
+              }
+
+              return status;
+            }
+
+            function validateContactUsInput() {
+              var phone = $('#phone_in').val();
+              var email = $('#email_in').val();
+
+              var phonePattern = /^[0-9]{10}$/;
+              var emailPattern = /^[^\s@]+@gmail\.com$/i;
+
+              var name = $("#name_in").val();
+              $('#phone_in-error').hide();
+              $('#name_in-error').hide();
+              $('#email_in-error').hide();
+
+              var status = true;
+
+              if (!phonePattern.test(phone)) {
+                $('#phone_in-error').show();
+                status = false;
+              }
+
+              if (name == "" || name.length < 5) {
+                $('#name_in-error').show();
+                status = false;
+              }
+
+              if (!emailPattern.test(email)) {
+                $('#email_in-error').show();
+                status = false;
+              }
+
+              return status;
             }
           </script>
           <iframe id="doenload_frame" style="display:none;"></iframe>
@@ -1282,5 +1551,15 @@
     </div>
   </div>
 </body>
+<script>
+  function validateForm() {
+    if (grecaptcha.getResponse() == "") {
+      alert("Please complete the reCAPTCHA to submit the form.");
+      return false;
+    }
+    return true;
+  }
+</script>
 
 </html>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

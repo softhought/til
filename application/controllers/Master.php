@@ -50,7 +50,7 @@ class Master extends CI_Controller
             $page = "dashboard/master/nature_of_query_add_edit.php";
             $header = "";
 
-            
+
             createbody_method($result, $page, $header, $session);
         } else {
             redirect('login', 'refresh');
@@ -69,7 +69,7 @@ class Master extends CI_Controller
 
             if ($mode == "ADD") {
 
-                $next_precedence=$this->mastermodel->get_next_precedence('fuel_nature_of_query','precedence',[]);
+                $next_precedence = $this->mastermodel->get_next_precedence('fuel_nature_of_query', 'precedence', []);
                 $insert_Arr = array(
                     'name' => $name,
                     'email' => $email,
@@ -98,7 +98,7 @@ class Master extends CI_Controller
                     'email' => $email,
                     'cc_to' => $cc_to,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('fuel_nature_of_query', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('fuel_nature_of_query', $data, $where, $queryid);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -125,12 +125,12 @@ class Master extends CI_Controller
 
     public function activeInactiveNatureofquery($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("fuel_nature_of_query", ["is_disabled" => $status], ["id" => $id]);
+        $this->commondatamodel->updateSingleTableData("fuel_nature_of_query", ["is_disabled" => $status], ["id" => $id], $id);
         redirect('master/nature_of_query', 'refresh');
     }
-   
-   
-   
+
+
+
     public function enquiry()
     {
         $session = $this->session->userdata('user_detail');
@@ -168,13 +168,23 @@ class Master extends CI_Controller
         if ($this->session->userdata('user_detail')) {
             $page = "dashboard/master/resume_view.php";
             $header = "";
-            $result['resumeList'] = $this->mastermodel->resumeList();
-            //  pre($result['participantList']);exit;
+            $result["function"] = $this->commondatamodel->getAllRecordWhereOrderByCol("functions_career", ["is_disabled" => 0], "precedence", "ASC");
             createbody_method($result, $page, $header, $session);
         } else {
             redirect('login', 'refresh');
         }
 
+    }
+
+    public function resume_partial_view()
+    {
+        $function_id = $_POST["function_id"] != "" ? $_POST["function_id"] : "";
+        $from_date = $_POST["from_date"] != "" ? (DateTime::createFromFormat('d/m/Y', $_POST["from_date"]))->format('Y-m-d') : "";
+        $to_date = $_POST["to_date"] != "" ? (DateTime::createFromFormat('d/m/Y', $_POST["to_date"])->format('Y-m-d')) : "";
+
+        $page = "dashboard/master/resume_partial_view.php";
+        $result['resumeList'] = $this->mastermodel->resumeList($function_id, $from_date, $to_date);
+        $this->load->view($page, $result);
     }
 
     public function customer_support_training()
@@ -228,7 +238,7 @@ class Master extends CI_Controller
             }
             $page = "dashboard/master/current_openings_add_edit.php";
             $header = "";
-          
+
 
             createbody_method($result, $page, $header, $session);
         } else {
@@ -275,7 +285,7 @@ class Master extends CI_Controller
                     'opening_title' => $opening_title,
                     'opening_description' => $opening_description,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('current_openings', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('current_openings', $data, $where, $current_opening_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -346,7 +356,7 @@ class Master extends CI_Controller
             $page = "dashboard/master/faq_add_edit.php";
             $header = "";
 
-            
+
             createbody_method($result, $page, $header, $session);
         } else {
             redirect('login', 'refresh');
@@ -362,10 +372,10 @@ class Master extends CI_Controller
             $mode = $this->input->post('mode');
             $faq_question = trim($this->input->post('faq_question'));
             $faq_answer = strtolower($this->input->post('faq_answer'));
-         
+
             if ($mode == "ADD") {
 
-                $next_precedence=$this->mastermodel->get_next_precedence('faq_details','precedence',[]);
+                $next_precedence = $this->mastermodel->get_next_precedence('faq_details', 'precedence', []);
                 $insert_Arr = array(
                     'faq_question' => $faq_question,
                     'faq_answer' => $faq_answer,
@@ -392,7 +402,7 @@ class Master extends CI_Controller
                     'faq_question' => $faq_question,
                     'faq_answer' => $faq_answer,
                 );
-                $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where);
+                $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where, $faq_del_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -419,7 +429,7 @@ class Master extends CI_Controller
 
     public function activeInactiveFaq($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id]);
+        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id], $id);
         redirect('master/faq_view', 'refresh');
     }
 
@@ -443,7 +453,7 @@ class Master extends CI_Controller
 
     public function activeInactiveFunctionscareer($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("functions_career", ["is_disabled" => $status], ["id" => $id]);
+        $this->commondatamodel->updateSingleTableData("functions_career", ["is_disabled" => $status], ["id" => $id], $id);
         redirect('master/functions_career', 'refresh');
     }
 
@@ -472,7 +482,7 @@ class Master extends CI_Controller
             $page = "dashboard/master/functions_career_add_edit.php";
             $header = "";
 
-            
+
             createbody_method($result, $page, $header, $session);
         } else {
             redirect('login', 'refresh');
@@ -487,10 +497,10 @@ class Master extends CI_Controller
             $functions_id = $this->input->post('functions_id');
             $mode = $this->input->post('mode');
             $functions_name = trim($this->input->post('functions_name'));
-         
+
             if ($mode == "ADD") {
 
-                $next_precedence=$this->mastermodel->get_next_precedence('functions_career','precedence',[]);
+                $next_precedence = $this->mastermodel->get_next_precedence('functions_career', 'precedence', []);
                 $insert_Arr = array(
                     'name' => $functions_name,
                     'precedence' => $next_precedence,
@@ -515,8 +525,8 @@ class Master extends CI_Controller
                 $data = array(
                     'name' => $functions_name
                 );
-             
-                $updateData = $this->commondatamodel->updateSingleTableData('functions_career', $data, $where);
+
+                $updateData = $this->commondatamodel->updateSingleTableData('functions_career', $data, $where, $functions_id);
                 if ($updateData) {
                     $json_response = array(
                         "msg_status" => 1,
@@ -541,5 +551,27 @@ class Master extends CI_Controller
         }
     }
 
+    public function getLastDayOfMonth($month_year)
+    {
+        list($month, $year) = explode('/', $month_year);
+        $month = (int) $month;
+        $year = (int) $year;
+
+        $days_in_month = [
+            1 => 31, // January
+            2 => ($year % 4 == 0 && ($year % 100 != 0 || $year % 400 == 0)) ? 29 : 28, // February
+            3 => 31, // March
+            4 => 30, // April
+            5 => 31, // May
+            6 => 30, // June
+            7 => 31, // July
+            8 => 31, // August
+            9 => 30, // September
+            10 => 31, // October
+            11 => 30, // November
+            12 => 31  // December
+        ];
+        return $days_in_month[$month] . '/' . $month . '/' . $year;
+    }
 
 }/* end of class  */

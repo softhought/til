@@ -34,6 +34,8 @@ class CustomerSupport extends CI_Controller
     public function training()
     {
         $page = "web_view/customer_support/training.php";
+        $result["interested_for_training"] = $this->commondatamodel->getAllRecordWhereOrderByCol("training", ["is_disabled" => 0], "precedence", "ASC");
+        $result["location"] = $this->commondatamodel->getAllRecordWhereOrderByCol("training_locations", ["is_disabled" => 0], "precedence", "ASC");
         $result["active"] = "customer-support";
         webbody_helper($result, $page);
     }

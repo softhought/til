@@ -208,15 +208,14 @@
                <div class="col-lg-3 col-lg-33 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                   <div class="list-group">
                      <?php 
-                     //foreach ($bodycontent['userslist'] as $user) {
-                         ?>
+                     foreach($bodycontent['userslist'] as $user) { ?>
                      <a href="javascript:;" id="<?php echo $user->id; ?>"
                         onclick="getUsersPermittedMenu(<?php echo $user->id; ?>);"
                         class="list-group-item serviceName text-center">
                         <h4 class="glyphicon glyphicon-user"> </h4>
                         <?php echo $user->name; ?>
                      </a>
-                     <?php //} ?>
+                     <?php } ?>
                   </div>
                </div>
                <div id="myjstree" class="col-sm-6">

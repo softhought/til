@@ -26,7 +26,7 @@ class Team extends CI_Controller
 
     public function activeInactive($id, $status)
     {
-        $this->commondatamodel->updateSingleTableData("team_member_master", ["is_disabled" => $status], ["team_member_id" => $id]);
+        $this->commondatamodel->updateSingleTableData("team_member_master", ["is_disabled" => $status], ["team_member_id" => $id], $id);
         redirect('team', 'refresh');
     }
 
@@ -40,10 +40,10 @@ class Team extends CI_Controller
             if ($id) {
                 $result["editData"] = $this->commondatamodel->getSingleRowByWhereCls("team_member_master", ["team_member_id" => $id]);
             }
-            
+
             $result["role"] = [
-                ["key" => "BOD", "value" => "BOD"],
-                ["key" => "MT", "value" => "MT"],
+                ["key" => "BOD", "value" => "Board of Directors"],
+                ["key" => "MT", "value" => "Management Team"],
             ];
 
             createbody_method($result, $page, $header, $session);
@@ -73,34 +73,46 @@ class Team extends CI_Controller
         ];
 
         if (isset($_FILES['member_picfile'])) {
-            $file = $_FILES['member_picfile'];
-            $fileTmpName = $file['tmp_name'];
-            $fileError = $file['error'];
-
             $uploadDir = 'tilindia/assets/images/';
+
             if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-
-            $currentDate = date('Y_m_d_H_i_s');
-            $uniqueHash = uniqid();
-            $originalFilename = $_FILES['member_picfile']['name'];
-            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
-
-            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
-            $fileDestination = $uploadDir . $newFilename;
-            if ($fileError === 0) {
-                if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                    $dataArr = array_merge($dataArr, [
-                        'member_pic' => $newFilename
-                    ]);
+                if (!mkdir($uploadDir, 0777, true)) {
+                    die("Failed to create directory: $uploadDir");
                 }
             }
+
+            $config = array(
+                'upload_path' => $uploadDir,
+                'allowed_types' => 'docx|doc|pdf|jpg|jpeg|png|txt|xls|xlsx',
+                'max_size' => '5120',
+                'max_filename' => '255',
+                'encrypt_name' => TRUE,
+            );
+
+            $this->load->library('upload', $config);
+
+            $_FILES['doc']['name'] = $_FILES['member_picfile']['name'];
+            $_FILES['doc']['type'] = $_FILES['member_picfile']['type'];
+            $_FILES['doc']['tmp_name'] = $_FILES['member_picfile']['tmp_name'];
+            $_FILES['doc']['error'] = $_FILES['member_picfile']['error'];
+            $_FILES['doc']['size'] = $_FILES['member_picfile']['size'];
+
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('doc')) {
+                $file_detail = $this->upload->data();
+                $newFilename = $file_detail['file_name'];
+
+                $dataArr = array_merge($dataArr, [
+                    'member_pic' => $newFilename
+                ]);
+
+            } 
         }
 
         if ($mode == "edit") {
             $team_member_id = $_POST["team_member_id"];
-            $status = $this->commondatamodel->updateSingleTableData("team_member_master", $dataArr, ["team_member_id" => $team_member_id]);
+            $status = $this->commondatamodel->updateSingleTableData("team_member_master", $dataArr, ["team_member_id" => $team_member_id], $team_member_id);
         } else {
             $status = $this->commondatamodel->insertSingleTableData("team_member_master", $dataArr);
         }

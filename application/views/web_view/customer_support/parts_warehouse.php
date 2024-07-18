@@ -90,7 +90,7 @@
                                             <div class="homepix">
                                                 <div class="box-behind"></div>
                                                 <img src="<?php echo base_url();?>tilindia/assets/images/parts-warehouse.jpg"
-                                                    class="img-responsive" alt="" srcset="">
+                                                    class="img-responsive" alt="parts-warehouse" srcset="">
                                             </div>
                                         </div>
 

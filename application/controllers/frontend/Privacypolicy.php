@@ -14,9 +14,7 @@ class Privacypolicy extends CI_Controller
     {
         
         $page = "web_view/privecy_policy.php";
-        $result["active"] = "Privacy Policy";
+        $result = [];
         webbody_helper($result, $page);
     }
-
-   
 }

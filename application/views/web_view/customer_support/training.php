@@ -95,7 +95,9 @@
                                             <div class="training-form ">
                                                 <p>(All Fields will be <span style="color:#f00">*</span>marked
                                                     mandatory) </p><br>
-                                                <form enctype="multipart/form-data" class="training_form" id="training_form" data-toggle="validator" role="form" method="POST" accept-charset="utf-8">
+                                                <form enctype="multipart/form-data" class="training_form"
+                                                    id="training_form" data-toggle="validator" role="form" method="POST"
+                                                    accept-charset="utf-8">
                                                     <div class="row">
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
@@ -125,7 +127,7 @@
                                                                 <input type="tel" name="phone" value=""
                                                                     placeholder="Phone Number" autocomplete="off"
                                                                     id="phone" tabindex="3" required="required"
-                                                                    class="form-control" />
+                                                                    maxlength="10" class="form-control" />
 
                                                             </div>
                                                         </div>
@@ -163,12 +165,12 @@
                                                                     class="form-control">
                                                                     <option value="" label="Please Select Module">Please
                                                                         Select Module</option>
-                                                                    <option value="3" label="Advanced Training Module">
-                                                                        Advanced Training Module</option>
-                                                                    <option value="2" label="Basic Module">Basic Module
-                                                                    </option>
-                                                                    <option value="1" label="Operators Training Module">
-                                                                        Operators Training Module</option>
+                                                                    <?php foreach ($bodycontent["interested_for_training"] as $key => $value) { ?>
+                                                                        <option value="<?php echo $value->id ?>"
+                                                                            label="<?php echo $value->name ?>">
+                                                                            <?php echo $value->name ?>
+                                                                        </option>
+                                                                    <?php } ?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -240,10 +242,13 @@
                                                                     class="form-control">
                                                                     <option value="" label="Please Select Location">
                                                                         Please Select Location</option>
-                                                                    <option value="1" label="TIL Premise">TIL Premise</option>    
-                                                                    <option value="2" label="Customer Site">Customer
-                                                                        Site</option>
-                                                                  
+                                                                    <?php foreach ($bodycontent["location"] as $key => $value) { ?>
+                                                                        <option value="<?php echo $value->id ?>"
+                                                                            label="<?php echo $value->name ?>">
+                                                                            <?php echo $value->name ?>
+                                                                        </option>
+                                                                    <?php } ?>
+
                                                                 </select>
 
                                                             </div>
@@ -257,8 +262,9 @@
                                                         </div>
                                                         <br>
                                                         <div class="col-md-12 col-12">
-                                                            <input type="submit" name="" id="" value="Submit"
-                                                                type="submit" tabindex="10" class="btn btn_contact" />
+                                                            <input type="submit" name="" id="training_form_button"
+                                                                value="Submit" type="submit" tabindex="10"
+                                                                class="btn btn_contact" />
                                                         </div>
                                                         <!--<button type="submit" class="btn btn_contact">Submit</button>-->
 

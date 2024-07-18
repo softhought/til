@@ -131,8 +131,8 @@
                                         <option value="">Select</option>
                                         <?php foreach ($bodycontent["role"] as $key => $value) { ?>
                                             <option value="<?php echo $value["key"] ?>" <?php if (isset($bodycontent["editData"]) && $bodycontent["editData"]->team_member_type == $value["key"]) {
-                                                echo "selected";
-                                            } ?>><?php echo $value["value"] ?></option>
+                                                   echo "selected";
+                                               } ?>><?php echo $value["value"] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -147,7 +147,7 @@
                             <div class="form-group" id="address_err">
                                 <div class="input-group input-group-sm">
                                     <textarea class="form-control" style="width: 100%;" name="address"
-                                        id="address"><?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->address : "" ?></textarea>
+                                        id="address"><?php echo isset($bodycontent["editData"]) ? str_replace('<br>', "\n", $bodycontent["editData"]->address) : "" ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                             <div class="form-group" id="about_err">
                                 <div class="input-group input-group-sm">
                                     <textarea class="form-control" style="width: 100%; height: 200px;" name="about"
-                                        id="about"><?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->about : "" ?></textarea>
+                                        id="about"><?php echo isset($bodycontent["editData"]) ? str_replace('<br>', "\n", $bodycontent["editData"]->about) : "" ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -224,20 +224,22 @@
                 $("#designation_err").css("border", "");
             }
 
-            if ($("#din_no").val().trim() === "") {
-                $("#din_no_err").css("border", "1px solid red");
-                $("#din_no_err").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#din_no_err").css("border", "");
-            }
+            if ($("#team_member_type").val().trim() === "BOD") {
+                if ($("#din_no").val().trim() === "") {
+                    $("#din_no_err").css("border", "1px solid red");
+                    $("#din_no_err").css("border-radius", "5px");
+                    valid = false;
+                } else {
+                    $("#din_no_err").css("border", "");
+                }
 
-            if ($("#address").val().trim() === "") {
-                $("#address_err").css("border", "1px solid red");
-                $("#address_err").css("border-radius", "5px");
-                valid = false;
-            } else {
-                $("#address_err").css("border", "");
+                if ($("#address").val().trim() === "") {
+                    $("#address_err").css("border", "1px solid red");
+                    $("#address_err").css("border-radius", "5px");
+                    valid = false;
+                } else {
+                    $("#address_err").css("border", "");
+                }
             }
 
             if ($("#about").val().trim() === "") {
@@ -267,7 +269,29 @@
             if (isValid) {
                 $("#loaderbtn").show();
                 $("#savebtn").hide();
-                var formData = new FormData($(this)[0]);
+
+                var formData = new FormData();
+                $("#teamform textarea").each(function () {
+                    var textAreaName = $(this).attr("name");
+                    var textAreaValue = $(this).val();
+                    var formattedValue = textAreaValue.replace(/\n/g, '<br>');
+                    formData.append(textAreaName, formattedValue);
+                });
+
+                $("#teamform input").each(function () {
+                    var inputName = $(this).attr("name");
+                    var inputValue = $(this).val();
+                    formData.append(inputName, inputValue);
+                });
+
+                $("#teamform input[type='file']").each(function () {
+                    var fileName = $(this).attr("name");
+                    var file = $(this)[0].files[0];
+                    formData.append(fileName, file);
+                });
+
+                formData.append("team_member_type", $("#team_member_type").val());
+
                 $.ajax({
                     url: `<?php echo base_url(); ?>team/addeditaction`,
                     type: 'POST',

@@ -1,6 +1,6 @@
 <section class="about_header">
     <img src="<?php echo base_url(); ?>assets/images/inner_page_banners/crushing_screening_plants.jpg"
-        class="img-responsive" height="400" alt="">
+        class="img-responsive" height="400" alt="crushing_screening_plants">
 </section>
 <section class="content_section">
     <div class="wrapper clearfix">

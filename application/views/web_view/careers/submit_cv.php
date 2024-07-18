@@ -19,7 +19,7 @@
     <div class="col-md-4 col-12" id="leftCol">
 
       <div class="homepix">
-        <img src="<?php echo base_url(); ?>tilindia/assets/images/submit-cv.png" alt="" srcset="">
+        <img src="<?php echo base_url(); ?>tilindia/assets/images/submit-cv.png" alt="submit-cv" srcset="">
       </div>
     </div>
 
@@ -59,7 +59,8 @@
                       <option value="" label="--select--">--select--</option>
                       <?php foreach ($bodycontent["functions_career"] as $key => $value) { ?>
                         <option value="<?php echo $value->id; ?>" label="<?php echo $value->name ?>">
-                          <?php echo $value->name ?></option>
+                          <?php echo $value->name ?>
+                        </option>
                       <?php } ?>
                     </select>
                   </div>
@@ -93,9 +94,12 @@
                       required="required" onchange="validate_size(this)" accept=".odt,.doc,.docx,.pdf"
                       class="form-control document_upload" />
                   </div>
+                  <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
+                  </div>
                 </div>
                 <div class="col-md-12 col-12">
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default" id="submit_your_cv_button">Submit</button>
                 </div>
               </div>
             </form>

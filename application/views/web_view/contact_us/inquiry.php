@@ -26,7 +26,7 @@
                             <!-- <h1></h1> -->
                             <p>Please fill up the form below:</p>
                             <!--start contact form box-->
-                            <script src='<?php echo base_url(); ?>www.google.com/recaptcha/api.js'></script>
+                            <!-- <script src='<?php echo base_url(); ?>www.google.com/recaptcha/api.js'></script> -->
                             <form  enctype="multipart/form-data" class="contact_form inquiry_form" id="contact_us_form" method="POST"
                                 accept-charset="utf-8">
                                 <div class="row">
@@ -49,7 +49,7 @@
 
                                             <label for="phone">Phone Number <span>*</span></label>
                                             <input type="tel" name="phone" value="" placeholder="Phone no."
-                                                autocomplete="off" id="phone" required="required"
+                                                autocomplete="off" id="phone" required="required" maxlength="10"
                                                 class="form-control" />
                                         </div>
                                     </div>
@@ -118,11 +118,11 @@
                                     <div class="col-md-12 col-12">
                                         <div class="form-group">
                                             <div class="g-recaptcha"
-                                                data-sitekey="6LcTb0cUAAAAAJwzhpLZQblK6Aud4iGFr9dJZkfg"></div>
+                                                data-sitekey="6LfQpAkqAAAAAOxDdAgJP0SNh5JjPWfi8wCvYAlr"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-12">
-                                        <button type="submit" class="btn btn_contact">Submit</button>
+                                        <button type="submit" class="btn btn_contact" id="contact_us_button">Submit</button>
                                     </div>
                                 </div>
 
@@ -136,4 +136,3 @@
             </div>
         </section>
     </div>
-</section>

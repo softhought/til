@@ -78,7 +78,7 @@ class Menupermission extends CI_Controller
                     "user_browser" => getUserBrowserName(),
                     "user_platform" => getUserPlatform()
                 );
-                $this->commondatamodel->insertSingleTableData('activity_log', $user_activity);
+                // $this->commondatamodel->insertSingleTableData('activity_log', $user_activity);
                 /** audit trail */
 
             }

@@ -27,6 +27,11 @@ if (!function_exists('webbody_helper')) {
             $result["seo_details"] = $CI->commondatamodel->getSingleRowByWhereCls("seo_details", ["page_url" => "home"]);
         }
 
+        $faqMenu = $CI->commondatamodel->getSingleRowByWhereCls("faq_details", ["is_disabled" => 0]);
+        if (!empty($faqMenu)) {
+            $result["faqMenu"] = true;
+        }
+
         $CI->template->setHeader($heared_menu_content);
         $CI->template->setBody($body_content_data);
         $CI->template->setMenu($result);

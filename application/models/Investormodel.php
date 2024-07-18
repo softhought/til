@@ -130,7 +130,7 @@ public function insertIntoUploadFile($data,$where_data,$dir_path)
            //  echo $this->db->last_query();
         }else{
           //  $errors = $this->upload->display_errors();
-          //  pre($errors);
+          // pre($errors);
         }
     }
 

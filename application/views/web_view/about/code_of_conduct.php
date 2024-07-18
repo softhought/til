@@ -28,7 +28,7 @@
                     <div class="homepix">
 
                       <img src="<?php echo base_url(); ?>tilindia/assets/images/code-of-conduct.jpg"
-                        class="img-responsive" alt="" srcset="">
+                        class="img-responsive" alt="rectangle" srcset="">
                     </div>
                   </div>
 

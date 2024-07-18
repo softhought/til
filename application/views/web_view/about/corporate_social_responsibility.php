@@ -32,7 +32,7 @@
                                             <div class="col-lg-4">
                                                 <div class="homepix">
                                                     <div class="box-behind"></div>
-                                                        <img src="<?php echo base_url();?>tilindia/assets/images/corporate-quote.jpg" class="img-responsive" alt="" srcset="">
+                                                        <img src="<?php echo base_url();?>tilindia/assets/images/corporate-quote.jpg" class="img-responsive" alt="corporate-quote" srcset="">
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-12 p-responsive">

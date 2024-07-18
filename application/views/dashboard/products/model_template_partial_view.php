@@ -120,7 +120,7 @@
                                                                             if ($key == "spec_sheet") { ?>
                                                                                 <td><input type="file" class="input-model-table" style="padding: initial; border: 0px;" name="<?php echo $key; ?>" id="<?php echo $key; ?>" accept="application/pdf"></td>
                                                                             <?php } else { ?>
-                                                                                <td><input type="text" class="input-model-table" name="<?php echo $key; ?>" id="<?php echo $key; ?>"></td>
+                                                                                <td><textarea type="text" class="input-model-table" name="<?php echo $key; ?>" id="<?php echo $key; ?>"></textarea></td>
                                                                         <?php } } ?>    
                                                                         <td><button type="submit" class="modelspecsubmit btn btn-sm action-button" style="margin-right: 7px;" data-prodectmodeldtid = <?php echo $modelValue->prodect_model_dt_id ?>>Save</button></td>
                                                                     </tr>
@@ -176,7 +176,27 @@
             e.preventDefault();
             e.stopImmediatePropagation();
             $(".modelspecsubmit").prop("disabled", true);
-            var formData = new FormData($(this)[0]);
+            var formData = new FormData();
+            var myformData = new FormData($(this)[0]);
+            $("#specsheetform textarea").each(function () {
+                var textAreaName = $(this).attr("name");
+                var textAreaValue = $(this).val();
+                var formattedValue = textAreaValue.replace(/\n/g, '<br>');
+                formData.append(textAreaName, formattedValue);
+            });
+
+            $("#specsheetform input").each(function () {
+                var inputName = $(this).attr("name");
+                var inputValue = $(this).val();
+                formData.append(inputName, inputValue);
+            });
+
+            $("#specsheetform input[type='file']").each(function () {
+                var fileName = $(this).attr("name");
+                var file = $(this)[0].files[0];
+                formData.append(fileName, file);
+            });
+            
             var prodect_model_dt_id = formData.get("spec_product_model_dt_id");
          
             $.ajax({
@@ -218,7 +238,7 @@
                         newRow += `</tr>`;
                         $(`#table-${prodect_model_dt_id} tbody tr.row-end`).before(newRow);
                         $(".modelspecsubmit").prop("disabled", false);
-                        $(`#table-${prodect_model_dt_id} tbody tr.row-end input`).val('');
+                        $(`#table-${prodect_model_dt_id} tbody tr.row-end textarea`).val('');
                     }
                 },
                 error: function (jqXHR, exception) {

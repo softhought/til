@@ -121,6 +121,7 @@ class Dashboard extends CI_Controller
 
     public function submitQuotation()
     {
+        $inputs = array();
         $organization = $_POST["organization"];
         $name = $_POST["name"];
         $phone = $_POST["phone"];
@@ -150,7 +151,22 @@ class Dashboard extends CI_Controller
             'ip_address' => $ip_address,
         ];
 
+
+        $inputs['organization'] = $organization;
+        $inputs['name'] = $name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['state_name'] = $state_name;
+        $inputs['country_name'] = $country_name;
+        $inputs['address'] = $address;
+        $inputs['query'] = $query;
+        $inputs['receipant'] = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 1]);
+        $inputs['product'] = $this->commondatamodel->getSingleRowByWhereCls("spec_sheet_details", ["spec_sheet_dt_id" => $spec_sheet_dt_id]);
+        $message = $this->load->view('mailers/quote', $inputs, TRUE);
+        $subject = "Get a Quote  ";
+
         $insertedId = $this->commondatamodel->insertSingleTableData("quotation_received", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "quotation_received", $insertedId);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);
@@ -163,6 +179,7 @@ class Dashboard extends CI_Controller
 
     public function submitContactForm()
     {
+        $inputs = array();
         $organization = $_POST["organization"];
         $name = $_POST["name"];
         $phone = $_POST["phone"];
@@ -192,7 +209,23 @@ class Dashboard extends CI_Controller
             'ip_address' => $ip_address,
         ];
 
+        $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => $nature_of_query_id]);
+        $inputs['organization'] = $organization;
+        $inputs['name'] = $name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['address'] = $address;
+        $inputs['state_name'] = $state_name;
+        $inputs['country_name'] = $country_name;
+        $inputs['nature_of_query'] = $nature_of_query->name;
+        $inputs['query'] = $query;
+        $inputs['receipant'] = $nature_of_query;
+
+        $message = $this->load->view('mailers/contact_us', $inputs, TRUE);
+        $subject = "Enquiry Form  ";
+
         $insertedId = $this->commondatamodel->insertSingleTableData("contact_us", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "contact_us", $insertedId);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);
@@ -244,7 +277,19 @@ class Dashboard extends CI_Controller
 
                     ];
 
+                    $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 7]);
+                    $inputs['name'] = $candidte_name;
+                    $inputs['function'] = $this->commondatamodel->getSingleRowByWhereCls("functions_career", ["id" => 7])->name;
+                    $inputs['qualification'] = $technical_qualification;
+                    $inputs['linkedInProfile'] = $linkedIn_profile;
+                    $inputs['message'] = $massage;
+                    $inputs['receipant'] = $nature_of_query;
+
+                    $message = $this->load->view('mailers/job_application', $inputs, TRUE);
+                    $subject = "Job Application Form  ";
+
                     $insertedId = $this->commondatamodel->insertSingleTableData("resume_submission", $dataArr);
+                    $this->sendEmailData($inputs, $subject, $message, "resume_submission", $insertedId);
 
                     if ($insertedId) {
                         echo json_encode(["status" => true]);
@@ -288,7 +333,24 @@ class Dashboard extends CI_Controller
             'ip_address' => $ip_address,
         ];
 
+        $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 10]);
+        $inputs['company_name'] = $company_name;
+        $inputs['name'] = $customer_name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['address'] = $address;
+        $inputs['training'] = $this->commondatamodel->getSingleRowByWhereCls("training", ["id" => $training_id])->name;
+        $inputs['training_month'] = $training_month;
+        $inputs['training_year'] = $training_year;
+        $inputs['location'] = $this->commondatamodel->getSingleRowByWhereCls("training_locations", ["id" => $location_id])->name;
+        $inputs['nature_of_query'] = $nature_of_query->name;
+        $inputs['receipant'] = $nature_of_query;
+
+        $message = $this->load->view('mailers/training', $inputs, TRUE);
+        $subject = "Training Form  ";
+
         $insertedId = $this->commondatamodel->insertSingleTableData("customer_support_training", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "customer_support_training", $insertedId);
 
         if ($insertedId) {
             echo json_encode(["status" => true]);
@@ -1109,12 +1171,11 @@ class Dashboard extends CI_Controller
     {
         $query = $_POST["key_val"];
         $jsonResult = $this->executePythonScript($query);
-
         if (json_decode($jsonResult)) {
             $decodeJson["content"] = json_decode($jsonResult);
             $decodeJson["query"] = $query;
             $_SESSION["search_result"] = json_encode($decodeJson);
-            
+
             echo json_encode(["status" => true, "data" => $jsonResult, "query" => $query]);
         } else {
             $_SESSION["search_result"] = json_encode(["query" => $query]);
@@ -1126,30 +1187,64 @@ class Dashboard extends CI_Controller
     }
 
     public function executePythonScript($keyWord)
-    { 
-        $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
+    {
+        //echo $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
+        $dir = "/var/www/scripts/script.py";
+        $pythonExecutable = "/usr/bin/python3";
+        if (file_exists($dir) && is_executable($dir)) {
+            $pythonScript = "{$pythonExecutable} {$dir}";
+            putenv("PYTHONIOENCODING=utf-8");
 
-        $pythonScript = "python {$dir}";
-        putenv("PYTHONIOENCODING=utf-8");
+            $command = "{$pythonScript} {$keyWord} 2>&1";
+            $output = shell_exec($command);
 
-        $command = "{$pythonScript} {$keyWord}";
-        $output = shell_exec($command);
-        
-        $decodedOutput = json_decode($output, true);
+            $decodedOutput = json_decode($output, true);
 
-        if ($decodedOutput !== null) {
+            if ($decodedOutput !== null) {
 
-            foreach ($decodedOutput as &$item) {
-                if (isset($item['content'])) {
-                    $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
+                foreach ($decodedOutput as &$item) {
+                    if (isset($item['content'])) {
+                        $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
+                    }
                 }
+
+                $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+                return $jsonOutput;
+            } else {
+                return "Failed to decode JSON output.";
             }
-
-            $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-
-            return $jsonOutput;
         } else {
-            return "Failed to decode JSON output.";
+            return "Error: Script file does not exist or is not executable.";
         }
     }
+
+    public function unset_session()
+    {
+        unset($_SESSION["isUserAllowed"]);
+        echo json_encode(["status" => true]);
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function sendEmailData($inputs, $subject, $message, $table, $insertedId, $fileLink = "")
+    {
+        // $status = SendEmail($inputs['receipant']->email, $subject, $message, $inputs['receipant']->cc_to, "", $fileLink);
+        $status = SendEmail("sumanvar405@gmail.com", $subject, $message, "", "", $fileLink);
+
+        $dataArr = [
+            'user_refid' => $insertedId,
+            'email' => $inputs['receipant']->email,
+            'table_name' => $table,
+            'sub' => $subject,
+            'msg' => $message,
+            'to_cc_mail' => $inputs['receipant']->cc_to,
+            'mail_status' => $status,
+            'file_link' => $fileLink
+        ];
+
+        $insertedRow = $this->commondatamodel->insertSingleTableData("email_detail", $dataArr);
+        return $insertedRow;
+    }
+
 }

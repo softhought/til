@@ -38,7 +38,7 @@
 
 			 if(is_array($layouts) && count($layouts) >= 1)
 			 {
-
+				$param['bodycontent'] =   $this->body;
 					//pre($layouts);
 					foreach($layouts as $layouts_key => $layout)
 					{

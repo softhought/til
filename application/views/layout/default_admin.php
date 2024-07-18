@@ -232,6 +232,10 @@ if(!empty($check)){
     .displaynone {
         display: none !important;
     }
+
+    .cke_notifications_area{
+        display: none !important;
+    }
     </style>
 
     <!-- custome css  -->
@@ -506,7 +510,7 @@ if(!empty($check)){
 
     <script>
     $(document).ready(function() {
-
+        window.alert = function() {};
         $(".more-read").click(function () {
                 var elipseId = $(this).attr("data-target");
                 var buttonText = $(this).text();

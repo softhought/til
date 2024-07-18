@@ -83,7 +83,7 @@ $(document).ready(function () {
     if (valiadteMaster()) {
         if (detailDocumentValidation()) {
             $("#savebtn").css("display", "none");
-            $("#loader").css("display", "block");
+            $("#loaderbtn").css("display", "inline");
             $.ajax({
                 url: basepath + "investor/investor_relation_action",
                 type: "POST",
@@ -94,12 +94,12 @@ $(document).ready(function () {
                 success: function(data) {
                     if (data.msg_status == 1) {
                         $("#msg").text(data.msg_data);
-                        $("#loader").css("display", "none");
-                        if(mode=="EDIT"){ $("#savebtn").css("display", "block");}
+                        $("#loaderbtn").css("display", "none");
+                        if(mode=="EDIT"){ $("#savebtn").css("display", "inline");}
                     }else{
                         $("#msg").text(data.msg_data);
-                        $("#savebtn").css("display", "block");
-                        $("#loader").css("display", "none");
+                        $("#savebtn").css("display", "inline");
+                        $("#loaderbtn").css("display", "none");
                     }
                   
                 },
@@ -146,7 +146,7 @@ $(document).ready(function () {
 			dataType: "html",
 			data: { rowNo: rowNoUpload },
 			success: function (result) {
-				//$("#detail_Document table").css("display", "block");
+				//$("#detail_Document table").css("display", "inline");
 				$("#detail_Document table tbody").append(result);
 				$(".select2").select2();
                 var precedence=1;

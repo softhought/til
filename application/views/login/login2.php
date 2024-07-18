@@ -34,28 +34,16 @@
                         <!-- <h3>𝘾𝙝𝙞𝙡𝙙 𝙄𝙣 𝙉𝙚𝙚𝙙 𝙄𝙣𝙨𝙩𝙞𝙩𝙪𝙩𝙚</h3> -->
                         <h3>Tractors India Limited - TIL</h3>
                         <hr style="border: 1px dashed #a9a0a0;color:#fff">
-                        <!-- <div class="cini_info">
-                           <h4 style="color: #ece918;">It works with the mission to ensure children and adolescents
-                              achieve their rights to education
+                        <div class="cini_info">
+                           <h4 style="color: #ece918;">TIL as an organization stands for Technology, Innovation and Leadership
                            </h4>
                           
                            <br>
                            <h6>
-                              - Data collection of all childen
+                              - TIL Limited has been a valuable partner in India's infrastructure development since 1944, and is reckoned for offering a diverse range of infrastructure equipment representing some of the finest in global technology. Starting from 2023, TIL Limited has seamlessly integrated itself into Indocrest Defence Services Private Limited (IDSPL), a subsidiary of Gainwell Group.
                            </h6>
-                           <h6>
-                              - Attendance tracking in school / community center
-                           </h6>
-                           <h6>
-                              - Follow up each child for better care
-                           </h6>
-                           <h6>
-                              - Examination procedure for all children to evaluate their level properly
-                           </h6>
-                           <h6>
-                              - Analytics
-                           </h6>
-                        </div> -->
+                           
+                        </div> 
                      </div>
                   </div>
                </div>

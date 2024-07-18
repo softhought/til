@@ -35,7 +35,7 @@
                         <h1 style="line-height:40px"><?php echo $bodycontent["investorRelationsDetails"]->title ?></h1>
 
                         <figure>
-                            <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="" srcset="">
+                            <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="Rectangle" srcset="">
                             <hr>
                         </figure>
                     </div>

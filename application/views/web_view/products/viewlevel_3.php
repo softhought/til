@@ -27,15 +27,7 @@
                         <div class="homepix">
 
                             <div class="box-behind"></div>
-
-                            <img src="<?php echo base_url(); ?>tilindia/assets/images/<?php 
-                             if($bodycontent["main-section"][0]->left_image!="") {
-                                echo $bodycontent["main-section"][0]->left_image; 
-                            } else {
-                                echo $bodycontent["main-section"][0]->catagory_image; 
-                            }
-                             ?>"
-
+                            <img src="<?php echo base_url(); ?>tilindia/assets/images/<?php echo $bodycontent["main-section"][0]->left_image; ?>"
                                 class="img-responsive" alt="<?php echo $bodycontent["main-section"][0]->name; ?>" />
 
                         </div>
@@ -143,17 +135,11 @@
                                                         <?php } else { ?>
 
                                                             <td class="column-<?php echo $index; ?>">
-
                                                                 <a href="<?php echo base_url(); ?>assets/pdf/<?php echo $value->$column; ?>"
-
                                                                     target="_blank"><img
-
                                                                         src="<?php echo base_url(); ?>tilindia/assets/images/pdf2.png"
-
                                                                         alt="pdf2" width="22" height="22">
-
                                                                 </a>
-
                                                             </td>
 
                                                         <?php }

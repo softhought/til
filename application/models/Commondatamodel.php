@@ -41,7 +41,7 @@ class Commondatamodel extends CI_Model
 
 				$this->db->trans_commit();
 
-				//  $this->insertLogData($table,$data,$lastinsert_id,'Insert');
+				$this->insertLogData($table, $data, $lastinsert_id, 'Insert');
 
 				return $lastinsert_id;
 
@@ -57,7 +57,7 @@ class Commondatamodel extends CI_Model
 
 
 
-	public function updateSingleTableData($table, $data, $where)
+	public function updateSingleTableData($table, $data, $where, $updateId = null)
 	{
 		try {
 
@@ -87,7 +87,9 @@ class Commondatamodel extends CI_Model
 
 				$this->db->trans_commit();
 
-
+				if ($updateId) {
+					$this->insertLogData($table, $data, $updateId, 'Update');
+				}
 
 				return TRUE;
 
@@ -116,13 +118,13 @@ class Commondatamodel extends CI_Model
 
 	/* 
 
-		   @insertMultiTableData('name of table array','insert value as array')
+			  @insertMultiTableData('name of table array','insert value as array')
 
-		   @date 14.11.2017
+			  @date 14.11.2017
 
-		   @By Mithilesh
+			  @By Mithilesh
 
-	   */
+		  */
 
 
 
@@ -566,9 +568,9 @@ class Commondatamodel extends CI_Model
 
 	/*
 
-	   @updateData_WithUserActivity('update table name','update table data','update table where condition','user activity table name','user activity table data');
+		  @updateData_WithUserActivity('update table name','update table data','update table where condition','user activity table name','user activity table data');
 
-	   */
+		  */
 
 	public function updateData_WithUserActivity($upd_tbl_name, $upd_data, $upd_where, $user_actvty_tbl, $user_actvy_data)
 	{
@@ -619,13 +621,13 @@ class Commondatamodel extends CI_Model
 
 	/* fetching Data For All type of document from any module
 
-	   *  @getDocumentDetailData('where upload_from_module_id,upload_from_module');
+		  *  @getDocumentDetailData('where upload_from_module_id,upload_from_module');
 
-	   *  On 23.01.2018
+		  *  On 23.01.2018
 
-	   *  By Mithilesh
+		  *  By Mithilesh
 
-	   */
+		  */
 
 
 
@@ -709,17 +711,17 @@ class Commondatamodel extends CI_Model
 
 	/**
 
-	 * @author Abhik
+		* @author Abhik
 
-	 * @param type $table
+		* @param type $table
 
-	 * @param type $column
+		* @param type $column
 
-	 * @param type $dataType
+		* @param type $dataType
 
-	 * @return boolean
+		* @return boolean
 
-	 */
+		*/
 
 
 
@@ -1220,7 +1222,7 @@ class Commondatamodel extends CI_Model
 
 			"data_array" => json_encode($data_array),
 
-			"user_id" => $session['userid'],
+			"user_id" => isset($session['userid']) ? $session['userid'] : "",
 
 			"user_browser" => getUserBrowserName(),
 
@@ -1518,7 +1520,7 @@ class Commondatamodel extends CI_Model
 
 
 	}
-	
+
 	public function getAllRecordGroupBy($table, $col, $totable, $join, $groupBy, $orderby, $where = [])
 	{
 

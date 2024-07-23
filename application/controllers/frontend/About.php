@@ -23,6 +23,8 @@ class About extends CI_Controller
     {       
         $page="web_view/about/corporate_profile.php";
         $result["product"] = $this->productsmenu->getNonParentRecords("product_master", "product_master_id", "ASC");
+
+        // pre($result["product"]);exit;
         $result["active"] = "about";
         webbody_helper($result, $page);
     }

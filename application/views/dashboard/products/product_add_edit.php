@@ -194,6 +194,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="groupname"> General Description</label>
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm">
+                                    <textarea class="form-control ckeditor" style="width: 100%;" name="general_description"
+                                        id="general_description"><?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->general_description : "" ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <div class="p-3" style="margin-top: -35px">
                     <div class="row">

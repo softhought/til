@@ -78,6 +78,13 @@
   <link href="<?php echo base_url(); ?>assets/css/jquery.fancybox.css?c=-62170003270" media="all" rel="stylesheet" />
   <link href="assets//js/jquery-ui.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/css/venobox.css?c=-62170003270" media="all" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -137,6 +144,7 @@
       border-radius: 4px;
       font-weight: bold;
     }
+
   </style>
   <style>
     .accordion {
@@ -404,11 +412,11 @@
               <li class="last"><a href="<?php echo base_url(); ?>about-us/facilities">Facilities</a></li>
             </ul>
           </li>
-          <!-- <li class="products">
+          <li class="products">
             <a href="<?php echo base_url(); ?>products" class="dropdown-toggle">Products <span class="caret"></span></a>
             <?php echo $menu["product_menu"]; ?>
-          </li> -->
-          <li class="products"><a href="<?php echo base_url(); ?>products">Products</a>
+          </li>
+          <!-- <li class="products"><a href="<?php echo base_url(); ?>products">Products</a> -->
           <li class="customer-support"><a href="<?php echo base_url(); ?>customer-support">Customer Support <span
                 class="caret"></span></a>
             <ul class="dropdown-menu dropdownhover-bottom">
@@ -1278,6 +1286,7 @@
                   }
                 });
               });
+              
             });
           </script>
           <script>
@@ -1821,5 +1830,71 @@
 <script>
   $(".onlynumber").bind("keyup paste", function () {
     this.value = this.value.replace(/[^0-9]/g, "");
+  });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggleButton = document.querySelector('.toggle-button');
+    var content = document.querySelector('.content');
+
+    toggleButton.addEventListener('click', function () {
+      this.classList.toggle('active');
+
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+      }
+    });
+  });
+
+  $(document).ready(function () {
+    $('#testimonial-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      arrows: true,
+      dots: false,
+      prevArrow: '<button type="button" class="slick-prev" style="display: block; font-size: 50px;"></button>',
+      nextArrow: '<button type="button" class="slick-next" style="display: block; font-size: 50px;"></button>',
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.review-rating').forEach(function (ratingElement) {
+      const ratingValue = parseFloat(ratingElement.getAttribute('data-rating'));
+      const ratingContainer = ratingElement.querySelector('.rating');
+      const ratingText = ratingElement.querySelector('.rating-text');
+
+      const fullStars = Math.floor(ratingValue);
+      const halfStars = (ratingValue % 1) >= 0.5 ? 1 : 0;
+      const emptyStars = 5 - fullStars - halfStars;
+
+      for (let i = 0; i < fullStars; i++) {
+        const star = document.createElement('i');
+        star.className = 'fas fa-star';
+        ratingContainer.appendChild(star);
+      }
+
+      if (halfStars > 0) {
+        const halfStar = document.createElement('i');
+        halfStar.className = 'fas fa-star-half-alt';
+        ratingContainer.appendChild(halfStar);
+      }
+
+      for (let i = 0; i < emptyStars; i++) {
+        const star = document.createElement('i');
+        star.className = 'far fa-star';
+        ratingContainer.appendChild(star);
+      }
+
+      ratingText.textContent = ratingValue.toFixed(1);
+    });
   });
 </script>

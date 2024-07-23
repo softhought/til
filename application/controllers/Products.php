@@ -152,13 +152,15 @@ class Products extends CI_Controller
         $title = $_POST["title"];
         $short_description = $_POST["short_description"];
         $description = $_POST["description"];
+        $general_description = $_POST["general_description"];
 
         $dataArr = [
             'slug' => $slug,
             'parent_id' => $parent_id,
             'name' => $title,
             'short_description' => $short_description,
-            'about' => $description
+            'about' => $description,
+            'general_description' => $general_description
         ];
 
         if (isset($_FILES['bannerimagefile'])) {

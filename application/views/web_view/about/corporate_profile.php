@@ -84,23 +84,24 @@
                                 <div class="row px-20">
 
                                     <ul class="offered-product-showcase">
-                                        <?php foreach ($bodycontent["product"] as $key => $value) { ?>
-                                            <a
-                                                href="<?php echo base_url() . $value["url"] ?>">
-                                                <li> <?php echo $value["name"] ?> </li>
-                                            </a>
-                                        <?php } ?>
+                                        <?php foreach ($bodycontent["product"] as $key => $value) {
+                                            if ($value['level'] < 4) { ?>
+                                                <a href="<?php echo base_url() . $value["url"] ?>">
+                                                    <li> <?php echo $value["name"] ?> </li>
+                                                </a>
+                                            <?php }
+                                        } ?>
                                     </ul>
 
                                 </div>
 
                                 <div class="row mt-040 mb-040 ">
 
-                                    <div class="col-lg-3 col-12">
+                                    <div class="col-md-4">
                                         <img src="<?php echo base_url(); ?>/tilindia/assets/images/til-300x137.jpg"
                                             class="iso-img" alt="till" srcset="">
                                     </div>
-                                    <div class="col-lg-9 col-12">
+                                    <div class="col-md-8 col-12">
                                         <p class="m-0 fw-400">Our unwavering commitment lies in the pursuit of
                                             establishing a sustainable institution and securing a sustainable future for
                                             all stakeholders.<br /><br />The ISO 9001 certification signifies our

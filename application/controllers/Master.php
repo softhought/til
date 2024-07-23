@@ -7,6 +7,7 @@ class Master extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->model('mastermodel', 'mastermodel', TRUE);
+        $this->load->model('productsmenu', 'productsmenu', TRUE);
         $this->load->model('Usermodel', 'user', TRUE);
 
     }
@@ -324,7 +325,7 @@ class Master extends CI_Controller
             $page = "dashboard/master/faq_view.php";
             $header = "";
             $orderby = 'precedence';
-            $result['faqList'] = $this->commondatamodel->getAllRecordWhereOrderBy('faq_details', [], $orderby);
+            $result['faqList'] = $this->mastermodel->getFaqRecordWhereOrderByCol();
 
             //  pre($result['participantList']);exit;
             createbody_method($result, $page, $header, $session);
@@ -332,6 +333,12 @@ class Master extends CI_Controller
             redirect('login', 'refresh');
         }
 
+    }
+
+    public function activeInactiveFaq($id, $status)
+    {
+        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id], $id);
+        redirect('master/faq_view', 'refresh');
     }
 
     public function faq_add_edit()
@@ -353,6 +360,9 @@ class Master extends CI_Controller
                 $result['faqEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('faq_details', $where);
 
             }
+
+            $result['productList'] = $this->productsmenu->getLastChildProducts();
+            $result['modelList'] = $this->commondatamodel->getAllRecordWhereOrderByCol('spec_sheet_details', ["is_disabled" => 0], "spec_sheet_dt_id", "ASC");
             $page = "dashboard/master/faq_add_edit.php";
             $header = "";
 
@@ -372,6 +382,8 @@ class Master extends CI_Controller
             $mode = $this->input->post('mode');
             $faq_question = trim($this->input->post('faq_question'));
             $faq_answer = strtolower($this->input->post('faq_answer'));
+            $product_id = $this->input->post('product_id');
+            $model_id = $this->input->post('model_id');
 
             if ($mode == "ADD") {
 
@@ -379,6 +391,8 @@ class Master extends CI_Controller
                 $insert_Arr = array(
                     'faq_question' => $faq_question,
                     'faq_answer' => $faq_answer,
+                    'product_id' => $product_id,
+                    'model_id' => $model_id,
                     'precedence' => $next_precedence,
                 );
                 $insertId = $this->commondatamodel->insertSingleTableData('faq_details', $insert_Arr);
@@ -401,6 +415,8 @@ class Master extends CI_Controller
                 $data = array(
                     'faq_question' => $faq_question,
                     'faq_answer' => $faq_answer,
+                    'product_id' => $product_id,
+                    'model_id' => $model_id,
                 );
                 $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where, $faq_del_id);
                 if ($updateData) {
@@ -427,10 +443,188 @@ class Master extends CI_Controller
         }
     }
 
-    public function activeInactiveFaq($id, $status)
+    public function review_view()
     {
-        $this->commondatamodel->updateSingleTableData("faq_details", ["is_disabled" => $status], ["faq_del_id" => $id], $id);
-        redirect('master/faq_view', 'refresh');
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $page = "dashboard/master/review_view.php";
+            $header = "";
+
+            $result['reviewList'] = $this->mastermodel->getReviewRecordWhereOrderByCol();
+
+            //  pre($result['participantList']);exit;
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
+    public function activeInactiveReview($id, $status)
+    {
+        $this->commondatamodel->updateSingleTableData("customer_review", ["is_disabled" => $status], ["id" => $id], $id);
+        redirect('master/review_view', 'refresh');
+    }
+
+    public function review_add_edit()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            if ($this->uri->segment(3) == NULL) {
+                $result['mode'] = "ADD";
+                $result['btnText'] = "Create";
+                $result['btnTextLoader'] = "Saving...";
+                $result['id'] = 0;
+                $result['faqEditdata'] = [];
+            } else {
+                $result['mode'] = "EDIT";
+                $result['btnText'] = "Update";
+                $result['btnTextLoader'] = "Updating...";
+                $result['id'] = $this->uri->segment(3);
+                $where = array('id' => $result['id']);
+                $result['reviewEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('customer_review', $where);
+
+            }
+
+            $result['productList'] = $this->productsmenu->getLastChildProducts();
+            $result['modelList'] = $this->commondatamodel->getAllRecordWhereOrderByCol('spec_sheet_details', ["is_disabled" => 0], "spec_sheet_dt_id", "ASC");
+            $page = "dashboard/master/review_add_edit.php";
+            $header = "";
+
+
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+
+    }
+
+    public function review_action()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $id = $this->input->post('id');
+            $mode = $this->input->post('mode');
+            $product_id = trim($this->input->post('product_id'));
+            $model_id = strtolower($this->input->post('model_id'));
+            $name = $this->input->post('name');
+            $occupation = $this->input->post('occupation');
+            $review = $this->input->post('review');
+            $rating_value = $this->input->post('rating_value');
+
+            if ($mode == "ADD") {
+
+                $insert_Arr = array(
+                    'name' => $name,
+                    'occupation' => $occupation,
+                    'review' => $review,
+                    'rating' => $rating_value,
+                    'product_id' => $product_id,
+                    'model_id' => $model_id,
+                );
+
+                if (isset($_FILES['imagefile'])) {
+                    $file = $_FILES['imagefile'];
+                    $fileTmpName = $file['tmp_name'];
+                    $fileError = $file['error'];
+
+                    $uploadDir = 'assets/docs/review/';
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+
+                    $currentDate = date('Y_m_d_H_i_s');
+                    $uniqueHash = uniqid();
+                    $originalFilename = $_FILES['imagefile']['name'];
+                    $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+                    $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+                    $fileDestination = $uploadDir . $newFilename;
+                    if ($fileError === 0) {
+                        if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                            $insert_Arr = array_merge($insert_Arr, [
+                                'image' => $newFilename
+                            ]);
+                        }
+                    }
+                }
+
+                $insertId = $this->commondatamodel->insertSingleTableData('customer_review', $insert_Arr);
+                if ($insertId) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Saved successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+
+            } else {
+                $where = array(
+                    "id" => $id
+                );
+
+                $data = array(
+                    'name' => $name,
+                    'occupation' => $occupation,
+                    'review' => $review,
+                    'rating' => $rating_value,
+                    'product_id' => $product_id,
+                    'model_id' => $model_id,
+                );
+
+                if (isset($_FILES['imagefile'])) {
+                    $file = $_FILES['imagefile'];
+                    $fileTmpName = $file['tmp_name'];
+                    $fileError = $file['error'];
+
+                    $uploadDir = 'assets/docs/review/';
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+
+                    $currentDate = date('Y_m_d_H_i_s');
+                    $uniqueHash = uniqid();
+                    $originalFilename = $_FILES['imagefile']['name'];
+                    $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+                    $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+                    $fileDestination = $uploadDir . $newFilename;
+                    if ($fileError === 0) {
+                        if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                            $data = array_merge($data, [
+                                'image' => $newFilename
+                            ]);
+                        }
+                    }
+                }
+
+                $updateData = $this->commondatamodel->updateSingleTableData('customer_review', $data, $where, $id);
+
+                if ($updateData) {
+                    $json_response = array(
+                        "msg_status" => 1,
+                        "msg_data" => "Updates successfully"
+                    );
+                } else {
+                    $json_response = array(
+                        "msg_status" => 0,
+                        "msg_data" => "something wrong!"
+                    );
+                }
+            }
+
+
+
+
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit;
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
 
@@ -574,4 +768,17 @@ class Master extends CI_Controller
         return $days_in_month[$month] . '/' . $month . '/' . $year;
     }
 
-}/* end of class  */
+    public function schedule_a_call()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+            $page = "dashboard/master/schedule_a_call.php";
+            $header = "";
+            $result['callRequestList'] = $this->mastermodel->ScheduleCallWithExpertList();
+
+            createbody_method($result, $page, $header, $session);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+}

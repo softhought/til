@@ -5,21 +5,21 @@
 
 $currentURL = current_url();
 $baseurl = base_url();
-$baseurllen=strlen($baseurl);
-$mainurl=substr($currentURL, $baseurllen); 
-$slug = explode('/',$mainurl);
+$baseurllen = strlen($baseurl);
+$mainurl = substr($currentURL, $baseurllen);
+$slug = explode('/', $mainurl);
 
 $parameter = $slug[0];
-if(isset($slug[1])){
-$parameter = $slug[0]."/".$slug[1];
+if (isset($slug[1])) {
+    $parameter = $slug[0] . "/" . $slug[1];
 }
 $session = $this->session->userdata('user_detail');
-$where = array('user_role'=>$session['role'],'url'=>$parameter,'is_active'=>'Y');
-$check = $this->commondatamodel->getSingleRowByWhereCls('restricted_url_master',$where);
- //pre($check);exit;
-if(!empty($check)){
-  redirect('login/restricted','refresh');
-  exit;
+$where = array('user_role' => $session['role'], 'url' => $parameter, 'is_active' => 'Y');
+$check = $this->commondatamodel->getSingleRowByWhereCls('restricted_url_master', $where);
+//pre($check);exit;
+if (!empty($check)) {
+    redirect('login/restricted', 'refresh');
+    exit;
 }
 ?>
 
@@ -31,27 +31,28 @@ if(!empty($check)){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TIL</title>
-    <!-- <link rel="icon" type="image/x-icon" href="<?php echo(base_url());?>assets-admin/img/MA2.ico"> -->
+    <!-- <link rel="icon" type="image/x-icon" href="<?php echo (base_url()); ?>assets-admin/img/MA2.ico"> -->
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet"
-        href="<?php echo(base_url());?>assets-admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+        href="<?php echo (base_url()); ?>assets-admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
     <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet"
+        href="<?php echo (base_url()); ?>assets-admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/dist/css/adminlte.min.css">
 
     <!-- overlayScrollbars -->
     <link rel="stylesheet"
-        href="<?php echo(base_url());?>assets-admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+        href="<?php echo (base_url()); ?>assets-admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
 
     <!-- Google Font: Source Sans Pro -->
@@ -63,7 +64,8 @@ if(!empty($check)){
 
     <!-- DataTables -->
 
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet"
+        href="<?php echo (base_url()); ?>assets-admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 
 
@@ -71,13 +73,13 @@ if(!empty($check)){
 
     <!-- Bootstrap Select -->
 
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/css/bootstrap-select.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/css/bootstrap-select.css">
 
 
 
     <!--  -->
 
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/plugins/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/plugins/sweetalert2/sweetalert2.min.css">
 
 
 
@@ -88,27 +90,27 @@ if(!empty($check)){
     <!-- Bootstrap4 Duallistbox -->
 
     <link rel="stylesheet"
-        href="<?php echo(base_url());?>assets-admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+        href="<?php echo (base_url()); ?>assets-admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
 
 
 
     <!-- custome css  -->
 
-    <!-- <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/css/softhought_style.css"> -->
+    <!-- <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/css/softhought_style.css"> -->
 
 
 
     <!-- Select2 -->
 
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet"
-        href="<?php echo(base_url());?>assets-admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        href="<?php echo (base_url()); ?>assets-admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <!-- Date Picker -->
 
     <link rel="stylesheet"
-        href="<?php echo(base_url());?>assets-admin/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        href="<?php echo (base_url()); ?>assets-admin/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
 
 
@@ -116,61 +118,63 @@ if(!empty($check)){
 
     <!-- jQuery -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/jquery/jquery.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap 4 -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap Select -->
 
-    <script src="<?php echo(base_url());?>assets-admin/js/bootstrap-select.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/js/bootstrap-select.js"></script>
 
     <!-- Bootstrap Select -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/sweetalert2/sweetalert2.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/sweetalert2/sweetalert2.js"></script>
 
     <!-- Select2 -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/select2/js/select2.full.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/select2/js/select2.full.min.js"></script>
 
     <!-- InputMask -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/moment/moment.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/moment/moment.min.js"></script>
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 
 
 
     <!-- datepicker -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js">
-    </script>
+    <script
+        src="<?php echo (base_url()); ?>assets-admin/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js">
+        </script>
 
     <!-- DataTables -->
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/datatables/jquery.dataTables.js"></script>
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/plugins/datatables/dataTables.keyTable.min.js"></script>
 
     <!-- overlayScrollbars -->
-    <script src="<?php echo(base_url());?>assets-admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script
+        src="<?php echo (base_url()); ?>assets-admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
     <!-- AdminLTE App -->
 
-    <script src="<?php echo(base_url());?>assets-admin/dist/js/adminlte.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/dist/js/adminlte.min.js"></script>
 
     <!-- AdminLTE for demo purposes -->
 
-    <!-- <script src="<?php echo(base_url());?>assets-admin/dist/js/demo.js"></script> -->
+    <!-- <script src="<?php echo (base_url()); ?>assets-admin/dist/js/demo.js"></script> -->
 
 
 
 
 
-    <script src="<?php echo(base_url());?>assets-admin/js/jquery.nicescroll.min.js"></script>
+    <script src="<?php echo (base_url()); ?>assets-admin/js/jquery.nicescroll.min.js"></script>
 
 
 
@@ -182,7 +186,8 @@ if(!empty($check)){
     <script src="<?php echo base_url(); ?>assets-admin/js/customJs/comman.js"></script>
 
 
-    <script src="<?php echo(base_url());?>assets-admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script
+        src="<?php echo (base_url()); ?>assets-admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- datatables additional files for pdf and print-->
 
 
@@ -223,19 +228,93 @@ if(!empty($check)){
 
 
     <style>
-    .err-border {
+        .err-border {
 
-        border: 2px solid red !important;
+            border: 2px solid red !important;
 
-    }
+        }
 
-    .displaynone {
-        display: none !important;
-    }
+        .displaynone {
+            display: none !important;
+        }
 
-    .cke_notifications_area{
-        display: none !important;
-    }
+        .cke_notifications_area {
+            display: none !important;
+        }
+    </style>
+
+    <style>
+        .review-rating .rating {
+            font-size: 14px;
+            color: #dba717;
+            margin-right: 10px;
+        }
+
+        .review-rating .rating {
+            font-size: 14px;
+            color: #dba717;
+            margin-right: 10px;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 10%;
+            right: 22%;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
     </style>
 
     <!-- custome css  -->
@@ -249,8 +328,8 @@ if(!empty($check)){
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;800;900&family=Poppins:wght@100;300;400;500;900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/css/softhought_style.css">
-    <link rel="stylesheet" href="<?php echo(base_url());?>assets-admin/css/latest.design.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/css/softhought_style.css">
+    <link rel="stylesheet" href="<?php echo (base_url()); ?>assets-admin/css/latest.design.css">
 
 
 
@@ -264,7 +343,8 @@ if(!empty($check)){
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" style="color:white;"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" style="color:white;"><i
+                            class="fas fa-bars"></i></a>
                 </li>
                 <!-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="<?php echo base_url(); ?>dashboard" class="nav-link">Home</a>
@@ -304,12 +384,12 @@ if(!empty($check)){
         <aside class="main-sidebar sidebar-dark-primary elevation-1" style="background-color: #323232 !important;">
 
             <!-- Brand Logo -->
-            <a href="<?php echo base_url(); ?>dashboard" class="brand-link" style="background: rgb(255, 199, 44);!importan">
-                <!-- <img src="<?php echo(base_url());?>assets-admin/img/MA2.png" alt="TIL INDIA" class="brand-image"
+            <a href="<?php echo base_url(); ?>dashboard" class="brand-link"
+                style="background: rgb(255, 199, 44);!importan">
+                <!-- <img src="<?php echo (base_url()); ?>assets-admin/img/MA2.png" alt="TIL INDIA" class="brand-image"
            style="opacity: .8"> -->
                 <!-- <span class="brand-text"><span class="brand-text-start">TIL</span><span class="brand-text-end"> INDIA</span></span> -->
-                <img src="<?php echo(base_url());?>assets-admin/img/logo.png" alt="TIL INDIA" height="15%"
-                    width="75%" >
+                <img src="<?php echo (base_url()); ?>assets-admin/img/logo.png" alt="TIL INDIA" height="15%" width="75%">
             </a>
 
             <!-- Sidebar -->
@@ -318,10 +398,10 @@ if(!empty($check)){
                 <div class="user-panel mt-3 mb-3 d-flex">
                     <div class="info">
                         <a href="#" class="d-block">Hi, <?php
-                 $user= explode(" ",$activeuser);
-                   echo $user[0];?> &nbsp;
-                   &nbsp;
-                  </a>
+                        $user = explode(" ", $activeuser);
+                        echo $user[0]; ?> &nbsp;
+                            &nbsp;
+                        </a>
                     </div>
                 </div>
 
@@ -335,96 +415,94 @@ if(!empty($check)){
 
 
 
-                        <?php 
-            if(sizeof($menu)>0){ 
+                        <?php
+                        if (sizeof($menu) > 0) {
 
-                foreach($menu as $firstlevel){
-    
-                  if(sizeof($firstlevel['secondLevelMenu'])>0){
-                    // print label for first menu drop icon and label    
-                    ?>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas <?php echo $firstlevel['menu_icon']; ?> "></i>
-                                <p>
-                                    <?php echo $firstlevel['menu_name']; ?>
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
+                            foreach ($menu as $firstlevel) {
+
+                                if (sizeof($firstlevel['secondLevelMenu']) > 0) {
+                                    // print label for first menu drop icon and label    
+                                    ?>
+                                    <li class="nav-item has-treeview">
+                                        <a href="#" class="nav-link">
+                                            <i class="nav-icon fas <?php echo $firstlevel['menu_icon']; ?> "></i>
+                                            <p>
+                                                <?php echo $firstlevel['menu_name']; ?>
+                                                <i class="right fas fa-angle-left"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+
+                                            <?php
+                                            foreach ($firstlevel['secondLevelMenu'] as $second_lvl) {
+
+                                                if (sizeof($second_lvl['thirdLevelMenu']) > 0) {
+                                                    // print label of second label menu for third label
+                                                    ?>
+                                                    <li class="nav-item has-treeview">
+                                                        <a href="#" class="nav-link">
+                                                            <i class="nav-icon fas fa-copy"></i>
+                                                            <p>
+                                                                <?php echo $second_lvl['second_menu_name']; ?>
+                                                                <i class="fas fa-angle-left right"></i>
+                                                            </p>
+                                                        </a>
+                                                        <ul class="nav nav-treeview">
+                                                            <?php
+
+                                                            foreach ($second_lvl['thirdLevelMenu'] as $third_lvl) { ?>
+
+                                                                <li class="nav-item">
+                                                                    <a href="<?php echo base_url() . $third_lvl['third_menu_link']; ?>"
+                                                                        class="nav-link">
+                                                                        <i class="nav-icon far fa-dot-circle"></i>
+                                                                        <p><?php echo $third_lvl['third_menu_name']; ?></p>
+                                                                    </a>
+                                                                </li>
+
+                                                                <?php
+                                                            } ?>
+
+
+
+                                                        </ul>
+                                                    </li>
+                                                <?php
+
+
+                                                } else { ?>
+
+                                                    <li class="nav-item">
+                                                        <a href="<?php echo base_url() . $second_lvl['second_menu_link']; ?>"
+                                                            class="nav-link">
+                                                            <i class="nav-icon far fa-dot-circle ?>"></i>
+                                                            <p><?php echo $second_lvl['second_menu_name']; ?></p>
+                                                        </a>
+                                                    </li>
+
+                                                <?php }
+
+                                            } ?>
+                                        </ul>
+                                    </li>
 
                                 <?php
-                    foreach($firstlevel['secondLevelMenu'] as $second_lvl){
 
-                        if(sizeof($second_lvl['thirdLevelMenu'])>0){	
-                            // print label of second label menu for third label
-                            ?>
-                                <li class="nav-item has-treeview">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-copy"></i>
-                                        <p>
-                                            <?php echo $second_lvl['second_menu_name']; ?>
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <?php 
-                             
-                             foreach($second_lvl['thirdLevelMenu'] as $third_lvl){ ?>
+                                } else { ?>
+                                    <li class="nav-item">
+                                        <a href="<?php echo base_url() . $firstlevel['menu_link']; ?>" class="nav-link">
+                                            <i class="nav-icon far fa-image"></i>
+                                            <p>
+                                                <?php echo $firstlevel['menu_name']; ?>
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <?php
 
-                                        <li class="nav-item">
-                                            <a href="<?php echo base_url().$third_lvl['third_menu_link']; ?>"
-                                                class="nav-link">
-                                                <i class="nav-icon far fa-dot-circle"></i>
-                                                <p><?php echo $third_lvl['third_menu_name']; ?></p>
-                                            </a>
-                                        </li>
-
-                                        <?php
-                             } ?>
-
-
-
-                                    </ul>
-                                </li>
-                                <?php     
-
-
+                                }
+                            }
                         }
-                        else{ ?>
-
-                                <li class="nav-item">
-                                    <a href="<?php echo base_url().$second_lvl['second_menu_link']; ?>"
-                                        class="nav-link">
-                                        <i class="nav-icon far fa-dot-circle ?>"></i>
-                                        <p><?php echo $second_lvl['second_menu_name']; ?></p>
-                                    </a>
-                                </li>
-
-                                <?php }
-
-                    } ?>
-                            </ul>
-                        </li>
-
-                        <?php    
-
-                  }
-                  else{ ?>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url().$firstlevel['menu_link'];?>" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>
-                                    <?php echo $firstlevel['menu_name']; ?>
-                                </p>
-                            </a>
-                        </li>
-                        <?php
-                     
-                  }
-                }
-            }
-            ?>
+                        ?>
 
                         <div class="hr-seperator-line mt-3"></div>
 
@@ -478,17 +556,17 @@ if(!empty($check)){
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <?php 
+                    <?php
 
-        if($bodyview)  :
+                    if ($bodyview):
 
-        $this->load->view($bodyview);
+                        $this->load->view($bodyview);
 
-        endif; 
+                    endif;
 
-        ?>
+                    ?>
 
-         <input type="hidden" value="<?php echo base_url();?>" id="basepath" readonly />
+                    <input type="hidden" value="<?php echo base_url(); ?>" id="basepath" readonly />
 
                 </div><!-- /.container-fluid -->
             </section>
@@ -509,46 +587,46 @@ if(!empty($check)){
     <!-- ./wrapper -->
 
     <script>
-    $(document).ready(function() {
-        window.alert = function() {};
-        $(".more-read").click(function () {
+        $(document).ready(function () {
+            window.alert = function () { };
+            $(".more-read").click(function () {
                 var elipseId = $(this).attr("data-target");
                 var buttonText = $(this).text();
 
                 if (buttonText === "Read more") {
-                  $("#" + elipseId).addClass("expands");
-                  $(this).text("Read less");
+                    $("#" + elipseId).addClass("expands");
+                    $(this).text("Read less");
                 } else {
-                  $(this).text("Read more");
-                  $("#" + elipseId).removeClass("expands");
+                    $(this).text("Read more");
+                    $("#" + elipseId).removeClass("expands");
                 }
-              });
+            });
 
 
-        $(document).on("click", ".logHistory", function() {
+            $(document).on("click", ".logHistory", function () {
 
-            var tablename = $(this).attr("data-tablename");
-            var rowid = $(this).attr("data-rowid");
-            var basepath = $("#basepath").val();
+                var tablename = $(this).attr("data-tablename");
+                var rowid = $(this).attr("data-rowid");
+                var basepath = $("#basepath").val();
 
 
-            $("#log_details").html('Please wait loading...');
-            $.ajax({
-                url: basepath + "dashboard/viewLogHisory",
-                method: "POST",
-                dataType: "html",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                data: {
-                    rowid: rowid,
-                    tablename: tablename
-                },
-                success: function(data) {
+                $("#log_details").html('Please wait loading...');
+                $.ajax({
+                    url: basepath + "dashboard/viewLogHisory",
+                    method: "POST",
+                    dataType: "html",
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    data: {
+                        rowid: rowid,
+                        tablename: tablename
+                    },
+                    success: function (data) {
 
-                    $("#log_details").html(data);
-                    //$('.dataTable').DataTable();
-                    $(".dataTable").DataTable({
-                        dom: 'Bfrtip',
-                        buttons: [{
+                        $("#log_details").html(data);
+                        //$('.dataTable').DataTable();
+                        $(".dataTable").DataTable({
+                            dom: 'Bfrtip',
+                            buttons: [{
                                 extend: 'copyHtml5',
 
 
@@ -560,251 +638,251 @@ if(!empty($check)){
                             {
                                 extend: 'excelHtml5',
                             }
-                        ]
-                    });
+                            ]
+                        });
 
-                },
+                    },
+                });
+
+
             });
 
 
-        });
 
 
+            $('.selectpicker').selectpicker();
 
+            $('.dataTable').DataTable();
 
-        $('.selectpicker').selectpicker();
+            //Initialize Select2 Elements
 
-        $('.dataTable').DataTable();
+            $('.select2').select2();
 
-        //Initialize Select2 Elements
+            //Initialize Select2 Elements
 
-        $('.select2').select2();
+            $('.select2bs4').select2({
 
-        //Initialize Select2 Elements
+                theme: 'bootstrap4'
 
-        $('.select2bs4').select2({
+            });
 
-            theme: 'bootstrap4'
+            $('.datemask').inputmask('dd/mm/yyyy', {
+                'placeholder': 'dd/mm/yyyy'
+            })
 
-        });
+            $(".customscrollbar").niceScroll({
 
-        $('.datemask').inputmask('dd/mm/yyyy', {
-            'placeholder': 'dd/mm/yyyy'
-        })
+                cursorborder: "",
 
-        $(".customscrollbar").niceScroll({
+                cursorwidth: "7px",
 
-            cursorborder: "",
+                autohidemode: false,
 
-            cursorwidth: "7px",
+                cursorcolor: "#F4AFD9",
 
-            autohidemode: false,
+                boxzoom: false,
 
-            cursorcolor: "#F4AFD9",
+                smoothscroll: true,
 
-            boxzoom: false,
+                // boxzoom:true
 
-            smoothscroll: true,
 
-            // boxzoom:true
 
+            });
 
 
-        });
 
 
 
 
 
+            // $('.btn-number').click(function(e){
 
+            //     e.preventDefault();
 
-        // $('.btn-number').click(function(e){
 
-        //     e.preventDefault();
 
+            //     fieldName = $(this).attr('data-field');
 
+            //     type      = $(this).attr('data-type');
 
-        //     fieldName = $(this).attr('data-field');
+            //     var input = $("input[name='"+fieldName+"']");
 
-        //     type      = $(this).attr('data-type');
+            //     var currentVal = parseInt(input.val());
 
-        //     var input = $("input[name='"+fieldName+"']");
+            //     if (!isNaN(currentVal)) {
 
-        //     var currentVal = parseInt(input.val());
+            //         if(type == 'minus') {
 
-        //     if (!isNaN(currentVal)) {
 
-        //         if(type == 'minus') {
 
+            //             if(currentVal > input.attr('min')) {
 
+            //                 input.val(currentVal - 1).change();
 
-        //             if(currentVal > input.attr('min')) {
+            //             } 
 
-        //                 input.val(currentVal - 1).change();
+            //             if(parseInt(input.val()) == input.attr('min')) {
 
-        //             } 
+            //                 $(this).attr('disabled', true);
 
-        //             if(parseInt(input.val()) == input.attr('min')) {
+            //             }
 
-        //                 $(this).attr('disabled', true);
 
-        //             }
 
+            //         } else if(type == 'plus') {
 
 
-        //         } else if(type == 'plus') {
 
+            //             if(currentVal < input.attr('max')) {
 
+            //                 input.val(currentVal + 1).change();
 
-        //             if(currentVal < input.attr('max')) {
+            //             }
 
-        //                 input.val(currentVal + 1).change();
+            //             if(parseInt(input.val()) == input.attr('max')) {
 
-        //             }
+            //                 $(this).attr('disabled', true);
 
-        //             if(parseInt(input.val()) == input.attr('max')) {
+            //             }
 
-        //                 $(this).attr('disabled', true);
 
-        //             }
 
+            //         }
 
+            //     } else {
 
-        //         }
+            //         input.val(0);
 
-        //     } else {
+            //     }
 
-        //         input.val(0);
+            // });
 
-        //     }
+            // $('.input-number').focusin(function(){
 
-        // });
+            //    $(this).data('oldValue', $(this).val());
 
-        // $('.input-number').focusin(function(){
+            // });
 
-        //    $(this).data('oldValue', $(this).val());
+            // $('.input-number').change(function() {
 
-        // });
 
-        // $('.input-number').change(function() {
 
+            //     minValue =  parseInt($(this).attr('min'));
 
+            //     maxValue =  parseInt($(this).attr('max'));
 
-        //     minValue =  parseInt($(this).attr('min'));
+            //     valueCurrent = parseInt($(this).val());
 
-        //     maxValue =  parseInt($(this).attr('max'));
 
-        //     valueCurrent = parseInt($(this).val());
 
+            //     name = $(this).attr('name');
 
+            //     if(valueCurrent >= minValue) {
 
-        //     name = $(this).attr('name');
+            //         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
 
-        //     if(valueCurrent >= minValue) {
+            //     } else {
 
-        //         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+            //         alert('Sorry, the minimum value was reached');
 
-        //     } else {
+            //         $(this).val($(this).data('oldValue'));
 
-        //         alert('Sorry, the minimum value was reached');
+            //     }
 
-        //         $(this).val($(this).data('oldValue'));
+            //     if(valueCurrent <= maxValue) {
 
-        //     }
+            //         $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
 
-        //     if(valueCurrent <= maxValue) {
+            //     } else {
 
-        //         $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+            //         alert('Sorry, the maximum value was reached');
 
-        //     } else {
+            //         $(this).val($(this).data('oldValue'));
 
-        //         alert('Sorry, the maximum value was reached');
+            //     }
 
-        //         $(this).val($(this).data('oldValue'));
 
-        //     }
 
 
 
+            // });
 
 
-        // });
 
+            $(".input-number").keydown(function (e) {
 
+                // Allow: backspace, delete, tab, escape, enter and .
 
-        $(".input-number").keydown(function(e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
 
-            // Allow: backspace, delete, tab, escape, enter and .
+                    // Allow: Ctrl+A
 
-            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
 
-                // Allow: Ctrl+A
+                    // Allow: home, end, left, right
 
-                (e.keyCode == 65 && e.ctrlKey === true) ||
+                    (e.keyCode >= 35 && e.keyCode <= 39)) {
 
-                // Allow: home, end, left, right
+                    // let it happen, don't do anything
 
-                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                    return;
 
-                // let it happen, don't do anything
+                }
 
-                return;
+                // Ensure that it is a number and stop the keypress
 
-            }
-
-            // Ensure that it is a number and stop the keypress
-
-            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode >
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode >
                     105)) {
 
-                e.preventDefault();
+                    e.preventDefault();
 
-            }
+                }
+
+            });
+
+
+
+
+            /* onclick menu selected*/
+            // var url = window.location;
+
+            //  // for sidebar menu entirely but not cover treeview
+            //  $('ul.nav-sidebar a').filter(function() {
+            //    console.log("HREF MENU : ",this.href);
+            //    return this.href == url;
+            //  }).parent().addClass('active');
+
+            //  // for treeview
+            //  $('ul.nav-treeview a').filter(function() {
+            //    console.log("HREF SUB MENU : ",this.href);
+            //    return this.href == url;
+            //  }).parentsUntil(".nav-sidebar > .has-treeview a").addClass('active');
+
+
+
+            // $("nav-item.has-treeview").removeClass("menu-open");
+            // $("nav-item.has-treeview.active").addClass("menu-open");
+
+
+
+            var url = window.location;
+
+            // for sidebar menu entirely but not cover treeview
+            $('ul.nav-sidebar a').filter(function () {
+                return this.href == url;
+            }).addClass('active');
+
+            // for treeview
+            $('ul.nav-treeview a').filter(function () {
+                return this.href == url;
+            }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
 
         });
 
-
-
-
-        /* onclick menu selected*/
-        // var url = window.location;
-
-        //  // for sidebar menu entirely but not cover treeview
-        //  $('ul.nav-sidebar a').filter(function() {
-        //    console.log("HREF MENU : ",this.href);
-        //    return this.href == url;
-        //  }).parent().addClass('active');
-
-        //  // for treeview
-        //  $('ul.nav-treeview a').filter(function() {
-        //    console.log("HREF SUB MENU : ",this.href);
-        //    return this.href == url;
-        //  }).parentsUntil(".nav-sidebar > .has-treeview a").addClass('active');
-
-
-
-        // $("nav-item.has-treeview").removeClass("menu-open");
-        // $("nav-item.has-treeview.active").addClass("menu-open");
-
-
-
-        var url = window.location;
-
-        // for sidebar menu entirely but not cover treeview
-        $('ul.nav-sidebar a').filter(function() {
-            return this.href == url;
-        }).addClass('active');
-
-        // for treeview
-        $('ul.nav-treeview a').filter(function() {
-            return this.href == url;
-        }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
-
-    });
-
-    function numericFilter(txb) {
-        txb.value = txb.value.replace(/[^\0-9]/ig, "");
-    }
+        function numericFilter(txb) {
+            txb.value = txb.value.replace(/[^\0-9]/ig, "");
+        }
     </script>
 
 </body>
@@ -832,3 +910,71 @@ if(!empty($check)){
 
     </div>
 </div>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption" class="caption"></div>
+</div>
+
+<script>
+    // jQuery for modal functionality
+    $(document).ready(function () {
+        // Open modal when clicking on any image with class "zoomImg"
+        $(".zoomImg").on("click", function () {
+            var imgSrc = $(this).data("imgsrc");
+            var caption = $(this).data("caption");
+
+            $("#myModal").css("display", "block");
+            $("#img01").attr("src", imgSrc);
+            $("#caption").text(caption);
+        });
+
+        // Close modal when clicking the close button (span)
+        $(".close").on("click", function () {
+            $("#myModal").css("display", "none");
+        });
+
+        // Close modal when clicking outside the modal content
+        $(window).on("click", function (event) {
+            if (event.target == $("#myModal")[0]) {
+                $("#myModal").css("display", "none");
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.review-rating').each(function () {
+            const ratingElement = $(this);
+            const ratingValue = parseFloat(ratingElement.attr('data-rating'));
+            const ratingContainer = ratingElement.find('.rating');
+            const ratingText = ratingElement.find('.rating-text');
+
+            // Clear previous stars
+            ratingContainer.empty();
+
+            const fullStars = Math.floor(ratingValue);
+            const halfStars = (ratingValue % 1) >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStars;
+
+            for (let i = 0; i < fullStars; i++) {
+                ratingContainer.append('<i class="fas fa-star"></i>');
+            }
+
+            if (halfStars > 0) {
+                ratingContainer.append('<i class="fas fa-star-half-alt"></i>');
+            }
+
+            for (let i = 0; i < emptyStars; i++) {
+                ratingContainer.append('<i class="far fa-star"></i>');
+            }
+
+            ratingText.text(ratingValue.toFixed(1));
+        });
+    });
+</script>

@@ -19,6 +19,8 @@
                      <th>Sl</th>
                      <th>Question</th>
                      <th>Answer</th>
+                     <th style="width: 80px;">Product</th>
+                     <th style="width: 80px;">Model</th>
                      <th>Status</th>
                      <th>Action</th>
                    
@@ -32,6 +34,8 @@
                      <td><?php echo $sl++; ?> </td>
                      <td><?php echo $list->faq_question; ?> </td>
                      <td><?php echo $list->faq_answer; ?> </td>
+                     <td><?php echo $list->name; ?> </td>
+                     <td><?php echo $list->model; ?> </td>
                      <td align="left"> <?php if ($list->is_disabled == 0) { ?>
                                         <a
                                             href="<?php echo base_url() . "master/activeInactiveFaq/" . $list->faq_del_id . "/1" ?>"><img

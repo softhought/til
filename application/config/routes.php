@@ -63,6 +63,7 @@ $route['dashboard/submitquotation'] = 'Dashboard/submitQuotation';
 $route['dashboard/submitcontactform'] = 'Dashboard/submitContactForm';
 $route['dashboard/submityourcv'] = 'Dashboard/submityourcv';
 $route['dashboard/submittrainingform'] = 'Dashboard/submittrainingform';
+$route['dashboard/callwithexpertform'] = 'Dashboard/callwithexpertform';
 $route['dashboard/searchfrom'] = 'Dashboard/searchfrom';
 $route['dashboard/productsearchfrom'] = 'Dashboard/productsearchfrom';
 $route['menu/addeditaction'] = 'Products/menu_add_edit_action';
@@ -107,16 +108,19 @@ $route['products_new'] = "frontend/products/product_new";
 // $route['products/material-handling-solutions/hyster-til-range/forklift-trucks'] = "frontend/products/hyster_til_range_forklift_trucks";
 foreach ($menuUrls as $url) {
     $routeKey = $url['url'];
-    
+
     switch ($url['level']) {
         case 1:
-            $routeValue = 'frontend/products/viewLevel_1/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
+            $routeValue = 'frontend/products/viewLevel_1/' . explode("/", $routeKey)[0] . '/' . $url['product_master_id'];
             break;
         case 2:
-            $routeValue = 'frontend/products/viewLevel_2/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
+            $routeValue = 'frontend/products/viewLevel_2/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
             break;
         case 3:
-            $routeValue = 'frontend/products/viewLevel_3/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
+            $routeValue = 'frontend/products/viewLevel_3/' . explode("/", $routeKey)[2] . '/' .  explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
+            break;
+        case 4:
+            $routeValue = 'frontend/products/viewLevel_4/' . explode("/", $routeKey)[3] . '/' .  explode("/", $routeKey)[1] . '/' .  explode("/", $routeKey)[2] . '/' . $url['spec_sheet_dt_id'];
             break;
     }
 

@@ -18,6 +18,21 @@ class ProductsMenu extends CI_Model
         return $this->buildNestedMenu($result, 0);
     }
 
+    public function getLastChildProducts()
+    {
+        $result = $this->db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get("product_master")->result_array();
+        $array = $this->buildNestedMenu($result, 0);
+
+        $arr = [];
+        foreach ($array[0]['children'][0]['children'] as $value) {
+            foreach ($value['children'] as $childrenValue) {
+                $arr[] = $childrenValue;
+            }
+        }
+
+        return $arr;
+    }
+
     private function buildNestedMenu($menuItems, $parentId)
     {
         $result = array();
@@ -37,8 +52,18 @@ class ProductsMenu extends CI_Model
         return $result;
     }
 
-    function generateMenuHTML($menuItems, $isSubNav = false, $parentSlugs = [])
+    function generateMenuHTML($menuItems, $isSubNav = false, $parentSlugs = [], $isRoot = true)
     {
+        if ($isRoot) {
+            $html = '';
+            foreach ($menuItems as $key => $menuItem) {
+                if (isset($menuItem['children']) && !empty($menuItem['children'])) {
+                    $html .= $this->generateMenuHTML($menuItem['children'], true, [$menuItem['slug']], false);
+                }
+            }
+            return $html;
+        }
+
         $html = '<ul class="dropdown-menu dropdownhover-bottom">';
         foreach ($menuItems as $key => $menuItem) {
             $hasChildren = isset($menuItem['children']) && !empty($menuItem['children']);
@@ -58,13 +83,15 @@ class ProductsMenu extends CI_Model
             $html .= '</a>';
             if ($hasChildren) {
                 $childSlugs = array_merge($parentSlugs, [$menuItem['slug']]);
-                $html .= $this->generateMenuHTML($menuItem['children'], true, $childSlugs);
+                $html .= $this->generateMenuHTML($menuItem['children'], true, $childSlugs, false);
             }
             $html .= '</li>';
         }
         $html .= '</ul>';
         return $html;
     }
+
+
 
     public function getNonParentRecords($table, $orderby, $orderTag)
     {

@@ -1284,4 +1284,64 @@ class Dashboard extends CI_Controller
         return $insertedRow;
     }
 
+
+    public function callwithexpertform()
+    {
+        $inputs = array();
+        $name = $_POST["name"];
+        $phone = $_POST["phone"];
+        $email = $_POST["email"];
+        $organization = $_POST["organization"];
+        $country_id = $_POST["country_id"];
+        $state_id = $_POST["state_id"];
+        $comment = $_POST["comment"];
+        $product_id = $_POST["product_id"];
+        $model_id = $_POST["model_id"];
+        $comment = $_POST["comment"];
+        $ip_address = $_SERVER['REMOTE_ADDR'];
+
+        
+        $country_name = $this->commondatamodel->getSingleRowByWhereCls("tbl_countries", ["id" => $country_id])->name;
+        $state_name = $this->commondatamodel->getSingleRowByWhereCls("tbl_states", ["id" => $state_id])->name;
+
+        $dataArr = [
+            'organization' => $organization,
+            'time' => date('Y-m-d H:i:s'),
+            'name' => $name,
+            'phone' => $phone,
+            'email' => $email,
+            'query' => $comment,
+            'country_id' => $country_id,
+            'state_id' => $state_id,
+            'ip_address' => $ip_address,
+            'product_id' => $product_id != "" ? $product_id : null,
+            'model_id' => $model_id != "" ? $model_id : null
+        ];
+
+        $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 1]);
+        $inputs['organization'] = $organization;
+        $inputs['name'] = $name;
+        $inputs['phone'] = $phone;
+        $inputs['email'] = $email;
+        $inputs['address'] = "";
+        $inputs['state_name'] = $state_name;
+        $inputs['country_name'] = $country_name;
+        $inputs['nature_of_query'] = $nature_of_query->name;
+        $inputs['query'] = $comment;
+        $inputs['receipant'] = $nature_of_query;
+
+        $message = $this->load->view('mailers/contact_us', $inputs, TRUE);
+        $subject = "Enquiry Form  ";
+
+        $insertedId = $this->commondatamodel->insertSingleTableData("call_with_expert", $dataArr);
+        $this->sendEmailData($inputs, $subject, $message, "Schedule a call with an expert", $insertedId);
+
+        if ($insertedId) {
+            echo json_encode(["status" => true]);
+        } else {
+            echo json_encode(["status" => false]);
+        }
+        header('Content-Type: application/json');
+        exit;
+    }
 }

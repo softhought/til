@@ -37,6 +37,12 @@
         margin: 0;
     }
 
+    .error-message {
+        color: red;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+
     .testimonial-profile .post {
         display: block;
         font-size: 14px;
@@ -195,12 +201,6 @@
         margin: 0 0 0 2rem;
     }
 
-    .error-message {
-        color: red;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-    }
-
     @media (max-width: 768px) {
         .form-inline input {
             width: calc(100% - 1rem);
@@ -294,7 +294,7 @@
     }
 </style>
 <section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->banner_image; ?>)">
+    style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["products"][0]->banner_image; ?>)">
     <div class="container">
         <h1 class="m-0">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
@@ -308,11 +308,15 @@
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a
-                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug']; ?>"
+                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug']; ?>"
+                            style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
+                    </li>
+                    <li class="breadcrumb-item"><a
+                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug'] . "/" . $bodycontent['parentSlug']; ?>"
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a href="#"
-                            style="color: white; text-decoration: none;"><?php echo $bodycontent["main-section"][0]->name; ?></a>
+                            style="color: white; text-decoration: none;"><?php echo $bodycontent["main-section"][0]->model; ?></a>
                     </li>
                     <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry"
                             style="color: white; text-decoration: none;">Support</a></li>
@@ -327,7 +331,6 @@
     <div class="col-md-1"></div>
     <div class="col-md-9">
 
-
         <section class="content_section">
             <div class="container">
                 <form class="form-inline" style="margin: -3rem 0 0 -2rem;" id="productSearchForm" method="post">
@@ -336,8 +339,8 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" style="background: #ffc72c;"
                         type="submit">Search</button>
                 </form>
-                
-                <h1 class="m-0 fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h1>
+
+                <h1 class="m-0 fc-black"><?php echo $bodycontent["main-section"][0]->model; ?></h1>
 
                 <h2><?php echo $bodycontent["main-section"][0]->short_description; ?></h2>
 
@@ -347,15 +350,29 @@
                             <div class="col-lg-5">
                                 <div class="homepix">
                                     <div class="box-behind"></div>
-                                    <img src="<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->left_image != "" ? $bodycontent["main-section"][0]->left_image : $bodycontent["main-section"][0]->catagory_image; ?>"
-                                        class="img-responsive"
-                                        alt="<?php echo $bodycontent["main-section"][0]->name; ?>" />
+                                    <?php
+                                    $image = !empty($bodycontent["main-section"][0]->image)
+                                        ? base_url() . "assets/images/" . $bodycontent["main-section"][0]->image
+                                        : 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
+
+                                    $style = !empty($bodycontent["main-section"][0]->image)
+                                        ? ""
+                                        : 'width: 88% !important; height: 55%;';
+
+                                    $alt = !empty($bodycontent["main-section"][0]->image)
+                                        ? $bodycontent["main-section"][0]->image
+                                        : 'Image not available';
+                                    ?>
+
+                                    <img src="<?php echo $image; ?>" style="<?php echo $style; ?>"
+                                        alt="<?php echo $alt; ?>">
                                 </div>
 
                             </div>
 
                             <div class="col-lg-7 col-12 p-responsive">
-                                <div class="aboutText"><?php echo $bodycontent["main-section"][0]->about; ?>
+                                <div class="aboutText">
+                                    <?php echo $bodycontent["main-section"][0]->about; ?>
                                     <a class="read-btn quote-btn" data-toggle="modal" data-target="#myModal">
                                         Get TIL Rough Terrain crane Cost
                                     </a>
@@ -365,99 +382,161 @@
                     </div>
                 </section>
                 <div class="product_content">
-                    <?php echo $bodycontent["main-section"][0]->general_description; ?>
+                    <h2>Mobility:</h2>
+                    <p>Designed for rough terrain, featuring large, rugged tires and a strong suspension system. Offers
+                        excellent maneuverability, allowing it to navigate through uneven and challenging surfaces
+                        commonly found in construction and industrial sites.</p>
+
+                    <h2>Safety Features:</h2>
+                    <p>Includes advanced safety systems such as load moment indicators, outrigger sensors, and emergency
+                        stop functions. Designed to ensure operator and site safety during lifting operations.</p>
+
+                    <h2>Operator Comfort and Control:</h2>
+                    <p>Features an ergonomically designed operator cabin with easy-to-use controls and a comfortable
+                        seating arrangement. The cabin may also include advanced instrumentation and monitoring systems
+                        to assist the operator in managing the crane’s operations efficiently.</p>
+
+                    <h2>Versatility:</h2>
+                    <p>Can be used in a variety of applications, including construction, infrastructure development,
+                        mining, and more. Suitable for tasks that require lifting and moving heavy materials in areas
+                        with difficult terrain.</p>
+
+                    <h2>Applications:</h2>
+                    <p>
+                        <strong>Construction Sites:</strong> Ideal for lifting heavy construction materials and
+                        equipment, setting up structures, and handling large components.<br>
+                        <strong>Infrastructure Projects:</strong> Used in building bridges, highways, and other
+                        infrastructure where heavy lifting is required.<br>
+                        <strong>Mining Operations:</strong> Suitable for transporting and positioning heavy mining
+                        equipment and materials.<br>
+                        <strong>Industrial Maintenance:</strong> Helps in the maintenance and installation of heavy
+                        machinery and components in industrial facilities.
+                    </p>
+
+                    <h2>Maintenance and Service:</h2>
+                    <p>Regular maintenance is essential to keep the crane in optimal working condition. This includes
+                        checking hydraulic systems, engine performance, tire condition, and safety systems. Service
+                        support and availability of spare parts are critical for ensuring minimal downtime and efficient
+                        operation.</p>
+
+                    <p>The TIL Husky 620 is a reliable and powerful crane designed to meet the demanding needs of
+                        various industries, providing robust performance and versatility in rough terrain conditions.
+                    </p>
                 </div>
 
-                <div>
-                    <?php foreach ($bodycontent['sheet_model'] as $key => $value) { ?>
-                        <div class="row" style="margin-top: 4rem;">
-                            <div class="col-md-3">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"
-                                    alt=""
-                                    style="width: 16rem; height: 10rem; border: 2px dashed black;border-radius: 5px;">
-                            </div>
-                            <div class="col-md-9">
-                                <h2><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?></h2>
-                                <p><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?> is
-                                    specifically designed for off-road and
-                                    rugged environment operations. A Rough Terrain Hydraulic Crane combines heavy-duty
-                                    off-road capability with powerful hydraulic lifting technology, making it ideal for
-                                    challenging and uneven work sites.</p>
-                                <a href="<?php echo base_url() . "products/" . $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
-                                    style="background: #ffc72c; color: black; font-size: 16px; border-radius: 5px; text-transform: uppercase; display: flex; gap: 10px; font-weight: 500; padding: 15px; width: 15rem;">Click
-                                    to know more</a>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
+                <h1>TIL Husky 620 Crane Specifications</h1>
 
-                <h1 style="margin-top: 3rem;">Schedule a call with an expert</h1>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>MAX. CAPACITY (Outriggers)</td>
+                        <td>20.0 Tonnes at 3m Radius (85% Rating) 360° Slew</td>
+                    </tr>
+                    <tr>
+                        <td>MAX. CAPACITY (On Tyres)</td>
+                        <td>16 Tonnes Over Front</td>
+                    </tr>
+                    <tr>
+                        <td>BOOM</td>
+                        <td>3 section Rectangular 8.8m - 21.2m; 2 section Rectangular 8.5m - 14.7m (Optional)</td>
+                    </tr>
+                    <tr>
+                        <td>MAX. ROAD SPEED</td>
+                        <td>33 kmph</td>
+                    </tr>
+                    <tr>
+                        <td>CARRIER</td>
+                        <td>4 x 4 Wheel Drive with 4 Wheel Steer</td>
+                    </tr>
+                    <tr>
+                        <td>BOOM</td>
+                        <td>8.8m - 21.2m three section, full powered, fully synchronized boom with single double acting
+                            ram and lacing chain. Maximum Tip Height: 23m</td>
+                    </tr>
+                    <tr>
+                        <td>BOOM ELEVATION</td>
+                        <td>Single double acting hydraulic cylinder. Combined cartridge type externally mounted
+                            hydraulic lock and counterbalance valve.</td>
+                    </tr>
+                    <tr>
+                        <td>BOOM ANGLE</td>
+                        <td>Maximum 76°, Minimum -2°.</td>
+                    </tr>
+                    <tr>
+                        <td>SUPERSTRUCTURE FRAME</td>
+                        <td>Fabricated from high tensile steel plates and sections. Mechanical superstructure lock
+                            operated from cab.</td>
+                    </tr>
+                    <tr>
+                        <td>SLEW SYSTEM</td>
+                        <td>Hydraulic motor driving a pinion through a double reduction gear unit. Spring applied
+                            hydraulically released multi plate brake. Free slew facility provided.</td>
+                    </tr>
+                    <tr>
+                        <td>SLEW SPEED</td>
+                        <td>Maximum 2.0 RPM (Unladen) for controlled operation.</td>
+                    </tr>
+                    <tr>
+                        <td>HOIST SYSTEM</td>
+                        <td>Hydraulic motor driving hoist barrel via reduction gear unit. Non Spin Hoist Rope: 13mm dia.
+                            & length 115m. Line Speed: Top layer 65m/min (Max) Unladen. Maximum Permissible Line Pull:
+                            3125kg.</td>
+                    </tr>
+                    <tr>
+                        <td>HOOK BLOCK</td>
+                        <td>20.0 Tonnes; 4 Sheaves.</td>
+                    </tr>
+                    <tr>
+                        <td>COUNTERWEIGHT</td>
+                        <td>Integral with superstructure. Weight - 2500kg.</td>
+                    </tr>
+                    <tr>
+                        <td>OPERATOR’S CAB</td>
+                        <td>Totally enclosed steel construction, full vision type tropical cab. Ergonomically positioned
+                            joystick levers, adjustable seat, automotive type steering wheel, toughened safety glass,
+                            lockable sliding door, cab interior light, pantograph type electric wiper, electric horn,
+                            and fan.</td>
+                    </tr>
+                    <tr>
+                        <td>CRANE CONTROLS</td>
+                        <td>Joystick operating controls for slew, telescoping, hoisting and derricking. Engine speed
+                            governed by pedal control. Electric rocker switches for hydraulic outriggers. Override
+                            control switch provided.</td>
+                    </tr>
+                    <tr>
+                        <td>TRAVEL CONTROLS</td>
+                        <td>Steering wheel controls hydraulic cylinder on front axle. Independent hydraulically powered
+                            steering on rear axle. Gear shift mounted on steering column. Service brake operated through
+                            foot pedal; parking brake through hand brake valve.</td>
+                    </tr>
+                    <tr>
+                        <td>INSTRUMENTATION</td>
+                        <td>Audio and visual warnings for engine oil pressure, coolant temperature, alternator, rear
+                            steer, parking brake, and directional indicators. Air pressure gauge and hour meter gauge
+                            provided.</td>
+                    </tr>
+                    <tr>
+                        <td>LOAD MOMENT INDICATOR</td>
+                        <td>Provides radius and hook load indication, visual and audible overload indications. Motion
+                            cut equipment operates when overload is reached.</td>
+                    </tr>
+                    <tr>
+                        <td>HYDRAULIC SYSTEM</td>
+                        <td>Load sensing hydraulic system. Pumps: Load sensing variable displacement axial piston pump.
+                            Control Valves: Load sensing, load sharing. Filters: Return line filter with clogging
+                            indicator. Reservoir: 273 liters. Oil Cooler: Electrically driven thermostatically
+                            controlled oil cooler.</td>
+                    </tr>
+                    <tr>
+                        <td>OPTIONAL EQUIPMENT</td>
+                        <td>Telescopic Boom: 8.50m to 14.70m two section fully powered boom. Lattice Boom Extension:
+                            8.0m swing round lattice boom extension for a maximum combination of 29.2m.</td>
+                    </tr>
+                </table>
 
-                <form action="<?php echo base_url() ?>dashboard/callwithexpertform" method="post"
-                    id="callwithexpertForm">
-                    <input type="hidden" name="product_id" id="product_id"
-                        value="<?php echo $bodycontent['productId'] ?>" />
-                    <input type="hidden" name="model_id" id="model_id" value="<?php echo $bodycontent['modelId'] ?>" />
-                    <div class="row" style="margin-bottom: 2rem;">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control-ff" placeholder="Name" name="name" id="name"
-                                    required autocomplete="off">
-                                <div class="error-message" id="nameError"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control-ff onlynumber" placeholder="Phone" name="phone"
-                                    id="phone" required autocomplete="off">
-                                <div class="error-message" id="phoneError"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="email" class="form-control-ff" placeholder="Email" name="email" id="email"
-                                    required autocomplete="off">
-                                <div class="error-message" id="emailError"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control-ff" placeholder="Organization"
-                                    name="organization" id="organization" required autocomplete="off">
-                                <div class="error-message" id="organizationError"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <select name="country_id" id="country_id" required="required" class="form-control-ff">
-                                <option value="">Select Country</option>
-                                <?php foreach ($menu["country"] as $key => $value) {
-                                    echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
-                                } ?>
-                            </select>
-                            <div class="error-message" id="countryError"></div>
-                        </div>
-                        <div class="col-md-6">
-                            <select name="state_id" id="state_id" required="required" class="form-control-ff">
-                                <option value="">Select State</option>
-                            </select>
-                            <div class="error-message" id="stateError"></div>
-                        </div>
-                        <div class="col-md-12" style="margin-top: 10px;">
-                            <div class="form-group">
-                                <textarea name="comment" id="comment" class="form-control-ff" placeholder="Query"
-                                    style="height: 10rem;" required></textarea>
-                                <div class="error-message" id="commentError"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="submit" class="form-control-ff" name="submitProductExpert"
-                                    id="submitProductExpert" value="Submit"
-                                    style="background: #ffc72c;margin-top: 1rem;border-radius: 50px;color: black;">
-                            </div>
-                        </div>
-                    </div>
-                </form>
 
                 <div class="">
                     <?php if (!empty($bodycontent["faq"])) { ?>
@@ -549,10 +628,6 @@
                     <?php } ?>
                 </div>
 
-                <div class="conduct-content curvebg" style="display:grid">
-                    <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
-                        now</a>
-                </div>
 
                 <h1 style="margin-top: 3rem;">Products Customer Review </h1>
 
@@ -594,120 +669,78 @@
                     <?php } ?>
                 </div>
 
-
-
-                <div class="product_content">
-                    <a class="toggle-button">View Content <span class="arrow"><i class="fa fa-arrow-down"
-                                aria-hidden="true"></i></span></a>
-                    <div class="content">
-                        <h2>The Versatility and Efficiency of Rough Terrain Cranes</h2>
-                        <p>Rough terrain cranes are indispensable in the construction and heavy lifting industry. These
-                            cranes, specifically designed to operate on rough and uneven surfaces, offer unparalleled
-                            flexibility and efficiency. As a leading rough terrain crane manufacturer, our company
-                            provides
-                            top-quality cranes that meet diverse lifting needs. In this article, we will explore the
-                            features, benefits, and applications of rough terrain cranes, along with insights into
-                            pricing
-                            and the role of a reputable crane company.</p>
-
-                        <h2>Understanding Rough Terrain Cranes</h2>
-                        <p>Rough terrain cranes are a type of mobile crane mounted on a four-wheel drive undercarriage.
-                            Their robust construction allows them to navigate and operate on challenging terrains such
-                            as
-                            construction sites, mining areas, and off-road locations. These cranes are equipped with
-                            large,
-                            durable tires that provide excellent traction and stability, making them ideal for lifting
-                            heavy
-                            loads in difficult conditions.</p>
-
-                        <h2>Key Features of Rough Terrain Cranes</h2>
-                        <ul>
-                            <li><strong>Mobility and Maneuverability:</strong> Rough terrain cranes are designed for
-                                easy
-                                movement on uneven surfaces. Their all-wheel drive system ensures that they can traverse
-                                soft ground, gravel, and other challenging terrains without getting stuck.</li>
-                            <li><strong>Compact Design:</strong> Despite their powerful capabilities, rough terrain
-                                cranes
-                                are compact and can be transported easily. This compact design also allows them to
-                                operate
-                                in confined spaces, making them suitable for a variety of construction and industrial
-                                applications.</li>
-                            <li><strong>Hydraulic Boom:</strong> The hydraulic boom of a rough terrain crane provides
-                                superior lifting capacity and reach. These booms can be extended and retracted quickly,
-                                allowing for efficient load handling.</li>
-                            <li><strong>Safety Features:</strong> Safety is paramount in crane operations. Rough terrain
-                                cranes come equipped with advanced safety features such as load moment indicators,
-                                anti-tip
-                                mechanisms, and ergonomic operator cabins to ensure safe and efficient operations.</li>
-                        </ul>
-
-                        <h2>Applications of Rough Terrain Cranes</h2>
-                        <p>Rough terrain cranes are versatile and find applications in various industries, including:
-                        </p>
-                        <ul>
-                            <li><strong>Construction:</strong> They are widely used in construction projects for lifting
-                                and
-                                placing heavy materials such as steel beams, concrete slabs, and prefabricated
-                                components.
-                            </li>
-                            <li><strong>Mining:</strong> In the mining industry, rough terrain cranes assist in the
-                                transportation and installation of heavy mining equipment.</li>
-                            <li><strong>Oil and Gas:</strong> These cranes are essential for lifting and positioning
-                                heavy
-                                machinery and equipment in oil and gas fields.</li>
-                            <li><strong>Infrastructure Development:</strong> Rough terrain cranes play a crucial role in
-                                infrastructure projects like bridge construction, road building, and power plant
-                                installations.</li>
-                        </ul>
-
-                        <h2>Choosing the Right Rough Terrain Crane Manufacturer</h2>
-                        <p>Selecting a reputable rough terrain crane manufacturer is critical to ensuring the quality
-                            and
-                            reliability of your crane. A trusted manufacturer will provide:</p>
-                        <ul>
-                            <li><strong>High-Quality Cranes:</strong> Look for manufacturers with a proven track record
-                                of
-                                producing durable and efficient rough terrain cranes.</li>
-                            <li><strong>Comprehensive Support:</strong> Choose a manufacturer that offers excellent
-                                customer
-                                support, including maintenance, repair services, and availability of spare parts.</li>
-                            <li><strong>Competitive Pricing:</strong> While rough terrain crane prices can vary, it is
-                                essential to find a manufacturer that offers competitive pricing without compromising on
-                                quality.</li>
-                        </ul>
-
-                        <h2>Factors Affecting Rough Terrain Crane Price</h2>
-                        <p>Several factors influence the price of rough terrain cranes, including:</p>
-                        <ul>
-                            <li><strong>Capacity and Specifications:</strong> Cranes with higher lifting capacities and
-                                advanced features tend to be more expensive.</li>
-                            <li><strong>Brand and Manufacturer:</strong> Reputable brands and manufacturers may charge a
-                                premium due to their established quality and reliability.</li>
-                            <li><strong>Market Demand:</strong> The demand for rough terrain cranes in specific regions
-                                can
-                                also affect pricing.</li>
-                            <li><strong>Customization:</strong> Customized cranes with specific modifications to meet
-                                unique
-                                project requirements may come at a higher cost.</li>
-                        </ul>
-
-                        <h2>Partnering with a Reliable Crane Company</h2>
-                        <p>Partnering with a reliable crane company ensures that you receive the best equipment and
-                            support
-                            for your projects. A good crane company will offer a wide range of cranes, including rough
-                            terrain cranes, and provide expert guidance to help you select the right equipment for your
-                            needs. They will also ensure that their cranes are well-maintained and comply with safety
-                            standards.</p>
-
-                        <p>In conclusion, rough terrain cranes are versatile, efficient, and essential for various
-                            industries. By choosing a reputable rough terrain crane manufacturer and understanding the
-                            factors that influence rough terrain crane price, you can ensure that your projects run
-                            smoothly
-                            and efficiently. Partner with a trusted crane company to access high-quality equipment and
-                            expert support, enabling you to achieve your lifting and construction goals with confidence.
-                        </p>
-                    </div>
+                <div class="conduct-content curvebg" style="display:grid">
+                    <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
+                        now</a>
                 </div>
+
+                <h1 style="margin-top: 3rem;">Schedule a call with an expert</h1>
+
+                <form action="<?php echo base_url() ?>dashboard/callwithexpertform" method="post"
+                    id="callwithexpertForm">
+                    <input type="hidden" name="product_id" id="product_id"
+                        value="<?php echo $bodycontent['productId'] ?>" />
+                    <input type="hidden" name="model_id" id="model_id" value="<?php echo $bodycontent['modelId'] ?>" />
+                    <div class="row" style="margin-bottom: 2rem;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control-ff" placeholder="Name" name="name" id="name"
+                                    required autocomplete="off">
+                                <div class="error-message" id="nameError"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control-ff onlynumber" placeholder="Phone" name="phone"
+                                    id="phone" required autocomplete="off">
+                                <div class="error-message" id="phoneError"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control-ff" placeholder="Email" name="email" id="email"
+                                    required autocomplete="off">
+                                <div class="error-message" id="emailError"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control-ff" placeholder="Organization"
+                                    name="organization" id="organization" required autocomplete="off">
+                                <div class="error-message" id="organizationError"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="country_id" id="country_id" required="required" class="form-control-ff">
+                                <option value="">Select Country</option>
+                                <?php foreach ($menu["country"] as $key => $value) {
+                                    echo "<option value='" . $value->id . "'>" . $value->name . "</option>";
+                                } ?>
+                            </select>
+                            <div class="error-message" id="countryError"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="state_id" id="state_id" required="required" class="form-control-ff">
+                                <option value="">Select State</option>
+                            </select>
+                            <div class="error-message" id="stateError"></div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 10px;">
+                            <div class="form-group">
+                                <textarea name="comment" id="comment" class="form-control-ff" placeholder="Query"
+                                    style="height: 10rem;" required></textarea>
+                                <div class="error-message" id="commentError"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="submit" class="form-control-ff" name="submitProductExpert"
+                                    id="submitProductExpert" value="Submit"
+                                    style="background: #ffc72c;margin-top: 1rem;border-radius: 50px;color: black;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </div>
@@ -724,7 +757,7 @@
                                         class="sub_nav"><?php echo $parentMenu["name"] ?> <span class="caret"></span></a>
                                     <ul>
                                         <?php foreach ($parentMenu["children"] as $key => $children) {
-                                            $activeColor = $children["slug"] == $bodycontent["main-section"][0]->slug ? "style='background: #ffc72c;'" : ""; ?>
+                                            $activeColor = $children["slug"] == $bodycontent["parentSlug"] ? "style='background: #ffc72c;'" : ""; ?>
                                             <li class="first"><a
                                                     href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"
                                                     <?php echo $activeColor ?>><?php echo $children["name"]; ?></a>
@@ -740,6 +773,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

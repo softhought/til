@@ -1,8 +1,19 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 require_once BASEPATH . 'database/DB.php';
 
 if (!function_exists('getAllMenuUrl')) {
     function getAllMenuUrl($table)
+    {
+        $db =& DB();
+        $result = $db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get($table)->result_array();
+        $menu = buildNestedMenu($result, 0);
+        return menuUrls($menu[0]["children"]);
+    }
+}
+
+if (!function_exists('getAllModelUrl')) {
+    function getAllModelUrl($table)
     {
         $db =& DB();
         $result = $db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get($table)->result_array();
@@ -32,6 +43,14 @@ function buildNestedMenu($menuItems, $parentId, $depth = 0)
 
             if ($children) {
                 $menuItem['children'] = $children;
+            } else {
+                $specSheetDetails = fetchSpecSheetDetails($menuItem['product_master_id']);
+                if ($specSheetDetails) {
+                    $menuItem['children'] = array_map(function($detail) use ($depth) {
+                        $detail['level'] = $depth + 1;
+                        return $detail;
+                    }, $specSheetDetails);
+                }
             }
 
             $result[] = $menuItem;
@@ -55,6 +74,7 @@ function menuUrls($menuItems, $parentSlugs = [])
             'url' => $url,
             'level' => $menuItem['level'],
             'product_master_id' => $menuItem['product_master_id'],
+            'spec_sheet_dt_id' => isset($menuItem['spec_sheet_dt_id']) ? $menuItem['spec_sheet_dt_id'] : null,
         ];
         if (isset($menuItem['children']) && !empty($menuItem['children'])) {
             $childSlugs = array_merge($parentSlugs, [$menuItem['slug']]);
@@ -62,4 +82,12 @@ function menuUrls($menuItems, $parentSlugs = [])
         }
     }
     return $urls;
+}
+
+function fetchSpecSheetDetails($productMasterId)
+{
+    $db =& DB();
+    $specSheetDetails = $db->select('spec_sheet_dt_id, model, slug, product_master_id')->where('product_master_id', $productMasterId)->get('spec_sheet_details')->result_array();
+    
+    return $specSheetDetails;
 }

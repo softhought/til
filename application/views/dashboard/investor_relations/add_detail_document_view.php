@@ -23,7 +23,7 @@
             <div class="col-sm-10">
                 <div class="form-group">
                     <div class="input-group input-group-sm">
-                        <input type="hidden" name="userFileName[]" id="userFileName_0_<?php echo $rowno; ?>"
+                        <input type="text" name="userFileName[]" id="userFileName_0_<?php echo $rowno; ?>"
                             class="form-control input-xs userFileName" readonly placeholder="Upload Document">
 
                         <input type="hidden" name="isChangedFile[]" id="isChangedFile_0_<?php echo $rowno; ?>"

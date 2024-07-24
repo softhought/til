@@ -12,6 +12,31 @@ if (!function_exists('getAllMenuUrl')) {
     }
 }
 
+
+if (!function_exists('isNew')) {
+    function isNew()
+    {
+        $isNew = IS_NEW_DEVELOPMENT != false ? false : true;
+        return $isNew ? "new/" : "";
+    }
+}
+ 
+if (!function_exists('isNewDevelopmentLive')) {
+    function isNewDevelopmentLive()
+    {
+        return IS_NEW_DEVELOPMENT;
+    }
+}
+
+if (!function_exists('buildProductNestedMenu')) {
+    function buildProductNestedMenu()
+    {
+        $db =& DB();
+        $result = $db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get('product_master')->result_array();
+        return buildNestedMenu($result, 0);
+    }
+}
+
 if (!function_exists('getAllModelUrl')) {
     function getAllModelUrl($table)
     {

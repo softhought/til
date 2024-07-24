@@ -335,9 +335,9 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"
                             style="color: white; text-decoration: none;">TIL</a></li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>products"
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>products"
                             style="color: white; text-decoration: none;">Products</a></li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>products/crane"
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>products/crane"
                             style="color: white; text-decoration: none;">Crane</a></li>
                     <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry"
                             style="color: white; text-decoration: none;">Support</a></li>
@@ -392,7 +392,7 @@
                             if ($value['parent_id'] == $product->product_master_id) {
                                 $count++; ?>
                                 <div class="col-lg-4 col-md-6 col-12">
-                                    <a href="<?php echo base_url() . $value["url"]; ?>">
+                                    <a href="<?php echo base_url() . isNew() . $value["url"]; ?>">
                                         <div class="product-item">
                                             <figure>
                                                 <img src="<?php echo base_url(); ?>assets/images/<?php echo $value["catagory_image"] ?>"
@@ -769,12 +769,12 @@
                         <ul>
                             <?php foreach ($rootMenu["children"] as $key => $parentMenu) { ?>
                                 <li class="first"><a
-                                        href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
+                                        href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
                                         class="sub_nav"><?php echo $parentMenu["name"] ?> <span class="caret"></span></a>
                                     <ul>
                                         <?php foreach ($parentMenu["children"] as $key => $children) { ?>
                                             <li class="first"><a
-                                                    href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
+                                                    href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
                                             </li>
                                         <?php } ?>
                                     </ul>

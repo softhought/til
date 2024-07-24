@@ -247,7 +247,7 @@ defined('URLFOR') OR define('URLFOR', 'STAGING');
 
 define("FILE_UPLOAD_BASE_PATH", $_SERVER['DOCUMENT_ROOT']."/til");
 
-
+define("IS_NEW_DEVELOPMENT", false);
 
 
 

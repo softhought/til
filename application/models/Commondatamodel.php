@@ -246,7 +246,7 @@ class Commondatamodel extends CI_Model
 
 			->from($table)
 
-			->like($likecolumn, $likeStr, 'after')
+			->like($likecolumn, $likeStr, 'both')
 
 			->limit(1);
 

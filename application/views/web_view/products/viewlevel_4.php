@@ -301,18 +301,18 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"
                             style="color: white; text-decoration: none;">TIL</a></li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>products"
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>products"
                             style="color: white; text-decoration: none;">Products</a></li>
                     <li class="breadcrumb-item"><a
-                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] ?>"
+                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] ?>"
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a
-                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug']; ?>"
+                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug']; ?>"
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a
-                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug'] . "/" . $bodycontent['parentSlug']; ?>"
+                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug'] . "/" . $bodycontent['parentSlug']; ?>"
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a href="#"
@@ -386,7 +386,7 @@
                 </div>
 
                 <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Specifications</h1>
-                
+
                 <?php
                 $jsonData = $bodycontent["main-section"][0]->specifications;
                 $specifications = json_decode($jsonData, true);
@@ -414,6 +414,13 @@
                     echo '<p>No specifications available.</p>';
                 }
                 ?>
+
+                <div class="conduct-content curvebg" style="margin-top: 3rem;margin-left: -2.2rem;">
+                    <a href="<?php echo base_url(); ?>assets/pdf/<?php echo $bodycontent["main-section"][0]->spec_sheet; ?>"
+                    style="padding: 12px 25px;margin: auto;background: #ffc72c;color: black;font-size: 16px;border-radius: 5px;text-transform: uppercase;font-weight: 500;" target="_blank">Download <?php echo $bodycontent["main-section"][0]->model; ?> Brochure
+                    </a>
+                </div>
+
 
 
                 <div class="">
@@ -631,13 +638,13 @@
                         <ul>
                             <?php foreach ($rootMenu["children"] as $key => $parentMenu) { ?>
                                 <li class="first"><a
-                                        href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
+                                        href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
                                         class="sub_nav"><?php echo $parentMenu["name"] ?> <span class="caret"></span></a>
                                     <ul>
                                         <?php foreach ($parentMenu["children"] as $key => $children) {
                                             $activeColor = $children["slug"] == $bodycontent["parentSlug"] ? "style='background: #ffc72c;'" : ""; ?>
                                             <li class="first"><a
-                                                    href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"
+                                                    href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"
                                                     <?php echo $activeColor ?>><?php echo $children["name"]; ?></a>
                                             </li>
                                         <?php } ?>

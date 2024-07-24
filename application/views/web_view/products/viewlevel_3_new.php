@@ -301,14 +301,14 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"
                             style="color: white; text-decoration: none;">TIL</a></li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>products"
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>products"
                             style="color: white; text-decoration: none;">Products</a></li>
                     <li class="breadcrumb-item"><a
-                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] ?>"
+                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] ?>"
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a
-                            href="<?php echo base_url(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug']; ?>"
+                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug']; ?>"
                             style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
                     </li>
                     <li class="breadcrumb-item"><a href="#"
@@ -383,7 +383,7 @@
                             <div class="col-md-9">
                                 <h2><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?></h2>
                                 <p><?php echo $value->short_description ?></p>
-                                <a href="<?php echo base_url() . "products/" . $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
+                                <a href="<?php echo base_url() . isNew() . "products/" . $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
                                     style="background: #ffc72c; color: black; font-size: 16px; border-radius: 5px; text-transform: uppercase; display: flex; gap: 10px; font-weight: 500; padding: 15px; width: 15rem;">Click
                                     to know more</a>
                             </div>
@@ -616,13 +616,13 @@
                         <ul>
                             <?php foreach ($rootMenu["children"] as $key => $parentMenu) { ?>
                                 <li class="first"><a
-                                        href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
+                                        href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
                                         class="sub_nav"><?php echo $parentMenu["name"] ?> <span class="caret"></span></a>
                                     <ul>
                                         <?php foreach ($parentMenu["children"] as $key => $children) {
                                             $activeColor = $children["slug"] == $bodycontent["main-section"][0]->slug ? "style='background: #ffc72c;'" : ""; ?>
                                             <li class="first"><a
-                                                    href="<?php echo base_url(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"
+                                                    href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"
                                                     <?php echo $activeColor ?>><?php echo $children["name"]; ?></a>
                                             </li>
                                         <?php } ?>

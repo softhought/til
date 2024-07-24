@@ -1192,11 +1192,17 @@ class Dashboard extends CI_Controller
 
         $slugData = $this->commondatamodel->getSingleRowByWhereLike("product_master", "name", $productSearch);
         if ($slugData) {
-            $slug = $this->getFullSlug($this->productsmenu->getNavProductsMenu()[0]["children"], $slugData->slug);
+            $slug = $this->getFullSlug(buildProductNestedMenu()[0]['children'], $slugData->slug);
 
             echo json_encode(["status" => true, "href" => 'products/' . $slug]);
         } else {
-            echo json_encode(["status" => false]);
+            $slugData = $this->commondatamodel->getSingleRowByWhereLike("spec_sheet_details", "model", $productSearch);
+            if ($slugData) {
+                $slug = $this->getFullSlug(buildProductNestedMenu()[0]['children'], $slugData->slug);
+                echo json_encode(["status" => true, "href" => 'products/' . $slug]);
+            } else {
+                echo json_encode(["status" => false]);
+            }
         }
 
         header('Content-Type: application/json');
@@ -1225,16 +1231,19 @@ class Dashboard extends CI_Controller
 
     public function executePythonScript($keyWord)
     {
-        //echo $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
-        $dir = "/var/www/scripts/script.py";
-        $pythonExecutable = "/usr/bin/python3";
-        if (file_exists($dir) && is_executable($dir)) {
+        $dir = FILE_UPLOAD_BASE_PATH . "/assets/script/script.py";
+        // $dir = "/var/www/scripts/script.py";
+        // $pythonExecutable = "/usr/bin/python3";
+        $pythonExecutable = "python";
+        // if (file_exists($dir) && is_executable($dir)) {
             $pythonScript = "{$pythonExecutable} {$dir}";
             putenv("PYTHONIOENCODING=utf-8");
 
-            $command = "{$pythonScript} {$keyWord} 2>&1";
-            $output = shell_exec($command);
+            $escapedKeyWord = escapeshellarg($keyWord);
 
+            $command = "{$pythonScript} {$escapedKeyWord} 2>&1";
+            $output = shell_exec($command);
+            // pre($output);exit;
             $decodedOutput = json_decode($output, true);
 
             if ($decodedOutput !== null) {
@@ -1251,9 +1260,9 @@ class Dashboard extends CI_Controller
             } else {
                 return "Failed to decode JSON output.";
             }
-        } else {
-            return "Error: Script file does not exist or is not executable.";
-        }
+        // } else {
+        //     return "Error: Script file does not exist or is not executable.";
+        // }
     }
 
     public function unset_session()

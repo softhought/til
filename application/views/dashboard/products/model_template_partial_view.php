@@ -255,7 +255,7 @@
                             <label for="groupname"> Short Description</label>
                             <div class="form-group" id="short_description_modalerr">
                                 <div class="input-group input-group-sm">
-                                    <textarea class="form-control" style="width: 100%;" name="short_description_modal"
+                                    <textarea class="form-control" style="width: 100%; height: 6rem;" name="short_description_modal"
                                         id="short_description_modal"></textarea>
                                 </div>
                             </div>
@@ -284,6 +284,19 @@
                             </div>
                         </div>
                     </div>
+                    <label for="groupname">Features</label>
+                    <div id="features-container"></div>
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm">
+                                    <input type="button" class="form-control" name="appendfeatures" id="appendfeatures" value="Add +" style="background: #ffcd11;font-size: 16px;font-weight: bold !important;border-radius: 50px;" />
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <hr>
                     <label for="groupname">Specifications</label>
                     <div id="specifications-container"></div>
                     <div class="row">
@@ -454,6 +467,51 @@
                             });
                         }
 
+                        var features = response.data.features;
+
+                        if (typeof features === 'string') {
+                            features = JSON.parse(features);
+                        }
+
+                        $('#features-container').empty();
+
+                        if (Array.isArray(features)) {
+                            features.forEach(function(feature) {
+                                var newFeatures = `
+                                <div class="row features-item">
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="mail_bodyerr">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" name="feature-dt[]" placeholder="Feature" id="feature" value="${feature.feature}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="mail_bodyerr">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" name="details-dt[]" placeholder="Details" id="details" value="${feature.details}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group" id="mail_bodyerr">
+                                            <div class="input-group input-group-sm">
+                                                <button type="button" class="form-control delete-features" style="background: #fdfdfd;font-size: 16px;font-weight: bold !important;border-radius: 50px;height: 38px;">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+                                $('#features-container').append(newFeatures);
+                            });
+                        }
+
                         $("#editModel").modal("show");
                         $("body").css("overflow-y", "scroll");
                     }
@@ -469,7 +527,6 @@
             event.stopPropagation();
             event.stopImmediatePropagation();
 
-            console.log("g");
             var newSpecification = `
             <div class="row specification-item">
                 <div class="col-md-10">
@@ -506,6 +563,49 @@
 
         $(document).on('click', '.delete-specification', function() {
             $(this).closest('.specification-item').remove();
+        });
+
+
+        $(document).on('click', '#appendfeatures', function(event) {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            var newFeatures = `
+            <div class="row features-item">
+                <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group" id="mail_bodyerr">
+                        <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="feature-dt[]" placeholder="Feature" id="feature-dt" />
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group" id="mail_bodyerr">
+                        <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="details-dt[]" placeholder="Details" id="details-dt" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-2">
+                <div class="form-group" id="mail_bodyerr">
+                    <div class="input-group input-group-sm">
+                    <button type="button" class="form-control delete-features" style="background: #fdfdfd;font-size: 16px;font-weight: bold !important;border-radius: 50px;height: 38px;">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            `;
+            $('#features-container').append(newFeatures);
+        });
+
+        $(document).on('click', '.delete-features', function() {
+            $(this).closest('.features-item').remove();
         });
 
         

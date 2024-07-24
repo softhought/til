@@ -384,8 +384,40 @@
                 <div class="product_content">
                     <?php echo $bodycontent["main-section"][0]->general_description; ?>
                 </div>
+                
+                <?php if ($bodycontent["main-section"][0]->features) { ?>
+                    <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Feature</h1>
+                <?php } ?>
 
-                <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Specifications</h1>
+                <?php
+                $jsonData = $bodycontent["main-section"][0]->features;
+                $feature = json_decode($jsonData, true);
+
+                if (!empty($feature)) {
+                    echo '<table>';
+                    echo '<thead>';
+                    echo '<tr>';
+                    echo '<th>Feature</th>';
+                    echo '<th>Details</th>';
+                    echo '</tr>';
+                    echo '</thead>';
+                    echo '<tbody>';
+
+                    foreach ($feature as $spec) {
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($spec['feature'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($spec['details'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '</tr>';
+                    }
+
+                    echo '</tbody>';
+                    echo '</table>';
+                }
+                ?>
+
+                <?php if ($bodycontent["main-section"][0]->specifications) { ?>
+                    <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Specifications</h1>
+                <?php } ?>
 
                 <?php
                 $jsonData = $bodycontent["main-section"][0]->specifications;
@@ -410,14 +442,12 @@
 
                     echo '</tbody>';
                     echo '</table>';
-                } else {
-                    echo '<p>No specifications available.</p>';
-                }
-                ?>
+                } ?>
 
                 <div class="conduct-content curvebg" style="margin-top: 3rem;margin-left: -2.2rem;">
                     <a href="<?php echo base_url(); ?>assets/pdf/<?php echo $bodycontent["main-section"][0]->spec_sheet; ?>"
-                    style="padding: 12px 25px;margin: auto;background: #ffc72c;color: black;font-size: 16px;border-radius: 5px;text-transform: uppercase;font-weight: 500;" target="_blank">Download <?php echo $bodycontent["main-section"][0]->model; ?> Brochure
+                        style="padding: 12px 25px;margin: auto;background: #ffc72c;color: black;font-size: 16px;border-radius: 5px;text-transform: uppercase;font-weight: 500;"
+                        target="_blank">Download <?php echo $bodycontent["main-section"][0]->model; ?> Brochure
                     </a>
                 </div>
 

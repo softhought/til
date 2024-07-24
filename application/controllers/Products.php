@@ -445,20 +445,33 @@ class Products extends CI_Controller
         $details = $_POST["details"];
 
         for ($i = 0; $i < count($feature); $i++) {
-            $data[] = array(
+            $specificationsData[] = array(
                 'feature' => $feature[$i],
                 'details' => $details[$i]
             );
         }
         
-        $jsonData = json_encode($data);
+        $specifications = json_encode($specificationsData);
+
+        $feature_dt = $_POST["feature-dt"];
+        $details_dt = $_POST["details-dt"];
+
+        for ($i = 0; $i < count($feature_dt); $i++) {
+            $featuresData[] = array(
+                'feature' => $feature_dt[$i],
+                'details' => $details_dt[$i]
+            );
+        }
+        
+        $features = json_encode($featuresData);
 
         $dataArr = [
             'model' => $title_modal,
             'short_description' => $short_description_modal,
             'about' => $model_description_modal,
             'general_description' => $general_description_modal,
-            'specifications' => $jsonData
+            'specifications' => $specifications,
+            'features' => $features
         ];
 
         if (isset($_FILES['specsheet_modalfile'])) {

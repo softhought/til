@@ -16,7 +16,8 @@
         <div class="col-lg-4 col-12">
           <div class="homepix ml-0">
             <div class="box-behind"></div>
-            <img src="<?php echo base_url(); ?>assets/images/technology.jpg" class="img-responsive" alt="Crane Manufacturer in India" />
+            <img src="<?php echo base_url(); ?>assets/images/technology.jpg" class="img-responsive"
+              alt="Crane Manufacturer in India" />
           </div>
         </div>
         <div class="col-lg-8 col-12 p-responsive">
@@ -109,19 +110,23 @@
     </div>
 
     <div class="row product-list">
-      <?php foreach ($bodycontent["product"] as $key => $value) { ?>
-        <div class="col-lg-3 col-md-6 col-12">
-          <a href="<?php echo base_url() . $value["url"]; ?>">
-            <div class="product-item">
-              <figure>
-                <img src="<?php echo base_url(); ?>assets/images/<?php echo $value["banner_image"] ?>" style="width: 260px; height: 139px;" alt="rectangle" />
-              </figure>
-              <h5><?php echo $value["name"]; ?></h5>
-              <button>Request for a quote</button>
-            </div>
-          </a>
-        </div>
-      <?php } ?>
+      <?php foreach ($bodycontent["product"] as $key => $value) {
+        if ($value['level'] < 4) { ?>
+
+          <div class="col-lg-3 col-md-6 col-12">
+            <a href="<?php echo base_url() . $value["url"]; ?>">
+              <div class="product-item">
+                <figure>
+                  <img src="<?php echo base_url(); ?>assets/images/<?php echo $value["banner_image"] ?>"
+                    style="width: 260px; height: 139px;" alt="rectangle" />
+                </figure>
+                <h5><?php echo $value["name"]; ?></h5>
+                <button>Request for a quote</button>
+              </div>
+            </a>
+          </div>
+        <?php }
+      } ?>
 
       <div class="card">
         <div class="col-lg-3 col-md-6 col-12">
@@ -158,7 +163,7 @@
               <div class="embed-responsive embed-responsive-16by9"><iframe width="409" height="226"
                   data-src="https://www.youtube.com/embed/<?php echo $value->video_id ?>?rel=0" frameborder="0"
                   allowfullscreen="allowfullscreen"></iframe></div>
-              <p style="padding-top: 10px;"><?php echo $value->title?></p>
+              <p style="padding-top: 10px;"><?php echo $value->title ?></p>
             </li>
           <?php } ?>
           <li>

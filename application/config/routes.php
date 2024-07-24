@@ -92,22 +92,27 @@ $route['about-us/facilities'] = "frontend/about/facilities";
 
 /* -------------- Products---------------------- */
 
-$route['products'] = "frontend/products/product_new";
-$route['products_new'] = "frontend/products/product_new";
-// $route['products/material-handling-solutions'] = "frontend/products/material_handling_solutions";
+$route['products'] = "frontend/products";
+$route['new/products'] = "frontend/products/product_new";
 
-// $route['products/material-handling-solutions/til-range'] = "frontend/products/solutions_til_range";
-// $route['products/material-handling-solutions/til-range/rough-terrain-cranes'] = "frontend/products/til_range_rough_terrain_ranes";
-// $route['products/material-handling-solutions/til-range/truck-cranes'] = "frontend/products/til_range_truck_cranes";
-// $route['products/material-handling-solutions/til-range/pick-n-carry-cranes'] = "frontend/products/til_range_pick_n_carry_cranes";
+foreach ($menuUrls as $url) {
+    $routeKey = $url['url'];
+    
+    switch ($url['level']) {
+        case 1:
+            $routeValue = 'frontend/products/viewLevel_1/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
+            break;
+        case 2:
+            $routeValue = 'frontend/products/viewLevel_2/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
+            break;
+        case 3:
+            $routeValue = 'frontend/products/viewLevel_3/' . explode("/",$routeKey)[1] . '/' . $url['product_master_id'];
+            break;
+    }
 
-// $route['products/material-handling-solutions/manitowoc-range'] = "frontend/products/solutions_manitowoc_range";
-// $route['products/material-handling-solutions/manitowoc-range/crawler-cranes'] = "frontend/products/manitowoc_range_crawler_cranes";
-// $route['products/material-handling-solutions/manitowoc-range/grove-range'] = "frontend/products/manitowoc_range_grove_range";
+    $route[$routeKey] = $routeValue;
+}
 
-// $route['products/material-handling-solutions/hyster-til-range'] = "frontend/products/solutions_hyster_til_range";
-// $route['products/material-handling-solutions/hyster-til-range/reachstackers'] = "frontend/products/hyster_til_range_reachstackers";
-// $route['products/material-handling-solutions/hyster-til-range/forklift-trucks'] = "frontend/products/hyster_til_range_forklift_trucks";
 foreach ($menuUrls as $url) {
     $routeKey = $url['url'];
 
@@ -119,15 +124,18 @@ foreach ($menuUrls as $url) {
             $routeValue = 'frontend/products/viewLevel_2/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
             break;
         case 3:
-            $routeValue = 'frontend/products/viewLevel_3/' . explode("/", $routeKey)[2] . '/' .  explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
+            $routeValue = 'frontend/products/viewLevel_3_new/' . explode("/", $routeKey)[2] . '/' .  explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
             break;
         case 4:
             $routeValue = 'frontend/products/viewLevel_4/' . explode("/", $routeKey)[3] . '/' .  explode("/", $routeKey)[1] . '/' .  explode("/", $routeKey)[2] . '/' . $url['spec_sheet_dt_id'];
             break;
     }
 
-    $route[$routeKey] = $routeValue;
+    $route['new/' . $routeKey] = $routeValue;
 }
+
+// echo "<pre/>";print_r($route);exit;
+
 
 
 /* -------------- Customer Support ---------------------- */

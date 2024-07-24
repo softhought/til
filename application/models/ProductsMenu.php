@@ -52,18 +52,8 @@ class ProductsMenu extends CI_Model
         return $result;
     }
 
-    function generateMenuHTML($menuItems, $isSubNav = false, $parentSlugs = [], $isRoot = true)
+    function generateMenuHTML($menuItems, $isSubNav = false, $parentSlugs = [])
     {
-        if ($isRoot) {
-            $html = '';
-            foreach ($menuItems as $key => $menuItem) {
-                if (isset($menuItem['children']) && !empty($menuItem['children'])) {
-                    $html .= $this->generateMenuHTML($menuItem['children'], true, [$menuItem['slug']], false);
-                }
-            }
-            return $html;
-        }
-
         $html = '<ul class="dropdown-menu dropdownhover-bottom">';
         foreach ($menuItems as $key => $menuItem) {
             $hasChildren = isset($menuItem['children']) && !empty($menuItem['children']);
@@ -83,13 +73,52 @@ class ProductsMenu extends CI_Model
             $html .= '</a>';
             if ($hasChildren) {
                 $childSlugs = array_merge($parentSlugs, [$menuItem['slug']]);
-                $html .= $this->generateMenuHTML($menuItem['children'], true, $childSlugs, false);
+                $html .= $this->generateMenuHTML($menuItem['children'], true, $childSlugs);
             }
             $html .= '</li>';
         }
         $html .= '</ul>';
         return $html;
     }
+
+    // function generateMenuHTML($menuItems, $isSubNav = false, $parentSlugs = [], $isRoot = true)
+    // {
+    //     if ($isRoot) {
+    //         $html = '';
+    //         foreach ($menuItems as $key => $menuItem) {
+    //             if (isset($menuItem['children']) && !empty($menuItem['children'])) {
+    //                 $html .= $this->generateMenuHTML($menuItem['children'], true, [$menuItem['slug']], false);
+    //             }
+    //         }
+    //         return $html;
+    //     }
+
+    //     $html = '<ul class="dropdown-menu dropdownhover-bottom">';
+    //     foreach ($menuItems as $key => $menuItem) {
+    //         $hasChildren = isset($menuItem['children']) && !empty($menuItem['children']);
+    //         $subNavClass = ($hasChildren) ? 'sub_nav' : '';
+
+    //         $url = base_url() . 'products/';
+    //         foreach ($parentSlugs as $slug) {
+    //             $url .= $slug . '/';
+    //         }
+    //         $url .= $menuItem['slug'];
+
+    //         $html .= '<li>';
+    //         $html .= '<a href="' . $url . '" class="' . $subNavClass . '">' . $menuItem['name'];
+    //         if ($hasChildren) {
+    //             $html .= ' <span class="caret"></span>';
+    //         }
+    //         $html .= '</a>';
+    //         if ($hasChildren) {
+    //             $childSlugs = array_merge($parentSlugs, [$menuItem['slug']]);
+    //             $html .= $this->generateMenuHTML($menuItem['children'], true, $childSlugs, false);
+    //         }
+    //         $html .= '</li>';
+    //     }
+    //     $html .= '</ul>';
+    //     return $html;
+    // }
 
 
 

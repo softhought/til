@@ -351,16 +351,16 @@
                                 <div class="homepix">
                                     <div class="box-behind"></div>
                                     <?php
-                                    $image = !empty($bodycontent["main-section"][0]->image)
-                                        ? base_url() . "assets/images/" . $bodycontent["main-section"][0]->image
+                                    $image = !empty($bodycontent["main-section"][0]->left_image)
+                                        ? base_url() . "assets/images/" . $bodycontent["main-section"][0]->left_image
                                         : 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
 
-                                    $style = !empty($bodycontent["main-section"][0]->image)
+                                    $style = !empty($bodycontent["main-section"][0]->left_image)
                                         ? ""
                                         : 'width: 88% !important; height: 55%;';
 
-                                    $alt = !empty($bodycontent["main-section"][0]->image)
-                                        ? $bodycontent["main-section"][0]->image
+                                    $alt = !empty($bodycontent["main-section"][0]->left_image)
+                                        ? $bodycontent["main-section"][0]->left_image
                                         : 'Image not available';
                                     ?>
 
@@ -382,160 +382,38 @@
                     </div>
                 </section>
                 <div class="product_content">
-                    <h2>Mobility:</h2>
-                    <p>Designed for rough terrain, featuring large, rugged tires and a strong suspension system. Offers
-                        excellent maneuverability, allowing it to navigate through uneven and challenging surfaces
-                        commonly found in construction and industrial sites.</p>
-
-                    <h2>Safety Features:</h2>
-                    <p>Includes advanced safety systems such as load moment indicators, outrigger sensors, and emergency
-                        stop functions. Designed to ensure operator and site safety during lifting operations.</p>
-
-                    <h2>Operator Comfort and Control:</h2>
-                    <p>Features an ergonomically designed operator cabin with easy-to-use controls and a comfortable
-                        seating arrangement. The cabin may also include advanced instrumentation and monitoring systems
-                        to assist the operator in managing the crane’s operations efficiently.</p>
-
-                    <h2>Versatility:</h2>
-                    <p>Can be used in a variety of applications, including construction, infrastructure development,
-                        mining, and more. Suitable for tasks that require lifting and moving heavy materials in areas
-                        with difficult terrain.</p>
-
-                    <h2>Applications:</h2>
-                    <p>
-                        <strong>Construction Sites:</strong> Ideal for lifting heavy construction materials and
-                        equipment, setting up structures, and handling large components.<br>
-                        <strong>Infrastructure Projects:</strong> Used in building bridges, highways, and other
-                        infrastructure where heavy lifting is required.<br>
-                        <strong>Mining Operations:</strong> Suitable for transporting and positioning heavy mining
-                        equipment and materials.<br>
-                        <strong>Industrial Maintenance:</strong> Helps in the maintenance and installation of heavy
-                        machinery and components in industrial facilities.
-                    </p>
-
-                    <h2>Maintenance and Service:</h2>
-                    <p>Regular maintenance is essential to keep the crane in optimal working condition. This includes
-                        checking hydraulic systems, engine performance, tire condition, and safety systems. Service
-                        support and availability of spare parts are critical for ensuring minimal downtime and efficient
-                        operation.</p>
-
-                    <p>The TIL Husky 620 is a reliable and powerful crane designed to meet the demanding needs of
-                        various industries, providing robust performance and versatility in rough terrain conditions.
-                    </p>
+                    <?php echo $bodycontent["main-section"][0]->general_description; ?>
                 </div>
 
-                <h1>TIL Husky 620 Crane Specifications</h1>
+                <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Specifications</h1>
+                
+                <?php
+                $jsonData = $bodycontent["main-section"][0]->specifications;
+                $specifications = json_decode($jsonData, true);
 
-                <table>
-                    <tr>
-                        <th>Feature</th>
-                        <th>Details</th>
-                    </tr>
-                    <tr>
-                        <td>MAX. CAPACITY (Outriggers)</td>
-                        <td>20.0 Tonnes at 3m Radius (85% Rating) 360° Slew</td>
-                    </tr>
-                    <tr>
-                        <td>MAX. CAPACITY (On Tyres)</td>
-                        <td>16 Tonnes Over Front</td>
-                    </tr>
-                    <tr>
-                        <td>BOOM</td>
-                        <td>3 section Rectangular 8.8m - 21.2m; 2 section Rectangular 8.5m - 14.7m (Optional)</td>
-                    </tr>
-                    <tr>
-                        <td>MAX. ROAD SPEED</td>
-                        <td>33 kmph</td>
-                    </tr>
-                    <tr>
-                        <td>CARRIER</td>
-                        <td>4 x 4 Wheel Drive with 4 Wheel Steer</td>
-                    </tr>
-                    <tr>
-                        <td>BOOM</td>
-                        <td>8.8m - 21.2m three section, full powered, fully synchronized boom with single double acting
-                            ram and lacing chain. Maximum Tip Height: 23m</td>
-                    </tr>
-                    <tr>
-                        <td>BOOM ELEVATION</td>
-                        <td>Single double acting hydraulic cylinder. Combined cartridge type externally mounted
-                            hydraulic lock and counterbalance valve.</td>
-                    </tr>
-                    <tr>
-                        <td>BOOM ANGLE</td>
-                        <td>Maximum 76°, Minimum -2°.</td>
-                    </tr>
-                    <tr>
-                        <td>SUPERSTRUCTURE FRAME</td>
-                        <td>Fabricated from high tensile steel plates and sections. Mechanical superstructure lock
-                            operated from cab.</td>
-                    </tr>
-                    <tr>
-                        <td>SLEW SYSTEM</td>
-                        <td>Hydraulic motor driving a pinion through a double reduction gear unit. Spring applied
-                            hydraulically released multi plate brake. Free slew facility provided.</td>
-                    </tr>
-                    <tr>
-                        <td>SLEW SPEED</td>
-                        <td>Maximum 2.0 RPM (Unladen) for controlled operation.</td>
-                    </tr>
-                    <tr>
-                        <td>HOIST SYSTEM</td>
-                        <td>Hydraulic motor driving hoist barrel via reduction gear unit. Non Spin Hoist Rope: 13mm dia.
-                            & length 115m. Line Speed: Top layer 65m/min (Max) Unladen. Maximum Permissible Line Pull:
-                            3125kg.</td>
-                    </tr>
-                    <tr>
-                        <td>HOOK BLOCK</td>
-                        <td>20.0 Tonnes; 4 Sheaves.</td>
-                    </tr>
-                    <tr>
-                        <td>COUNTERWEIGHT</td>
-                        <td>Integral with superstructure. Weight - 2500kg.</td>
-                    </tr>
-                    <tr>
-                        <td>OPERATOR’S CAB</td>
-                        <td>Totally enclosed steel construction, full vision type tropical cab. Ergonomically positioned
-                            joystick levers, adjustable seat, automotive type steering wheel, toughened safety glass,
-                            lockable sliding door, cab interior light, pantograph type electric wiper, electric horn,
-                            and fan.</td>
-                    </tr>
-                    <tr>
-                        <td>CRANE CONTROLS</td>
-                        <td>Joystick operating controls for slew, telescoping, hoisting and derricking. Engine speed
-                            governed by pedal control. Electric rocker switches for hydraulic outriggers. Override
-                            control switch provided.</td>
-                    </tr>
-                    <tr>
-                        <td>TRAVEL CONTROLS</td>
-                        <td>Steering wheel controls hydraulic cylinder on front axle. Independent hydraulically powered
-                            steering on rear axle. Gear shift mounted on steering column. Service brake operated through
-                            foot pedal; parking brake through hand brake valve.</td>
-                    </tr>
-                    <tr>
-                        <td>INSTRUMENTATION</td>
-                        <td>Audio and visual warnings for engine oil pressure, coolant temperature, alternator, rear
-                            steer, parking brake, and directional indicators. Air pressure gauge and hour meter gauge
-                            provided.</td>
-                    </tr>
-                    <tr>
-                        <td>LOAD MOMENT INDICATOR</td>
-                        <td>Provides radius and hook load indication, visual and audible overload indications. Motion
-                            cut equipment operates when overload is reached.</td>
-                    </tr>
-                    <tr>
-                        <td>HYDRAULIC SYSTEM</td>
-                        <td>Load sensing hydraulic system. Pumps: Load sensing variable displacement axial piston pump.
-                            Control Valves: Load sensing, load sharing. Filters: Return line filter with clogging
-                            indicator. Reservoir: 273 liters. Oil Cooler: Electrically driven thermostatically
-                            controlled oil cooler.</td>
-                    </tr>
-                    <tr>
-                        <td>OPTIONAL EQUIPMENT</td>
-                        <td>Telescopic Boom: 8.50m to 14.70m two section fully powered boom. Lattice Boom Extension:
-                            8.0m swing round lattice boom extension for a maximum combination of 29.2m.</td>
-                    </tr>
-                </table>
+                if (!empty($specifications)) {
+                    echo '<table>';
+                    echo '<thead>';
+                    echo '<tr>';
+                    echo '<th>Feature</th>';
+                    echo '<th>Details</th>';
+                    echo '</tr>';
+                    echo '</thead>';
+                    echo '<tbody>';
+
+                    foreach ($specifications as $spec) {
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($spec['feature'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($spec['details'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '</tr>';
+                    }
+
+                    echo '</tbody>';
+                    echo '</table>';
+                } else {
+                    echo '<p>No specifications available.</p>';
+                }
+                ?>
 
 
                 <div class="">

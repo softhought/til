@@ -75,6 +75,8 @@ $route['product/fetchtemplatedata'] = 'Products/fetchtemplatedata';
 $route['product/fetchproductmodelpartialview'] = 'Products/productModelPartialView';
 $route['product/addeditspecsheet'] = 'Products/addEditSpecSheet';
 $route['product/activeinactivespecsheet'] = 'Products/activeInactiveSpecSheet';
+$route['product/editspecsheet'] = 'Products/editspecsheet';
+$route['product/productmodeladdeditaction'] = 'Products/productmodeladdeditaction';
 $route['master/resume_partial_view'] = 'Master/resume_partial_view';
 $route['unset_session'] = 'Dashboard/unset_session';
 

@@ -336,7 +336,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" style="background: #ffc72c;"
                         type="submit">Search</button>
                 </form>
-                
+
                 <h1 class="m-0 fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h1>
 
                 <h2><?php echo $bodycontent["main-section"][0]->short_description; ?></h2>
@@ -372,17 +372,17 @@
                     <?php foreach ($bodycontent['sheet_model'] as $key => $value) { ?>
                         <div class="row" style="margin-top: 4rem;">
                             <div class="col-md-3">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"
-                                    alt=""
-                                    style="width: 16rem; height: 10rem; border: 2px dashed black;border-radius: 5px;">
+                                <?php
+                                $image = !empty($value->image)
+                                    ? base_url() . "assets/images/" . $value->image
+                                    : 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
+                                ?>
+                                <img src="<?php echo $image ?>" alt="<?php echo $image ?>"
+                                    style="width: 16rem; height: 10rem; border: 2px dashed black;border-radius: 5px; padding: 5px">
                             </div>
                             <div class="col-md-9">
                                 <h2><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?></h2>
-                                <p><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?> is
-                                    specifically designed for off-road and
-                                    rugged environment operations. A Rough Terrain Hydraulic Crane combines heavy-duty
-                                    off-road capability with powerful hydraulic lifting technology, making it ideal for
-                                    challenging and uneven work sites.</p>
+                                <p><?php echo $value->short_description ?></p>
                                 <a href="<?php echo base_url() . "products/" . $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
                                     style="background: #ffc72c; color: black; font-size: 16px; border-radius: 5px; text-transform: uppercase; display: flex; gap: 10px; font-weight: 500; padding: 15px; width: 15rem;">Click
                                     to know more</a>
@@ -595,119 +595,15 @@
                 </div>
 
 
-
-                <div class="product_content">
-                    <a class="toggle-button">View Content <span class="arrow"><i class="fa fa-arrow-down"
-                                aria-hidden="true"></i></span></a>
-                    <div class="content">
-                        <h2>The Versatility and Efficiency of Rough Terrain Cranes</h2>
-                        <p>Rough terrain cranes are indispensable in the construction and heavy lifting industry. These
-                            cranes, specifically designed to operate on rough and uneven surfaces, offer unparalleled
-                            flexibility and efficiency. As a leading rough terrain crane manufacturer, our company
-                            provides
-                            top-quality cranes that meet diverse lifting needs. In this article, we will explore the
-                            features, benefits, and applications of rough terrain cranes, along with insights into
-                            pricing
-                            and the role of a reputable crane company.</p>
-
-                        <h2>Understanding Rough Terrain Cranes</h2>
-                        <p>Rough terrain cranes are a type of mobile crane mounted on a four-wheel drive undercarriage.
-                            Their robust construction allows them to navigate and operate on challenging terrains such
-                            as
-                            construction sites, mining areas, and off-road locations. These cranes are equipped with
-                            large,
-                            durable tires that provide excellent traction and stability, making them ideal for lifting
-                            heavy
-                            loads in difficult conditions.</p>
-
-                        <h2>Key Features of Rough Terrain Cranes</h2>
-                        <ul>
-                            <li><strong>Mobility and Maneuverability:</strong> Rough terrain cranes are designed for
-                                easy
-                                movement on uneven surfaces. Their all-wheel drive system ensures that they can traverse
-                                soft ground, gravel, and other challenging terrains without getting stuck.</li>
-                            <li><strong>Compact Design:</strong> Despite their powerful capabilities, rough terrain
-                                cranes
-                                are compact and can be transported easily. This compact design also allows them to
-                                operate
-                                in confined spaces, making them suitable for a variety of construction and industrial
-                                applications.</li>
-                            <li><strong>Hydraulic Boom:</strong> The hydraulic boom of a rough terrain crane provides
-                                superior lifting capacity and reach. These booms can be extended and retracted quickly,
-                                allowing for efficient load handling.</li>
-                            <li><strong>Safety Features:</strong> Safety is paramount in crane operations. Rough terrain
-                                cranes come equipped with advanced safety features such as load moment indicators,
-                                anti-tip
-                                mechanisms, and ergonomic operator cabins to ensure safe and efficient operations.</li>
-                        </ul>
-
-                        <h2>Applications of Rough Terrain Cranes</h2>
-                        <p>Rough terrain cranes are versatile and find applications in various industries, including:
-                        </p>
-                        <ul>
-                            <li><strong>Construction:</strong> They are widely used in construction projects for lifting
-                                and
-                                placing heavy materials such as steel beams, concrete slabs, and prefabricated
-                                components.
-                            </li>
-                            <li><strong>Mining:</strong> In the mining industry, rough terrain cranes assist in the
-                                transportation and installation of heavy mining equipment.</li>
-                            <li><strong>Oil and Gas:</strong> These cranes are essential for lifting and positioning
-                                heavy
-                                machinery and equipment in oil and gas fields.</li>
-                            <li><strong>Infrastructure Development:</strong> Rough terrain cranes play a crucial role in
-                                infrastructure projects like bridge construction, road building, and power plant
-                                installations.</li>
-                        </ul>
-
-                        <h2>Choosing the Right Rough Terrain Crane Manufacturer</h2>
-                        <p>Selecting a reputable rough terrain crane manufacturer is critical to ensuring the quality
-                            and
-                            reliability of your crane. A trusted manufacturer will provide:</p>
-                        <ul>
-                            <li><strong>High-Quality Cranes:</strong> Look for manufacturers with a proven track record
-                                of
-                                producing durable and efficient rough terrain cranes.</li>
-                            <li><strong>Comprehensive Support:</strong> Choose a manufacturer that offers excellent
-                                customer
-                                support, including maintenance, repair services, and availability of spare parts.</li>
-                            <li><strong>Competitive Pricing:</strong> While rough terrain crane prices can vary, it is
-                                essential to find a manufacturer that offers competitive pricing without compromising on
-                                quality.</li>
-                        </ul>
-
-                        <h2>Factors Affecting Rough Terrain Crane Price</h2>
-                        <p>Several factors influence the price of rough terrain cranes, including:</p>
-                        <ul>
-                            <li><strong>Capacity and Specifications:</strong> Cranes with higher lifting capacities and
-                                advanced features tend to be more expensive.</li>
-                            <li><strong>Brand and Manufacturer:</strong> Reputable brands and manufacturers may charge a
-                                premium due to their established quality and reliability.</li>
-                            <li><strong>Market Demand:</strong> The demand for rough terrain cranes in specific regions
-                                can
-                                also affect pricing.</li>
-                            <li><strong>Customization:</strong> Customized cranes with specific modifications to meet
-                                unique
-                                project requirements may come at a higher cost.</li>
-                        </ul>
-
-                        <h2>Partnering with a Reliable Crane Company</h2>
-                        <p>Partnering with a reliable crane company ensures that you receive the best equipment and
-                            support
-                            for your projects. A good crane company will offer a wide range of cranes, including rough
-                            terrain cranes, and provide expert guidance to help you select the right equipment for your
-                            needs. They will also ensure that their cranes are well-maintained and comply with safety
-                            standards.</p>
-
-                        <p>In conclusion, rough terrain cranes are versatile, efficient, and essential for various
-                            industries. By choosing a reputable rough terrain crane manufacturer and understanding the
-                            factors that influence rough terrain crane price, you can ensure that your projects run
-                            smoothly
-                            and efficiently. Partner with a trusted crane company to access high-quality equipment and
-                            expert support, enabling you to achieve your lifting and construction goals with confidence.
-                        </p>
+                <?php if (!empty($bodycontent["main-section"][0]->content)) { ?>
+                    <div class="product_content">
+                        <a class="toggle-button">View Content <span class="arrow"><i class="fa fa-arrow-down"
+                                    aria-hidden="true"></i></span></a>
+                        <div class="content">
+                            <?php echo $bodycontent["main-section"][0]->content; ?>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </section>
     </div>

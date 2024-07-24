@@ -153,6 +153,7 @@ class Products extends CI_Controller
         $short_description = $_POST["short_description"];
         $description = $_POST["description"];
         $general_description = $_POST["general_description"];
+        $content = $_POST["content"];
 
         $dataArr = [
             'slug' => $slug,
@@ -160,7 +161,8 @@ class Products extends CI_Controller
             'name' => $title,
             'short_description' => $short_description,
             'about' => $description,
-            'general_description' => $general_description
+            'general_description' => $general_description,
+            'content' => $content
         ];
 
         if (isset($_FILES['bannerimagefile'])) {
@@ -408,6 +410,141 @@ class Products extends CI_Controller
             echo json_encode(["status" => true, "data" => $result]);
         } else {
             echo json_encode(["status" => false, "error" => "Fail to Update status"]);
+        }
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function editspecsheet()
+    {
+        $spec_sheet_dt_id = $_POST["spec_sheet_dt_id"];
+
+        $records = $this->commondatamodel->getSingleRowByWhereCls("spec_sheet_details", ["spec_sheet_dt_id" => $spec_sheet_dt_id]);
+
+        if ($records) {
+            echo json_encode(["status" => true, "data" => $records]);
+        } else {
+            echo json_encode(["status" => false]);
+        }
+        header('Content-Type: application/json');
+        exit;
+    }
+
+    public function productmodeladdeditaction()
+    {
+        $id = $_POST["spec_sheet_dt_id_modal"];
+        $title_modal = $_POST["title_modal"];
+        $short_description_modal = $_POST["short_description_modal"];
+        $model_description_modal = $_POST["model_description_modal"];
+        $general_description_modal = $_POST["general_description_modal"];
+
+        
+        $feature = $_POST["feature"];
+        $details = $_POST["details"];
+
+        for ($i = 0; $i < count($feature); $i++) {
+            $data[] = array(
+                'feature' => $feature[$i],
+                'details' => $details[$i]
+            );
+        }
+        
+        $jsonData = json_encode($data);
+
+        $dataArr = [
+            'model' => $title_modal,
+            'short_description' => $short_description_modal,
+            'about' => $model_description_modal,
+            'general_description' => $general_description_modal,
+            'specifications' => $jsonData
+        ];
+
+        if (isset($_FILES['specsheet_modalfile'])) {
+            $file = $_FILES['specsheet_modalfile'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/pdf/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s');
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['specsheet_modalfile']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'spec_sheet' => $newFilename
+                    ]);
+                }
+            }
+        }
+
+        if (isset($_FILES['catagory_image_modal_file'])) {
+            $file = $_FILES['catagory_image_modal_file'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/images/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s');
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['catagory_image_modal_file']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'image' => $newFilename
+                    ]);
+                }
+            }
+        }
+
+        if (isset($_FILES['side_image_modalfile'])) {
+            $file = $_FILES['side_image_modalfile'];
+            $fileTmpName = $file['tmp_name'];
+            $fileError = $file['error'];
+
+            $uploadDir = 'assets/images/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $currentDate = date('Y_m_d_H_i_s');
+            $uniqueHash = uniqid();
+            $originalFilename = $_FILES['side_image_modalfile']['name'];
+            $fileExtension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+
+            $newFilename = "{$currentDate}_{$uniqueHash}.{$fileExtension}";
+            $fileDestination = $uploadDir . $newFilename;
+
+            if ($fileError === 0) {
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $dataArr = array_merge($dataArr, [
+                        'left_image' => $newFilename
+                    ]);
+                }
+            }
+        }
+
+        $status = $this->commondatamodel->updateSingleTableData("spec_sheet_details", $dataArr, ["spec_sheet_dt_id" => $id], $id);
+
+        if ($status) {
+            echo json_encode(["status" => true, "spec_sheet_dt_id" => $id]);
+        } else {
+            echo json_encode(["status" => false]);
         }
         header('Content-Type: application/json');
         exit;

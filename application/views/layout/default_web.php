@@ -45,7 +45,7 @@
   <title>
     <?php echo isset($menu["seo_details"]) && $menu["seo_details"]->page_title ? $menu["seo_details"]->page_title : ""; ?>
   </title>
-
+  <meta name="facebook-domain-verification" content="cn182wp5sh5ds1thr2ybtyhpkqxwd5" />
   <meta name="keywords"
     content="<?php echo isset($menu["seo_details"]) && $menu["seo_details"]->seo_keyword ? $menu["seo_details"]->seo_keyword : ""; ?>">
   <meta name="description"

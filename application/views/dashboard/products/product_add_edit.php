@@ -206,6 +206,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="groupname"> Content</label>
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm">
+                                    <textarea class="form-control ckeditor" style="width: 100%;" name="content"
+                                        id="content"><?php echo isset($bodycontent["editData"]) ? $bodycontent["editData"]->content : "" ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <div class="p-3" style="margin-top: -35px">
                     <div class="row">
@@ -252,8 +264,9 @@
                     <input type="hidden" value="" name="model_product_master_id" id="model_product_master_id">
                     <input type="hidden" value="" name="model_mode" id="model_mode">
                     <input type="hidden" value="" name="prodect_model_dt_id" id="prodect_model_dt_id">
+                    <input type="hidden" value="7" name="template_set" id="template_set">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label for="groupname">Title</label>
                             <div class="form-group">
                                 <div class="input-group input-group-sm" id="model_titleerr">
@@ -262,14 +275,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="Function" class="form-label">Chose Template</label>
                                 <div id="template_seterr">
                                     <select class="form-select select2" name="template_set" id="template_set"></select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div id="tableContainer"></div>
                     <div class="row">
@@ -328,36 +341,36 @@
             $("#model_mode").val("add");
             $("#modelsavebtn").text("Save");
             var selectElement = $("#template_set");
-            selectElement.empty();
-            selectElement.append($("<option>").val("").text("Select"));
-            $.ajax({
-                url: `<?php echo base_url(); ?>product/fetchtemplate`,
-                type: 'GET',
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    if (response.status) {
-                        response.data.forEach(function (item) {
-                            var newOption = $("<option>")
-                                .val(item.template_id)
-                                .text(item.template_name);
-                            selectElement.append(newOption);
-                        });
-                    }
-                },
-                error: function (jqXHR, exception) {
-                    console.log(jqXHR);
-                    console.log(exception);
-                }
-            });
+            // selectElement.empty();
+            // selectElement.append($("<option>").val("").text("Select"));
+            // $.ajax({
+            //     url: `<?php echo base_url(); ?>product/fetchtemplate`,
+            //     type: 'GET',
+            //     dataType: "json",
+            //     processData: false,
+            //     contentType: false,
+            //     success: function (response) {
+            //         if (response.status) {
+            //             response.data.forEach(function (item) {
+            //                 var newOption = $("<option>")
+            //                     .val(item.template_id)
+            //                     .text(item.template_name);
+            //                 selectElement.append(newOption);
+            //             });
+            //         }
+            //     },
+            //     error: function (jqXHR, exception) {
+            //         console.log(jqXHR);
+            //         console.log(exception);
+            //     }
+            // });
             $("#createmodeltemplateModel").modal("show");
         });
 
-        $("#template_set").change(function () {
-            var template_id = $("#template_set").val();
-            showTemplateTable(template_id);
-        });
+        // $("#template_set").change(function () {
+        //     var template_id = $("#template_set").val();
+        //     showTemplateTable(template_id);
+        // });
     });
 
     function showTemplateTable(template_id) {
@@ -425,34 +438,34 @@
 
                     var selectElement = $("#template_set");
                     selectElement.empty();
-                    selectElement.append($("<option>").val("").text("Select"));
-                    $.ajax({
-                        url: `<?php echo base_url(); ?>product/fetchtemplate`,
-                        type: 'GET',
-                        dataType: "json",
-                        processData: false,
-                        contentType: false,
-                        success: function (template_response) {
-                            if (template_response.status) {
-                                var selectedTemplateId = response.data.template_master_id;
-                                template_response.data.forEach(function (item) {
-                                    var newOption = $("<option>")
-                                        .val(item.template_id)
-                                        .text(item.template_name);
-                                    if (item.template_id === selectedTemplateId) {
-                                        newOption.attr("selected", "selected");
-                                    }
-                                    selectElement.append(newOption);
-                                });
-                            }
-                        },
-                        error: function (jqXHR, exception) {
-                            console.log(jqXHR);
-                            console.log(exception);
-                        }
-                    });
+                    // selectElement.append($("<option>").val("").text("Select"));
+                    // $.ajax({
+                    //     url: `<?php echo base_url(); ?>product/fetchtemplate`,
+                    //     type: 'GET',
+                    //     dataType: "json",
+                    //     processData: false,
+                    //     contentType: false,
+                    //     success: function (template_response) {
+                    //         if (template_response.status) {
+                    //             var selectedTemplateId = response.data.template_master_id;
+                    //             template_response.data.forEach(function (item) {
+                    //                 var newOption = $("<option>")
+                    //                     .val(item.template_id)
+                    //                     .text(item.template_name);
+                    //                 if (item.template_id === selectedTemplateId) {
+                    //                     newOption.attr("selected", "selected");
+                    //                 }
+                    //                 selectElement.append(newOption);
+                    //             });
+                    //         }
+                    //     },
+                    //     error: function (jqXHR, exception) {
+                    //         console.log(jqXHR);
+                    //         console.log(exception);
+                    //     }
+                    // });
 
-                    showTemplateTable(response.data.template_master_id);
+                    // showTemplateTable(response.data.template_master_id);
                     $("#createmodeltemplateModel").modal("show");
                 }
             },
@@ -501,7 +514,6 @@
             data: { product_master_id: product_master_id },
             success: function (data) {
                 $("#product_model_partialview").html(data);
-
             },
             error: function (xhr, status, error) {
                 console.error("Error loading partial view:", error);

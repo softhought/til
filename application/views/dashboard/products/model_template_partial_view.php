@@ -83,6 +83,9 @@
                                                                     <th class="column-<?php echo $colNum++; ?>">
                                                                         <strong>Status</strong>
                                                                     </th>
+                                                                    <th class="column-<?php echo $colNum++; ?>">
+                                                                        <strong>Update</strong>
+                                                                    </th>
                                                                 </tr>
                                                             </thead>
                                                             <!-- Table Data -->
@@ -111,6 +114,9 @@
                                                                             <?php $color = $value->is_disabled != 0 ? "red" : "green" ?>
                                                                             <i class="activespec fa fa-toggle-<?php echo $color == "green" ? "on" : "off" ?>" data-spec_sheet_dt_id="<?php echo $value->spec_sheet_dt_id ?>" data-status="<?php echo $color == "green" ? 1 : 0 ?>" style="cursor: pointer; font-size: 20px; color: <?php echo $color ?>" aria-hidden="true"></i>
                                                                         </td>
+                                                                        <td valign="top" class="column-<?php echo $index++; ?>">
+                                                                            <i class="editspec fas fa-edit" data-spec_sheet_dt_id="<?php echo $value->spec_sheet_dt_id ?>" style="cursor: pointer; font-size: 20px;" aria-hidden="true"></i>
+                                                                        </td>
                                                                     </tr>
                                                                 <?php } ?>
                                                                     <input type="hidden" name="spec_product_model_dt_id" id="spec_product_model_dt_id" value="<?php echo $modelValue->prodect_model_dt_id ?>">
@@ -121,7 +127,8 @@
                                                                                 <td><input type="file" class="input-model-table" style="padding: initial; border: 0px;" name="<?php echo $key; ?>" id="<?php echo $key; ?>" accept="application/pdf"></td>
                                                                             <?php } else { ?>
                                                                                 <td><textarea type="text" class="input-model-table" name="<?php echo $key; ?>" id="<?php echo $key; ?>"></textarea></td>
-                                                                        <?php } } ?>    
+                                                                        <?php } } ?>
+                                                                        <td></td>
                                                                         <td><button type="submit" class="modelspecsubmit btn btn-sm action-button" style="margin-right: 7px;" data-prodectmodeldtid = <?php echo $modelValue->prodect_model_dt_id ?>>Save</button></td>
                                                                     </tr>
                                                                 </tbody>
@@ -141,8 +148,210 @@
         </div>
     </div>
 </div>
+
+
+<!-- Model -->
+<div id="editModel" class="modal fade customModal format1 right" data-keyboard="false"
+    data-backdrop="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#ffcd11; padding: 10px; color: #fff;">
+                <h4 class="frm_header"></h4>
+                <button type="button" class="close" style="color: white; opacity: 1;" data-dismiss="modal">&times;<span
+                        class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body" style="min-height: 350px;height: 650px overflow-y: auto;">
+                <form name="editModelForm" id="editModelForm" class="p-4" enctype="multipart/form-data">
+                    <input type="hidden" value="" name="spec_sheet_dt_id_modal" id="spec_sheet_dt_id_modal">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="groupname">Title</label>
+                            <div class="form-group">
+                                <div class="input-group input-group-sm" id="title_modalerr">
+                                    <input type="text" class="form-control" name="title_modal" id="title_modal"
+                                        placeholder="Enter Title"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="file" name="specsheet_modalfile" class="file fileName" id="specsheet_modalfile" accept="application/pdf">
+
+
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 4%;">
+                                <div class="form-group">
+                                    <label for="groupname">Upload Spec Sheet</label>
+                                    <div class="input-group input-group-sm" id="specsheet_modalerr">
+                                        <input type="text" name="specsheet_modal" id="specsheet_modal"
+                                            class="form-control userFileName"
+                                            style="border-radius: 5px;"
+                                            readonly placeholder="PDF Only">
+                                        <span class="input-group-btn" style="margin-left: 23px">
+                                            <button class="btn btn-sm browse" type="button"
+                                                style="background: #f8bb06; color: #000; padding: 7px;"
+                                                id="specsheet_modalBtn">
+                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="file" name="catagory_image_modal_file" class="file fileName" id="catagory_image_modal_file"
+                            accept="image/*">
+
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 4%;">
+                                <div class="form-group">
+                                    <label for="groupname">Upload Category image</label>
+                                    <div class="input-group input-group-sm" id="category_image_modal_err">
+                                        <input type="text" name="category_image_modal" id="category_image_modal"
+                                            class="form-control userFileName"
+                                            style="border-radius: 5px;"
+                                            readonly placeholder="365 x 180">
+                                        <span class="input-group-btn" style="margin-left: 23px">
+                                            <button class="btn btn-sm browse" type="button"
+                                                style="background: #f8bb06; color: #000; padding: 7px;"
+                                                id="category_image_modalBtn">
+                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="file" name="side_image_modalfile" class="file fileName" id="side_image_modalfile"
+                            accept="image/*">
+
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 4%;">
+                                <div class="form-group">
+                                    <label for="groupname">Upload left side image</label>
+                                    <div class="input-group input-group-sm" id="side_image_modalerr">
+                                        <input type="text" name="side_image_modal" id="side_image_modal"
+                                            class="form-control userFileName"
+                                            style="border-radius: 5px;"
+                                            readonly placeholder="1800 x 1350">
+                                        <span class="input-group-btn" style="margin-left: 23px">
+                                            <button class="btn btn-sm browse" type="button"
+                                                style="background: #f8bb06; color: #000; padding: 7px;"
+                                                id="side_image_modalBtn">
+                                                <i class="fa fa-folder-open" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="groupname"> Short Description</label>
+                            <div class="form-group" id="short_description_modalerr">
+                                <div class="input-group input-group-sm">
+                                    <textarea class="form-control" style="width: 100%;" name="short_description_modal"
+                                        id="short_description_modal"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="groupname"> Description</label>
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm" id="model_description_modalerr">
+                                    <textarea class="form-control ckeditor" style="width: 100%; height: 100px"
+                                        name="model_description_modal" id="model_description_modal"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="groupname"> General Description</label>
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm">
+                                    <textarea class="form-control ckeditor" style="width: 100%;" name="general_description_modal"
+                                        id="general_description_modal"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="groupname">Specifications</label>
+                    <div id="specifications-container"></div>
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm">
+                                    <input type="button" class="form-control" name="appendspecifications" id="appendspecifications" value="Add +" style="background: #ffcd11;font-size: 16px;font-weight: bold !important;border-radius: 50px;" />
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <hr>
+                    <div class="formblock-box">
+                        <div class="row">
+                            <div class="col-md-9"><span id="msg" style="font-weight: bold;color: #1c1809;"><span>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <button type="submit" class="btn btn-sm action-button" id="modelsavebtn_btn"
+                                    style="width: 200px;">Update</button>
+                                <span class="btn btn-sm action-button loaderbtn" id="modelloaderbtn_btn"
+                                    style="display:none;width: 200px;">Processing....</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    CKEDITOR.replace('model_description_modal');
+    CKEDITOR.replace('general_description_modal');
+</script>
+
 <script>
     $(document).ready(function () {
+
+        $('#editModel').on('hidden.bs.modal', function () {
+            $('#editModelForm')[0].reset();
+        });
+
+        $("#specsheet_modalBtn").on("click", function () {
+            $("#specsheet_modalfile").click();
+        });
+
+        $("#specsheet_modalfile").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $("#specsheet_modal").val(fileName);
+        });
+
+        $("#category_image_modalBtn").on("click", function () {
+            $("#catagory_image_modal_file").click();
+        });
+
+        $("#catagory_image_modal_file").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $("#category_image_modal").val(fileName);
+        });
+
+        $("#side_image_modalBtn").on("click", function () {
+            $("#side_image_modalfile").click();
+        });
+
+        $("#side_image_modalfile").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $("#side_image_modal").val(fileName);
+        });
+
         $('.product-model-edit-btn').on('click', function (event) {
             event.stopPropagation();
             var prodect_model_dt_id = $(this).attr('data-prodect_model_dt_id');
@@ -170,6 +379,161 @@
                     console.log(exception);
                 }
             });
+        });
+
+        $(document).on('click', '.editspec', function() {
+            var spec_sheet_dt_id = $(this).data("spec_sheet_dt_id");
+
+            $.ajax({
+                url: `<?php echo base_url(); ?>product/editspecsheet`,
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    spec_sheet_dt_id, spec_sheet_dt_id
+                },
+                success: function (response) {
+                    if (response.status) {
+                        $("#spec_sheet_dt_id_modal").val(spec_sheet_dt_id);
+                        $("#title_modal").val(response.data.model);
+                        $("#specsheet_modal").val(response.data.spec_sheet);
+                        $("#category_image_modal").val(response.data.image);
+                        $("#side_image_modal").val(response.data.left_image);
+                        $("#short_description_modal").val(response.data.short_description);
+                        $("#model_description_modal").val(response.data.about);
+                        $("#general_description_modal").val(response.data.general_description);
+                        var specifications = response.data.specifications;
+
+                        if (typeof specifications === 'string') {
+                            specifications = JSON.parse(specifications);
+                        }
+
+                        $('#specifications-container').empty();
+
+                        if (Array.isArray(specifications)) {
+                            specifications.forEach(function(specification) {
+                                var newSpecification = `
+                                <div class="row specification-item">
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="mail_bodyerr">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" name="feature[]" placeholder="Feature" id="feature" value="${specification.feature}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="mail_bodyerr">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" name="details[]" placeholder="Details" id="details" value="${specification.details}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group" id="mail_bodyerr">
+                                            <div class="input-group input-group-sm">
+                                                <button type="button" class="form-control delete-specification" style="background: #fdfdfd;font-size: 16px;font-weight: bold !important;border-radius: 50px;height: 38px;">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+                                $('#specifications-container').append(newSpecification);
+                            });
+                        }
+
+                        $("#editModel").modal("show");
+                        $("body").css("overflow-y", "scroll");
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                    console.log(exception);
+                }
+            });
+        });
+
+        $(document).on('click', '#appendspecifications', function(event) {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            console.log("g");
+            var newSpecification = `
+            <div class="row specification-item">
+                <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group" id="mail_bodyerr">
+                        <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="feature[]" placeholder="Feature" id="feature" />
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group" id="mail_bodyerr">
+                        <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="details[]" placeholder="Details" id="details" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-2">
+                <div class="form-group" id="mail_bodyerr">
+                    <div class="input-group input-group-sm">
+                    <button type="button" class="form-control delete-specification" style="background: #fdfdfd;font-size: 16px;font-weight: bold !important;border-radius: 50px;height: 38px;">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            `;
+            $('#specifications-container').append(newSpecification);
+        });
+
+        $(document).on('click', '.delete-specification', function() {
+            $(this).closest('.specification-item').remove();
+        });
+
+        
+        $(document).on("submit", "#editModelForm", function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            var isValid = modalValidate();
+
+            if (isValid) {
+                $("#modelloaderbtn_btn").show();
+                $("#modelsavebtn_btn").hide();
+                var formData = new FormData($(this)[0]);
+
+                $.ajax({
+                    url: `<?php echo base_url(); ?>product/productmodeladdeditaction`,
+                    type: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.status) {
+                            $("#modelloaderbtn_btn").hide();
+                            $("#modelsavebtn_btn").show();
+                            $("#editModelForm")[0].reset();
+                            $("#editModel").modal("hide");
+                        }
+                        load_product_model_partial_view($("#product_master_id").val());
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log(jqXHR);
+                        console.log(exception);
+                    }
+                });
+            }
         });
 
         $(document).on("submit", "#specsheetform", function (e) {
@@ -248,4 +612,42 @@
             });   
         });
     });
+
+    function modalValidate() {
+        var valid = true;
+
+        if ($("#title_modal").val().trim() === "") {
+            $("#title_modalerr").css("border", "1px solid red");
+            $("#title_modalerr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#title_modalerr").css("border", "");
+        }
+
+        if ($("#specsheet_modal").val().trim() === "") {
+            $("#specsheet_modalerr").css("border", "1px solid red");
+            $("#specsheet_modalerr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#specsheet_modalerr").css("border", "");
+        }
+
+        if ($("#category_image_modal").val().trim() === "") {
+            $("#category_image_modal_err").css("border", "1px solid red");
+            $("#category_image_modal_err").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#category_image_modal_err").css("border", "");
+        }
+
+        if ($("#side_image_modal").val().trim() === "") {
+            $("#side_image_modalerr").css("border", "1px solid red");
+            $("#side_image_modalerr").css("border-radius", "5px");
+            valid = false;
+        } else {
+            $("#side_image_modalerr").css("border", "");
+        }
+
+        return valid;
+    }
 </script>

@@ -121,6 +121,7 @@
                                                                 <?php } ?>
                                                                     <input type="hidden" name="spec_product_model_dt_id" id="spec_product_model_dt_id" value="<?php echo $modelValue->prodect_model_dt_id ?>">
                                                                     <input type="hidden" name="spec_product_master_id" id="spec_product_master_id" value="<?php echo $modelValue->product_master_id ?>">
+                                                                    <input type="hidden" name="slug" id="model_slug" value="<?php echo $modelValue->slug ?>">
                                                                     <tr class="row-end">
                                                                         <?php foreach ($products->template_master as $key => $value) { 
                                                                             if ($key == "spec_sheet") { ?>
@@ -356,6 +357,13 @@
             event.stopPropagation();
             var prodect_model_dt_id = $(this).attr('data-prodect_model_dt_id');
             editModelTemplate(prodect_model_dt_id);
+        });
+
+        $(document).on('input', "#model", function (e) {
+            e.preventDefault();
+            var title = $(this).val();
+            var formattedText = title.toLowerCase().replace(/ /g, "-");
+            $("#model_slug").val(formattedText);
         });
 
         $(document).on('click', '.activespec', function() {

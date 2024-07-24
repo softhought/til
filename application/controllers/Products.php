@@ -340,6 +340,7 @@ class Products extends CI_Controller
     {
         $spec_product_master_id = $_POST["spec_product_master_id"];
         $spec_product_model_dt_id = $_POST["spec_product_model_dt_id"];
+        $slug = $_POST["slug"];
         $template_master_id = $this->commondatamodel->getSingleRowByWhereCls("product_model_details", ['prodect_model_dt_id' => $spec_product_model_dt_id, 'is_disabled' => 0])->template_master_id;
 
         $template_master = json_decode($this->commondatamodel->getSingleRowByWhereCls("template_master", ['template_id' => $template_master_id])->column_names);
@@ -347,6 +348,7 @@ class Products extends CI_Controller
         $dataArr = [
             'product_model_dt_id' => $spec_product_model_dt_id,
             'product_master_id' => $spec_product_master_id,
+            'slug' => $slug
         ];
 
         foreach ($template_master as $key => $value) {

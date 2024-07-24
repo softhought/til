@@ -420,8 +420,12 @@
                         $("#category_image_modal").val(response.data.image);
                         $("#side_image_modal").val(response.data.left_image);
                         $("#short_description_modal").val(response.data.short_description);
-                        $("#model_description_modal").val(response.data.about);
-                        $("#general_description_modal").val(response.data.general_description);
+                        if (CKEDITOR.instances['model_description_modal']) {
+                            CKEDITOR.instances['model_description_modal'].setData(response.data.about);
+                        }
+                        if (CKEDITOR.instances['general_description_modal']) {
+                            CKEDITOR.instances['general_description_modal'].setData(response.data.general_description);
+                        }
                         var specifications = response.data.specifications;
 
                         if (typeof specifications === 'string') {

@@ -51,6 +51,13 @@ class About extends CI_Controller
         webbody_helper($result, $page);
     }
 
+    public function vision_and_values_new()
+    {      
+        $page="web_view/about/vision_and_values_new";
+        $result["active"] = "about";
+        webbody_helper($result, $page);
+    }
+
 
     public function corporate_social_responsibility()
     {      

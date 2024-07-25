@@ -85,7 +85,7 @@ $route['about-us'] = "frontend/about";
 $route['about-us/corporate-profile'] = "frontend/about/corporate_profile";
 $route['about-us/board-of-directors'] = "frontend/about/board_of_directors";
 $route['about-us/milestones'] = "frontend/about/milestones";
-$route['about-us/vision-and-values'] = "frontend/about/vision_and_values";
+
 $route['about-us/corporate-social-responsibility'] = "frontend/about/corporate_social_responsibility";
 $route['about-us/code-of-conduct'] = "frontend/about/code_of_conduct";
 $route['about-us/facilities'] = "frontend/about/facilities";
@@ -96,6 +96,8 @@ $route['about-us/facilities'] = "frontend/about/facilities";
 if (!isNewDevelopmentLive()) {
     $route['products'] = "frontend/products";
     $route['new/products'] = "frontend/products/product_new";
+    $route['about-us/vision-and-values'] = "frontend/about/vision_and_values";
+    $route['new/about-us/vision-and-values'] = "frontend/about/vision_and_values_new";
 
     foreach ($menuUrls as $url) {
         $routeKey = $url['url'];
@@ -116,6 +118,7 @@ if (!isNewDevelopmentLive()) {
     }
 } else {
     $route['products'] = "frontend/products/product_new";
+    $route['about-us/vision-and-values'] = "frontend/about/vision_and_values_new";
 }
 
 

@@ -393,7 +393,6 @@
                 <div class="product_content">
                     <?php echo $bodycontent["main-section"][0]->general_description; ?>
                 </div>
-
                 <?php if ($bodycontent["main-section"][0]->features) { ?>
                     <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Feature</h1>
                 <?php } ?>

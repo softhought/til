@@ -154,7 +154,8 @@
                                         <option value="">Select</option>
                                         <?php foreach ($bodycontent['productList'] as $key => $value) { ?>
                                             <option value="<?php echo $value['product_master_id'] ?>" <?php echo $value['product_master_id'] == $bodycontent['faqEditdata']->product_id ? 'selected' : '' ?>>
-                                                <?php echo $value['name'] ?></option>
+                                                <?php echo $value['name'] ?>
+                                            </option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -166,10 +167,6 @@
                                 <div id="model_iderr">
                                     <select class="form-select select2" name="model_id" id="model_id">
                                         <option value="">Select</option>
-                                        <?php foreach ($bodycontent['modelList'] as $key => $value) { ?>
-                                            <option value="<?php echo $value->spec_sheet_dt_id ?>" <?php echo $value->spec_sheet_dt_id == $bodycontent['faqEditdata']->model_id ? 'selected' : '' ?>>
-                                                <?php echo $value->model ?></option>
-                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -227,3 +224,34 @@
     </div>
     <!-- /.card -->
 </section>
+
+<script>
+    $(document).ready(function () {
+        $("#product_id").on("change", function () {
+            var basepath = $("#basepath").val();
+            var product_id = $("#product_id").val();
+            $("#model_id").empty();
+
+            $.ajax({
+                type: "POST",
+                url: basepath + "master/fetchmodel",
+                dataType: "json",
+                data: { product_id: product_id },
+                success: function (result) {
+                    $("#model_id").append('<option value="">Select</option>');
+                    result.forEach(function (item) {
+                        $("#model_id").append('<option value="' + item.spec_sheet_dt_id + '">' + item.model + '</option>');
+                    });
+                },
+                error: function (jqXHR, exception) {
+
+                }
+            });
+        });
+
+        if ($("#mode").val() == "EDIT") {
+            $("#product_id").val(<?php echo $bodycontent['faqEditdata']->product_id ?>).trigger("change");
+            $("#model_id").val(<?php echo $bodycontent['faqEditdata']->model_id ?>).trigger("change");
+        }
+    });
+</script>

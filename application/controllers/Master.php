@@ -374,6 +374,21 @@ class Master extends CI_Controller
 
     }
 
+    public function fetchmodel()
+    {
+        $id = $_POST['product_id'];
+
+        if ($id) {
+            $modelList = $this->commondatamodel->getAllRecordWhereOrderByCol('spec_sheet_details', ["is_disabled" => 0, 'product_master_id' => $id], "spec_sheet_dt_id", "ASC");
+        } else {
+            $modelList = $this->commondatamodel->getAllRecordWhereOrderByCol('spec_sheet_details', ["is_disabled" => 0], "spec_sheet_dt_id", "ASC");
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($modelList);
+        exit;
+    }
+
     public function faq_action()
     {
         $session = $this->session->userdata('user_detail');

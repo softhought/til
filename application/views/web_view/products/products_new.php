@@ -359,9 +359,18 @@
                         type="submit">Search</button>
                 </form>
 
-                <h1 class="m-0 fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h1>
-
-                <h2><?php echo $bodycontent["main-section"][0]->short_description; ?></h2>
+                <div class="aboutText mb-2">
+                    <h1 class="mb-2 fc-black"><?php echo $bodycontent["main-section"][0]->name; ?></h1>
+                    <h2><?php echo $bodycontent["main-section"][0]->short_description; ?></h2>
+                    <figure>
+    
+                        <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="rectangle" />
+    
+                        <hr style="width: 30rem;" />
+    
+                    </figure>
+                </div>
+                
                 <p><span><strong>Looking for robust and reliable cranes?</strong></span> Tractors India Limited (TIL)
                     offers a comprehensive range of
                     high-performance cranes

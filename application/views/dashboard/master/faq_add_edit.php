@@ -141,6 +141,7 @@
         <form name="sectorFrom" id="sectorFrom" enctype="multipart/form-data">
             <input type="hidden" name="mode" id="mode" value="<?php echo $bodycontent['mode']; ?>">
             <input type="hidden" name="faq_del_id" id="faq_del_id" value="<?php echo $bodycontent['faqid']; ?>">
+            <input type="hidden" name="modelId" id="modelId" value="<?php echo $bodycontent['mode'] == "EDIT" ? $bodycontent['faqEditdata']->model_id : "" ?>">
             <div class="card-body">
                 <div class="formblock-box">
 
@@ -240,7 +241,13 @@
                 success: function (result) {
                     $("#model_id").append('<option value="">Select</option>');
                     result.forEach(function (item) {
-                        var selected = (item.spec_sheet_dt_id == <?php echo $bodycontent['faqEditdata']->model_id; ?>) ? ' selected' : '';
+                        if ($("#mode").val() == "EDIT") {
+                            var modelId = $("#modelId").val();
+                            var selected = (item.spec_sheet_dt_id == modelId) ? ' selected' : '';
+                        } else {
+                            selected = '';
+                        }
+                        
                         $("#model_id").append('<option value="' + item.spec_sheet_dt_id + '"' + selected + '>' + item.model + '</option>');
                     });
 

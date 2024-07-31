@@ -54,7 +54,7 @@
             <?php foreach ($product_model_details as $key => $modelValue) { ?>
                 <div class="panel box box-primary">
                     <div class="box-header with-border" data-toggle="collapse" data-target="#collapse<?php echo $key ?>">
-                        <h4 class="box-title"><?php echo $modelValue->title ?></h4>
+                        <h4 class="box-title"><?php echo $modelValue->title ?> - Model</h4>
                         <button class="btn product-model-edit-btn"
                             data-prodect_model_dt_id="<?php echo $modelValue->prodect_model_dt_id; ?>" title="Edit"
                             type="button"><i class="fas fa-edit"></i>
@@ -284,7 +284,7 @@
                             </div>
                         </div>
                     </div>
-                    <label for="groupname">Features</label>
+                    <label for="groupname" style="font-size: 15px;padding: 4px;border-radius: 0 35px;background: #ffc72c;align-content: center;text-align: center;display: block;margin-bottom: 1rem;">Features</label>
                     <div id="features-container"></div>
                     <div class="row">
                         <div class="col-md-10"></div>
@@ -297,7 +297,7 @@
                         </div> 
                     </div>
                     <hr>
-                    <label for="groupname">Specifications</label>
+                    <label for="groupname" style="font-size: 15px;padding: 4px;border-radius: 0 35px;background: #ffc72c;align-content: center;text-align: center;display: block;margin-bottom: 1rem;">Specifications</label>
                     <div id="specifications-container"></div>
                     <div class="row">
                         <div class="col-md-10"></div>

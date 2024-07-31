@@ -48,89 +48,89 @@ class Mastermodel extends CI_Model
     }
 
     public function getFaqRecordWhereOrderByCol()
-	{
+    {
 
-		$data = array();
+        $data = array();
 
-		$this->db->select("*")
+        $this->db->select("*")
 
-			->from('faq_details')
+            ->from('faq_details')
 
-			->join('product_master', 'product_master.product_master_id = faq_details.product_id', 'LEFT')
-			->join('spec_sheet_details', 'spec_sheet_details.spec_sheet_dt_id = faq_details.model_id', 'LEFT')
+            ->join('product_master', 'product_master.product_master_id = faq_details.product_id', 'LEFT')
+            ->join('spec_sheet_details', 'spec_sheet_details.spec_sheet_dt_id = faq_details.model_id', 'LEFT')
             ->select('faq_details.*', 'product_master.name', 'spec_sheet_details.model')
 
-			// ->where(["faq_details.is_disabled" => 0])
+            // ->where(["faq_details.is_disabled" => 0])
 
-			->order_by("faq_details.precedence", "ASC");
+            ->order_by("faq_details.precedence", "ASC");
 
-		$query = $this->db->get();
+        $query = $this->db->get();
 
-		#echo $this->db->last_query();
-
-
-
-		if ($query->num_rows() > 0) {
-
-			foreach ($query->result() as $rows) {
-
-				$data[] = $rows;
-
-			}
-
-			return $data;
+        #echo $this->db->last_query();
 
 
 
-		} else {
+        if ($query->num_rows() > 0) {
 
-			return $data;
+            foreach ($query->result() as $rows) {
 
-		}
+                $data[] = $rows;
 
-	}
+            }
+
+            return $data;
+
+
+
+        } else {
+
+            return $data;
+
+        }
+
+    }
 
 
     public function getReviewRecordWhereOrderByCol()
-	{
+    {
 
-		$data = array();
+        $data = array();
 
-		$this->db->select("*")
+        $this->db
 
-			->from('customer_review')
+            ->select('customer_review.*, product_master.name as product_name, spec_sheet_details.model')
+            ->from('customer_review')
 
-			->join('product_master', 'product_master.product_master_id = customer_review.product_id', 'LEFT')
-			->join('spec_sheet_details', 'spec_sheet_details.spec_sheet_dt_id = customer_review.model_id', 'LEFT')
-            ->select('customer_review.*', 'product_master.name', 'spec_sheet_details.model');
+            ->join('product_master', 'product_master.product_master_id = customer_review.product_id', 'LEFT')
+            ->join('spec_sheet_details', 'spec_sheet_details.spec_sheet_dt_id = customer_review.model_id', 'LEFT');
 
-			// ->where(["customer_review.is_disabled" => 0]);
+        // ->where(["customer_review.is_disabled" => 0]);
 
-		$query = $this->db->get();
+        $query = $this->db->get();
 
-		#echo $this->db->last_query();
-
-
-
-		if ($query->num_rows() > 0) {
-
-			foreach ($query->result() as $rows) {
-
-				$data[] = $rows;
-
-			}
-
-			return $data;
+        #echo $this->db->last_query();
 
 
 
-		} else {
+        if ($query->num_rows() > 0) {
 
-			return $data;
+            foreach ($query->result() as $rows) {
 
-		}
+                $data[] = $rows;
 
-	}
+            }
+
+            return $data;
+
+
+
+        } else {
+
+            return $data;
+
+        }
+
+    }
 
     public function resumeList($function_id, $from_date, $to_date)
     {
@@ -143,7 +143,7 @@ class Mastermodel extends CI_Model
         if ($from_date != "") {
             $this->db->where('time >=', $from_date);
         }
-        
+
         if ($to_date != "") {
             $this->db->where('time <=', $to_date);
         }
@@ -154,7 +154,7 @@ class Mastermodel extends CI_Model
             ->join('current_openings', 'resume_submission.current_opening_id=current_openings.current_opening_id', 'left')
             ->where($where)
             ->order_by('resume_submission.id', 'desc');
-            //->limit(5000);
+        //->limit(5000);
         $query = $this->db->get();
         #echo $this->db->last_query();
         $data = [];

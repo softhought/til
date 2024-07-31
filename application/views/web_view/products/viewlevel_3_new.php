@@ -563,13 +563,13 @@
                             foreach ($bodycontent["faq"] as $key => $faqValue) { ?>
                                 <div class="panel">
                                     <div class="panel-heading" role="tab" id="heading_<?php echo $index; ?>">
-                                        <h4 class="panel-title">
+                                        <h3 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                                 href="#collapse_<?php echo $index; ?>" aria-expanded="false"
                                                 aria-controls="collapse_<?php echo $index; ?>">
                                                 <?php echo $faqValue->faq_question; ?>
                                             </a>
-                                        </h4>
+                                        </h3>
                                     </div>
                                     <div id="collapse_<?php echo $index; ?>" class="panel-collapse collapse" role="tabpanel"
                                         aria-labelledby="heading_<?php echo $index; ?>">

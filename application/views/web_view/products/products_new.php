@@ -371,12 +371,7 @@
                     </figure>
                 </div>
                 
-                <p><span><strong>Looking for robust and reliable cranes?</strong></span> Tractors India Limited (TIL)
-                    offers a comprehensive range of
-                    high-performance cranes
-                    designed to tackle challenging terrains with ease. As a leading crane manufacturer company and crane
-                    supplier, we specialize in
-                    delivering top-quality equipment that meets the demands of diverse industrial applications. </p>
+                <?php echo $bodycontent["main-section"][0]->about; ?>
                 <?php foreach ($bodycontent['products'] as $proKey => $product) {
                     $count = 1; ?>
                     <h2 class="m-0 fc-black"><strong><?php echo $product->name; ?></strong></h2>
@@ -509,13 +504,13 @@
                         foreach ($bodycontent["faq"] as $key => $faqValue) { ?>
                             <div class="panel">
                                 <div class="panel-heading" role="tab" id="heading_<?php echo $index; ?>">
-                                    <h4 class="panel-title">
+                                    <h3 class="panel-title">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                             href="#collapse_<?php echo $index; ?>" aria-expanded="false"
                                             aria-controls="collapse_<?php echo $index; ?>">
                                             <?php echo $faqValue->faq_question; ?>
                                         </a>
-                                    </h4>
+                                    </h3>
                                 </div>
                                 <div id="collapse_<?php echo $index; ?>" class="panel-collapse collapse" role="tabpanel"
                                     aria-labelledby="heading_<?php echo $index; ?>">

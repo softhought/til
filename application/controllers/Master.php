@@ -467,7 +467,7 @@ class Master extends CI_Controller
 
             $result['reviewList'] = $this->mastermodel->getReviewRecordWhereOrderByCol();
 
-            //  pre($result['participantList']);exit;
+            //  pre($result['reviewList']);exit;
             createbody_method($result, $page, $header, $session);
         } else {
             redirect('login', 'refresh');

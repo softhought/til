@@ -124,7 +124,7 @@
                                         <span class="rating"></span>
                                     </div>
                                 </td>
-                                <td><?php echo $list->product; ?> </td>
+                                <td><?php echo $list->product_name; ?> </td>
                                 <td><?php echo $list->model; ?> </td>
                                 <td align="left"> <?php if ($list->is_disabled == 0) { ?>
                                         <a

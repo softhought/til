@@ -168,6 +168,11 @@
                                 <div id="model_iderr">
                                     <select class="form-select select2" name="model_id" id="model_id">
                                         <option value="">Select</option>
+                                        <?php foreach ($bodycontent['modelList'] as $key => $value) { ?>
+                                            <option value="<?php echo $value->spec_sheet_dt_id; ?>">
+                                                <?php echo $value->model ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>

@@ -223,7 +223,10 @@
         <form name="sectorFrom" id="sectorFrom" enctype="multipart/form-data">
             <input type="hidden" name="mode" id="mode" value="<?php echo $bodycontent['mode']; ?>">
             <input type="hidden" name="id" id="id" value="<?php echo $bodycontent['id']; ?>">
-            <input type="hidden" name="modelId" id="modelId" value="<?php echo $bodycontent['mode'] == "EDIT" ? $bodycontent['faqEditdata']->model_id : "" ?>">
+            <input type="hidden" name="modelId" id="modelId"
+                value="<?php echo $bodycontent['mode'] == "EDIT" ? $bodycontent['reviewEditdata']->model_id : "" ?>">
+            <input type="hidden" name="productId" id="productId"
+                value="<?php echo $bodycontent['mode'] == "EDIT" ? $bodycontent['reviewEditdata']->product_id : "" ?>">
             <div class="card-body">
                 <div class="formblock-box">
 
@@ -250,6 +253,11 @@
                                 <div id="model_iderr">
                                     <select class="form-select select2" name="model_id" id="model_id">
                                         <option value="">Select</option>
+                                        <?php foreach ($bodycontent['modelList'] as $key => $value) { ?>
+                                            <option value="<?php echo $value->spec_sheet_dt_id; ?>">
+                                                <?php echo $value->model ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -282,16 +290,15 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="file" name="imagefile" class="file fileName" id="imagefile"
-                            accept="image/*">
+                        <input type="file" name="imagefile" class="file fileName" id="imagefile" accept="image/*">
 
                         <div class="row">
                             <div class="col-md-10" style="margin-left: 4%;">
                                 <div class="form-group">
                                     <label for="groupname">Upload image</label>
                                     <div class="input-group input-group-sm" id="imageerr">
-                                        <input type="text" name="image" id="image"
-                                            class="form-control userFileName" style="border-radius: 5px;"
+                                        <input type="text" name="image" id="image" class="form-control userFileName"
+                                            style="border-radius: 5px;"
                                             value="<?php echo isset($bodycontent["reviewEditdata"]) ? $bodycontent["reviewEditdata"]->image : '' ?>"
                                             readonly placeholder="512 x 512">
                                         <span class="input-group-btn" style="margin-left: 23px">
@@ -445,7 +452,7 @@
                         } else {
                             selected = '';
                         }
-                        
+
                         $("#model_id").append('<option value="' + item.spec_sheet_dt_id + '"' + selected + '>' + item.model + '</option>');
                     });
 
@@ -457,7 +464,9 @@
         });
 
         if ($("#mode").val() == "EDIT") {
-            $("#product_id").val(<?php echo $bodycontent['faqEditdata']->product_id ?>).trigger("change");
+            var productId = $("#productId").val();
+            console.log(productId);
+            $("#product_id").val(productId).trigger("change");
         }
     });
 </script>

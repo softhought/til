@@ -7,7 +7,7 @@ class Master extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->model('mastermodel', 'mastermodel', TRUE);
-        $this->load->model('productsmenu', 'productsmenu', TRUE);
+        $this->load->model('ProductsMenu', 'productsmenu', TRUE);
         $this->load->model('Usermodel', 'user', TRUE);
 
     }
@@ -489,7 +489,7 @@ class Master extends CI_Controller
                 $result['btnText'] = "Create";
                 $result['btnTextLoader'] = "Saving...";
                 $result['id'] = 0;
-                $result['faqEditdata'] = [];
+                $result['reviewEditdata'] = [];
             } else {
                 $result['mode'] = "EDIT";
                 $result['btnText'] = "Update";

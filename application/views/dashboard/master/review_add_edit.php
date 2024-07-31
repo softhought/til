@@ -349,7 +349,7 @@
                             style="width: 80%;"><?php echo $bodycontent['btnText']; ?>&nbsp;<i
                                 class="fas fa-chevron-right"></i></button>
                         <span class="btn btn-sm action-button loaderbtn" id="loaderbtn"
-                            style="display:none;width: 60%;"><?php echo $bodycontent['btnTextLoader']; ?></span>
+                            style="display:none;width: 80%;"><?php echo $bodycontent['btnTextLoader']; ?></span>
                     </div>
                 </div>
             </div>
@@ -423,7 +423,6 @@
     });
 </script>
 
-
 <script>
     $(document).ready(function () {
         $("#product_id").on("change", function () {
@@ -439,8 +438,10 @@
                 success: function (result) {
                     $("#model_id").append('<option value="">Select</option>');
                     result.forEach(function (item) {
-                        $("#model_id").append('<option value="' + item.spec_sheet_dt_id + '">' + item.model + '</option>');
+                        var selected = (item.spec_sheet_dt_id == <?php echo $bodycontent['faqEditdata']->model_id; ?>) ? ' selected' : '';
+                        $("#model_id").append('<option value="' + item.spec_sheet_dt_id + '"' + selected + '>' + item.model + '</option>');
                     });
+
                 },
                 error: function (jqXHR, exception) {
 
@@ -449,8 +450,7 @@
         });
 
         if ($("#mode").val() == "EDIT") {
-            $("#product_id").val(<?php echo $bodycontent['reviewEditdata']->product_id ?>).trigger("change");
-            $("#model_id").val(<?php echo $bodycontent['reviewEditdata']->model_id ?>).trigger("change");
+            $("#product_id").val(<?php echo $bodycontent['faqEditdata']->product_id ?>).trigger("change");
         }
     });
 </script>

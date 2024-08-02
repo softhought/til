@@ -26,6 +26,26 @@
         margin-right: 20px;
     }
 
+    .view-more-container {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    #view-more-faqs {
+        background-color: #ffc72c;
+        color: #000;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #view-more-faqs:hover {
+        background-color: #cea32a;
+    }
+
     .testimonial-profile .text-content {
         flex: 1;
     }
@@ -168,13 +188,15 @@
 
     .breadcrumb-nav {
         position: absolute;
-        top: 6rem;
+        top: 20px;
         left: 20px;
+        z-index: 10;
     }
 
     .breadcrumb {
         padding: 10px;
         border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .breadcrumb-item a {
@@ -184,6 +206,12 @@
 
     .breadcrumb-item a:hover {
         text-decoration: underline;
+    }
+
+    .breadcrumb>li+li::before {
+        padding: 0 5px;
+        color: #ccc;
+        content: "|";
     }
 
     .form-inline {
@@ -199,6 +227,43 @@
 
     .content_section {
         margin: 0 0 0 2rem;
+    }
+
+    .rem-2 strong {
+        font-size: 2.2rem;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 40%;
+        margin-bottom: 2rem;
+        height: 20rem;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .video-container:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .slick-prev {
+        left: -2rem;
+    }
+
+    .slick-next {
+        right: -2rem;
     }
 
     @media (max-width: 768px) {
@@ -237,99 +302,103 @@
             font-size: 14px;
         }
 
-        #productSearchForm {
+        .about-banner-section::before {
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .form-inline button {
+            width: 35%;
+            margin-left: 2.1rem;
+            margin-top: -1rem;
+        }
+
+        .aboutText h2 {
+            font-size: 13px;
+        }
+
+        .responsive-product {
+            margin-left: -1rem;
+        }
+
+        .product-item {
+            margin-left: -1rem;
+        }
+
+        .slick-next {
+            margin-right: 1.5rem;
+        }
+
+        .no-product-item {
             display: none;
         }
 
-        .content_section {
-            margin: 10rem 0 0 2rem;
+        .product-head-mobile {
+            display: block;
         }
 
-        .product_content {
-            margin-top: 10rem;
-            margin-right: 10rem;
-        }
-    }
-
-    @media (max-width: 576px) {
-
-        .form-inline input,
-        .form-inline button {
-            width: 100%;
-            margin: 0.5rem 0;
+        .product-head-mobile strong {
+            font-size: 22px !important;
         }
 
-        .product-item img {
-            width: 100%;
-            height: auto;
+        .call-mobile a {
+            display: block;
+            text-align: center;
         }
 
-        .breadcrumb-nav {
-            bottom: 5px;
-            left: 5px;
-            font-size: 10px;
+        .quote-btn {
+            width: 23rem !important;
+            display: block;
+            text-align: center;
+            align-content: center;
         }
 
-        .breadcrumb {
-            padding: 5px;
+        #productSearchForm {
+            margin: -6rem 0 2rem -2rem !important;
         }
 
-        .breadcrumb-item a {
-            font-size: 12px;
+        .model-mobile h2 {
+            margin-top: 3rem !important;
         }
 
-        .col-md-6 {
-            width: 100%;
+        .conduct-mobile {
+            margin-top: 3rem;
+            margin-left: -1.2rem !important;
+            width: 45rem;
+            display: block;
         }
 
-        .col-md-9,
-        .col-md-1 {
-            width: 100%;
-            padding: 0;
-        }
-
-        .toggle-button {
-            font-size: 14px;
+        .video-container {
+            margin-left: -0.8rem;
         }
     }
 </style>
 <section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["products"][0]->banner_image; ?>)">
+    style="background-image:url(<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["products"][0]->banner_image; ?>); position: relative;">
     <div class="container">
-        <h1 class="m-0">
-            <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"
-                            style="color: white; text-decoration: none;">TIL</a></li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>products"
-                            style="color: white; text-decoration: none;">Products</a></li>
-                    <li class="breadcrumb-item"><a
-                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] ?>"
-                            style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
-                    </li>
-                    <li class="breadcrumb-item"><a
-                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug']; ?>"
-                            style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
-                    </li>
-                    <li class="breadcrumb-item"><a
-                            href="<?php echo base_url() . isNew(); ?>products/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug'] . "/" . $bodycontent['parentSlug']; ?>"
-                            style="color: white; text-decoration: none;"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
-                    </li>
-                    <li class="breadcrumb-item"><a href="#"
-                            style="color: white; text-decoration: none;"><?php echo $bodycontent["main-section"][0]->model; ?></a>
-                    </li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry"
-                            style="color: white; text-decoration: none;">Support</a></li>
-                </ol>
-            </nav>
-        </h1>
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">TIL</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li>
+                <li class="breadcrumb-item"><a
+                        href="<?php echo base_url() . isNew(); ?>category"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
+                </li>
+                <li class="breadcrumb-item"><a
+                        href="<?php echo base_url() . isNew(); ?>category#<?php echo $bodycontent['subParentSlug'] ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
+                </li>
+                <li class="breadcrumb-item"><a
+                        href="<?php echo base_url() . isNew(); ?>category/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug'] . "/" . $bodycontent['parentSlug']; ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
+                </li>
+                <li class="breadcrumb-item"><a href="#"><?php echo $bodycontent["main-section"][0]->model; ?></a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry">Support</a></li>
+            </ol>
+        </nav>
     </div>
 </section>
 
 
 <div class="row" style="margin-top: 6rem">
-    <div class="col-md-1"></div>
-    <div class="col-md-9">
+    <!-- <div class="col-md-1"></div> -->
+    <div class="col-md-10">
 
         <section class="content_section">
             <div class="container">
@@ -339,201 +408,164 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" style="background: #ffc72c;"
                         type="submit">Search</button>
                 </form>
+                <div class="responsive-product">
+                    <div class="aboutText mb-2">
+                        <h1 class="mb-2 fc-black"><?php echo $bodycontent["main-section"][0]->model; ?></h1>
+                        <h2><?php echo $bodycontent["main-section"][0]->short_description; ?></h2>
+                        <figure>
 
-                <div class="aboutText mb-2">
-                    <h1 class="mb-2 fc-black"><?php echo $bodycontent["main-section"][0]->model; ?></h1>
-                    <h2><?php echo $bodycontent["main-section"][0]->short_description; ?></h2>
-                    <figure>
-    
-                        <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="rectangle" />
-    
-                        <hr style="width: 30rem;" />
-    
-                    </figure>
-                </div>
+                            <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="rectangle" />
 
-                <section class="product-details">
-                    <div class="container">
-                        <div class="row curvebg pl-0">
-                            <div class="col-lg-5">
-                                <div class="homepix">
-                                    <div class="box-behind"></div>
-                                    <?php
-                                    $image = !empty($bodycontent["main-section"][0]->left_image)
-                                        ? base_url() . "assets/images/" . $bodycontent["main-section"][0]->left_image
-                                        : 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
+                            <hr style="width: 30rem;" />
 
-                                    $style = !empty($bodycontent["main-section"][0]->left_image)
-                                        ? ""
-                                        : 'width: 88% !important; height: 55%;';
-
-                                    $alt = !empty($bodycontent["main-section"][0]->left_image)
-                                        ? $bodycontent["main-section"][0]->left_image
-                                        : 'Image not available';
-                                    ?>
-
-                                    <img src="<?php echo $image; ?>" style="<?php echo $style; ?>"
-                                        alt="<?php echo $alt; ?>">
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-7 col-12 p-responsive">
-                                <div class="aboutText">
-                                    <?php echo $bodycontent["main-section"][0]->about; ?>
-                                    <a class="read-btn quote-btn" data-toggle="modal" data-target="#myModal">
-                                        <!-- Get TIL <?php echo $bodycontent["main-section"][0]->model; ?> Cost -->
-                                        Check <?php echo $bodycontent["main-section"][0]->model; ?> Price
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        </figure>
                     </div>
-                </section>
-                <div class="product_content">
-                    <?php echo $bodycontent["main-section"][0]->general_description; ?>
-                </div>
-                <?php if ($bodycontent["main-section"][0]->features) { ?>
-                    <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Feature</h1>
-                <?php } ?>
 
-                <?php
-                $jsonData = $bodycontent["main-section"][0]->features;
-                $feature = json_decode($jsonData, true);
+                    <section class="product-details">
+                        <div class="container">
+                            <div class="row curvebg pl-0">
+                                <div class="col-lg-5">
+                                    <div class="homepix">
+                                        <div class="box-behind"></div>
+                                        <?php
+                                        $image = !empty($bodycontent["main-section"][0]->left_image)
+                                            ? base_url() . "assets/images/" . $bodycontent["main-section"][0]->left_image
+                                            : 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
 
-                if (!empty($feature)) {
-                    echo '<table>';
-                    echo '<thead>';
-                    echo '<tr>';
-                    echo '<th>Feature</th>';
-                    echo '<th>Details</th>';
-                    echo '</tr>';
-                    echo '</thead>';
-                    echo '<tbody>';
+                                        $style = !empty($bodycontent["main-section"][0]->left_image)
+                                            ? ""
+                                            : 'width: 88% !important; height: 55%;';
 
-                    foreach ($feature as $spec) {
+                                        $alt = !empty($bodycontent["main-section"][0]->left_image)
+                                            ? $bodycontent["main-section"][0]->left_image
+                                            : 'Image not available';
+                                        ?>
+
+                                        <img src="<?php echo $image; ?>" style="<?php echo $style; ?>"
+                                            alt="<?php echo $alt; ?>">
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-7 col-12 p-responsive">
+                                    <div class="aboutText">
+                                        <h2 class="mb-2 fc-black rem-2"><strong>Meet the
+                                                <?php echo $bodycontent["main-section"][0]->model; ?></strong></h2>
+                                        <?php echo $bodycontent["main-section"][0]->about; ?>
+                                        <a class="read-btn quote-btn" data-toggle="modal" data-target="#myModal">
+                                            <!-- Get TIL <?php echo $bodycontent["main-section"][0]->model; ?> Cost -->
+                                            <!-- Check <?php echo $bodycontent["main-section"][0]->model; ?> Price -->
+                                            Request for a quote
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <?php if ($bodycontent["main-section"][0]->videos) { ?>
+                        <div class="product-slider slick-carousel">
+                            <?php $jsonDecodeVideo = json_decode($bodycontent["main-section"][0]->videos);
+                            foreach ($jsonDecodeVideo as $key => $value) { ?>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="video-container">
+                                        <iframe
+                                            src="https://www.youtube.com/embed/<?php echo $value->video_id; ?>?&rel=0"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+
+                    <div class="product_content">
+                        <?php echo $bodycontent["main-section"][0]->general_description; ?>
+                    </div>
+                    <?php if ($bodycontent["main-section"][0]->features) { ?>
+                        <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Features</h1>
+                    <?php } ?>
+
+                    <?php
+                    $jsonData = $bodycontent["main-section"][0]->features;
+                    $feature = json_decode($jsonData, true);
+
+                    if (!empty($feature)) {
+                        echo '<table>';
+                        echo '<thead>';
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($spec['feature'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($spec['details'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<th>Feature</th>';
+                        echo '<th>Details</th>';
                         echo '</tr>';
+                        echo '</thead>';
+                        echo '<tbody>';
+
+                        foreach ($feature as $spec) {
+                            echo '<tr>';
+                            echo '<td>' . htmlspecialchars($spec['feature'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($spec['details'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '</tr>';
+                        }
+
+                        echo '</tbody>';
+                        echo '</table>';
                     }
+                    ?>
 
-                    echo '</tbody>';
-                    echo '</table>';
-                }
-                ?>
+                    <?php if ($bodycontent["main-section"][0]->specifications) { ?>
+                        <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Specifications</h1>
+                    <?php } ?>
 
-                <?php if ($bodycontent["main-section"][0]->specifications) { ?>
-                    <h1>TIL <?php echo $bodycontent["main-section"][0]->model; ?> Crane Specifications</h1>
-                <?php } ?>
+                    <?php
+                    $jsonData = $bodycontent["main-section"][0]->specifications;
+                    $specifications = json_decode($jsonData, true);
 
-                <?php
-                $jsonData = $bodycontent["main-section"][0]->specifications;
-                $specifications = json_decode($jsonData, true);
-
-                if (!empty($specifications)) {
-                    echo '<table>';
-                    echo '<thead>';
-                    echo '<tr>';
-                    echo '<th>Feature</th>';
-                    echo '<th>Details</th>';
-                    echo '</tr>';
-                    echo '</thead>';
-                    echo '<tbody>';
-
-                    foreach ($specifications as $spec) {
+                    if (!empty($specifications)) {
+                        echo '<table>';
+                        echo '<thead>';
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($spec['feature'], ENT_QUOTES, 'UTF-8') . '</td>';
-                        echo '<td>' . htmlspecialchars($spec['details'], ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<th>Feature</th>';
+                        echo '<th>Details</th>';
                         echo '</tr>';
-                    }
+                        echo '</thead>';
+                        echo '<tbody>';
 
-                    echo '</tbody>';
-                    echo '</table>';
-                } ?>
+                        foreach ($specifications as $spec) {
+                            echo '<tr>';
+                            echo '<td>' . htmlspecialchars($spec['feature'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '<td>' . htmlspecialchars($spec['details'], ENT_QUOTES, 'UTF-8') . '</td>';
+                            echo '</tr>';
+                        }
 
-                <div class="conduct-content curvebg" style="margin-top: 3rem;margin-left: -2.2rem;">
-                    <a href="<?php echo base_url(); ?>assets/pdf/<?php echo $bodycontent["main-section"][0]->spec_sheet; ?>"
-                        style="padding: 12px 25px;margin: auto;background: #ffc72c;color: black;font-size: 16px;border-radius: 5px;text-transform: uppercase;font-weight: 500;"
-                        target="_blank">Download <?php echo $bodycontent["main-section"][0]->model; ?> Brochure
-                    </a>
-                </div>
+                        echo '</tbody>';
+                        echo '</table>';
+                    } ?>
 
+                    <div data-toggle="modal" data-target="#myModal" class="conduct-content curvebg conduct-mobile"
+                        style="margin-top: 3rem;margin-left: -2.2rem;">
+                        <a href="#"
+                            data-url="<?php echo base_url(); ?>assets/pdf/<?php echo $bodycontent['main-section'][0]->spec_sheet; ?>"
+                            style="padding: 12px 25px;margin: auto;background: #ffc72c;color: black;font-size: 16px;border-radius: 5px;text-transform: uppercase;font-weight: 500;"
+                            id="downloadBrochure">Download
+                            <?php echo $bodycontent['main-section'][0]->model; ?> Brochure
+                        </a>
+                        <input type="hidden" id="fileUrl" name="fileUrl">
+                    </div>
 
-
-                <div class="">
-                    <?php if (!empty($bodycontent["faq"])) { ?>
+                    <div class="">
                         <h1 class="mt-ff-2">Frequently Asked Questions</h1>
-                        <!-- <div class="accordion">
-                        <div class="accordion-item">
-                            <button id="accordion-button-1" aria-expanded="false">
-                                <span class="accordion-title">
-                                    <h5 style="font-size: 16px;font-weight: bold;">What types of cranes does TIL offer?
-                                    </h5>
-                                </span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="accordion-content">
-                                <p>TIL offers a comprehensive range of cranes, including Truck Cranes, Pick and Carry
-                                    Cranes, Crawler Cranes, and Rough Terrain Cranes. Each type is designed to meet
-                                    specific industrial needs and tackle challenging terrains with ease.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-2" aria-expanded="false">
-                                <span class="accordion-title">
-                                    <h5 style="font-size: 16px;font-weight: bold;">What are the key applications of TIL
-                                        cranes?</h5>
-                                </span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="accordion-content">
-                                <p>TIL cranes are used in a variety of industries, including construction,
-                                    manufacturing, shipping, and mining. They are essential for lifting and moving heavy
-                                    materials, positioning building components, and ensuring efficient operations in
-                                    ports and industrial sites.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-3" aria-expanded="false">
-                                <span class="accordion-title">
-                                    <h5 style="font-size: 16px;font-weight: bold;">Why choose TIL as your crane
-                                        manufacturer?</h5>
-                                </span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="accordion-content">
-                                <p>TIL is a trusted crane manufacturer known for high-quality, reliable equipment. We
-                                    provide comprehensive support, including maintenance services, spare parts
-                                    availability, and technical assistance. Our innovative approach ensures cutting-edge
-                                    crane solutions that meet the demands of modern industries.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-4" aria-expanded="false">
-                                <span class="accordion-title">
-                                    <h5 style="font-size: 16px;font-weight: bold;">What services does TIL offer for
-                                        crane operations?</h5>
-                                </span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="accordion-content">
-                                <p>TIL offers a range of services, including short-term and long-term crane rentals,
-                                    regular maintenance and repair services, certified operator training programs, and
-                                    options to purchase or lease new and used cranes. Our goal is to support your
-                                    operations with reliable equipment and expert guidance.</p>
-                            </div>
-                        </div>
-                    </div> -->
                         <div id="accordion" role="tablist" aria-multiselectable="true">
                             <?php $index = 1;
-                            foreach ($bodycontent["faq"] as $key => $faqValue) { ?>
-                                <div class="panel">
+                            $totalFAQs = count($bodycontent["faq"]);
+                            foreach ($bodycontent["faq"] as $key => $faqValue) {
+                                // Hide FAQs if there are more than 2
+                                $isHidden = $index > 3 ? 'style="display:none;"' : ''; ?>
+                                <div class="panel" <?php echo $isHidden; ?> data-index="<?php echo $index; ?>">
                                     <div class="panel-heading" role="tab" id="heading_<?php echo $index; ?>">
                                         <h3 class="panel-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                                href="#collapse_<?php echo $index; ?>" aria-expanded="false"
-                                                aria-controls="collapse_<?php echo $index; ?>">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                                data-parent="#accordion" href="#collapse_<?php echo $index; ?>"
+                                                aria-expanded="false" aria-controls="collapse_<?php echo $index; ?>">
                                                 <?php echo $faqValue->faq_question; ?>
                                             </a>
                                         </h3>
@@ -548,56 +580,68 @@
                                 <?php $index++;
                             } ?>
                         </div>
-                    <?php } ?>
-                </div>
+                        <?php if ($totalFAQs > 2) { ?>
+                            <div class="view-more-container">
+                                <button id="view-more-faqs" class="btn btn-primary">View More</button>
+                            </div>
+                        <?php } ?>
+                    </div>
 
 
-                <h1 style="margin-top: 3rem;">Products Customer Review </h1>
+                    <div class="conduct-content curvebg" style="display:grid">
+                        <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
+                            now</a>
+                    </div>
 
-                <div id="testimonial-slider" class="slick-carousel"
-                    style="border-radius: 12px; background: #f4f4f4; padding: 2rem; margin-bottom: 2rem;">
-                    <?php if (!empty($bodycontent['reviewList'])) {
-                        foreach ($bodycontent['reviewList'] as $key => $value) { ?>
+                    <h1 style="margin-top: 3rem;">Products Customer Review </h1>
+
+                    <div id="testimonial-slider" class="slick-carousel"
+                        style="border-radius: 12px; background: #f4f4f4; padding: 2rem; margin-bottom: 2rem;">
+                        <?php if (!empty($bodycontent['reviewList'])) {
+                            foreach ($bodycontent['reviewList'] as $key => $value) { ?>
+                                <div class="testimonial">
+                                    <div class="testimonial-profile" style="margin-left: 2rem;">
+                                        <div class="pic">
+                                            <img src="<?php echo base_url(); ?>assets/docs/review/<?php echo $value->image ?>"
+                                                alt="<?php echo $value->name ?>"
+                                                style="object-fit: cover;width: 100px;height: 100px;">
+                                        </div>
+                                        <div class="text-content">
+                                            <h3 class="title">
+                                                <?php echo $value->name ?>
+                                                <span class="post"><?php echo $value->occupation ?></span>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <p class="description"><?php echo $value->review ?></p>
+                                        <div class="review-rating" data-rating="<?php echo $value->rating ?>">
+                                            <span class="rating"></span>
+                                            <span class="rating-text"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php }
+                        } else { ?>
                             <div class="testimonial">
                                 <div class="testimonial-profile" style="margin-left: 2rem;">
-                                    <div class="pic">
-                                        <img src="<?php echo base_url(); ?>assets/docs/review/<?php echo $value->image ?>"
-                                            alt="Review" style="object-fit: cover;width: 100px;height: 100px;">
-                                    </div>
                                     <div class="text-content">
-                                        <h3 class="title">
-                                            <?php echo $value->name ?>
-                                            <span class="post"><?php echo $value->occupation ?></span>
+                                        <h3 class="title">The review is currently unavailable.
                                         </h3>
                                     </div>
                                 </div>
-                                <div class="testimonial-content">
-                                    <p class="description"><?php echo $value->review ?></p>
-                                    <div class="review-rating" data-rating="<?php echo $value->rating ?>">
-                                        <span class="rating"></span>
-                                        <span class="rating-text"></span>
-                                    </div>
-                                </div>
                             </div>
-                        <?php }
-                    } else { ?>
-                        <div class="testimonial">
-                            <div class="testimonial-profile" style="margin-left: 2rem;">
-                                <div class="text-content">
-                                    <h3 class="title">The review is currently unavailable.
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
+                        <?php } ?>
+                    </div>
 
-                <div class="conduct-content curvebg" style="display:grid">
-                    <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
-                        now</a>
-                </div>
 
-                <h1 style="margin-top: 3rem;">Schedule a call with an expert</h1>
+                    <div style="margin: 3rem 0 3rem 0;" class="call-mobile">
+                        <a onclick="openForm()"
+                            style="background: #ffc72c;border-radius: 50px;color: black;padding: 1rem; cursor: pointer">Schedule
+                            a call with an expert</a>
+                    </div>
+
+                    <!-- <h1 style="margin-top: 3rem;">Schedule a call with an expert</h1>
 
                 <form action="<?php echo base_url() ?>dashboard/callwithexpertform" method="post"
                     id="callwithexpertForm">
@@ -663,7 +707,8 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </form> -->
+                </div>
             </div>
         </section>
     </div>
@@ -673,17 +718,25 @@
             <ul id="menu-thank-you" class="pro_left">
                 <?php foreach ($bodycontent["product_menu"] as $key => $rootMenu) { ?>
                     <li class="first last">
-                        <ul>
-                            <?php foreach ($rootMenu["children"] as $key => $parentMenu) { ?>
-                                <li class="first"><a
-                                        href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
-                                        class="sub_nav"><?php echo $parentMenu["name"] ?> <span class="caret"></span></a>
+                        <ul id="menu-thank-you" class="pro_left">
+                            <?php foreach ($bodycontent["product_menu"] as $key => $rootMenu) { ?>
+                                <li class="first last">
                                     <ul>
-                                        <?php foreach ($parentMenu["children"] as $key => $children) {
-                                            $activeColor = $children["slug"] == $bodycontent["parentSlug"] ? "style='background: #ffc72c;'" : ""; ?>
-                                            <li class="first"><a
-                                                    href="<?php echo base_url() . isNew(); ?>products/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"
-                                                    <?php echo $activeColor ?>><?php echo $children["name"]; ?></a>
+                                        <?php foreach ($rootMenu["children"] as $key => $parentMenu) { ?>
+                                            <li class="first">
+                                                <a href="<?php echo base_url() . isNew(); ?>category"
+                                                    class="sub_nav"><?php echo $parentMenu["name"] ?> <span
+                                                        class="caret"></span></a>
+                                                <!-- <a
+                                        href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>"
+                                        class="sub_nav"><?php echo $parentMenu["name"] ?> <span class="caret"></span></a> -->
+                                                <ul>
+                                                    <?php foreach ($parentMenu["children"] as $key => $children) { ?>
+                                                        <li class="first"><a
+                                                                href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
+                                                        </li>
+                                                    <?php } ?>
+                                                </ul>
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -708,6 +761,11 @@
         // Only allow numbers in the phone input
         $('.onlynumber').on('input', function () {
             this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        $('#view-more-faqs').click(function () {
+            $('#accordion .panel').slideDown(); // Show all FAQ items
+            $(this).parent().hide(); // Hide the "View More" button
         });
 
         $("#callwithexpertForm").on('submit', function (event) {
@@ -805,5 +863,46 @@
 
             return isValid;
         }
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('a[data-url]').on('click', function () {
+            var url = $(this).data('url');
+            $('#fileUrl').val(url);
+        });
+    });
+
+    $(document).ready(function () {
+        $('.product-slider').slick({
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: true,
+            autoplay: false,
+            autoplaySpeed: 3000,
+            lazyLoad: 'ondemand',
+            prevArrow: '<button type="button" class="slick-prev"></button>',
+            nextArrow: '<button type="button" class="slick-next"></button>',
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
     });
 </script>

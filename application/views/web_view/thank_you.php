@@ -1,6 +1,5 @@
-<section class="about_header">
-    <img src="<?php echo base_url() ?>assets/images/1.jpg" class="img-responsive" height="400" alt="">
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/1.jpg', "");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
         <div class="container cont_area">

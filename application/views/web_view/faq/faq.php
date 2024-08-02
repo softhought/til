@@ -82,12 +82,9 @@
         padding-left: 25px;
     }
 </style>
-<section class="about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/customer-support.png)">
-    <div class="container">
-        <h1>Frequently Asked Questions</h1>
-    </div>
-</section>
+
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/customer-support.png', "Frequently Asked Questions");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
 </section>

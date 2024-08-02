@@ -1,10 +1,5 @@
-<section class="about-banner-section"
-  style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/code_of_conduct.png)">
-  <div class="container">
-    <h1 class="m-0">The Code We Follow</h1>
-  </div>
-</section>
-
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/code_of_conduct.png', "The Code We Follow");</script>
 <section class="member-section">
   <div class="wrapper clearfix">
     <div class="">

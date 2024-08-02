@@ -1,12 +1,5 @@
-<section class="about-banner-section"
-    style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/vision_values.png)">
-    <!-- <img src="/assets/images/inner_page_banners/vision_values.png" class="img-responsive" height="400" alt="TIL Vision and Values"> -->
-    <!-- <h1>Board of  <span>&nbsp;Directors</span></h1> -->
-    <!-- <h1 class="m-0"></h1> -->
-    <div class="container">
-        <h1 class="m-0">What We Stand For</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url();?>assets/images/inner_page_banners/vision_values.png', "What We Stand For");</script>
 <!-- top Icons Section -->
 <section class="member-section">
     <div class="wrapper clearfix">

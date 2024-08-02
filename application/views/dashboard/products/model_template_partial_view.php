@@ -54,7 +54,7 @@
             <?php foreach ($product_model_details as $key => $modelValue) { ?>
                 <div class="panel box box-primary">
                     <div class="box-header with-border" data-toggle="collapse" data-target="#collapse<?php echo $key ?>">
-                        <h4 class="box-title"><?php echo $modelValue->title ?> - Model</h4>
+                        <h4 class="box-title"><?php echo $modelValue->title ?> - Product</h4>
                         <button class="btn product-model-edit-btn"
                             data-prodect_model_dt_id="<?php echo $modelValue->prodect_model_dt_id; ?>" title="Edit"
                             type="button"><i class="fas fa-edit"></i>
@@ -310,6 +310,19 @@
                         </div> 
                     </div>
                     <hr>
+                    <label for="groupname" style="font-size: 15px;padding: 4px;border-radius: 0 35px;background: #ffc72c;align-content: center;text-align: center;display: block;margin-bottom: 1rem;">Videos</label>
+                    <div id="videos-container"></div>
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <div class="form-group" id="mail_bodyerr">
+                                <div class="input-group input-group-sm">
+                                    <input type="button" class="form-control" name="appendvideos" id="appendvideos" value="Add +" style="background: #ffcd11;font-size: 16px;font-weight: bold !important;border-radius: 50px;" />
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <hr>
                     <div class="formblock-box">
                         <div class="row">
                             <div class="col-md-9"><span id="msg" style="font-weight: bold;color: #1c1809;"><span>
@@ -416,6 +429,7 @@
                     if (response.status) {
                         $("#spec_sheet_dt_id_modal").val(spec_sheet_dt_id);
                         $("#title_modal").val(response.data.model);
+                        $("#video_id").val(response.data.video_id);
                         $("#specsheet_modal").val(response.data.spec_sheet);
                         $("#category_image_modal").val(response.data.image);
                         $("#side_image_modal").val(response.data.left_image);
@@ -516,6 +530,52 @@
                             });
                         }
 
+
+                        var videos = response.data.videos;
+                        if (typeof videos === 'string') {
+                            videos = JSON.parse(videos);
+                        }
+
+                        $('#videos-container').empty();
+
+                        if (Array.isArray(videos)) {
+                            videos.forEach(function(video) {
+                                console.log(video);
+                                var newVideos = `
+                                <div class="row videos-item">
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="mail_bodyerr">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" name="video_title[]" placeholder="Title" id="video_title" value="${video.video_title}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="mail_bodyerr">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" name="video_id[]" placeholder="Video Id" id="video_id" value="${video.video_id}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group" id="mail_bodyerr">
+                                            <div class="input-group input-group-sm">
+                                                <button type="button" class="form-control delete-videos" style="background: #fdfdfd;font-size: 16px;font-weight: bold !important;border-radius: 50px;height: 38px;">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+                                $('#videos-container').append(newVideos);
+                            });
+                        }
+
                         $("#editModel").modal("show");
                         $("body").css("overflow-y", "scroll");
                     }
@@ -610,6 +670,48 @@
 
         $(document).on('click', '.delete-features', function() {
             $(this).closest('.features-item').remove();
+        });
+
+        $(document).on('click', '#appendvideos', function(event) {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            var newSpecification = `
+            <div class="row videos-item">
+                <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group" id="mail_bodyerr">
+                        <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="video_title[]" placeholder="Title" id="video_title" />
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group" id="mail_bodyerr">
+                        <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="video_id[]" placeholder="Video Id" id="video_id" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-2">
+                <div class="form-group" id="mail_bodyerr">
+                    <div class="input-group input-group-sm">
+                    <button type="button" class="form-control delete-videos" style="background: #fdfdfd;font-size: 16px;font-weight: bold !important;border-radius: 50px;height: 38px;">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            `;
+            $('#videos-container').append(newSpecification);
+        });
+
+        $(document).on('click', '.delete-videos', function() {
+            $(this).closest('.videos-item').remove();
         });
 
         

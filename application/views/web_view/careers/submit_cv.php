@@ -1,9 +1,5 @@
-<section class="about_header about-banner-section"
-  style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/careers_awards.jpg)">
-  <div class="container">
-    <h1></h1>
-  </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url();?>assets/images/inner_page_banners/careers_awards.jpg', "");</script>
 <section class="content_section">
   <div class="container">
     <div class="header-section">

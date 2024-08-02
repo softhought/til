@@ -1,10 +1,5 @@
-<section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/customer_support_.jpg)">
-    <!-- <img src="/assets/images/inner_page_banners/customer_support_.jpg" class="img-responsive" height="400"  alt=""> -->
-    <div class="container">
-        <h1 class="m-0">Skilled Manpower For Optimal Machine Performance</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/customer_support_.jpg', "Skilled Manpower For Optimal Machine Performance");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
         <div class="">

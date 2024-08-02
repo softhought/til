@@ -1,11 +1,5 @@
-<section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/Maintanance-contract-banner.png)">
-    <!-- <img src="/assets/images/inner_page_banners/Maintanance-contract-banner.png" class="img-responsive" height="400"  alt=""> -->
-    <!-- <h1 class="m-0"></h1> -->
-    <div class="container">
-        <h1 class="m-0">All Round Support For Higher Machine Productivity</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/Maintanance-contract-banner.png', "All Round Support For Higher Machine Productivity");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
 
@@ -44,7 +38,8 @@
 
                     <div class="icon-container">
                         <hr>
-                        <img src="<?php echo base_url();?>tilindia/assets/images/Rectangle.png" alt="rectangle" srcset="">
+                        <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="rectangle"
+                            srcset="">
                         <hr>
                     </div>
                 </div>
@@ -106,8 +101,8 @@
                                                     Our customer support offerings include:
                                                 </h1>
                                                 <figure>
-                                                    <img src="<?php echo base_url();?>tilindia/assets/images/Rectangle.png" alt="Rectangle"
-                                                        srcset="">
+                                                    <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png"
+                                                        alt="Rectangle" srcset="">
                                                     <hr>
                                                 </figure>
                                                 <ul>
@@ -124,7 +119,7 @@
                                         </div>
                                         <div class="col-lg-4 col-12">
                                             <div class="homepix homepix-right">
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/kharagpur-facility.jpg"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/kharagpur-facility.jpg"
                                                     height="350px" width="350px" alt="Image" srcset="">
                                             </div>
                                         </div>
@@ -137,11 +132,12 @@
                                         <h2>Download Customer Support Brochure</h2>
                                         <div class="icon-container">
                                             <hr>
-                                            <img src="<?php echo base_url();?>tilindia/assets/images/white-rectangle.png" alt="Rectangle"
-                                                srcset="">
+                                            <img src="<?php echo base_url(); ?>tilindia/assets/images/white-rectangle.png"
+                                                alt="Rectangle" srcset="">
                                             <hr>
                                         </div>
-                                        <a href="<?php echo base_url();?>tilindia/assets/pdf/CSA_Brochure.pdf" target="_blank">
+                                        <a href="<?php echo base_url(); ?>tilindia/assets/pdf/CSA_Brochure.pdf"
+                                            target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"
                                                 viewBox="0 0 512 512">
                                                 <path

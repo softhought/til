@@ -1,10 +1,5 @@
-<section class="about_header about-banner-section"
-    style="background-image:url(../assets/images/inner_page_banners/location-banner.png)">
-    <!-- <img src="/assets/images/inner_page_banners/location-banner.png" class="img-responsive" height="400"  alt="Get in Touch TIL"> -->
-    <div class="container">
-        <h1 class="m-0">Delivering Excellence at Every Corner</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/location-banner.png', "Delivering Excellence at Every Corner");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
 
@@ -261,13 +256,15 @@
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item tab" onclick="('tabs1',this)">
                                         <a class="nav-link " aria-current="page" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/kolkata-icon.svg" alt="kolkata" srcset="">
+                                            <img src="../tilindia/assets/images/kolkata-icon.svg" alt="kolkata"
+                                                srcset="">
                                             Kolkata
                                         </a>
                                     </li>
                                     <li class="nav-item tab" onclick="showData('tabs2',this)">
                                         <a class="nav-link" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/chennai-icon.svg" alt="chennai" srcset="">
+                                            <img src="../tilindia/assets/images/chennai-icon.svg" alt="chennai"
+                                                srcset="">
                                             Chennai
                                         </a>
                                     </li>
@@ -285,7 +282,8 @@
                                     </li>
                                     <li class="nav-item tab" onclick="showData('tabs5',this)">
                                         <a class="nav-link" href="javascript:void(0)">
-                                            <img src="../tilindia/assets/images/singralui-icon.svg" alt="singralui" srcset="">
+                                            <img src="../tilindia/assets/images/singralui-icon.svg" alt="singralui"
+                                                srcset="">
                                             Singrauli
                                         </a>
                                     </li>

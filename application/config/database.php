@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.1.5',
+	'hostname' => '192.168.1.8',
 	'username' => 'suman',
 	'password' => 'suman',
 	//'database' => 'votepal',

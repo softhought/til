@@ -1,8 +1,5 @@
-<section class="about-banner-section" style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/life_til.jpg)">
-    <div class="container">
-        <h1 class="m-0">Life @TIL</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/life_til.jpg', "Life @TIL");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
 </section>
@@ -26,8 +23,8 @@
                                     <div class="col-lg-4 col-12">
                                         <div class="homepix">
                                             <div class="box-behind"></div>
-                                            <img src="<?php echo base_url();?>tilindia/assets/images/life_til.jpg" class="img-responsive"
-                                                alt="life_til" srcset="">
+                                            <img src="<?php echo base_url(); ?>tilindia/assets/images/life_til.jpg"
+                                                class="img-responsive" alt="life_til" srcset="">
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-12 p-responsive">

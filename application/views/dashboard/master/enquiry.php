@@ -46,6 +46,8 @@ p{
                      <th>Email</th>
                      <th style="white-space:nowrap;">Nature of Query</th>
                      <th> Query</th>
+                     <th style="white-space:nowrap;"> Sub Product</th>
+                     <th> Product</th>
                      <th> Country</th>
                      <th> State</th>
                      <th> Date</th>
@@ -73,6 +75,8 @@ p{
                                                         more</a></span><?php } ?>
 
                      </td>
+                     <td><?php echo $list->product; ?> </td>
+                     <td><?php echo $list->model; ?> </td>
                      <td><?php echo $list->country_name; ?> </td>
                      <td><?php echo $list->state_name; ?> </td>
                      <td><?php echo date("d-m-Y",strtotime($list->time)); ?> </td>

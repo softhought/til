@@ -39,12 +39,8 @@
         border-radius: 5px;
     }
 </style>
-<section class="about-banner-section "
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/vacancies_new.jpg)">
-    <div class="container">
-        <h1 class="m-0">We are Hiring!</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url();?>assets/images/inner_page_banners/vacancies_new.jpg', "We are Hiring!");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
 

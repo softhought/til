@@ -27,9 +27,9 @@ class Products extends CI_Controller
         $result["main-section"] = $this->commondatamodel->getAllRecordWhere("product_master", ['product_master_id' => 2, 'is_disabled' => 0]);
         $result["productList"] = $this->productsmenu->getNonParentRecords("product_master", "product_master_id", "ASC");
         $result["product_menu"] = $this->productsmenu->getNavProductsMenu()[0]["children"];
-        $result["faq"] = $this->commondatamodel->getAllRecordWhereOrderByCol("faq_details", ["is_disabled" => 0], "precedence", "ASC");
-        $result["reviewList"] = $this->commondatamodel->getAllRecordWhereOrderByCol("customer_review", ["is_disabled" => 0], "id", "DESC");
-        
+        $result["faq"] = $this->commondatamodel->getAllRecordWhereOrderByCol("faq_details", ["is_disabled" => 0, 'is_product' => 'Y'], "precedence", "ASC");
+        $result["reviewList"] = $this->commondatamodel->getAllRecordWhereOrderByCol("customer_review", ["is_disabled" => 0, 'is_product' => 'Y'], "id", "DESC");
+
         $result['productId'] = 1;
         $result['modelId'] = null;
 

@@ -230,7 +230,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-sm action-button" id="createmodeltemplate"
-                                    style="width: 60%;" disabled>Create Model Template</button>
+                                    style="width: 60%;" disabled>Create Product Template</button>
                             </div>
                             <div class="col-md-4"><span id="msg" style="font-weight: bold;color: #1c1809;"><span>
                             </div>

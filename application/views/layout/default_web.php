@@ -144,7 +144,6 @@
       border-radius: 4px;
       font-weight: bold;
     }
-
   </style>
   <style>
     .accordion {
@@ -346,8 +345,7 @@
       padding-left: 25px;
     }
   </style>
-
-
+  
 </head>
 
 <body>
@@ -413,7 +411,7 @@
             </ul>
           </li>
           <li class="products">
-            <a href="<?php echo base_url(); ?>products" class="dropdown-toggle">Products <span class="caret"></span></a>
+            <a href="<?php echo base_url(); ?>category" class="dropdown-toggle">Products <span class="caret"></span></a>
             <?php echo $menu["product_menu"]; ?>
           </li>
           <!-- <li class="products"><a href="<?php echo base_url(); ?>products">Products</a> -->
@@ -645,6 +643,8 @@
     <div class="enquiry-form-overflow">
 
       <form enctype="multipart/form-data" class="contact_form" id="contact_form" method="POST" accept-charset="utf-8">
+        <input type="hidden" name="product_id" id="product_id" value="<?php echo $bodycontent['productId'] ?>" />
+        <input type="hidden" name="model_id" id="model_id" value="<?php echo $bodycontent['modelId'] ?>" />
         <div class="form-group">
           <label for="organization">Organization<span>*</span></label>
           <div class="input-container">
@@ -730,11 +730,11 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="address">Contact Address <span>*</span></label>
           <textarea name="address" cols="40" rows="2" type="textarea" placeholder="Address" autocomplete="off"
             id="address" required="required" value="" class="form-control markitup"></textarea>
-        </div>
+        </div> -->
 
         <div class="form-group">
           <label for="nature_of_query_id">Nature of Query <span style="color:#f00">*</span></label>
@@ -1040,6 +1040,8 @@
                 event.preventDefault(); // Prevent form submission
 
                 if (validateQuotationInput() && validateForm()) {
+                  var fileUrl = $('#fileUrl').val();
+
                   $("#quotation_form_button").prop("disabled", true);
                   $("#quotation_form_button").html("Processing....");
 
@@ -1057,7 +1059,17 @@
                       $("#quotation_form_button").html("Submit");
 
                       if (response.status) {
-                        window.location.replace(`${base_url}thank-you`);
+                        if (fileUrl != "") {
+                          var link = document.createElement('a');
+                          link.href = fileUrl;
+                          link.download = '';
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }
+                        setTimeout(() => {
+                          window.location.replace(`${base_url}thank-you`);
+                        }, 2000);
                       } else {
                         // Handle error response if needed
                         console.log(response.error);
@@ -1286,7 +1298,7 @@
                   }
                 });
               });
-              
+
             });
           </script>
           <script>

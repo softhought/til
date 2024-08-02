@@ -89,7 +89,7 @@ function menuUrls($menuItems, $parentSlugs = [])
 {
     $urls = [];
     foreach ($menuItems as $menuItem) {
-        $url = 'products/';
+        $url = 'category/';
         foreach ($parentSlugs as $slug) {
             $url .= $slug . '/';
         }

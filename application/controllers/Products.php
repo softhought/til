@@ -465,8 +465,21 @@ class Products extends CI_Controller
         
         $features = json_encode($featuresData);
 
+        $video_title = $_POST["video_title"];
+        $video_id = $_POST["video_id"];
+
+        for ($i = 0; $i < count($video_id); $i++) {
+            $videosData[] = array(
+                'video_title' => $video_title[$i],
+                'video_id' => $video_id[$i]
+            );
+        }
+        
+        $videos = json_encode($videosData);
+
         $dataArr = [
             'model' => $title_modal,
+            'videos' => $videos,
             'short_description' => $short_description_modal,
             'about' => $model_description_modal,
             'general_description' => $general_description_modal,

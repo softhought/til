@@ -1,12 +1,5 @@
-<section class="about-banner-section"
-   style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/10-1.jpg)">
-   <!-- <img src="/assets/images/inner_page_banners/corporate_profile_new.jpg" class="img-responsive" height="400" alt=""> -->
-   <!-- <h1>Board of  <span>&nbsp;Directors</span></h1> -->
-   <!-- <h1 class="m-0"></h1> -->
-   <!-- <div class="container">
-      <h1 class="m-0">Build Your Future at TIL. Join Our Team</h1>
-      </div> -->
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/10-1.jpg', "");</script>
 <section class="content_section">
    <div class="wrapper clearfix">
       <!------------- privecy policy page content section start haear --->

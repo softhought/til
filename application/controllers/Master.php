@@ -140,7 +140,7 @@ class Master extends CI_Controller
             $header = "";
             $result['contactusList'] = $this->mastermodel->enquiryData();
 
-            //  pre($result['participantList']);exit;
+            //  pre($result['contactusList']);exit;
             createbody_method($result, $page, $header, $session);
         } else {
             redirect('login', 'refresh');
@@ -361,6 +361,11 @@ class Master extends CI_Controller
 
             }
 
+            $result['isProductEnum'] = [
+                ['key' => 'Y', 'value' => 'Yes'],
+                ['key' => 'N', 'value' => 'No']
+            ];
+
             $result['productList'] = $this->productsmenu->getLastChildProducts();
             $result['modelList'] = $this->commondatamodel->getAllRecordWhereOrderByCol('spec_sheet_details', ["is_disabled" => 0], "spec_sheet_dt_id", "ASC");
             $page = "dashboard/master/faq_add_edit.php";
@@ -399,6 +404,7 @@ class Master extends CI_Controller
             $faq_answer = strtolower($this->input->post('faq_answer'));
             $product_id = $this->input->post('product_id');
             $model_id = $this->input->post('model_id');
+            $is_product = $this->input->post('is_product');
 
             if ($mode == "ADD") {
 
@@ -409,6 +415,7 @@ class Master extends CI_Controller
                     'product_id' => $product_id,
                     'model_id' => $model_id,
                     'precedence' => $next_precedence,
+                    'is_product' => $is_product,
                 );
                 $insertId = $this->commondatamodel->insertSingleTableData('faq_details', $insert_Arr);
                 if ($insertId) {
@@ -432,6 +439,7 @@ class Master extends CI_Controller
                     'faq_answer' => $faq_answer,
                     'product_id' => $product_id,
                     'model_id' => $model_id,
+                    'is_product' => $is_product,
                 );
                 $updateData = $this->commondatamodel->updateSingleTableData('faq_details', $data, $where, $faq_del_id);
                 if ($updateData) {
@@ -500,6 +508,11 @@ class Master extends CI_Controller
 
             }
 
+            $result['isProductEnum'] = [
+                ['key' => 'Y', 'value' => 'Yes'],
+                ['key' => 'N', 'value' => 'No']
+            ];
+
             $result['productList'] = $this->productsmenu->getLastChildProducts();
             $result['modelList'] = $this->commondatamodel->getAllRecordWhereOrderByCol('spec_sheet_details', ["is_disabled" => 0], "spec_sheet_dt_id", "ASC");
             $page = "dashboard/master/review_add_edit.php";
@@ -525,6 +538,7 @@ class Master extends CI_Controller
             $occupation = $this->input->post('occupation');
             $review = $this->input->post('review');
             $rating_value = $this->input->post('rating_value');
+            $is_product = $this->input->post('is_product');
 
             if ($mode == "ADD") {
 
@@ -534,7 +548,8 @@ class Master extends CI_Controller
                     'review' => $review,
                     'rating' => $rating_value,
                     'product_id' => $product_id,
-                    'model_id' => $model_id,
+                    'model_id' => $model_id, 
+                    'is_product' => $is_product,
                 );
 
                 if (isset($_FILES['imagefile'])) {
@@ -588,6 +603,7 @@ class Master extends CI_Controller
                     'rating' => $rating_value,
                     'product_id' => $product_id,
                     'model_id' => $model_id,
+                    'is_product' => $is_product,
                 );
 
                 if (isset($_FILES['imagefile'])) {

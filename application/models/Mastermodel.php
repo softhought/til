@@ -6,9 +6,11 @@ class Mastermodel extends CI_Model
     {
         $where = [];
         $data = array();
-        $this->db->select("contact_us.*,fuel_nature_of_query.name as nature_of_query")
+        $this->db->select("contact_us.*,fuel_nature_of_query.name as nature_of_query, product_master.name as product, spec_sheet_details.model as model")
             ->from('contact_us')
             ->join('fuel_nature_of_query', 'fuel_nature_of_query.id=contact_us.nature_of_query_id', 'left')
+            ->join('product_master', 'product_master.product_master_id = contact_us.product_id', 'LEFT')
+            ->join('spec_sheet_details', 'spec_sheet_details.spec_sheet_dt_id = contact_us.model_id', 'LEFT')
             ->where($where)
             ->order_by('id', 'desc');
         $query = $this->db->get();

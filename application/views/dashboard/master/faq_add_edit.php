@@ -11,17 +11,10 @@
 
         var basepath = $("#basepath").val();
 
-
-        $(document).on('click', '#savebtn', function (event) {
+        $(document).on('submit', '#sectorFrom', function (event) {
             event.preventDefault();
             $("#errormsg").text('');
-            var faq_del_id = $('#faq_del_id').val();
-            var mode = $('#mode').val();
-            var faq_question = $('#faq_question').val();
-            var faq_answer = $('#faq_answer').val();
-            var model_id = $('#model_id').val();
-            var product_id = $('#product_id').val();
-
+            var formData = new FormData($(this)[0]);
 
 
             if (Validate()) {
@@ -33,15 +26,9 @@
                     type: "POST",
                     url: basepath + 'master/faq_action',
                     dataType: "json",
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    data: {
-                        faq_del_id: faq_del_id,
-                        mode: mode,
-                        faq_question: faq_question,
-                        faq_answer: faq_answer,
-                        model_id: model_id,
-                        product_id: product_id
-                    },
+                    processData: false,
+                    contentType: false,
+                    data: formData,
                     success: function (result) {
                         if (result.msg_status == 1) {
                             Toast.fire({
@@ -147,7 +134,22 @@
 
                     <div class="row">
                         <div class="col-md-2"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
+                        <div class="form-group mb-2">
+                                <label for="Function" class="form-label">Show on product</label>
+                                <div id="product_iderr">
+                                    <select class="form-select select2" name="is_product" id="is_product">
+                                        <option value="">Select</option>
+                                        <?php foreach ($bodycontent['isProductEnum'] as $key => $value) { ?>
+                                            <option value="<?php echo $value['key'] ?>" <?php echo $value['key'] == $bodycontent['faqEditdata']->is_product ? 'selected' : '' ?>>
+                                                <?php echo $value['value'] ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group mb-2">
                                 <label for="Function" class="form-label">Chose Product</label>
                                 <div id="product_iderr">
@@ -162,7 +164,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-2">
                                 <label for="Function" class="form-label">Chose Model</label>
                                 <div id="model_iderr">

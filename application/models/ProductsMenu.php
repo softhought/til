@@ -60,7 +60,7 @@ class ProductsMenu extends CI_Model
                 $hasChildren = isset($menuItem['children']) && !empty($menuItem['children']);
                 $subNavClass = ($hasChildren) ? 'sub_nav' : '';
 
-                $url = base_url() . 'products/';
+                $url = base_url() . 'category/';
                 foreach ($parentSlugs as $slug) {
                     $url .= $slug . '/';
                 }
@@ -96,14 +96,19 @@ class ProductsMenu extends CI_Model
                 $hasChildren = isset($menuItem['children']) && !empty($menuItem['children']);
                 $subNavClass = ($hasChildren) ? 'sub_nav' : '';
 
-                $url = base_url() . 'products/';
+                $url = base_url() . 'category/';
                 foreach ($parentSlugs as $slug) {
                     $url .= $slug . '/';
                 }
                 $url .= $menuItem['slug'];
 
                 $html .= '<li>';
-                $html .= '<a href="' . $url . '" class="' . $subNavClass . '">' . $menuItem['name'];
+                if (count($parentSlugs) == 1) { // Second level (since parentSlugs includes top level only)
+                    $html .= '<a href="javascript:void(0);" class="' . $subNavClass . '">' . $menuItem['name'];
+                } else {
+                    $html .= '<a href="' . $url . '" class="' . $subNavClass . '">' . $menuItem['name'];
+                }
+        
                 if ($hasChildren) {
                     $html .= ' <span class="caret"></span>';
                 }
@@ -148,7 +153,7 @@ class ProductsMenu extends CI_Model
     {
         $urls = [];
         foreach ($menuItems as $menuItem) {
-            $url = 'products/';
+            $url = 'category/';
             foreach ($parentSlugs as $slug) {
                 $url .= $slug . '/';
             }

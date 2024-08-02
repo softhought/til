@@ -1,11 +1,5 @@
-<section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url();?>assets/images/inner_page_banners/customer_support_.jpg)">
-    <!-- <img src="/assets/images/inner_page_banners/customer_support_.jpg" class="img-responsive" height="400"  alt=""> -->
-    <!-- <h1 class="m-0"></h1> -->
-    <div class="container">
-        <h1 class="m-0">Genuine Parts for Enhanced Value of Operations</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/customer_support_.jpg', "Genuine Parts for Enhanced Value of Operations");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
 
@@ -89,7 +83,7 @@
                                         <div class="col-lg-4">
                                             <div class="homepix">
                                                 <div class="box-behind"></div>
-                                                <img src="<?php echo base_url();?>tilindia/assets/images/parts-warehouse.jpg"
+                                                <img src="<?php echo base_url(); ?>tilindia/assets/images/parts-warehouse.jpg"
                                                     class="img-responsive" alt="parts-warehouse" srcset="">
                                             </div>
                                         </div>
@@ -101,8 +95,8 @@
                                                 <h1>Parts & Warehouse</h1>
 
                                                 <figure>
-                                                    <img src="<?php echo base_url();?>tilindia/assets/images/Rectangle.png" alt="rectangle"
-                                                        srcset="">
+                                                    <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png"
+                                                        alt="rectangle" srcset="">
                                                     <hr>
                                                 </figure>
 

@@ -1,9 +1,5 @@
-<section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/media.jpg)">
-    <div class="container">
-        <h1 class="m-0">In the Media: News, Features and More</h1>
-    </div>
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/media.jpg', "In the Media: News, Features and More");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
         <div class="">

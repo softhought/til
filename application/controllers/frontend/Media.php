@@ -30,7 +30,7 @@ class Media extends CI_Controller
     public function videos()
     {
         $page = "web_view/media/videos.php";
-        $result["video"] = $this->productsmenu->getAllRecordWhereOrderBy("fuel_videos", ["is_disabled" => 0], "precedence", "ASC");
+        $result["video"] = $this->commondatamodel->getAllRecordWhereOrderBy("fuel_videos", ["is_disabled" => 0], "precedence", "ASC");
         $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }

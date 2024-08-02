@@ -1,10 +1,5 @@
-<section class="about_header about-banner-section"
-    style="background-image:url(<?php echo base_url(); ?>assets/images/inner_page_banners/contact.jpg)">
-    <!-- <img src="/assets/images/inner_page_banners/contact.jpg" class="img-responsive" height="400"  alt="Get in Touch TIL"> -->
-    <!-- <h1 class="m-0"></h1> -->
-    <h1 class="m-0">Reach Out To Us</h1>
-
-</section>
+<?php include APPPATH . 'views/web_view/header-banner.php' ?>
+<script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/contact.jpg', "Reach Out To Us");</script>
 <section class="content_section">
     <div class="wrapper clearfix">
         <section>
@@ -27,8 +22,8 @@
                             <p>Please fill up the form below:</p>
                             <!--start contact form box-->
                             <!-- <script src='<?php echo base_url(); ?>www.google.com/recaptcha/api.js'></script> -->
-                            <form  enctype="multipart/form-data" class="contact_form inquiry_form" id="contact_us_form" method="POST"
-                                accept-charset="utf-8">
+                            <form enctype="multipart/form-data" class="contact_form inquiry_form" id="contact_us_form"
+                                method="POST" accept-charset="utf-8">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -122,7 +117,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-12">
-                                        <button type="submit" class="btn btn_contact" id="contact_us_button">Submit</button>
+                                        <button type="submit" class="btn btn_contact"
+                                            id="contact_us_button">Submit</button>
                                     </div>
                                 </div>
 

@@ -190,6 +190,8 @@ class Dashboard extends CI_Controller
         $state_id = $_POST["state_id"];
         $state_name = $this->commondatamodel->getSingleRowByWhereCls("tbl_states", ["id" => $state_id])->name;
         $query = $_POST["query"];
+        $product_id = $_POST["product_id"];
+        $model_id = $_POST["model_id"];
         $nature_of_query_id = $_POST["nature_of_query_id"];
         $ip_address = $_SERVER['REMOTE_ADDR'];
 
@@ -204,6 +206,8 @@ class Dashboard extends CI_Controller
             'country_name' => $country_name,
             'state_id' => $state_id,
             'state_name' => $state_name,
+            'product_id' => $product_id != "" ? $product_id : null,
+            'model_id' => $model_id != "" ? $model_id : null,
             'query' => $query,
             'nature_of_query_id' => $nature_of_query_id,
             'ip_address' => $ip_address,

@@ -842,7 +842,7 @@
                                     <ul>
                                         <?php foreach ($parentMenu["children"] as $key => $children) { ?>
                                             <li class="first"><a
-                                                    href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
+                                                    href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
                                             </li>
                                         <?php } ?>
                                     </ul>

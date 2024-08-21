@@ -383,10 +383,7 @@
                         href="<?php echo base_url() . isNew(); ?>category"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                 </li>
                 <li class="breadcrumb-item"><a
-                        href="<?php echo base_url() . isNew(); ?>category#<?php echo $bodycontent['subParentSlug'] ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
-                </li>
-                <li class="breadcrumb-item"><a
-                        href="<?php echo base_url() . isNew(); ?>category/<?php echo $bodycontent['rootSlug'] . "/" . $bodycontent['subParentSlug'] . "/" . $bodycontent['parentSlug']; ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
+                        href="<?php echo base_url() . isNew(); ?>category/crane/<?php echo $bodycontent['subParentSlug'] ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"><?php echo $bodycontent["main-section"][0]->model; ?></a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry">Support</a></li>
@@ -733,7 +730,7 @@
                                                 <ul>
                                                     <?php foreach ($parentMenu["children"] as $key => $children) { ?>
                                                         <li class="first"><a
-                                                                href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
+                                                                href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
                                                         </li>
                                                     <?php } ?>
                                                 </ul>

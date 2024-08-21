@@ -92,7 +92,6 @@ $route['about-us/facilities'] = "frontend/about/facilities";
 
 /* -------------- Products---------------------- */
 
-
 if (!isNewDevelopmentLive()) {
     $route['category'] = "frontend/products";
     $route['new/category'] = "frontend/products/product_new";
@@ -106,10 +105,10 @@ if (!isNewDevelopmentLive()) {
             case 1:
                 $routeValue = 'frontend/products/viewLevel_1/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
                 break;
+            // case 2:
+            //     $routeValue = 'frontend/products/viewLevel_2/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
+            //     break;
             case 2:
-                $routeValue = 'frontend/products/viewLevel_2/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
-                break;
-            case 3:
                 $routeValue = 'frontend/products/viewLevel_3/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
                 break;
         }
@@ -129,13 +128,13 @@ foreach ($menuUrls as $url) {
         case 1:
             $routeValue = 'frontend/products/viewLevel_1/' . explode("/", $routeKey)[0] . '/' . $url['product_master_id'];
             break;
+        // case 2:
+        //     $routeValue = 'frontend/products/viewLevel_2/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
+        //     break;
         case 2:
-            $routeValue = 'frontend/products/viewLevel_2/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
-            break;
-        case 3:
             $routeValue = 'frontend/products/viewLevel_3_new/' . explode("/", $routeKey)[2] . '/' . explode("/", $routeKey)[1] . '/' . $url['product_master_id'];
             break;
-        case 4:
+        case 3:
             $routeValue = 'frontend/products/viewLevel_4/' . explode("/", $routeKey)[3] . '/' . explode("/", $routeKey)[1] . '/' . explode("/", $routeKey)[2] . '/' . $url['spec_sheet_dt_id'];
             break;
     }

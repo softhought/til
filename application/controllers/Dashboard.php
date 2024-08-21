@@ -280,20 +280,21 @@ class Dashboard extends CI_Controller
                         'ip_address' => $ip_address,
 
                     ];
+                    $functions_career = $this->commondatamodel->getSingleRowByWhereCls("functions_career", ["id" => $function_id]);
 
                     $nature_of_query = $this->commondatamodel->getSingleRowByWhereCls("fuel_nature_of_query", ["id" => 7]);
                     $inputs['name'] = $candidte_name;
-                    $inputs['function'] = $this->commondatamodel->getSingleRowByWhereCls("functions_career", ["id" => 7])->name;
+                    $inputs['function'] = $functions_career->name;
                     $inputs['qualification'] = $technical_qualification;
                     $inputs['linkedInProfile'] = $linkedIn_profile;
                     $inputs['message'] = $massage;
                     $inputs['receipant'] = $nature_of_query;
 
                     $message = $this->load->view('mailers/job_application', $inputs, TRUE);
-                    $subject = "Job Application Form  ";
+                    $subject = "Job Application For  $functions_career->name";
 
                     $insertedId = $this->commondatamodel->insertSingleTableData("resume_submission", $dataArr);
-                    $this->sendEmailData($inputs, $subject, $message, "resume_submission", $insertedId);
+                    $this->sendEmailData($inputs, $subject, $message, "resume_submission", $insertedId, [$newFilename => $fileDestination]);
 
                     if ($insertedId) {
                         echo json_encode(["status" => true]);
@@ -1198,12 +1199,12 @@ class Dashboard extends CI_Controller
         if ($slugData) {
             $slug = $this->getFullSlug(buildProductNestedMenu()[0]['children'], $slugData->slug);
 
-            echo json_encode(["status" => true, "href" => 'products/' . $slug]);
+            echo json_encode(["status" => true, "href" => 'category/' . $slug]);
         } else {
             $slugData = $this->commondatamodel->getSingleRowByWhereLike("spec_sheet_details", "model", $productSearch);
             if ($slugData) {
                 $slug = $this->getFullSlug(buildProductNestedMenu()[0]['children'], $slugData->slug);
-                echo json_encode(["status" => true, "href" => 'products/' . $slug]);
+                echo json_encode(["status" => true, "href" => 'category/' . $slug]);
             } else {
                 echo json_encode(["status" => false]);
             }
@@ -1289,8 +1290,7 @@ class Dashboard extends CI_Controller
             'sub' => $subject,
             'msg' => $message,
             'to_cc_mail' => $inputs['receipant']->cc_to,
-            'mail_status' => $status,
-            'file_link' => $fileLink
+            'mail_status' => $status
         ];
 
         $insertedRow = $this->commondatamodel->insertSingleTableData("email_detail", $dataArr);

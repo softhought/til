@@ -97,10 +97,10 @@ class ProductsMenu extends CI_Model
                 $subNavClass = ($hasChildren) ? 'sub_nav' : '';
 
                 $url = base_url() . 'category/';
-                foreach ($parentSlugs as $slug) {
-                    $url .= $slug . '/';
-                }
-                $url .= $menuItem['slug'];
+                // foreach ($parentSlugs as $slug) {
+                //     $url .= $slug . '/';
+                // }
+                $url .= 'crane/' . $menuItem['slug'];
 
                 $html .= '<li>';
                 if (count($parentSlugs) == 1) { // Second level (since parentSlugs includes top level only)
@@ -135,7 +135,7 @@ class ProductsMenu extends CI_Model
 
         if ($query->num_rows() > 0) {
             $data = array();
-            $menu = buildNestedMenu($query->result_array(), 0);
+            $menu = buildNestedRouteMenu($query->result_array(), 0);
 
             foreach ($this->menuUrls($menu[0]["children"]) as $row) {
                 if (!$this->isChild($query->result(), $row["product_master_id"])) {

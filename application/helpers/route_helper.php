@@ -6,8 +6,8 @@ if (!function_exists('getAllMenuUrl')) {
     function getAllMenuUrl($table)
     {
         $db =& DB();
-        $result = $db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get($table)->result_array();
-        $menu = buildNestedMenu($result, 0);
+        $result = $db->select('product_master_id, name, slug, route_parent_id')->where('is_disabled', '0')->get($table)->result_array();
+        $menu = buildNestedRouteMenu($result, 0);
         return menuUrls($menu[0]["children"]);
     }
 }
@@ -32,8 +32,8 @@ if (!function_exists('buildProductNestedMenu')) {
     function buildProductNestedMenu()
     {
         $db =& DB();
-        $result = $db->select('product_master_id, name, slug, parent_id')->where('is_disabled', '0')->get('product_master')->result_array();
-        return buildNestedMenu($result, 0);
+        $result = $db->select('product_master_id, name, slug, route_parent_id')->where('is_disabled', '0')->get('product_master')->result_array();
+        return buildNestedRouteMenu($result, 0);
     }
 }
 
@@ -65,6 +65,36 @@ function buildNestedMenu($menuItems, $parentId, $depth = 0)
 
             $menuItem['level'] = $depth;
             $children = buildNestedMenu($menuItems, $menuItem['product_master_id'], $depth + 1);
+
+            if ($children) {
+                $menuItem['children'] = $children;
+            } else {
+                $specSheetDetails = fetchSpecSheetDetails($menuItem['product_master_id']);
+                if ($specSheetDetails) {
+                    $menuItem['children'] = array_map(function($detail) use ($depth) {
+                        $detail['level'] = $depth + 1;
+                        return $detail;
+                    }, $specSheetDetails);
+                }
+            }
+
+            $result[] = $menuItem;
+        }
+    }
+
+    return $result;
+}
+
+
+function buildNestedRouteMenu($menuItems, $parentId, $depth = 0)
+{
+    $result = array();
+
+    foreach ($menuItems as $menuItem) {
+        if ($menuItem['route_parent_id'] == $parentId) {
+
+            $menuItem['level'] = $depth;
+            $children = buildNestedRouteMenu($menuItems, $menuItem['product_master_id'], $depth + 1);
 
             if ($children) {
                 $menuItem['children'] = $children;

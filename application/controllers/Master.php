@@ -362,8 +362,7 @@ class Master extends CI_Controller
             }
 
             $result['isProductEnum'] = [
-                ['key' => 'Y', 'value' => 'Yes'],
-                ['key' => 'N', 'value' => 'No']
+                ['key' => 'Y', 'value' => 'Crane'],
             ];
 
             $result['productList'] = $this->productsmenu->getLastChildProducts();
@@ -509,8 +508,7 @@ class Master extends CI_Controller
             }
 
             $result['isProductEnum'] = [
-                ['key' => 'Y', 'value' => 'Yes'],
-                ['key' => 'N', 'value' => 'No']
+                ['key' => 'Y', 'value' => 'Crane']
             ];
 
             $result['productList'] = $this->productsmenu->getLastChildProducts();

@@ -369,9 +369,6 @@
                 <li class="breadcrumb-item"><a
                         href="<?php echo base_url() . isNew(); ?>category"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                 </li>
-                <li class="breadcrumb-item"><a
-                        href="<?php echo base_url() . isNew(); ?>category#<?php echo $bodycontent['parentSlug'] ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['parentSlug'])); ?></a>
-                </li>
                 <li class="breadcrumb-item"><a href="#"><?php echo $bodycontent["main-section"][0]->name; ?></a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry">Support</a></li>
             </ol>
@@ -451,7 +448,7 @@
                                 <div class="col-md-9 model-mobile">
                                     <h2><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?></h2>
                                     <p><?php echo $value->short_description ?></p>
-                                    <a href="<?php echo base_url() . isNew() . "category/" . $bodycontent['rootSlug'] . "/" . $bodycontent['parentSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
+                                    <a href="<?php echo base_url() . isNew() . "category/" . $bodycontent['rootSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
                                         style="background: #ffc72c; color: black; font-size: 16px; border-radius: 5px; text-transform: uppercase; display: flex; gap: 10px; font-weight: 500; padding: 15px; width: 12rem;">Learn
                                         More <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
@@ -649,7 +646,7 @@
                                                 <ul>
                                                     <?php foreach ($parentMenu["children"] as $key => $children) { ?>
                                                         <li class="first"><a
-                                                                href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $parentMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
+                                                                href="<?php echo base_url() . isNew(); ?>category/<?php echo $rootMenu["slug"]; ?>/<?php echo $children["slug"]; ?>"><?php echo $children["name"]; ?></a>
                                                         </li>
                                                     <?php } ?>
                                                 </ul>

@@ -378,7 +378,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">TIL</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li> -->
                 <li class="breadcrumb-item"><a
                         href="<?php echo base_url() . isNew(); ?>category"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                 </li>
@@ -586,8 +586,7 @@
 
 
                     <div class="conduct-content curvebg" style="display:grid">
-                        <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
-                            now</a>
+                        <a onclick="openForm()" style="cursor:pointer">Learn more about <?php echo $bodycontent["main-section"][0]->model; ?></a>
                     </div>
 
                     <h1 style="margin-top: 3rem;">Products Customer Review </h1>

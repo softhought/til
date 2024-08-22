@@ -365,7 +365,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">TIL</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li> -->
                 <li class="breadcrumb-item"><a
                         href="<?php echo base_url() . isNew(); ?>category"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                 </li>
@@ -446,7 +446,8 @@
                                         style="width: 16rem; height: 10rem; border-radius: 5px;">
                                 </div>
                                 <div class="col-md-9 model-mobile">
-                                    <h2><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?></h2>
+                                    <h2><?php echo $value->model . " (" . $bodycontent["main-section"][0]->name . ")"; ?>
+                                    </h2>
                                     <p><?php echo $value->short_description ?></p>
                                     <a href="<?php echo base_url() . isNew() . "category/" . $bodycontent['rootSlug'] . "/" . $bodycontent["main-section"][0]->slug . "/" . $value->slug; ?>"
                                         style="background: #ffc72c; color: black; font-size: 16px; border-radius: 5px; text-transform: uppercase; display: flex; gap: 10px; font-weight: 500; padding: 15px; width: 12rem;">Learn
@@ -492,8 +493,7 @@
                     </div>
 
                     <div class="conduct-content curvebg" style="display:grid">
-                        <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
-                            now</a>
+                        <a onclick="openForm()" style="cursor:pointer">Learn more about <?php echo $bodycontent["main-section"][0]->name; ?></a>
                     </div>
 
                     <h1 style="margin-top: 3rem;">Products Customer Review </h1>

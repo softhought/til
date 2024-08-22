@@ -100,7 +100,7 @@ class ProductsMenu extends CI_Model
                 // foreach ($parentSlugs as $slug) {
                 //     $url .= $slug . '/';
                 // }
-                $url .= 'crane/' . $menuItem['slug'];
+                $url .= 'material-handling-solutions/' . $menuItem['slug'];
 
                 $html .= '<li>';
                 if (count($parentSlugs) == 1) { // Second level (since parentSlugs includes top level only)

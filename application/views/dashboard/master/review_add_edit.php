@@ -248,7 +248,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group mb-2">
-                                <label for="Function" class="form-label">Sub Product</label>
+                                <label for="Function" class="form-label">Sub Category</label>
                                 <div id="product_iderr">
                                     <select class="form-select select2" name="product_id" id="product_id">
                                         <option value="">Select</option>

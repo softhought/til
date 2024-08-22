@@ -409,8 +409,8 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">TIL</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Crane</a></li>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Category</a></li> -->
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . isNew(); ?>category">Material Handling Solutions</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry">Support</a></li>
             </ol>
         </nav>
@@ -479,12 +479,12 @@
                                                                         style="width: 310px; height: 200px;"
                                                                         alt="<?php echo $value["name"]; ?>" />
                                                                 </div>
-                                                                <h3 style="text-align: left;color: black;">
+                                                                <h2 style="text-align: left;color: black;">
                                                                     <?php echo $value["name"]; ?>
-                                                                </h3>
+                                                                </h2>
                                                             </figure>
                                                             <p
-                                                                style="text-align: left;color: black;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
+                                                                style="text-align: left;color: #525252;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
                                                                 <?php echo $value["short_description"]; ?>
                                                             </p>
                                                         </div>
@@ -515,8 +515,7 @@
 
 
                     <div class="conduct-content curvebg" style="display:grid">
-                        <a onclick="openForm()" style="cursor:pointer">Want to know more about TIL Cranes? Get in touch
-                            now</a>
+                        <a onclick="openForm()" style="cursor:pointer">Learn more about <?php echo $bodycontent["main-section"][0]->name; ?></a>
                     </div>
 
                     <div class="">
@@ -983,7 +982,7 @@
             autoplay: false,
             autoplaySpeed: 3000,
             lazyLoad: 'ondemand',
-            prevArrow: '<button type="button" class="slick-prev"></button>',
+            prevArrow: '<button type="button" class="slick-prev" style="z-index: 100;"></button>',
             nextArrow: '<button type="button" class="slick-next"></button>',
             responsive: [
                 {

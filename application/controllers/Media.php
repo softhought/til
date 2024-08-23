@@ -8,6 +8,7 @@ class Media extends CI_Controller
         $this->load->library('session');
         $this->load->model('commondatamodel', 'commondatamodel', TRUE);
         $this->load->model('mediamodel', 'mediamodel', TRUE);
+        $this->load->model('Investormodel', 'investormodel', TRUE);
     }
     public function index()
     {
@@ -15,7 +16,8 @@ class Media extends CI_Controller
         if ($this->session->userdata('user_detail')) {
             $page = "dashboard/media/add_edit_media";
             $header = "";
-            $result = "";
+
+            $result['pressCount'] = $this->mediamodel->getPressReleaseCount();
 
             createbody_method($result, $page, $header, $session);
         } else {
@@ -146,8 +148,8 @@ class Media extends CI_Controller
             redirect('login', 'refresh');
         }
     }/**end  */
-   /**--------------------------for video section end ------------------ */
-    
+    /**--------------------------for video section end ------------------ */
+
 
     public function videoserialchange()
     {
@@ -375,7 +377,7 @@ class Media extends CI_Controller
             $media_tag = $this->input->post('media_tag');
             $where = array('media_master.menu_tag' => $media_tag);
             $data = $this->commondatamodel->getSingleRowByWhereCls('media_master', $where);
-          
+
             header('Content-Type: application/json');
             echo json_encode(['data' => $data]);
             exit;
@@ -595,21 +597,22 @@ class Media extends CI_Controller
         }
     }/** end  */
     /** ---------------for news and partial view section end ------------------*/
-/** -----------------start event happining section ------------------*/
+    /** -----------------start event happining section ------------------*/
     public function events_happining_partial_view()
     {
         $session = $this->session->userdata('user_detail');
         if ($this->session->userdata('user_detail')) {
             $result['happinig_list'] = $this->mediamodel->getEventHappiningAllList();
-            $page="dashboard/media/events_happining_partial_view";
-            $this->load->view($page,$result);
-        }else{
-			redirect('login','refresh');
-		}
+            $page = "dashboard/media/events_happining_partial_view";
+            $this->load->view($page, $result);
+        } else {
+            redirect('login', 'refresh');
+        }
     }/** end  */
-    public function add_edit_event_happining_partial_view(){
+    public function add_edit_event_happining_partial_view()
+    {
         $session = $this->session->userdata('user_detail');
-		if($this->session->userdata('user_detail')){
+        if ($this->session->userdata('user_detail')) {
 
             $result['eventHappiningId'] = trim($this->input->post('eventHappiningId'));
             if ($result['eventHappiningId'] == 0) {
@@ -617,58 +620,59 @@ class Media extends CI_Controller
                 $result['btnText'] = "Save";
                 $result['btnTextLoader'] = "Saving...";
                 $result['happiningEditdata'] = [];
-               
+
             } else {
                 $result['mode'] = "EDIT";
                 $result['btnText'] = "Update";
                 $result['btnTextLoader'] = "Updating...";
-                $where = array('happenings.id'=>$result['eventHappiningId']);
-                $result['happiningEditdata']=$this->commondatamodel->getSingleRowByWhereCls('happenings',$where);
+                $where = array('happenings.id' => $result['eventHappiningId']);
+                $result['happiningEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('happenings', $where);
                 $result['images_name'] = json_decode($result['happiningEditdata']->images);
                 //pre($result['images_name']);exit;
-                
-            }
-            $page="dashboard/media/add_edit_event_happining_partial_view";
-            $this->load->view($page,$result);
 
-        }else{
-			redirect('login','refresh');
-		}
+            }
+            $page = "dashboard/media/add_edit_event_happining_partial_view";
+            $this->load->view($page, $result);
+
+        } else {
+            redirect('login', 'refresh');
+        }
     }/**end */
-    public function eventsHappining_add_edit_action() {
+    public function eventsHappining_add_edit_action()
+    {
         $session = $this->session->userdata('user_detail');
-    
+
         if ($session) {
             $mode = $this->input->post('mode');
             $eventHappiningId = $this->input->post('eventHappiningId');
             $event_title = $this->input->post('event_title');
-           
+
             $dir_path = FILE_UPLOAD_BASE_PATH . '/assets/images/';
             $uploaded_files = $_FILES;
             $file_array = array("docFile" => $_FILES);
             $fileupload = $this->mediamodel->fileUpload($file_array, $dir_path);
-    
+
             if ($mode == 'EDIT' && $eventHappiningId > 0) {
                 /** for previous image start */
                 $prev_img_name = $this->input->post('prev_img_name');
                 // pre($prev_img_name);exit;
-               
+
                 $prev_images_data = array();
                 foreach ($prev_img_name as $previmage_name) {
-                    if($previmage_name != ""){
+                    if ($previmage_name != "") {
                         $prev_images_data[] = array(
                             'banner_alt' => $event_title,
                             'banner_image' => $previmage_name
                         );
                     }
-                   
+
                 }
                 // pre($prev_images_data);
                 /** for previous image end */
                 /** for new image start  */
                 $images_data = array();
                 foreach ($fileupload as $image_name) {
-                  
+
                     $image_data = array(
                         'banner_alt' => $event_title,
                         'banner_image' => $image_name
@@ -676,61 +680,61 @@ class Media extends CI_Controller
                     $images_data[] = $image_data;
                 }
                 /** for new image end */
-                $final_image_array = array_merge($prev_images_data,$images_data);
-                
+                $final_image_array = array_merge($prev_images_data, $images_data);
+
                 $images_json = json_encode($final_image_array);
-                $where_update = array('happenings.id'=>$eventHappiningId);
+                $where_update = array('happenings.id' => $eventHappiningId);
                 $update_data = array(
                     'name' => $event_title,
                     'images' => $images_json,
                 );
-                $update_status = $this->commondatamodel->updateSingleTableData('happenings',$update_data,$where_update, $eventHappiningId);
+                $update_status = $this->commondatamodel->updateSingleTableData('happenings', $update_data, $where_update, $eventHappiningId);
                 if ($update_status) {
-                   
+
                     $json_response = array(
                         "msg_status" => 1,
                         "msg_data" => "Updated Succesfully",
-                       
+
                     );
                 } else {
-                 
+
                     $json_response = array(
                         "msg_status" => 0,
                         "msg_data" => "Failed to update"
                     );
                 }
-                
+
             } else {
                 $images_data = array();
                 foreach ($fileupload as $image_name) {
-                  
+
                     $image_data = array(
                         'banner_alt' => $event_title,
                         'banner_image' => $image_name
                     );
                     $images_data[] = $image_data;
                 }
-    
-               
+
+
                 $images_json = json_encode($images_data);
                 /** for reset serial no  */
-                $srl_no = $this->mediamodel->getEventHappiningAllList(); 
-        
+                $srl_no = $this->mediamodel->getEventHappiningAllList();
+
                 $precedence_value = '';
                 $new_precedence_value = '';
-                 foreach($srl_no as $list){
-                     $id=$list->id;
-                     $precedence_value = $list->precedence;
- 
-                     $new_precedence_value = $precedence_value+1;
-                     $update_array  = array("precedence" => $new_precedence_value);                       
-                     $where = array("id" => $id);
-                     $update = $this->commondatamodel->updateSingleTableData('happenings',$update_array,$where, $id);
- 
-                 }
-                 /** end for reset serial */
-    
-               
+                foreach ($srl_no as $list) {
+                    $id = $list->id;
+                    $precedence_value = $list->precedence;
+
+                    $new_precedence_value = $precedence_value + 1;
+                    $update_array = array("precedence" => $new_precedence_value);
+                    $where = array("id" => $id);
+                    $update = $this->commondatamodel->updateSingleTableData('happenings', $update_array, $where, $id);
+
+                }
+                /** end for reset serial */
+
+
                 $insert_data = array(
                     'name' => $event_title,
                     'precedence' => 0,
@@ -738,20 +742,20 @@ class Media extends CI_Controller
                     'modification_time' => date('Y-m-d H:i:s'),
                     'published' => 1
                 );
-    
-              
+
+
                 $insert_status = $this->commondatamodel->insertSingleTableData('happenings', $insert_data);
-    
-               
+
+
                 if ($insert_status) {
-                   
+
                     $json_response = array(
                         "msg_status" => 1,
                         "msg_data" => "Saved Succesfully",
-                       
+
                     );
                 } else {
-                 
+
                     $json_response = array(
                         "msg_status" => 0,
                         "msg_data" => "Failed to update"
@@ -759,24 +763,25 @@ class Media extends CI_Controller
                 }
             }
             header('Content-Type: application/json');
-            echo json_encode( $json_response );
+            echo json_encode($json_response);
             exit;
         } else {
-            
+
             redirect('login', 'refresh');
         }
     }/** end */
-    public function eventHappiningserialchange(){
+    public function eventHappiningserialchange()
+    {
         $session = $this->session->userdata('user_detail');
         if ($this->session->userdata('user_detail')) {
             $id = trim($this->input->post('id'));
             $slno = trim($this->input->post('slno'));
             $action = trim($this->input->post('action'));
-            $slectedvalue = trim($this->input->post('slectedvalue')); 
+            $slectedvalue = trim($this->input->post('slectedvalue'));
             $json_response = array();
             if ($action == 'U') {
                 $pre_sl = $slno - 1;
-                
+
                 //if ($pre_sl != '0') {
                 if ($pre_sl != '0' || $pre_sl == '0') {
 
@@ -798,7 +803,7 @@ class Media extends CI_Controller
                                 $json_response = array(
                                     "msg_status" => 1,
                                     "msg_data" => "Precedence updated"
-                                    
+
                                 );
                             }
                         }
@@ -822,18 +827,18 @@ class Media extends CI_Controller
                         $json_response = array(
                             "msg_status" => 1,
                             "msg_data" => "Precedence updated"
-                           
+
                         );
                     }
                 }
-               
-            }else{
+
+            } else {
                 $next_sl = $slno + 1;
 
                 $where = array('precedence' => $next_sl);
                 $preEventData = $this->commondatamodel->getSingleRowByWhereCls('happenings', $where);
                 if (!empty($preEventData)) {
-                    $next_Eventid= $preEventData->id;
+                    $next_Eventid = $preEventData->id;
 
                     $update_array = array("precedence" => $next_sl);
                     $where = array("id" => $id);
@@ -846,7 +851,7 @@ class Media extends CI_Controller
                         $json_response = array(
                             "msg_status" => 1,
                             "msg_data" => "Precedence updated"
-                            
+
                         );
                     }
 
@@ -863,7 +868,8 @@ class Media extends CI_Controller
         }
 
     }/**end */
-    public function setEventStatus(){
+    public function setEventStatus()
+    {
         $session = $this->session->userdata('user_detail');
         if ($this->session->userdata('user_detail')) {
             $uid = trim($this->input->post('uid'));
@@ -891,7 +897,135 @@ class Media extends CI_Controller
         }
 
     }/** end */
-   /** -----------------end event happining section ------------------*/
-   
+    /** -----------------end event happining section ------------------*/
+
+
+
+
+    public function add_edit_investor_relations_partial_view()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+
+            $result['relations_master_id'] = trim($this->input->post('relations_master_id'));
+            $result['relations_dtl_id'] = trim($this->input->post('relations_dtl_id'));
+
+
+            if ($result['relations_dtl_id'] == 0) {
+                $result['mode'] = "ADD";
+                $result['btnText'] = "Create";
+                $result['btnTextLoader'] = "Saving...";
+                $result['relationEditdata'] = [];
+                $result['documenDtl'] = [];
+            } else {
+                $result['mode'] = "EDIT";
+                $result['btnText'] = "Update";
+                $result['btnTextLoader'] = "Updating...";
+                $where = array('investor_relations_details.relations_dtl_id' => $result['relations_dtl_id']);
+                $result['relationEditdata'] = $this->commondatamodel->getSingleRowByWhereCls('investor_relations_details', $where);
+                $where_doc1 = array(
+                    'document_details.ref_id' => $result['relations_dtl_id'],
+                    'document_details.table_name' => "investor_relations_details"
+                );
+
+                $orderby = 'precedence';
+                $result['documenDtl'] = $this->commondatamodel->getAllRecordWhereOrderBy('document_details', $where_doc1, $orderby);
+            }
+
+            $page = "dashboard/media/add_edit_investor_relations_partial_view";
+            $this->load->view($page, $result);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
+    public function investor_relation_action()
+    {
+        $session = $this->session->userdata('user_detail');
+        if ($this->session->userdata('user_detail')) {
+
+            $relations_master_id = $this->input->post('relations_master_id');
+            $relations_dtl_id = $this->input->post('relations_dtl_id');
+            $mode = $this->input->post('mode');
+            $title = $this->input->post('title');
+            $page_url = $this->input->post('page_url');
+            $description = $this->input->post('description');
+
+            $dataArry = $_POST;
+            if (isset($_POST['docType'])) {
+                $docType = $dataArry['docType'];
+                $precedence = $dataArry['precedence'];
+                $userFilename = $dataArry['userFileName'];
+                $fileDesc = NULL;
+                $isChangedFile = $dataArry['isChangedFile'];
+            } else {
+                $docType = NULL;
+                $precedence = NULL;
+                $userFilename = NULL;
+                $fileDesc = NULL;
+                $isChangedFile = NULL;
+            }
+
+            $update_data = array(
+                'relations_master_id' => $relations_master_id,
+                'title' => $title,
+                'page_url' => $page_url,
+                'description' => $description,
+            );
+
+
+            $upd_where = array('investor_relations_details.relations_dtl_id' => $relations_dtl_id);
+            $Updatedata = $this->commondatamodel->updateSingleTableData('investor_relations_details', $update_data, $upd_where, $relations_dtl_id);
+
+            /* file upload */
+            if (isset($_POST['docType'])) {
+                $randomFileName = $dataArry['randomFileName'];
+                $prvFilename = $dataArry['prvFilename'];
+                $docDetailIDs = $dataArry['docDetailIDs'];
+            } else {
+                $randomFileName = NULL;
+                $prvFilename = NULL;
+                $docDetailIDs = NULL;
+            }
+
+            $file_array = array(
+                "masterID" => $relations_dtl_id,
+                "isChangedFile" => $isChangedFile,
+                'randomFileName' => $randomFileName,
+                'prvFilename' => $prvFilename,
+                'docDetailIDs' => $docDetailIDs,
+                "mode" => $mode,
+                "docType" => $docType,
+                "precedence" => $precedence,
+                "userFilename" => $userFilename,
+                "docFile" => $_FILES,
+                "fileDesc" => $fileDesc,
+                "user_id" => $session['userid']
+            );
+
+            $fileupload = $this->investormodel->fileUploadInvestor($file_array);
+
+            if ($Updatedata) {
+                $json_response = array(
+                    "msg_status" => 1,
+                    "msg_data" => "Updated successfully",
+                );
+            } else {
+                $json_response = array(
+                    "msg_status" => 0,
+                    "msg_data" => "There is some problem while updating ...Please try again."
+                );
+            }
+
+
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit;
+
+
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
 
 }/** end controller */

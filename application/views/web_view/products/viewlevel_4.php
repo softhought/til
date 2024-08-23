@@ -422,7 +422,7 @@
                         <div class="container">
                             <div class="row curvebg pl-0">
                                 <div class="col-lg-5">
-                                    <div class="homepix">
+                                    <div class="homepix" style="margin-left: -14px;margin-right: 14px;">
                                         <div class="box-behind"></div>
                                         <?php
                                         $image = !empty($bodycontent["main-section"][0]->left_image)
@@ -551,7 +551,7 @@
 
                     <div class="">
                         <h1 class="mt-ff-2">Frequently Asked Questions</h1>
-                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div id="accordion" role="tablist" aria-multiselectable="true" style="margin-left: 10px;">
                             <?php $index = 1;
                             $totalFAQs = count($bodycontent["faq"]);
                             foreach ($bodycontent["faq"] as $key => $faqValue) {

@@ -118,12 +118,13 @@ if (!isNewDevelopmentLive()) {
 } else {
     $route['category'] = "frontend/products/product_new";
     $route['about-us/vision-and-values'] = "frontend/about/vision_and_values_new";
+    $route['media/press-release'] = "frontend/media/press_release";
 }
 
 
 foreach ($menuUrls as $url) {
     $routeKey = $url['url'];
-
+   
     switch ($url['level']) {
         case 1:
             $routeValue = 'frontend/products/viewLevel_1/' . explode("/", $routeKey)[0] . '/' . $url['product_master_id'];

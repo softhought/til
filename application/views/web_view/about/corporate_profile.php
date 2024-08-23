@@ -81,7 +81,7 @@
 
                                     <ul class="offered-product-showcase">
                                         <?php foreach ($bodycontent["product"] as $key => $value) {
-                                            if ($value['level'] < 4) { ?>
+                                            if ($value['level'] < 3) { ?>
                                                 <a href="<?php echo base_url() . $value["url"] ?>">
                                                     <li> <?php echo $value["name"] ?> </li>
                                                 </a>

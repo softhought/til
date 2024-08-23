@@ -408,7 +408,7 @@
                         <div class="container">
                             <div class="row curvebg pl-0">
                                 <div class="col-lg-5">
-                                    <div class="homepix">
+                                    <div class="homepix" style="margin-left: -14px;margin-right: 14px;">
                                         <div class="box-behind"></div>
                                         <img src="<?php echo base_url(); ?>assets/images/<?php echo $bodycontent["main-section"][0]->left_image != "" ? $bodycontent["main-section"][0]->left_image : $bodycontent["main-section"][0]->catagory_image; ?>"
                                             class="img-responsive"
@@ -435,7 +435,7 @@
 
                     <div>
                         <?php foreach ($bodycontent['sheet_model'] as $key => $value) { ?>
-                            <div class="row" style="margin-top: 4rem;">
+                            <div class="row" style="margin-top: 4rem;margin-left: 0px;">
                                 <div class="col-md-3 bg-pix">
                                     <?php
                                     $image = !empty($value->image)
@@ -459,7 +459,7 @@
 
                     <div class="">
                         <h1 class="mt-ff-2" style="margin-top: 2rem;">Frequently Asked Questions</h1>
-                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div id="accordion" role="tablist" aria-multiselectable="true" style="margin-left: 10px;">
                             <?php $index = 1;
                             $totalFAQs = count($bodycontent["faq"]);
                             foreach ($bodycontent["faq"] as $key => $faqValue) {

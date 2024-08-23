@@ -84,6 +84,10 @@
                 <img class="gray-image" src="assets/images/manitowoc-clr.png" alt="Manitowoc" />
 
               </a>
+              <a href="https://snorkellifts.com" target="_blank">
+                <img class="gray-image" src="assets/images/snorkel.png" alt="snorkel" />
+
+              </a>
             </div>
           </div>
         </div>
@@ -111,8 +115,7 @@
 
     <div class="row product-list">
       <?php foreach ($bodycontent["product"] as $key => $value) {
-        if ($value['level'] < 4) { ?>
-
+        if ($value['level'] < 3 && $value['product_master_id'] != 14) { ?>
           <div class="col-lg-3 col-md-6 col-12">
             <a href="<?php echo base_url() . $value["url"]; ?>">
               <div class="product-item">

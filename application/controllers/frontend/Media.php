@@ -1,13 +1,11 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Media extends CI_Controller
-
 {
 
 
 
     public function __construct()
-
     {
 
         parent::__construct();
@@ -77,6 +75,22 @@ class Media extends CI_Controller
         $page = "web_view/media/newsletter/til_touch.php";
         $mediaMaster = $this->commondatamodel->getSingleRowByWhereCls("media_master", ["menu_tag" => "TIL_TOUCH"]);
         $result["til_touch"] = $this->commondatamodel->getAllRecordWhere("document_details", ["ref_id" => $mediaMaster->media_master_id, "table_name" => "media_master", "is_disabled" => 0]);
+        $result["active"] = "media-menu";
+        webbody_helper($result, $page);
+    }
+
+
+    public function press_release()
+    {
+        $page = "web_view/media/press_release.php";
+
+        $detail = $this->commondatamodel->getSingleRowByWhereCls("investor_relations_details", ["relations_dtl_id" => 44]);
+
+        if ($detail && $detail->is_file_uploaded == "Y") {
+            $detail->file = $this->commondatamodel->getAllRecordWhereOrderByCol("document_details", ["ref_id" => $detail->relations_dtl_id, "table_name" => "investor_relations_details", "is_disabled" => 0], "precedence", "ASC");
+        }
+
+        $result["investorRelationsDetails"] = $detail;
         $result["active"] = "media-menu";
         webbody_helper($result, $page);
     }

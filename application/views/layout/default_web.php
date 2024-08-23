@@ -432,12 +432,13 @@
               <li class="first"><a href="<?php echo base_url(); ?>media/videos">Video</a></li>
               <li><a href="<?php echo base_url(); ?>media/news">News</a></li>
               <li><a href="<?php echo base_url(); ?>media/events-happenings">Events & Happenings</a></li>
-              <li class="last"><a href="<?php echo base_url(); ?>media/newsletter" class="sub_nav">Newsletter</a>
+              <li><a href="<?php echo base_url(); ?>media/press-release">Press Release</a></li>
+              <!-- <li class="last"><a href="<?php echo base_url(); ?>media/newsletter" class="sub_nav">Newsletter</a>
                 <ul class="dropdown-menu dropdownhover-bottom">
                   <li class="first"><a href="<?php echo base_url(); ?>media/newsletter/til-talk">TIL Talk</a></li>
                   <li class="last"><a href="<?php echo base_url(); ?>media/newsletter/til-touch">TIL Touch</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="careers"><a href="<?php echo base_url(); ?>careers">Careers <span class="caret"></span></a>
@@ -1872,7 +1873,7 @@
       arrows: true,
       dots: false,
       prevArrow: '<button type="button" class="slick-prev" style="display: block; font-size: 50px;"></button>',
-      nextArrow: '<button type="button" class="slick-next" style="display: block; font-size: 50px;"></button>',
+      nextArrow: '<button type="button" class="slick-next" style="display: block; font-size: 50px; margin-right: -10px;"></button>',
     });
   });
 </script>

@@ -479,12 +479,12 @@
                                                                         style="width: 310px; height: 200px;"
                                                                         alt="<?php echo $value["name"]; ?>" />
                                                                 </div>
-                                                                <h2 style="text-align: left;color: black;">
+                                                                <h2 style="text-align: left;color: black; margin-left: 6px;">
                                                                     <?php echo $value["name"]; ?>
                                                                 </h2>
                                                             </figure>
                                                             <p
-                                                                style="text-align: left;color: #525252;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
+                                                                style="text-align: left;color: #525252;margin-left: 6px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
                                                                 <?php echo $value["short_description"]; ?>
                                                             </p>
                                                         </div>
@@ -520,7 +520,7 @@
 
                     <div class="">
                         <h1 class="mt-ff-2">Frequently Asked Questions</h1>
-                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div id="accordion" role="tablist" aria-multiselectable="true" style="margin-left: 10px;">
                             <?php $index = 1;
                             $totalFAQs = count($bodycontent["faq"]);
                             foreach ($bodycontent["faq"] as $key => $faqValue) {

@@ -1,4 +1,3 @@
-financials_partial_view
 <section class="layout-box-content-format1">
    <table class="table customTbl table-bordered table-striped dataTable" style="width: 100%">
       <thead>
@@ -31,8 +30,8 @@ financials_partial_view
                </td>
                <td>
                   <?php if ($value->fileupload_count != "") { ?>
-                     <a href="javascript:void(0);" class="btn tbl-action-btn padbtn showDocs" style="width: 37px; height: 25px;"#000
-                        data-relationsdtlid="<?php echo $value->relations_dtl_id; ?>"
+                     <a href="javascript:void(0);" class="btn tbl-action-btn padbtn showDocs"
+                        style="width: 37px; height: 25px;" #000 data-relationsdtlid="<?php echo $value->relations_dtl_id; ?>"
                         data-relationsmasterid="<?php echo $value->relations_master_id; ?>"
                         data-dochead="<?php echo $value->title; ?>" data-toggle="modal" data-target="#investorRelationsDocs">
                         <?php echo $value->fileupload_count; ?>

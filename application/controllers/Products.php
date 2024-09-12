@@ -443,48 +443,62 @@ class Products extends CI_Controller
         
         $feature = $_POST["feature"];
         $details = $_POST["details"];
-
-        for ($i = 0; $i < count($feature); $i++) {
-            $specificationsData[] = array(
-                'feature' => $feature[$i],
-                'details' => $details[$i]
-            );
-        }
+        $specificationsData = [];
         
-        $specifications = json_encode($specificationsData);
+        if ($feature) {
+            for ($i = 0; $i < count($feature); $i++) {
+                $specificationsData[] = array(
+                    'feature' => $feature[$i],
+                    'details' => $details[$i]
+                );
+            }
+            
+            $specifications = json_encode($specificationsData);
+        }
 
+        
         $feature_dt = $_POST["feature-dt"];
         $details_dt = $_POST["details-dt"];
+        $featuresData = [];
 
-        for ($i = 0; $i < count($feature_dt); $i++) {
-            $featuresData[] = array(
-                'feature' => $feature_dt[$i],
-                'details' => $details_dt[$i]
-            );
+        if ($feature_dt) {
+            for ($i = 0; $i < count($feature_dt); $i++) {
+                $featuresData[] = array(
+                    'feature' => $feature_dt[$i],
+                    'details' => $details_dt[$i]
+                );
+            }
+            
+            $features = json_encode($featuresData);
         }
-        
-        $features = json_encode($featuresData);
+
+       
 
         $video_title = $_POST["video_title"];
         $video_id = $_POST["video_id"];
+        $videosData = [];
 
-        for ($i = 0; $i < count($video_id); $i++) {
-            $videosData[] = array(
-                'video_title' => $video_title[$i],
-                'video_id' => $video_id[$i]
-            );
+        if ($video_id) {
+            for ($i = 0; $i < count($video_id); $i++) {
+                $videosData[] = array(
+                    'video_title' => $video_title[$i],
+                    'video_id' => $video_id[$i]
+                );
+            }
+
+            $videos = json_encode($videosData);
         }
+
         
-        $videos = json_encode($videosData);
 
         $dataArr = [
             'model' => $title_modal,
-            'videos' => $videos,
+            'videos' => $videos ?: null,
             'short_description' => $short_description_modal,
             'about' => $model_description_modal,
             'general_description' => $general_description_modal,
-            'specifications' => $specifications,
-            'features' => $features
+            'specifications' => $specifications ?: null,
+            'features' => $features ?: null
         ];
 
         if (isset($_FILES['specsheet_modalfile'])) {

@@ -256,6 +256,17 @@
         content: "";
     }
 
+    .aboutText-p p {
+        line-height: 18px !important;
+        font-size: 14px;
+        width: 97%;
+        text-align: left;
+        color: #525252;
+        margin: 25px 0;
+        margin: 0;
+        font-weight: 400;
+    }
+
     @media (max-width: 768px) {
         .form-inline input {
             width: calc(100% - 1rem);
@@ -418,7 +429,7 @@
                                 </div>
 
                                 <div class="col-lg-7 col-12 p-responsive">
-                                    <div class="aboutText"><?php echo $bodycontent["main-section"][0]->about; ?>
+                                    <div class="aboutText-p"><?php echo $bodycontent["main-section"][0]->about; ?>
                                         <a class="read-btn quote-btn" data-toggle="modal" data-target="#myModal">
                                             <!-- Get TIL <?php echo $bodycontent["main-section"][0]->model; ?> Cost -->
                                             <!-- Check <?php echo $bodycontent["main-section"][0]->name; ?> Price -->
@@ -493,7 +504,8 @@
                     </div>
 
                     <div class="conduct-content curvebg" style="display:grid">
-                        <a onclick="openForm()" style="cursor:pointer">Learn more about <?php echo $bodycontent["main-section"][0]->name; ?></a>
+                        <a onclick="openForm()" style="cursor:pointer">Learn more about
+                            <?php echo $bodycontent["main-section"][0]->name; ?></a>
                     </div>
 
                     <h1 style="margin-top: 3rem;">Products Customer Review </h1>

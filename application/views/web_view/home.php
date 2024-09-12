@@ -117,19 +117,23 @@
       <?php foreach ($bodycontent["product"] as $key => $value) {
         if ($value['level'] < 3 && $value['product_master_id'] != 14) { ?>
           <div class="col-lg-3 col-md-6 col-12">
-            <a href="<?php echo base_url() . $value["url"]; ?>">
-              <div class="product-item">
+            <div class="product-item">
+              <a href="<?php echo base_url() . $value["url"]; ?>">
                 <figure>
                   <img src="<?php echo base_url(); ?>assets/images/<?php echo $value["banner_image"] ?>"
                     style="width: 260px; height: 139px;" alt="rectangle" />
                 </figure>
                 <h5><?php echo $value["name"]; ?></h5>
-                <button>Request for a quote</button>
-              </div>
-            </a>
+              </a>
+              <button class="request-quote-btn" data-toggle="modal" data-target="#myModal"
+                data-product-master-id="<?php echo $value['product_master_id']; ?>">
+                Request for a quote
+              </button>
+            </div>
           </div>
         <?php }
       } ?>
+
 
       <div class="card">
         <div class="col-lg-3 col-md-6 col-12">
@@ -209,3 +213,30 @@
 
   <!-- end row-->
 </section>
+<!-- Bootstrap 5 JS (with Popper.js included) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery.min.js?c=-62170003270" type="text/javascript"></script>
+
+<script>
+  $(document).ready(function () {
+    $(document).on('click', '.request-quote-btn', function () {
+      var productMasterId = $(this).data('product-master-id');
+
+      var base_url = $("#basepath").val();
+      $.ajax({
+        url: `${base_url}home/fetchproduct`,
+        type: 'POST',
+        data: { productMasterId: productMasterId },
+        success: function (response) {
+          $("#produt_id_drp").html(response);
+        },
+        error: function (jqXHR, exception) {
+          console.log(jqXHR);
+          console.log(exception);
+        }
+      });
+    });
+  })
+
+</script>

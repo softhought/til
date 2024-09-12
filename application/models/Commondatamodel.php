@@ -599,6 +599,43 @@ class Commondatamodel extends CI_Model
 
 	}
 
+	public function getAllRecordOrderByWhere($table, $orderby, $orderTag, $where)
+	{
+
+		$data = array();
+
+		$this->db->select("*")
+
+			->from($table)
+			->where($where)
+
+			->order_by($orderby, $orderTag);
+
+		$query = $this->db->get();
+
+		//echo $this->db->last_query();
+
+
+
+		if ($query->num_rows() > 0) {
+
+			foreach ($query->result() as $rows) {
+
+				$data[] = $rows;
+
+			}
+
+			return $data;
+
+
+
+		} else {
+
+			return $data;
+
+		}
+
+	}
 
 
 	/*

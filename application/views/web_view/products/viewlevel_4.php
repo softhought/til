@@ -383,7 +383,7 @@
                         href="<?php echo base_url() . isNew(); ?>category"><?php echo ucwords(str_replace('-', ' ', $bodycontent['rootSlug'])); ?></a>
                 </li>
                 <li class="breadcrumb-item"><a
-                        href="<?php echo base_url() . isNew(); ?>category/crane/<?php echo $bodycontent['subParentSlug'] ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
+                        href="<?php echo base_url() . isNew(); ?>category/material-handling-solutions/<?php echo $bodycontent['subParentSlug'] ?>"><?php echo ucwords(str_replace('-', ' ', $bodycontent['subParentSlug'])); ?></a>
                 </li>
                 <li class="breadcrumb-item"><a href="#"><?php echo $bodycontent["main-section"][0]->model; ?></a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>contact-us/inquiry">Support</a></li>

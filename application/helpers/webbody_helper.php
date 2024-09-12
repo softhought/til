@@ -17,7 +17,7 @@ if (!function_exists('webbody_helper')) {
 
         $result["product_menu"] = $CI->productsmenu->getProductsMenu();
         $result["country"] = $CI->commondatamodel->getAllDropdownData("tbl_countries");
-        $result["nature_of_query"] = $CI->commondatamodel->getAllRecordOrderBy("fuel_nature_of_query", "precedence", "ASC");
+        $result["nature_of_query"] = $CI->commondatamodel->getAllRecordOrderByWhere("fuel_nature_of_query", "precedence", "ASC", ['is_disabled' => 0]);
 
         $mainurl = substr(current_url(), strlen(base_url()));
         $mainurl = $mainurl == "" ? "home" : $mainurl;

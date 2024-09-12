@@ -1,3 +1,38 @@
+<style>
+    .offered-product-showcase {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow wrapping onto the next row */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 20px;
+        /* Optional: Adds space between list items */
+    }
+
+    .offered-product-showcase li {
+        background: #ffc72c !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: black;
+        font-weight: 500;
+        margin: 0 !important;
+        display: flex;
+        font-size: 16px !important;
+        white-space: nowrap;
+        flex: 1 1 calc(25% - 20px);
+        /* Ensure 4 items fit per row, subtracting space for gap */
+        box-sizing: border-box;
+    }
+
+    .offered-product-showcase a {
+        text-decoration: none;
+        color: inherit;
+        /* Keeps the color from the li */
+        width: 100%;
+        display: block;
+    }
+</style>
 <?php include APPPATH . 'views/web_view/header-banner.php' ?>
 <script>setBreadcrumbAndBackground('<?php echo base_url(); ?>assets/images/inner_page_banners/corporate-profile-banner.png', "Corporate Profile");</script>
 <section class="content_section">
@@ -78,17 +113,17 @@
                                     </div>
                                 </div>
                                 <div class="row px-20">
-
                                     <ul class="offered-product-showcase">
                                         <?php foreach ($bodycontent["product"] as $key => $value) {
                                             if ($value['level'] < 3) { ?>
-                                                <a href="<?php echo base_url() . $value["url"] ?>">
-                                                    <li> <?php echo $value["name"] ?> </li>
-                                                </a>
+                                                <li>
+                                                    <a href="<?php echo base_url() . $value["url"] ?>">
+                                                        <?php echo $value["name"]; ?>
+                                                    </a>
+                                                </li>
                                             <?php }
                                         } ?>
                                     </ul>
-
                                 </div>
 
                                 <div class="row mt-040 mb-040 ">

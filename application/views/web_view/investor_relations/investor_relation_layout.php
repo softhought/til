@@ -30,7 +30,8 @@
                         <h1 style="line-height:40px"><?php echo $bodycontent["investorRelationsDetails"]->title ?></h1>
 
                         <figure>
-                            <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="Rectangle" srcset="">
+                            <img src="<?php echo base_url(); ?>tilindia/assets/images/Rectangle.png" alt="Rectangle"
+                                srcset="">
                             <hr>
                         </figure>
                     </div>
@@ -47,13 +48,13 @@
                                             </strong>
                                             <aside>
                                                 <a href="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $file->random_file_name; ?>"
-                                                    target="_blank" class="download_pdf"
+                                                    target="_blank" class="download_pdf tracklink"
                                                     title="<?php echo $file->uploaded_file_desc; ?>">
                                                     View
                                                 </a>
                                                 /
                                                 <a href="<?php echo base_url(); ?>assets/docs/pdf/<?php echo $file->random_file_name; ?>"
-                                                    download="<?php echo $file->uploaded_file_desc; ?>"
+                                                    download="<?php echo $file->uploaded_file_desc; ?>" class="tracklink"
                                                     title="<?php echo $file->uploaded_file_desc; ?>">
                                                     Download Document
                                                 </a>
@@ -70,3 +71,34 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        $('.tracklink').click(function (e) {
+            var url = $(this).attr('href');
+
+            var filename = url.substring(url.lastIndexOf('/') + 1);
+
+            var description = $(this).attr('title') || 'No description';
+
+            var currentUrl = window.location.href;
+            
+            $.ajax({
+                url: '<?php echo base_url(); ?>dashboard/save_download_info', 
+                method: 'POST',
+                data: {
+                    filename: filename,
+                    description: description,
+                    current_url: currentUrl,
+                    file_url: url
+                },
+                success: function (response) {
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error saving download information:', error);
+                    window.open(url, '_blank');
+                }
+            });
+        });
+    });
+</script>

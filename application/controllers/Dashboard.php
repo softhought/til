@@ -1241,30 +1241,30 @@ class Dashboard extends CI_Controller
         // $pythonExecutable = "/usr/bin/python3";
         $pythonExecutable = "python";
         // if (file_exists($dir) && is_executable($dir)) {
-            $pythonScript = "{$pythonExecutable} {$dir}";
-            putenv("PYTHONIOENCODING=utf-8");
+        $pythonScript = "{$pythonExecutable} {$dir}";
+        putenv("PYTHONIOENCODING=utf-8");
 
-            $escapedKeyWord = escapeshellarg($keyWord);
+        $escapedKeyWord = escapeshellarg($keyWord);
 
-            $command = "{$pythonScript} {$escapedKeyWord} 2>&1";
-            $output = shell_exec($command);
-            // pre($output);exit;
-            $decodedOutput = json_decode($output, true);
+        $command = "{$pythonScript} {$escapedKeyWord} 2>&1";
+        $output = shell_exec($command);
+        // pre($output);exit;
+        $decodedOutput = json_decode($output, true);
 
-            if ($decodedOutput !== null) {
+        if ($decodedOutput !== null) {
 
-                foreach ($decodedOutput as &$item) {
-                    if (isset($item['content'])) {
-                        $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
-                    }
+            foreach ($decodedOutput as &$item) {
+                if (isset($item['content'])) {
+                    $item['content'] = trim(preg_replace('/\s+/', ' ', $item['content']));
                 }
-
-                $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-
-                return $jsonOutput;
-            } else {
-                return "Failed to decode JSON output.";
             }
+
+            $jsonOutput = json_encode($decodedOutput, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+            return $jsonOutput;
+        } else {
+            return "Failed to decode JSON output.";
+        }
         // } else {
         //     return "Error: Script file does not exist or is not executable.";
         // }
@@ -1313,7 +1313,7 @@ class Dashboard extends CI_Controller
         $comment = $_POST["comment"];
         $ip_address = $_SERVER['REMOTE_ADDR'];
 
-        
+
         $country_name = $this->commondatamodel->getSingleRowByWhereCls("tbl_countries", ["id" => $country_id])->name;
         $state_name = $this->commondatamodel->getSingleRowByWhereCls("tbl_states", ["id" => $state_id])->name;
 
@@ -1357,4 +1357,31 @@ class Dashboard extends CI_Controller
         header('Content-Type: application/json');
         exit;
     }
+
+    public function save_download_info()
+    {
+        // Get the data from the AJAX request
+        $filename = $this->input->post('filename');
+        $description = $this->input->post('description');
+        $current_url = $this->input->post('current_url');
+        $file_url = $this->input->post('file_url');
+
+        // Get the user's IP address
+        $user_ip = $this->input->ip_address();
+
+        // Save the information to the database or log file
+        $data = array(
+            'filename' => $filename,
+            'description' => $description,
+            'current_url' => $current_url,
+            'file_url' => $file_url,
+            'user_ip' => $user_ip,
+            'download_time' => date('Y-m-d H:i:s')
+        );
+
+        $insertedId = $this->commondatamodel->insertSingleTableData("download_logs", $data);
+
+        echo json_encode(array('status' => 'success'));exit;
+    }
+
 }
